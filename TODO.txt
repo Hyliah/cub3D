@@ -1,0 +1,3 @@
+- Mettre la libft 
+- Corriger si besoin le Makefile
+- Faire le jeu
