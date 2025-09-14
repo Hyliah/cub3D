@@ -15,4 +15,13 @@
 #ifndef CUB_FUNCTIONS_H
 # define CUB_FUNCTION_H
 
+
+/* PARSING */
+
+/* SCREEN */
+void	create_window(t_cub *cub);
+
+/* MALLOC & EXIT */
+int	clean_exit(t_cub *cub);
+
 #endif

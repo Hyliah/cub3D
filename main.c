@@ -14,6 +14,13 @@
 
 int main (int ac, char **av)
 {
+    t_cub   cub;
+    (void)ac;
+    (void)av;
+
+    create_window(&cub);
+    //mlx_key_hook(mlx.graphic.win_ptr, handle_key, &mlx);
+	mlx_loop(cub.graphic.mlx_ptr);
     return (0);
 }
 
