@@ -25,7 +25,7 @@
 <h2>♦ Project Structure ♦</h2>
 
 ```bash
-Cub3e/
+Cub3d/
 ├── main/             # Program entry
 
 ```
