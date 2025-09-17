@@ -1,0 +1,19 @@
+NO //(something.xpm, mettre les images ici )
+SO 
+WE 
+EA 
+
+// color pour floor et ceiling here ( en RBG )
+// F 0,0,0
+// C 0,0,0
+
+// map there 
+// mettre le player avec son orientation 
+
+
+// faire plusieurs map invalides :
+// - pas fermee par murs (1)
+// - caractere non valides 
+// - pas de joueur ? 
+// - valeurs de couleur incorrecte 
+// - check autre element du parsing a venir ... 

@@ -1,0 +1,16 @@
+NO (something.xpm, mettre les images ici )
+SO 
+WE 
+EA 
+
+// color pour floor et ceiling here ( en RBG )
+// F 0,0,0
+// C 0,0,0
+
+// map there 
+// mettre le player avec son orientation par ex:
+111111
+100101
+101001
+1100N1
+111111

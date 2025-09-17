@@ -68,4 +68,17 @@ typedef struct s_cub
 	t_graphic   graphic;
 }	t_cub;
 
+// repris de mon so_long, a update si besoin 
+typedef enum e_error
+{
+	ERR_ARGS,
+	ERR_FILE_EXT,
+	ERR_MAP_INVALID_CHAR,
+	ERR_MAP_INVALID,
+	ERR_MAP_SIZE,
+	ERR_MAP_WALLS,
+	ERR_MAP_PATH,
+	ERR_MAP_NOT_FOUND,
+}	t_error;
+
 #endif
