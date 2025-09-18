@@ -47,6 +47,7 @@ vpath %.c \
 SRC = main.c \
 clean_exit.c \
 window_creation.c \
+key_handle.c \
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 

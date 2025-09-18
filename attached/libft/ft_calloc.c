@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:20:52 by mlaffita          #+#    #+#             */
-/*   Updated: 2024/10/27 15:33:34 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:14:17 by hlichten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*str;
+
+	str = (char *)s;
+	while (n--)
+		*str++ = '\0';
+}
 
 void	*ft_calloc(size_t count, size_t size)
 {

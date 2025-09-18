@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:45:51 by mlaffita          #+#    #+#             */
-/*   Updated: 2024/10/23 16:36:15 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:10:51 by hlichten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {

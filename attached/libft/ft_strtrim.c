@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:49:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2024/10/25 17:59:43 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:17:59 by hlichten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+int	ft_strlen(const char *str)
+{
+	int	len;
+
+	len = 0;
+	while (str[len])
+	{
+		len++;
+	}
+	return (len);
+}
 
 int	ft_set(char c, char const *set)
 {

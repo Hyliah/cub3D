@@ -7,7 +7,6 @@ OBJDIR = $(SRCDIR)
 
 # Sources and object files
 SOURCE = ft_strlen.c \
-         ft_memmove.c \
          ft_memcpy.c \
          ft_strlcpy.c \
          ft_strlcat.c \
@@ -31,21 +30,11 @@ SOURCE = ft_strlen.c \
          ft_atoi.c \
          ft_calloc.c \
          ft_strdup.c \
-		 ft_strndup.c \
-         ft_substr.c \
-         ft_strjoin.c \
-		 ft_strjoin_free.c \
          ft_strtrim.c \
 		 ft_itoa.c \
-         ft_putchar_fd.c \
-         ft_putstr_fd.c \
-         ft_putendl_fd.c \
-         ft_putnbr_fd.c \
 		 ft_striteri.c \
 		 ft_strmapi.c \
-		 ft_split.c \
 		 ft_atol.c \
-		 get_next_line.c \
 		 ft_strcmp.c \
 
 SRCBONUS = 	ft_lstnew_bonus.c \

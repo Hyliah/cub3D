@@ -19,9 +19,10 @@
 /* PARSING */
 
 /* SCREEN */
+int		handle_key(int keycode, t_cub *cub);
 void	create_window(t_cub *cub);
 
 /* MALLOC & EXIT */
-int	clean_exit(t_cub *cub);
+int		clean_exit(t_cub *cub);
 
 #endif

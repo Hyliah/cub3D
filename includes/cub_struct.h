@@ -27,12 +27,26 @@ typedef enum s_dir
 	WEST // = 3
 }   t_dir;
 
+// contain information about the position of the player and FOV
 typedef struct s_player
 {
-	int	    pos_x;
-	int	    pos_y;
+	// gestion des fps
+	double		new_time;
+	double		old_time;
+	// position of the player on the map
+	double	    pos_x;
+	double	    pos_y;
+	// direction of the player -> vertical lane in front of the player
+	double		dir_x;
+	double		dir_y;
+	// camera plane -> horizontal lane of the player
+	double		pl_x;
+	double		pl_y;
+	//pas sure si utile
 	t_dir   dir;
 }	t_player;
+
+// Field of vision is 2 * atan(0.66/1.0)=66°
 
 typedef struct s_map
 {

@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:12:51 by mlaffita          #+#    #+#             */
-/*   Updated: 2024/10/23 14:44:00 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:15:29 by hlichten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+int	ft_strlen(const char *str)
+{
+	int	len;
+
+	len = 0;
+	while (str[len])
+	{
+		len++;
+	}
+	return (len);
+}
 
 char	*ft_strcpy(char *dest, const char *src)
 {
