@@ -19,9 +19,8 @@ static void	init_struct_player(t_cub *cub);
 void	init_struct(t_cub *cub)
 {
 	init_struct_graphic(cub);
-	init_struct_map(cub);
+	init_struct_map_settings(cub);
 	init_struct_player(cub);
-	init_struct_setting(cub);
 }
 
 static void	init_struct_map_settings(t_cub *cub)
@@ -51,26 +50,34 @@ static void	init_struct_player(t_cub *cub)
 
 static void	init_struct_graphic(t_cub *cub)
 {
+	cub->graphic.s_height = 540;
+	cub->graphic.s_width = 960;
 	cub->graphic.img_e = 0;
 	cub->graphic.img_n = 0;
 	cub->graphic.img_s = 0;
 	cub->graphic.img_w = 0;
 	cub->graphic.mlx_ptr = NULL;
-	cub->graphic.s_height = 540;
-	cub->graphic.s_width = 960;
-	cub->graphic.win_ptr = 0;
+	cub->graphic.addr = NULL;
+	cub->graphic.bpp = 32;
+	cub->graphic.endian = 0;
+	cub->graphic.img = NULL;
+	cub->graphic.size_line = 1920 * 4; //a voir 
 }
 #elif defined(__linux__)
 
 static void	init_struct_graphic(t_cub *cub)
 {
+	cub->graphic.s_height = 1080;
+	cub->graphic.s_width = 1920;
 	cub->graphic.img_e = 0;
 	cub->graphic.img_n = 0;
 	cub->graphic.img_s = 0;
 	cub->graphic.img_w = 0;
 	cub->graphic.mlx_ptr = NULL;
-	cub->graphic.s_height = 1080;
-	cub->graphic.s_width = 1920;
-	cub->graphic.win_ptr = 0;
+	cub->graphic.addr = NULL;
+	cub->graphic.bpp = 32;
+	cub->graphic.endian = 0;
+	cub->graphic.img = NULL;
+	cub->graphic.size_line = 1920 * 4; //a voir 
 }
 #endif

@@ -65,12 +65,27 @@ typedef struct s_graphic // repris de mon so_long
 {
 	void	*mlx_ptr; //pour creation de la window
 	void	*win_ptr; //pour la creation de la window
+
+	// pour la recreation du get data adress sur linux et mac
+    void    *img; //buffer image
+    char    *addr; //adresse mémoire du buffer
+    int     bpp; //bits per pixel
+    int     size_line; //longueur d'une ligne
+    int     endian; //endianness
+
+	#ifdef __APPLE__
+    unsigned int *buffer; //gestion de pixel put sur mac
+	#endif
+	int		s_width;
+	int		s_height;
+
+	//images des murs et leurs liens
 	void	*img_w;
 	void	*img_e;
 	void	*img_s;
 	void	*img_n;
-	int		s_width;
-	int		s_height;
+
+
 }	t_graphic;
 
 typedef struct s_cub
