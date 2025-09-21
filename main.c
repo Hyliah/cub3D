@@ -12,7 +12,7 @@
 
 #include "cub.h"
 
-void    hardcode_map(t_cub *cub);
+void    hardcode_map(t_cub *cub, char *arg);
 
 int main (int ac, char **av)
 {
@@ -20,31 +20,48 @@ int main (int ac, char **av)
     (void)ac;
     (void)av;
 
-    hardcode_map(&cub);
     init_struct(&cub);
+    hardcode_map(&cub, av[2]);
     create_window(&cub);
 	mlx_loop(cub.graphic.mlx_ptr);
     mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
     return (0);
 }
 
-void    hardcode_map(t_cub *cub)
+
+/* laide fonction a suppimer des que le parsing sera fait */
+void    hardcode_map(t_cub *cub, char *arg)
 {
     cub->player.pos_x = 26;
     cub->player.pos_y = 11;
     cub->player.dir_x = -1;
-    cub->player.dir_y = 0;
-    cub->player.pl_x = 0;
     cub->player.pl_y = 0.66;
-    cub->player.old_time = 0;
-    cub->player.new_time = 0;
 
     cub->setting.start_dir = NORTH;
     // cub->setting.c_color = 225,30,0;
     // cub->setting.f_color = 220,100,0;
 
-    cub->map.height = 14;
-    cub->map.width = 34;
+    cub->map.height = 9;
+    cub->map.width = 18;
+
+    int	i;
+    char *line;
+
+	i = 0;
+	cub->map.map_tab = malloc(sizeof(char *) * (cub->map.height + 1));
+	cub->setting.fd = open(arg, 00);
+
+	while (i < cub->map.height)
+	{
+		line = get_next_line(cub->setting.fd);
+		if (line == NULL)
+			break ;
+		cub->map.map_tab[i] = ft_strndup(line, cub->map.width);
+		free (line);
+		i++;
+	}
+	cub->map.map_tab[i] = NULL;
+	close(cub->setting.fd);
 }
 // AUTHORIZED FUNCTIONS :
 

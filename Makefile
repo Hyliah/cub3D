@@ -9,7 +9,7 @@ SRCDIR = src
 OBJDIR = obj
 
 # Librairies
-LIBFTDIR = ./attached/libft
+LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 ifeq ($(OS), Darwin)
 	ifeq ($(CPU), arm64)

@@ -16,9 +16,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 # include "mlx.h"
 //# include "mlx_int.h"
+# include "libft.h"
 # include "cub_struct.h"
 # include "cub_keyboard.h"
 # include "cub_functions.h"

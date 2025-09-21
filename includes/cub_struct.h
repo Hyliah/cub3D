@@ -56,6 +56,7 @@ typedef struct s_map
 
 typedef struct s_setting // struct pour recupérer les infos sur Parsing
 {
+	int		fd;
 	int     c_color; //ceiling color 
 	int     f_color; //floor color
 	t_dir	start_dir; //le truc nord/sud/est/west
@@ -76,8 +77,11 @@ typedef struct s_graphic // repris de mon so_long
 	#ifdef __APPLE__
     unsigned int *buffer; //gestion de pixel put sur mac
 	#endif
+	// en pixel 
 	int		s_width;
 	int		s_height;
+	int		mm_max_width;
+	int		mm_max_height;
 
 	//images des murs et leurs liens
 	void	*img_w;

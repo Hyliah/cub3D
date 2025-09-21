@@ -20,10 +20,15 @@
 
 /* SCREEN */
 int		handle_key(int keycode, t_cub *cub);
+
 void	create_window(t_cub *cub);
 
 /* MALLOC & EXIT */
 int		clean_exit(t_cub *cub);
+
+void	free_tab(char ***tab);
+void	*free_ptr(void **ptr);
+void	free_mid_tab(t_cub *cub, char ***tab, int i);
 
 /* UTILS */
 void	init_struct(t_cub *cub);
