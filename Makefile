@@ -39,6 +39,7 @@ RM = rm -f
 
 vpath %.c \
 	$(SRCDIR) \
+	$(SRCDIR)/utils \
 	$(SRCDIR)/parsing \
 	$(SRCDIR)/screen \
 	$(SRCDIR)/malloc_exit \
@@ -46,8 +47,8 @@ vpath %.c \
 # Sources and object files
 SRC = main.c \
 clean_exit.c \
-window_creation.c \
-key_handle.c \
+key_handle.c window_creation.c \
+init.c \
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 

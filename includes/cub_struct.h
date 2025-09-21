@@ -47,7 +47,6 @@ typedef struct s_player
 }	t_player;
 
 // Field of vision is 2 * atan(0.66/1.0)=66°
-
 typedef struct s_map
 {
 	int		height;

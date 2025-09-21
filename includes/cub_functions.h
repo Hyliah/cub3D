@@ -25,4 +25,7 @@ void	create_window(t_cub *cub);
 /* MALLOC & EXIT */
 int		clean_exit(t_cub *cub);
 
+/* UTILS */
+void	init_struct(t_cub *cub);
+
 #endif

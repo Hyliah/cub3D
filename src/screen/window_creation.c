@@ -17,18 +17,12 @@ void	create_window(t_cub *cub)
 	int	x;
 	int	y;
 
-	// taille pour mac at home
-	x = 960; // completement a choix, c est la taille de la window
-	y = 540; 
-
-	// taille pour linux
-	// x = 1920; // completement a choix, c est la taille de la window
-	// y = 1080; 
-
+	x = cub->graphic.s_width;
+	y = cub->graphic.s_height;
 	cub->graphic.mlx_ptr = mlx_init();
 	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr, x, y, G_NAME);
+	mlx_hook(cub->graphic.win_ptr, 17, 0, clean_exit, cub);
 	//mlx_get_Screen ou qqc cmme ca -> mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey)
-	// creer un ecran
 }
 
 // void	create_image_test(t_cub *cub)
