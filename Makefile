@@ -43,11 +43,13 @@ vpath %.c \
 	$(SRCDIR)/parsing \
 	$(SRCDIR)/screen \
 	$(SRCDIR)/malloc_exit \
+	$(SRCDIR)/custom_mlx \
 
 # Sources and object files
 SRC = main.c \
 clean_exit.c \
-key_handle.c window_creation.c \
+get_data_addr.c pixel_put.c \
+key_handle.c window_creation.c minimap.c\
 init.c \
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))

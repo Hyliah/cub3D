@@ -22,26 +22,26 @@
 #ifdef __linux__
 
 // Linux → vrai buffer MLX
-char    *get_data_addr(t_graphic *g, int *bpp, int *size_line, int *endian)
+char	*get_data_addr(t_graphic *g, int *bpp, int *size_line, int *endian)
 {
-    if (!g || !bpp || !size_line || !endian)
-        return (NULL);
-    *bpp = g->bpp;
-    *size_line = g->size_line;
-    *endian = g->endian;
-    return (g->addr);
+	if (!g || !bpp || !size_line || !endian)
+		return (NULL);
+	*bpp = g->bpp;
+	*size_line = g->size_line;
+	*endian = g->endian;
+	return (g->addr);
 }
 
 #else
 
 // macOS → fallback : on dessine directement dans la fenêtre
-char    *data_addr(t_graphic *g, int *bpp, int *size_line, int *endian)
+char	*data_addr(t_graphic *g, int *bpp, int *size_line, int *endian)
 {
-    (void)g;
-    *bpp = 32;
-    *size_line = g->s_width * 4;
-    *endian = 0;
-    return (NULL); // pas de vrai buffer accessible
+	(void)g;
+	*bpp = 32;
+	*size_line = g->s_width * 4;
+	*endian = 0;
+	return (NULL); // pas de vrai buffer accessible
 }
 
 #endif

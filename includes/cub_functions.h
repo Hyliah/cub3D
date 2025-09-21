@@ -22,6 +22,7 @@
 int		handle_key(int keycode, t_cub *cub);
 
 void	create_window(t_cub *cub);
+void 	draw_minimap(t_cub *cub);
 
 /* MALLOC & EXIT */
 int		clean_exit(t_cub *cub);
@@ -32,5 +33,8 @@ void	free_mid_tab(t_cub *cub, char ***tab, int i);
 
 /* UTILS */
 void	init_struct(t_cub *cub);
+
+void	pixel_put(t_graphic *graph, int x, int y, int color);
+char    *get_data_addr(t_graphic *g, int *bpp, int *size_line, int *endian);
 
 #endif
