@@ -10,20 +10,44 @@
 /*                                                                           */
 /*****************************************************************************/
 
-#ifndef CUB_H
-# define CUB_H
+#include "cub.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+void	free_mid_tab(t_cub *cub, char ***tab, int i)
+{
+	if (!tab && !*tab)
+		return ;
+	while (i > 0)
+	{
+		i--;
+		free_ptr((void **)&((*tab)[i]));
+	}
+	free(*tab);
+	*tab = NULL;
+	unfructuous_malloc(cub);
+}
 
-# include "mlx.h"
-//# include "mlx_int.h"
-//# include "libft.h"
-# include "cub_struct.h"
-# include "cub_keyboard.h"
-# include "cub_functions.h"
-# include "cub_buttoncode.h"
+void	free_tab(char ***tab)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (!tab || !*tab)
+		return ;
+	while ((*tab)[i])
+	{
+		free_ptr((void **)&((*tab)[i]));
+		i++;
+	}
+	free(*tab);
+	*tab = NULL;
+}
+
+void	*free_ptr(void **ptr)
+{
+	if (*ptr && ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+	return (NULL);
+}

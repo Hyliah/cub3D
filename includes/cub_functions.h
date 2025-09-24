@@ -10,6 +10,7 @@
 /*                                                                           */
 /*****************************************************************************/
 
+
 #include "cub.h"
 
 #ifndef CUB_FUNCTIONS_H
@@ -17,11 +18,35 @@
 
 
 /* PARSING */
+void	parsing(t_cub *cub, int ac, char **av);
+void 	check_arg(t_cub *cub, int ac, char **av);
+void	check_cub(t_cub *cub, char *pathname);
+void	check_file_access(t_cub *cub, char *pathname);
+//void	parse_file(t_cub *cub);
+//void check_texture(t_cub *cub);
+//void check_color(t_cub *cub);
+//void check_player(t_cub *cub);
+//void	check_wall(t_cub *cub);
+//void	check_invalid_char(t_cub *cub);
+void	ft_error(t_error error);
 
 /* SCREEN */
+int		handle_key(int keycode, t_cub *cub);
+
 void	create_window(t_cub *cub);
+void 	draw_minimap(t_cub *cub);
 
 /* MALLOC & EXIT */
-int	clean_exit(t_cub *cub);
+int		clean_exit(t_cub *cub);
+
+void	free_tab(char ***tab);
+void	*free_ptr(void **ptr);
+void	free_mid_tab(t_cub *cub, char ***tab, int i);
+
+/* UTILS */
+void	init_struct(t_cub *cub);
+
+void	pixel_put(t_graphic *graph, int x, int y, int color);
+char    *get_data_addr(t_graphic *g, int *bpp, int *size_line, int *endian);
 
 #endif

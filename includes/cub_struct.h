@@ -27,13 +27,35 @@ typedef enum s_dir
 	WEST // = 3
 }   t_dir;
 
+
+typedef struct s_rgb
+{
+    int r;
+    int g;
+    int b;
+}   t_rgb;
+
+// contain information about the position of the player and FOV
 typedef struct s_player
 {
-	int	    pos_x;
-	int	    pos_y;
-	t_dir   dir;
+	// gestion des fps
+	double		new_time;
+	double		old_time;
+	// position of the player on the map
+	double	    pos_x;
+	double	    pos_y;
+	// direction of the player -> vertical lane in front of the player
+	double		dir_x;
+	double		dir_y;
+	// camera plane -> horizontal lane of the player
+	double		pl_x;
+	double		pl_y;
+	//pas sure si utile
+	t_dir   	dir;
+	int			has_player // flag 
 }	t_player;
 
+// Field of vision is 2 * atan(0.66/1.0)=66°
 typedef struct s_map
 {
 	int		height;
@@ -43,21 +65,53 @@ typedef struct s_map
 
 typedef struct s_setting // struct pour recupérer les infos sur Parsing
 {
-	int     c_color; //ceiling color 
-	int     f_color; //floor color
+	int		fd;
+	t_rgb   c_color; //ceiling color // modif avec struct rgb
+	t_rgb   f_color; //floor color // modif avec struct rgb
 	t_dir	start_dir; //le truc nord/sud/est/west
+
+	char    *tex_no;// stockage des textures 
+    char    *tex_so;
+    char    *tex_we;
+    char    *tex_ea;
+
+	int     has_floor; // ajout des flags de verif 
+    int     has_ceiling;
+    int     has_tex_no;
+    int     has_tex_so;
+    int     has_tex_we;
+    int     has_tex_ea;
+
 }	t_setting;
 
 typedef struct s_graphic // repris de mon so_long
 {
 	void	*mlx_ptr; //pour creation de la window
 	void	*win_ptr; //pour la creation de la window
+
+	// pour la recreation du get data adress sur linux et mac
+    void    *img; //buffer image
+    char    *addr; //adresse mémoire du buffer
+    int     bpp; //bits per pixel
+    int     size_line; //longueur d'une ligne
+    int     endian; //endianness
+
+	#ifdef __APPLE__
+    unsigned int *buffer; //gestion de pixel put sur mac
+	#endif
+	// en pixel 
+	int		s_width;
+	int		s_height;
+	int		mm_max_width;
+	int		mm_max_height;
+
+	//images des murs et leurs liens
 	void	*img_w;
 	void	*img_e;
 	void	*img_s;
 	void	*img_n;
-	int		s_width;
-	int		s_height;
+
+
 }	t_graphic;
 
 typedef struct s_cub
