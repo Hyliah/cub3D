@@ -62,19 +62,31 @@ all: $(LIBFT) $(MLX) $(NAME)
 #   \\__) \\__/ (___/(___/(___/     \n\
 # \033[0;36mCub3D build completed successfully! ✅\033[0m"
 
-	@echo "\033[0;35m  LES CODEUSES DU DIMANCHE PRESENT YOU \033[0m"; sleep 1
+# 	@echo "\033[0;35m  LES CODEUSES DU DIMANCHE PRESENT YOU \033[0m"; sleep 1
+# 	@echo ""
+# 	@echo "            🥁 🥁 🥁 🥁 🥁"; sleep 1
+# 	@echo ""
+# 	@echo "\033[0;31m       __  _  _  ___  ___  ___      \033[0m"; #sleep 0.1
+# 	@echo "\033[0;33m      / _)( )( )(  ,)(__ )(   \\     \033[0m"; sleep 0.1
+# 	@echo "\033[0;32m     ( (_  )()(  ) ,\\ (_ \\ ) ) )    \033[0m"; sleep 0.1
+# 	@echo "\033[0;34m      \\__) \\__/ (___/(___/(___/     \033[0m"; sleep 0.1
+# 	@echo ""
+# 	@echo ""
+# 	@echo "\033[0;36m Cub3D build completed successfully! ✅\033[0m"
+# 	@echo ""
+
+	@echo "\033[0;35m  LES CODEUSES DU DIMANCHE PRESENT YOU \033[0m";
 	@echo ""
 	@echo "            🥁 🥁 🥁 🥁 🥁"; sleep 1
 	@echo ""
-	@echo "\033[0;31m       __  _  _  ___  ___  ___      \033[0m"; sleep 0.1
-	@echo "\033[0;33m      / _)( )( )(  ,)(__ )(   \\     \033[0m"; sleep 0.1
-	@echo "\033[0;32m     ( (_  )()(  ) ,\\ (_ \\ ) ) )    \033[0m"; sleep 0.1
-	@echo "\033[0;34m      \\__) \\__/ (___/(___/(___/     \033[0m"; sleep 0.1
+	@echo "\033[0;31m       __  _  _  ___  ___  ___      \033[0m";
+	@echo "\033[0;33m      / _)( )( )(  ,)(__ )(   \\     \033[0m";
+	@echo "\033[0;32m     ( (_  )()(  ) ,\\ (_ \\ ) ) )    \033[0m"; 
+	@echo "\033[0;34m      \\__) \\__/ (___/(___/(___/     \033[0m";
 	@echo ""
 	@echo ""
 	@echo "\033[0;36m Cub3D build completed successfully! ✅\033[0m"
 	@echo ""
-
 
 $(LIBFT):
 	@$(MAKE) -s -C $(LIBFTDIR) > /dev/null 2>&1

@@ -6,7 +6,7 @@
 /*   By: hlichten <hlichten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:21:57 by hlichten          #+#    #+#             */
-/*   Updated: 2025/03/26 14:51:53 by hlichten         ###   ########.fr       */
+/*   Updated: 2025/09/24 15:35:18 by hlichten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,55 @@
 
 char	*ft_free(char **line)
 {
-	free(*line);
-	*line = NULL;
+	if (*line)
+	{
+		free(*line);
+		*line = NULL;
+	}
 	return (NULL);
 }
 
-int	join_and_check(char **line, char *to_join)
+int	read_to_buffer(int fd, char *buffer)
 {
-	char	*temp;
+	int	rd;
 
-	temp = ft_strjoin_free(*line, to_join);
-	if (!temp)
-		return (1);
-	*line = temp;
-	return (0);
+	rd = read(fd, buffer, BUFFER_SIZE);
+	if (rd >= 0)
+		buffer[rd] = '\0';
+	return (rd);
 }
 
-int	update_and_check(char *buffer, char **line)
+int	update_line(char *buffer, char **line)
 {
-	char	*newline;
+	char	*n_buff;
 
-	newline = ft_strchr(buffer, '\n');
-	if (newline != NULL)
+	n_buff = ft_strchr(buffer, '\n');
+	if (n_buff)
 	{
-		*newline = '\0';
-		if (join_and_check(line, buffer) || join_and_check(line, "\n"))
+		*n_buff = '\0';
+		*line = ft_strjoin_free(*line, buffer);
+		if (!*line)
 			return (0);
-		ft_strlcpy(buffer, newline + 1, BUFFER_SIZE - (newline - buffer));
+		*line = ft_strjoin_free(*line, "\n");
+		if (!*line)
+			return (0);
+		ft_strlcpy(buffer, n_buff + 1, BUFFER_SIZE - (n_buff - buffer));
 		return (1);
 	}
-	if (join_and_check(line, buffer))
+	*line = ft_strjoin_free(*line, buffer);
+	if (!*line)
 		return (0);
-	buffer[0] = '\0';
+	*buffer = '\0';
 	return (0);
 }
 
-int	is_eof(int rd, char *buffer, char **line)
+int	handle_end_of_file(int rd, char *buffer, char **line)
 {
-	if (rd < 0)
-		return (1);
-	if (rd == 0 && !*line && buffer[0] == '\0')
-		return (1);
-	return (0);
+	if (rd == -1)
+		return (0);
+	if (rd == 0 && (!*line || **line == '\0') && buffer[0] == '\0')
+		return (0);
+	return (1);
 }
 
 char	*get_next_line(int fd)
@@ -65,20 +72,18 @@ char	*get_next_line(int fd)
 	int			rd;
 
 	rd = 1;
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = NULL;
 	while (1)
 	{
 		if (buffer[0] == '\0')
 		{
-			rd = read(fd, buffer, BUFFER_SIZE);
-			if (rd >= 0)
-				buffer[rd] = '\0';
-			if (is_eof(rd, buffer, &line))
+			rd = read_to_buffer(fd, buffer);
+			if (!handle_end_of_file(rd, buffer, &line))
 				return (ft_free(&line));
 		}
-		if (update_and_check(buffer, &line))
+		if (update_line(buffer, &line))
 			return (line);
 		if (rd == 0)
 			break ;

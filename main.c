@@ -12,7 +12,8 @@
 
 #include "cub.h"
 
-void    hardcode_map(t_cub *cub, char *arg);
+void        hardcode_map(t_cub *cub, char *arg);
+static void	print_tab(char **tab);
 
 int main (int ac, char **av)
 {
@@ -22,9 +23,10 @@ int main (int ac, char **av)
 
     init_struct(&cub);
     hardcode_map(&cub, av[2]);
-    create_window(&cub);
-	mlx_loop(cub.graphic.mlx_ptr);
-    mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
+    print_tab(cub.map.map_tab);
+    // create_window(&cub);
+	// mlx_loop(cub.graphic.mlx_ptr);
+    // mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
     return (0);
 }
 
@@ -49,11 +51,12 @@ void    hardcode_map(t_cub *cub, char *arg)
 
 	i = 0;
 	cub->map.map_tab = malloc(sizeof(char *) * (cub->map.height + 1));
-	cub->setting.fd = open(arg, 00);
+	int fd = open(arg, O_RDONLY);
 
 	while (i < cub->map.height)
 	{
-		line = get_next_line(cub->setting.fd);
+        printf("%d\n", i);
+		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
 		cub->map.map_tab[i] = ft_strndup(line, cub->map.width);
@@ -72,3 +75,16 @@ void    hardcode_map(t_cub *cub, char *arg)
 // • gettimeofday()
 // • All functions of the MinilibX library.
 // • Libft
+
+
+static void	print_tab(char **tab)
+{
+	int	i;
+
+	i = 1;
+	while (tab && tab[i])
+	{
+		printf("%s\n", tab[i]);
+		i++;
+	}
+}
