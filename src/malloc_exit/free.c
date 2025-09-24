@@ -23,7 +23,8 @@ void	free_mid_tab(t_cub *cub, char ***tab, int i)
 	}
 	free(*tab);
 	*tab = NULL;
-	unfructuous_malloc(cub);
+	//unfructuous_malloc(cub);
+	(void)cub;
 }
 
 void	free_tab(char ***tab)

@@ -24,10 +24,11 @@ void	create_window(t_cub *cub)
 	cub->graphic.mlx_ptr = mlx_init();
 	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr, x, y, G_NAME);
 	init_buffer(cub, x, y);
-	cub->graphic.img = mlx_new_image(cub->graphic.mlx_ptr, x, y);
-	cub->graphic.addr = mlx_get_data_addr(cub->graphic.img, &cub->graphic.bpp,
-										  &cub->graphic.size_line,
-										  &cub->graphic.endian);
+	// cub->graphic.img = mlx_new_image(cub->graphic.mlx_ptr, x, y);
+	// cub->graphic.addr = mlx_get_data_addr(cub->graphic.img, &cub->graphic.bpp,
+	// 									  &cub->graphic.size_line,
+	// 									  &cub->graphic.endian);
+	create_minimap(&cub->graphic, &cub->map);
 	mlx_hook(cub->graphic.win_ptr, 17, 0, clean_exit, cub);
 }
 

@@ -13,22 +13,41 @@
 #include "cub.h"
 
 void        hardcode_map(t_cub *cub, char *arg);
-static void	print_tab(char **tab);
+//static void	print_tab(char **tab);
 
 int main (int ac, char **av)
 {
-    t_cub   cub;
-    (void)ac;
-    (void)av;
+	t_cub   cub;
+	(void)ac;
+	(void)av;
 
-    init_struct(&cub);
-    hardcode_map(&cub, av[2]);
-    print_tab(cub.map.map_tab);
-    // create_window(&cub);
-	// mlx_loop(cub.graphic.mlx_ptr);
-    // mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
-    return (0);
+	// premiers checks ici
+
+	// init de la struct
+	init_struct(&cub);
+	// hardcode de la map -> enlever quand parsing est fait
+	hardcode_map(&cub, av[1]);
+	// mettre le parsing ici
+
+	// mise en place de la window
+	create_window(&cub);
+	// gestion des boutons
+	mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
+	// loop la window pour pas quelle se barre
+	mlx_loop(cub.graphic.mlx_ptr);
+	return (0);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* laide fonction a suppimer des que le parsing sera fait */
@@ -51,21 +70,27 @@ void    hardcode_map(t_cub *cub, char *arg)
 
 	i = 0;
 	cub->map.map_tab = malloc(sizeof(char *) * (cub->map.height + 1));
-	int fd = open(arg, O_RDONLY);
-
+	if (!cub->map.map_tab)
+		return (perror("Error: malloc failed"));
+	cub->setting.fd = open(arg, O_RDONLY);
+	if (cub->setting.fd == -1)
+		return (ft_putstr_fd("Error : incorrect fd\n", 2));
 	while (i < cub->map.height)
 	{
-        printf("%d\n", i);
-		line = get_next_line(fd);
+		line = get_next_line(cub->setting.fd);
 		if (line == NULL)
 			break ;
 		cub->map.map_tab[i] = ft_strndup(line, cub->map.width);
+		if (cub->map.map_tab[i] == NULL)
+			free_mid_tab(cub, &cub->map.map_tab, i);
 		free (line);
 		i++;
 	}
 	cub->map.map_tab[i] = NULL;
 	close(cub->setting.fd);
+
 }
+
 // AUTHORIZED FUNCTIONS :
 
 // • open, close, read, write, printf, malloc, 
@@ -76,15 +101,14 @@ void    hardcode_map(t_cub *cub, char *arg)
 // • All functions of the MinilibX library.
 // • Libft
 
+// static void	print_tab(char **tab)
+// {
+// 	int	i;
 
-static void	print_tab(char **tab)
-{
-	int	i;
-
-	i = 1;
-	while (tab && tab[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
-}
+// 	i = 1;
+// 	while (tab && tab[i])
+// 	{
+// 		printf("%s\n", tab[i]);
+// 		i++;
+// 	}
+// }

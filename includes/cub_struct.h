@@ -18,6 +18,13 @@
 # define G_NAME	"Cub Crossing : New maze adventure"
 # define IMG_TEST "./src/images/test.xpm"
 
+# define MMW "./src/images/minimap/tile_w.xpm"
+# define MMP "./src/images/minimap/tile_p.xpm"
+# define MMF "./src/images/minimap/tile_f.xpm"
+
+# define BMW "./src/images/minimap/maxi_mm_w.xpm"
+# define BMP "./src/images/minimap/maxi_mm_p.xpm"
+# define BMF "./src/images/minimap/maxi_mm_f.xpm"
 
 typedef enum s_dir
 {
@@ -26,6 +33,12 @@ typedef enum s_dir
 	SOUTH, // = 2
 	WEST // = 3
 }   t_dir;
+
+typedef enum s_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
 
 // contain information about the position of the player and FOV
 typedef struct s_player
@@ -80,8 +93,8 @@ typedef struct s_graphic // repris de mon so_long
 	// en pixel 
 	int		s_width;
 	int		s_height;
-	int		mm_max_width;
-	int		mm_max_height;
+	
+	t_bool	maxi_mm;
 
 	//images des murs et leurs liens
 	void	*img_w;
@@ -89,6 +102,9 @@ typedef struct s_graphic // repris de mon so_long
 	void	*img_s;
 	void	*img_n;
 
+	void	*mm_p;
+	void	*mm_f;
+	void	*mm_w;
 
 }	t_graphic;
 

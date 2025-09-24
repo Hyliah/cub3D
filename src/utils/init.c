@@ -72,8 +72,7 @@ static void	init_struct_graphic(t_cub *cub)
 {
 	cub->graphic.s_height = 1080;
 	cub->graphic.s_width = 1920;
-	cub->graphic.mm_max_height = 270;
-	cub->graphic.mm_max_width = 477;
+	cub->graphic.maxi_mm = FALSE;
 	cub->graphic.img_e = 0;
 	cub->graphic.img_n = 0;
 	cub->graphic.img_s = 0;

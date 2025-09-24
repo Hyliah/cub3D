@@ -47,7 +47,7 @@ vpath %.c \
 
 # Sources and object files
 SRC = main.c \
-clean_exit.c \
+clean_exit.c free.c \
 get_data_addr.c pixel_put.c \
 key_handle.c window_creation.c minimap.c\
 init.c \
