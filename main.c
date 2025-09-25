@@ -20,21 +20,23 @@ int main (int ac, char **av)
 	t_cub   cub;
 	(void)ac;
 	(void)av;
+	if (ac == 2)
+	{
+		// premiers checks ici
 
-	// premiers checks ici
+		// init de la struct
+		init_struct(&cub);
+		// hardcode de la map -> enlever quand parsing est fait
+		hardcode_map(&cub, av[1]);
+		// mettre le parsing ici
 
-	// init de la struct
-	init_struct(&cub);
-	// hardcode de la map -> enlever quand parsing est fait
-	hardcode_map(&cub, av[1]);
-	// mettre le parsing ici
-
-	// mise en place de la window
-	create_window(&cub);
-	// gestion des boutons
-	mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
-	// loop la window pour pas quelle se barre
-	mlx_loop(cub.graphic.mlx_ptr);
+		// mise en place de la window
+		create_window(&cub);
+		// gestion des boutons
+		mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
+		// loop la window pour pas quelle se barre
+		mlx_loop(cub.graphic.mlx_ptr);
+	}
 	return (0);
 }
 
@@ -53,8 +55,8 @@ int main (int ac, char **av)
 /* laide fonction a suppimer des que le parsing sera fait */
 void    hardcode_map(t_cub *cub, char *arg)
 {
-    cub->player.pos_x = 26;
-    cub->player.pos_y = 11;
+    cub->player.pos_x = 15;
+    cub->player.pos_y = 4;
     cub->player.dir_x = -1;
     cub->player.pl_y = 0.66;
 

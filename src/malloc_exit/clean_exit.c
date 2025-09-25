@@ -16,12 +16,20 @@
 
 int	clean_exit(t_cub *cub)
 {
-	// destruction des images des murs
-	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_w);
-	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_e);
-	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_s);
-	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_n);
+
+	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_f);
+	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_p);
+	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_w);
+
+	// destruction des images des murs -> decommenter quand y aura
+
+	// mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_w);
+	// mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_e);
+	// mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_s);
+	// mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_n);
+	
 	//rajouter pour si portes, armes etc....
+
 	//mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_door);
 	//mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.img_weapon);
 
