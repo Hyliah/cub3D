@@ -24,10 +24,12 @@ void	create_window(t_cub *cub)
 	cub->graphic.mlx_ptr = mlx_init();
 	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr, x, y, G_NAME);
 	init_buffer(cub, x, y);
-	// cub->graphic.img = mlx_new_image(cub->graphic.mlx_ptr, x, y);
-	// cub->graphic.addr = mlx_get_data_addr(cub->graphic.img, &cub->graphic.bpp,
+	// cub->graphic.img_ptr = mlx_new_image(cub->graphic.mlx_ptr, x, y);
+	// // recupere le pointer du pixel en cours
+	// cub->graphic.addr = mlx_get_data_addr(cub->graphic.img_ptr, &cub->graphic.bpp,
 	// 									  &cub->graphic.size_line,
 	// 									  &cub->graphic.endian);
+	//draw_minimap(cub);
 	create_minimap(&cub->graphic, &cub->map);
 	mlx_hook(cub->graphic.win_ptr, 17, 0, clean_exit, cub);
 }
@@ -60,3 +62,4 @@ static void init_buffer(t_cub *cub, int x, int y)
 // {
 // 	cub->graphic.img_co = mlx_xpm_file_to_image(graphic->mlx_ptr, CO, &x, &y);
 // }
+

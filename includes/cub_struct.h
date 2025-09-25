@@ -81,10 +81,11 @@ typedef struct s_graphic // repris de mon so_long
 	void	*win_ptr; //pour la creation de la window
 
 	// pour la recreation du get data adress sur linux et mac
-    void    *img; //buffer image
-    char    *addr; //adresse mémoire du buffer
-    int     bpp; //bits per pixel
-    int     size_line; //longueur d'une ligne
+    void    *img_ptr; //buffer image
+    
+	char    *addr; //adresse mémoire du buffer d image (recup avec get data addr)
+    int     bpp; //bits per pixel -> 1 pixel = 1 int -> 32 bits
+    int     size_line; //longueur d'une ligne actuelle de la window
     int     endian; //endianness
 
 	#ifdef __APPLE__

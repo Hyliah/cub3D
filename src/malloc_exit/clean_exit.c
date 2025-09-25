@@ -16,10 +16,11 @@
 
 int	clean_exit(t_cub *cub)
 {
+	//destruction de la minimap solong type
 
-	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_f);
-	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_p);
-	mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_w);
+	// mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_f);
+	// mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_p);
+	// mlx_destroy_image(cub->graphic.mlx_ptr, cub->graphic.mm_w);
 
 	// destruction des images des murs -> decommenter quand y aura
 

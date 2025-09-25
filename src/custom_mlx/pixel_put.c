@@ -34,3 +34,4 @@ void	pixel_put(t_graphic *g, int x, int y, int color)
 }
 
 #endif
+

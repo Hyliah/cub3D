@@ -63,7 +63,7 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->graphic.addr = NULL;
 	cub->graphic.bpp = 32;
 	cub->graphic.endian = 0;
-	cub->graphic.img = NULL;
+	cub->graphic.img_ptr = NULL;
 	cub->graphic.size_line = 1920 * 4; //a voir 
 }
 #elif defined(__linux__)
@@ -81,7 +81,7 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->graphic.addr = NULL;
 	cub->graphic.bpp = 32;
 	cub->graphic.endian = 0;
-	cub->graphic.img = NULL;
+	cub->graphic.img_ptr = NULL;
 	cub->graphic.size_line = 1920 * 4; //a voir 
 }
 #endif
