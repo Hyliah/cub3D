@@ -20,7 +20,7 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_arg(cub, ac, av);
 	check_cub(cub, av[1]);
 	check_file_access(cub, av[1]);
-	//parse_file (pour lire ligne) a faire !!
+	//parse_file(cub, av[1]): (pour lire ligne) a faire
 	//check_textures(cub);
 	//check_colors(cub);
 	//check_player(cub);
@@ -29,7 +29,7 @@ void	parsing(t_cub *cub, int ac, char **av)
 }
 
 // check arg 
-void check_arg(t_cub *cub, int ac, char **av)
+void check_arg(t_cub *cub, int ac, char **av) // ok test
 {
 	if (ac != 2)
 	{	
@@ -45,7 +45,7 @@ void check_arg(t_cub *cub, int ac, char **av)
 
 // check extension .cub
 // modif de la fonction check_ber de mon so_long
-void	check_cub(t_cub *cub, char *pathname)
+void	check_cub(t_cub *cub, char *pathname) // ok test 
 {
 	int		len;
 	char	*extension;
@@ -79,7 +79,7 @@ void	check_cub(t_cub *cub, char *pathname)
 
 
 //verif que le fichier est lisible ( open + gestion erreur )
-void	check_file_access(t_cub *cub, char *pathname)
+void	check_file_access(t_cub *cub, char *pathname) // ok test
 {
 	int fd;
 
@@ -92,9 +92,41 @@ void	check_file_access(t_cub *cub, char *pathname)
 	close(fd);
 }
 
-void	parse_file(t_cub *cub)
+void	parse_file(t_cub *cub, char *pathname)
 {
+	int		fd;
+	char	*line;
 
+	fd = open(pathname, O_RDONLY);
+	while ( (line = get_next_line(fd)) != NULL)
+	{
+		// degager les \n ?? faire fonction 
+
+		// ignorer les lignes vides 
+
+		// detecter le debut de la map et mettre un flag debutdemap ( map_start)
+		// check si ya 0 1 n e ... et si oui flag ok
+
+		// sinon on parse les param 
+		//check_textures(cub);
+		//check_colors(cub);
+		// attention si qqch d'invalid free et exit 
+
+		// si la map ok 
+		//  (faire tout un tas de trucs ici pour stocker toutes ces merdes)
+
+		free(line);
+	}
+	close(fd);
+	// remplir la struct avec les element du parsing 
+	//cub->map. ...
+	//cub->map. ...
+	//cub->map. ... check la struct again 
+
+
+	// verif aussi le reste a la fin ? 
+	// check_player(cub);
+	// check_map(cub); // avec dedans check_wall et check_invalid_char
 }
 
 // check presence de toutes les textures NO, SO, WE, EA

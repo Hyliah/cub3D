@@ -52,7 +52,7 @@ typedef struct s_player
 	double		pl_y;
 	//pas sure si utile
 	t_dir   	dir;
-	int			has_player // flag 
+	int			has_player; // flag 
 }	t_player;
 
 // Field of vision is 2 * atan(0.66/1.0)=66°

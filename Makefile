@@ -9,7 +9,7 @@ SRCDIR = src
 OBJDIR = obj
 
 # Librairies
-LIBFTDIR = ./attached/libft
+LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 ifeq ($(OS), Darwin)
 	ifeq ($(CPU), arm64)
@@ -39,44 +39,80 @@ RM = rm -f
 
 vpath %.c \
 	$(SRCDIR) \
+	$(SRCDIR)/utils \
 	$(SRCDIR)/parsing \
 	$(SRCDIR)/screen \
 	$(SRCDIR)/malloc_exit \
+	$(SRCDIR)/custom_mlx \
 
 # Sources and object files
 SRC = main.c \
-clean_exit.c \
-window_creation.c \
+clean_exit.c free.c \
+parsing_utils.c parsing.c \
+key_handle.c window_creation.c\
+init.c \
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 all: $(LIBFT) $(MLX) $(NAME)
+# 	@echo "\033[0;32m\
+#    __  _  _  ___  ___  ___      \n\
+#   / _)( )( )(  ,)(__ )(   \\     \n\
+#  ( (_  )()(  ) ,\\ (_ \\ ) ) )    \n\
+#   \\__) \\__/ (___/(___/(___/     \n\
+# \033[0;36mCub3D build completed successfully! ✅\033[0m"
+
+# 	@echo "\033[0;35m  LES CODEUSES DU DIMANCHE PRESENT YOU \033[0m"; sleep 1
+# 	@echo ""
+# 	@echo "            🥁 🥁 🥁 🥁 🥁"; sleep 1
+# 	@echo ""
+# 	@echo "\033[0;31m       __  _  _  ___  ___  ___      \033[0m"; #sleep 0.1
+# 	@echo "\033[0;33m      / _)( )( )(  ,)(__ )(   \\     \033[0m"; sleep 0.1
+# 	@echo "\033[0;32m     ( (_  )()(  ) ,\\ (_ \\ ) ) )    \033[0m"; sleep 0.1
+# 	@echo "\033[0;34m      \\__) \\__/ (___/(___/(___/     \033[0m"; sleep 0.1
+# 	@echo ""
+# 	@echo ""
+# 	@echo "\033[0;36m Cub3D build completed successfully! ✅\033[0m"
+# 	@echo ""
+
+	@echo "\033[0;35m  LES CODEUSES DU DIMANCHE PRESENT YOU \033[0m";
+	@echo ""
+	@echo "            🥁 🥁 🥁 🥁 🥁"; sleep 1
+	@echo ""
+	@echo "\033[0;31m       __  _  _  ___  ___  ___      \033[0m";
+	@echo "\033[0;33m      / _)( )( )(  ,)(__ )(   \\     \033[0m";
+	@echo "\033[0;32m     ( (_  )()(  ) ,\\ (_ \\ ) ) )    \033[0m"; 
+	@echo "\033[0;34m      \\__) \\__/ (___/(___/(___/     \033[0m";
+	@echo ""
+	@echo ""
+	@echo "\033[0;36m Cub3D build completed successfully! ✅\033[0m"
+	@echo ""
 
 $(LIBFT):
-	$(MAKE) all -C $(LIBFTDIR)
+	@$(MAKE) -s -C $(LIBFTDIR) > /dev/null 2>&1
 
 $(MLX):
-	$(MAKE) all -C $(MLXDIR)
+	@$(MAKE) -s -C $(MLXDIR) > /dev/null 2>&1
 	
 # Compile each .c file to .o		
 $(OBJDIR)/%.o: %.c
 		@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	
 $(NAME): $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FRAMEWORK) $(MATH_LIB) -o $(NAME)
+		@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FRAMEWORK) $(MATH_LIB) -o $(NAME)
 
 # Rule to clean up object files	
 clean:
-		$(RM) $(OBJS)
-		$(MAKE) clean -C $(LIBFTDIR)
-		$(MAKE) clean -C $(MLXDIR)
-		@rm -rf $(OBJDIR)
+	@$(RM) $(OBJS)
+	@$(MAKE) -s -C $(LIBFTDIR) clean > /dev/null 2>&1
+	@$(MAKE) -s -C $(MLXDIR) clean > /dev/null 2>&1
+	@rm -rf $(OBJDIR)
 
 #Rule to clean  up object files and the library
 fclean: clean
-		$(RM) $(NAME)
-		$(MAKE) fclean -C $(LIBFTDIR)
+	@$(RM) $(NAME)
+	@$(MAKE) -s -C $(LIBFTDIR) fclean > /dev/null 2>&1
 
 # Rule to recompile everything
 re: fclean all

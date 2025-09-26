@@ -12,8 +12,8 @@
 
 #include "cub.h"
 
-void        hardcode_map(t_cub *cub, char *arg);
-static void	print_tab(char **tab);
+//void        hardcode_map(t_cub *cub, char *arg);
+//static void	print_tab(char **tab);
 
 int main (int ac, char **av)
 {
@@ -22,9 +22,9 @@ int main (int ac, char **av)
     (void)av;
 
     init_struct(&cub);
-	//parsing(&cub, ac, av) // MELO, qd ce sera fini 
-    hardcode_map(&cub, av[2]);
-    print_tab(cub.map.map_tab);
+	parsing(&cub, ac, av); // MELO, qd ce sera fini 
+    //hardcode_map(&cub, av[2]);
+    //print_tab(cub.map.map_tab);
     // create_window(&cub);
 	// mlx_loop(cub.graphic.mlx_ptr);
     // mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
@@ -78,14 +78,14 @@ void    hardcode_map(t_cub *cub, char *arg)
 // • Libft
 
 
-static void	print_tab(char **tab)
-{
-	int	i;
+// static void	print_tab(char **tab)
+// {
+// 	int	i;
 
-	i = 1;
-	while (tab && tab[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
-}
+// 	i = 1;
+// 	while (tab && tab[i])
+// 	{
+// 		printf("%s\n", tab[i]);
+// 		i++;
+// 	}
+// }

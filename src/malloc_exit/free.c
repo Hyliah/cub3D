@@ -12,6 +12,14 @@
 
 #include "cub.h"
 
+void	unfructuous_malloc(t_cub *cub)
+{
+	ft_putstr_fd("Unfructuous Malloc: Cannot allocate memory", STDERR_FILENO);
+	clean_exit(cub);
+	exit(EXIT_FAILURE);
+}
+
+
 void	free_mid_tab(t_cub *cub, char ***tab, int i)
 {
 	if (!tab && !*tab)
