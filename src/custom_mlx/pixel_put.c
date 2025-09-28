@@ -12,26 +12,24 @@
 
 #include "cub.h"
 
-#ifdef __linux__
+// index = (y * size_line) + ( x * (bpp / 8))
+// deplacement de bpp / 8
 
-// Linux → vrai buffer ML
-void	pixel_put(t_graphic *graph, int x, int y, int color)
+// 0xFFFFFF = rbg 255 255 255
+
+/*a tester*/
+void	set_pixel(t_img *img, int x, int y, t_hex_c color)
 {
-	char	*dst;
-
-	dst = graph->addr + (y * graph->size_line + x * (graph->bpp / 8));
-	*(unsigned int *)dst = color;
+	*(t_hex_c *)(img->addr_ptr + y * img->size_line + x * (img->bpp / 8)) = color;
 }
 
-#else
-
-// macOS → fallback : on dessine directement dans la fenêtre
-void	pixel_put(t_graphic *g, int x, int y, int color)
+/*a tester*/
+unsigned int	get_pixel(t_img *img, int x, int y)
 {
-	if (x < 0 || x >= g->s_width || y < 0 || y >= g->s_height)
-		return;
-	g->buffer[y * g->s_width + x] = color;
+	unsigned int	color;
+	unsigned int	index;
+
+	index = (y * img->size_line) + ( x * (img->bpp / 8));
+	color = img->addr_ptr[index];
+	return (color);
 }
-
-#endif
-

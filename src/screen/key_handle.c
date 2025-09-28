@@ -12,23 +12,48 @@
 
 #include "cub.h"
 
-// static void	will_move(t_cub *cub, int new_x, int new_y);
-// static void	move_player(t_cub *cub, int new_x, int new_y);
-
 int	handle_key(int keycode, t_cub *cub)
 {
-	// if (keycode == KEY_A)
-	// 	will_move(cub, cub->player.pos_x - 1, cub->player.pos_y);
-	// if (keycode == KEY_D)
-	// 	will_move(cub, cub->player.pos_x + 1, cub->player.pos_y);
-	// if (keycode == KEY_W)
-	// 	will_move(cub, cub->player.pos_x, cub->player.pos_y - 1);
-	// if (keycode == KEY_S)
-	// 	will_move(cub, cub->player.pos_x, cub->player.pos_y + 1);
+	//mettre des boucles while avec boolean pour avoir la possibilite de garderla touche enfoncee
 	if (keycode == KEY_ESCAPE)
 		clean_exit(cub);
 	return (0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* version so_long */
+
+
+// static void	will_move(t_cub *cub, int new_x, int new_y);
+// static void	move_player(t_cub *cub, int new_x, int new_y);
+
+// int	handle_key(int keycode, t_cub *cub)
+// {
+// 	if (keycode == KEY_A)
+// 		will_move(cub, cub->player.pos_x - 1, cub->player.pos_y);
+// 	if (keycode == KEY_D)
+// 		will_move(cub, cub->player.pos_x + 1, cub->player.pos_y);
+// 	if (keycode == KEY_W)
+// 		will_move(cub, cub->player.pos_x, cub->player.pos_y - 1);
+// 	if (keycode == KEY_S)
+// 		will_move(cub, cub->player.pos_x, cub->player.pos_y + 1);
+// 	if (keycode == KEY_ESCAPE)
+// 		clean_exit(cub);
+// 	return (0);
+// }
 
 // /* si on finit par garder cette version mais je doute, il faut ajouter W E S */
 // static void	will_move(t_cub *cub, int new_x, int new_y)

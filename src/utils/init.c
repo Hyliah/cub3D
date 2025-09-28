@@ -47,27 +47,6 @@ static void	init_struct_player(t_cub *cub)
 	cub->player.pos_y = 0;
 }
 
-#ifdef __APPLE__
-
-static void	init_struct_graphic(t_cub *cub)
-{
-	cub->graphic.s_height = 540;
-	cub->graphic.s_width = 960;
-	cub->graphic.mm_max_height = 135;
-	cub->graphic.mm_max_width = 234;
-	cub->graphic.img_e = 0;
-	cub->graphic.img_n = 0;
-	cub->graphic.img_s = 0;
-	cub->graphic.img_w = 0;
-	cub->graphic.mlx_ptr = NULL;
-	cub->graphic.addr = NULL;
-	cub->graphic.bpp = 32;
-	cub->graphic.endian = 0;
-	cub->graphic.img_ptr = NULL;
-	cub->graphic.size_line = 1920 * 4; //a voir 
-}
-#elif defined(__linux__)
-
 static void	init_struct_graphic(t_cub *cub)
 {
 	cub->graphic.s_height = 1080;
@@ -78,10 +57,15 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->graphic.img_s = 0;
 	cub->graphic.img_w = 0;
 	cub->graphic.mlx_ptr = NULL;
-	cub->graphic.addr = NULL;
-	cub->graphic.bpp = 32;
-	cub->graphic.endian = 0;
-	cub->graphic.img_ptr = NULL;
-	cub->graphic.size_line = 1920 * 4; //a voir 
+	cub->graphic.win_ptr = NULL;
+	cub->graphic.screen.addr_ptr = NULL;
+	cub->graphic.screen.bpp = 0;
+	cub->graphic.screen.endian = 0;
+	cub->graphic.screen.img_ptr = NULL;
+	cub->graphic.screen.size_line = 0;
+	cub->graphic.minimap.addr_ptr = NULL;
+	cub->graphic.minimap.bpp = 0;
+	cub->graphic.minimap.endian = 0;
+	cub->graphic.minimap.img_ptr = NULL;
+	cub->graphic.minimap.size_line = 0;	
 }
-#endif

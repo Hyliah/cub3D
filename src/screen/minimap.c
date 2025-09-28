@@ -14,8 +14,16 @@
 
 /* MINI MAP VERSION PIXEL_PUT*/
 
-static void	draw_square(t_graphic *g, int start_x, int start_y, int size, int color);
+void	draw_minimap(t_cub *cub)
+{
 
+	int x = 960;
+	int y = 540;
+
+	set_pixel(&cub->graphic.screen, x, y, 0xFF0000);
+
+	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
+}
 
 
 

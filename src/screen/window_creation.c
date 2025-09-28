@@ -12,8 +12,10 @@
 
 #include "cub.h"
 
-static void init_buffer(t_cub *cub, int x, int y);
 
+static void	init_img(t_cub *cub, t_img *img, int x, int y);
+
+/* taille de la minimap a gerermais /8 c est deja pas mal*/
 void	create_window(t_cub *cub)
 {
 	int	x;
@@ -23,40 +25,45 @@ void	create_window(t_cub *cub)
 	y = cub->graphic.s_height;
 	cub->graphic.mlx_ptr = mlx_init();
 	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr, x, y, G_NAME);
-	init_buffer(cub, x, y);
-	// cub->graphic.img_ptr = mlx_new_image(cub->graphic.mlx_ptr, x, y);
-	// // recupere le pointer du pixel en cours
-	// cub->graphic.addr = mlx_get_data_addr(cub->graphic.img_ptr, &cub->graphic.bpp,
-	// 									  &cub->graphic.size_line,
-	// 									  &cub->graphic.endian);
-	//draw_minimap(cub);
-	create_minimap(&cub->graphic, &cub->map);
+	init_img(cub, &cub->graphic.screen, x, y);
+	init_img(cub, &cub->graphic.minimap, x/8, y/8);
+	draw_minimap(cub);
 	mlx_hook(cub->graphic.win_ptr, 17, 0, clean_exit, cub);
+}
+
+static void	init_img(t_cub *cub, t_img *img, int x, int y)
+{
+	img->img_ptr = mlx_new_image(cub->graphic.mlx_ptr, x, y);
+	img->addr_ptr = mlx_get_data_addr(cub->graphic.screen.img_ptr, 
+					&cub->graphic.screen.bpp, &cub->graphic.screen.size_line, 
+					&cub->graphic.screen.endian);
 }
 
 /* 
 	mlx differente sur mac et linux, creation d un buffer maison pour mac 
 */
 
-#ifdef __APPLE__
-static void init_buffer(t_cub *cub, int x, int y)
-{
-	cub->graphic.buffer = malloc(sizeof(unsigned int) * x * y);
-	if (!cub->graphic.buffer)
-	{
-		perror("malloc buffer");
-		exit(1);
-	}
-	ft_memset(cub->graphic.buffer, 0, sizeof(unsigned int) * x * y);
-}
-#else
-static void init_buffer(t_cub *cub, int x, int y)
-{
-	(void)cub;
-	(void)x;
-	(void)y;
-}
-#endif
+
+// #ifdef __APPLE__
+// static void init_buffer(t_cub *cub, int x, int y);
+// static void init_buffer(t_cub *cub, int x, int y)
+// {
+// 	cub->graphic.buffer = malloc(sizeof(unsigned int) * x * y);
+// 	if (!cub->graphic.buffer)
+// 	{
+// 		perror("malloc buffer");
+// 		exit(1);
+// 	}
+// 	ft_memset(cub->graphic.buffer, 0, sizeof(unsigned int) * x * y);
+// }
+// #else
+// static void init_buffer(t_cub *cub, int x, int y)
+// {
+// 	(void)cub;
+// 	(void)x;
+// 	(void)y;
+// }
+// #endif
 
 // void	create_image_test(t_cub *cub)
 // {

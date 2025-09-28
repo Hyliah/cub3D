@@ -26,6 +26,11 @@
 # define BMP "./src/images/minimap/maxi_mm_p.xpm"
 # define BMF "./src/images/minimap/maxi_mm_f.xpm"
 
+typedef unsigned char t_rgba;
+typedef unsigned int t_hex_c;
+
+// 0xFFFFFF = rbg 255 255 255
+
 typedef enum s_dir
 {
 	NORTH, // = 0
@@ -75,27 +80,28 @@ typedef struct s_setting // struct pour recupérer les infos sur Parsing
 	t_dir	start_dir; //le truc nord/sud/est/west
 }	t_setting;
 
+typedef struct s_img
+{
+	void	*img_ptr; //buffer image
+	char	*addr_ptr; //adresse mémoire du buffer d image (recup avec get data addr) le tableau 1D
+	int		bpp; //bits per pixel -> 1 pixel = 1 int -> 32 bits
+	int		size_line; //longueur d'une ligne actuelle de la window
+	int		endian; //endianness
+}	t_img;
+
 typedef struct s_graphic // repris de mon so_long
 {
 	void	*mlx_ptr; //pour creation de la window
 	void	*win_ptr; //pour la creation de la window
 
-	// pour la recreation du get data adress sur linux et mac
-    void    *img_ptr; //buffer image
-    
-	char    *addr; //adresse mémoire du buffer d image (recup avec get data addr)
-    int     bpp; //bits per pixel -> 1 pixel = 1 int -> 32 bits
-    int     size_line; //longueur d'une ligne actuelle de la window
-    int     endian; //endianness
-
-	#ifdef __APPLE__
-    unsigned int *buffer; //gestion de pixel put sur mac
-	#endif
 	// en pixel 
 	int		s_width;
 	int		s_height;
 	
 	t_bool	maxi_mm;
+	//struct info par screen
+	t_img	screen;
+	t_img	minimap;
 
 	//images des murs et leurs liens
 	void	*img_w;
