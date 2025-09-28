@@ -48,10 +48,6 @@ int main (int ac, char **av)
 
 
 
-
-
-
-
 /* laide fonction a suppimer des que le parsing sera fait */
 void    hardcode_map(t_cub *cub, char *arg)
 {
@@ -66,6 +62,10 @@ void    hardcode_map(t_cub *cub, char *arg)
 
     cub->map.height = 9;
     cub->map.width = 18;
+
+	/* mettre en place une double taille en fonction de la taille ? */
+	cub->mmap.mm_height = cub->map.height * 32;
+	cub->mmap.mm_width = cub->map.width * 32;
 
     int	i;
     char *line;

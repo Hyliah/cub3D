@@ -89,6 +89,15 @@ typedef struct s_img
 	int		endian; //endianness
 }	t_img;
 
+typedef struct s_mmap
+{
+	t_img	minimap;
+	
+	int		mm_height;
+	int		mm_width;
+
+}	t_mmap;
+
 typedef struct s_graphic // repris de mon so_long
 {
 	void	*mlx_ptr; //pour creation de la window
@@ -98,26 +107,21 @@ typedef struct s_graphic // repris de mon so_long
 	int		s_width;
 	int		s_height;
 	
-	t_bool	maxi_mm;
 	//struct info par screen
 	t_img	screen;
-	t_img	minimap;
-
+	
 	//images des murs et leurs liens
 	void	*img_w;
 	void	*img_e;
 	void	*img_s;
 	void	*img_n;
 
-	void	*mm_p;
-	void	*mm_f;
-	void	*mm_w;
-
 }	t_graphic;
 
 typedef struct s_cub
 {
 	t_map       map;
+	t_mmap		mmap;
 	t_player    player;
 	t_setting   setting;
 	t_graphic   graphic;

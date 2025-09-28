@@ -26,7 +26,7 @@ void	create_window(t_cub *cub)
 	cub->graphic.mlx_ptr = mlx_init();
 	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr, x, y, G_NAME);
 	init_img(cub, &cub->graphic.screen, x, y);
-	init_img(cub, &cub->graphic.minimap, x/8, y/8);
+	init_img(cub, &cub->mmap.minimap, cub->mmap.mm_width, cub->mmap.mm_height);
 	draw_minimap(cub);
 	mlx_hook(cub->graphic.win_ptr, 17, 0, clean_exit, cub);
 }
@@ -34,9 +34,8 @@ void	create_window(t_cub *cub)
 static void	init_img(t_cub *cub, t_img *img, int x, int y)
 {
 	img->img_ptr = mlx_new_image(cub->graphic.mlx_ptr, x, y);
-	img->addr_ptr = mlx_get_data_addr(cub->graphic.screen.img_ptr, 
-					&cub->graphic.screen.bpp, &cub->graphic.screen.size_line, 
-					&cub->graphic.screen.endian);
+	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line, 
+					&img->endian);
 }
 
 /* 

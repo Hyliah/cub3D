@@ -16,14 +16,25 @@
 
 void	draw_minimap(t_cub *cub)
 {
+	int x = 120;
+	int y = 60;
 
-	int x = 960;
-	int y = 540;
+	set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
 
-	set_pixel(&cub->graphic.screen, x, y, 0xFF0000);
-
-	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
+	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.minimap.img_ptr, 0, 0);
 }
+
+
+
+	// int x = 960;
+	// int y = 540;
+
+	// set_pixel(&cub->graphic.screen, x, y, 0xFF0000);
+
+	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
+
+
+
 
 
 

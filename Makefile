@@ -28,7 +28,7 @@ MATH_LIB = -lm
 
 # Compiler and flags
 CC = gcc
-CFLAGS = -g3 -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror -MP -MMD
 INCLUDE = -I includes -I $(MLXDIR)
 
 ifeq ($(DEBUG), 1)

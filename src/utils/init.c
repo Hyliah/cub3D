@@ -51,7 +51,6 @@ static void	init_struct_graphic(t_cub *cub)
 {
 	cub->graphic.s_height = 1080;
 	cub->graphic.s_width = 1920;
-	cub->graphic.maxi_mm = FALSE;
 	cub->graphic.img_e = 0;
 	cub->graphic.img_n = 0;
 	cub->graphic.img_s = 0;
@@ -63,9 +62,9 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->graphic.screen.endian = 0;
 	cub->graphic.screen.img_ptr = NULL;
 	cub->graphic.screen.size_line = 0;
-	cub->graphic.minimap.addr_ptr = NULL;
-	cub->graphic.minimap.bpp = 0;
-	cub->graphic.minimap.endian = 0;
-	cub->graphic.minimap.img_ptr = NULL;
-	cub->graphic.minimap.size_line = 0;	
+	cub->mmap.minimap.addr_ptr = NULL;
+	cub->mmap.minimap.bpp = 0;
+	cub->mmap.minimap.endian = 0;
+	cub->mmap.minimap.img_ptr = NULL;
+	cub->mmap.minimap.size_line = 0;
 }
