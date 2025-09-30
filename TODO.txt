@@ -59,3 +59,18 @@ textures
 image buffer
 fenetre et struct mlx
 attention aux leaks valgrind etc …
+
+
+
+Conseils de Benedicte et choses auxquelles penser aussi :  
+
+toute la configuration doit etre avant la map. Rien ne doit etre apres sinon invalide.  
+Donc prendre ca en compte dans les conditions de map invalides.
+
+Floodfill, faire appel recursif.
+Parser la map pour chaque "bloc d'element" ( couleur, FC, ...)
+Dasn mon so_long j'avais remplace par "*" qd on etait deja passe dessus, donc penser a refaire pareil ? 
+Check si ok ... 
+
+Attention si il y a des pieces non communiquantes, decide si on les parse aussi, ou si on considere juste qu'elles sont pas valides et on skip. 
+depend si on fait les bonus ? portes ? teleportation ? Penser a demander a hygie mais maybe not ... 
