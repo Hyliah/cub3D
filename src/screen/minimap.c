@@ -19,25 +19,9 @@ static void	mm_draw_pixel(t_cub *cub, int color, int x, int y);
 
 void	mm_creation(t_cub *cub)
 {
-	// int x = 470;
-	// int y = 230;
-
-	// set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
-
-	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.minimap.img_ptr, 0, 0);
-	// printf("square : %d\n", cub->mmap.mm_square);
-	// printf("height : %d\n", cub->mmap.mm_height);
-
-	// //set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
 	mm_drawing(cub);
-
-	// int x = 120;
-	// int y = 40;
-
-	// set_pixel(&cub->graphic.screen, x, y, 0xFF0000);
-
-	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
-	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.minimap.img_ptr, 0, 0);
+	mm_player(cub);
+	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.player.img_ptr, 0, 0);
 }
 
 static void mm_drawing(t_cub *cub)
@@ -95,6 +79,27 @@ static void	mm_draw_pixel(t_cub *cub, int color, int x, int y)
 
 	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
 
+
+
+
+	// int x = 470;
+	// int y = 230;
+
+	// set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
+
+	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.minimap.img_ptr, 0, 0);
+	// printf("square : %d\n", cub->mmap.mm_square);
+	// printf("height : %d\n", cub->mmap.mm_height);
+
+	// //set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
+	//mm_drawing(cub);
+
+	// int x = 120;
+	// int y = 40;
+
+	// set_pixel(&cub->graphic.screen, x, y, 0xFF0000);
+
+	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
 
 
 

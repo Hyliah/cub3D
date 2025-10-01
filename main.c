@@ -51,8 +51,8 @@ int main (int ac, char **av)
 /* laide fonction a suppimer des que le parsing sera fait */
 void    hardcode_map(t_cub *cub, char *arg)
 {
-    cub->player.pos_x = 15;
-    cub->player.pos_y = 4;
+    cub->player.pos_x = 15.5;
+    cub->player.pos_y = 4.5;
     cub->player.dir_x = -1;
     cub->player.pl_y = 0.66;
 

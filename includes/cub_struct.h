@@ -60,19 +60,19 @@ typedef struct s_player
 	double		new_time;
 	double		old_time;
 	// position of the player on the map
-	double	    pos_x;
-	double	    pos_y;
+	float	    pos_x;
+	float	    pos_y;
 	// direction of the player -> vertical lane in front of the player
-	double		dir_x;
-	double		dir_y;
+	float		dir_x;
+	float		dir_y;
 	// camera plane -> horizontal lane of the player
-	double		pl_x;
-	double		pl_y;
+	float		pl_x;
+	float		pl_y;
 	//pas sure si utile
 	t_dir   dir;
 }	t_player;
 
-// Field of vision is 2 * atan(0.66/1.0)=66°
+// Field of vision is 2 * atan(0.66/1.0)= 66°
 typedef struct s_map
 {
 	int		height;

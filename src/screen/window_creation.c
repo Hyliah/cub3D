@@ -16,7 +16,6 @@
 static void	init_img(t_cub *cub, t_img *img, int x, int y);
 static void	mm_size_calculator(t_cub *cub);
 
-/* taille de la minimap a gerermais /8 c est deja pas mal*/
 void	create_window(t_cub *cub)
 {
 	int	x;
