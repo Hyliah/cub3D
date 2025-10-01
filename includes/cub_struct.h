@@ -26,6 +26,14 @@
 # define BMP "./src/images/minimap/maxi_mm_p.xpm"
 # define BMF "./src/images/minimap/maxi_mm_f.xpm"
 
+# ifdef __APPLE__
+# define MM_MAX_W 120
+# define MM_MAX_H 67
+# elif defined(__linux__)
+# define MM_MAX_W 680
+# define MM_MAX_H 470
+# endif
+
 typedef unsigned char t_rgba;
 typedef unsigned int t_hex_c;
 
@@ -95,6 +103,7 @@ typedef struct s_mmap
 	
 	int		mm_height;
 	int		mm_width;
+	int		mm_square;
 
 }	t_mmap;
 

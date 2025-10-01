@@ -22,7 +22,7 @@
 int		handle_key(int keycode, t_cub *cub);
 
 void	create_window(t_cub *cub);
-void	draw_minimap(t_cub *cub);
+void	mm_creation(t_cub *cub);
 //void	create_minimap(t_graphic *graphic, t_map *map);
 //void	create_tile(t_graphic *graphic, char c, int j, int i);
 

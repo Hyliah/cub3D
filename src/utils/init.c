@@ -47,6 +47,7 @@ static void	init_struct_player(t_cub *cub)
 	cub->player.pos_y = 0;
 }
 
+
 static void	init_struct_graphic(t_cub *cub)
 {
 	cub->graphic.s_height = 1080;
@@ -68,3 +69,55 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->mmap.minimap.img_ptr = NULL;
 	cub->mmap.minimap.size_line = 0;
 }
+
+// #ifdef __linux__
+
+// static void	init_struct_graphic(t_cub *cub)
+// {
+
+// 	cub->graphic.s_height = 1080;
+// 	cub->graphic.s_width = 1920;
+// 	cub->graphic.img_e = 0;
+// 	cub->graphic.img_n = 0;
+// 	cub->graphic.img_s = 0;
+// 	cub->graphic.img_w = 0;
+// 	cub->graphic.mlx_ptr = NULL;
+// 	cub->graphic.win_ptr = NULL;
+// 	cub->graphic.screen.addr_ptr = NULL;
+// 	cub->graphic.screen.bpp = 0;
+// 	cub->graphic.screen.endian = 0;
+// 	cub->graphic.screen.img_ptr = NULL;
+// 	cub->graphic.screen.size_line = 0;
+// 	cub->mmap.minimap.addr_ptr = NULL;
+// 	cub->mmap.minimap.bpp = 0;
+// 	cub->mmap.minimap.endian = 0;
+// 	cub->mmap.minimap.img_ptr = NULL;
+// 	cub->mmap.minimap.size_line = 0;
+// }
+
+
+// #else
+
+// static void	init_struct_graphic(t_cub *cub)
+// {
+// 	cub->graphic.s_height = 540;
+// 	cub->graphic.s_width = 960;
+// 	cub->graphic.img_e = 0;
+// 	cub->graphic.img_n = 0;
+// 	cub->graphic.img_s = 0;
+// 	cub->graphic.img_w = 0;
+// 	cub->graphic.mlx_ptr = NULL;
+// 	cub->graphic.win_ptr = NULL;
+// 	cub->graphic.screen.addr_ptr = NULL;
+// 	cub->graphic.screen.bpp = 0;
+// 	cub->graphic.screen.endian = 0;
+// 	cub->graphic.screen.img_ptr = NULL;
+// 	cub->graphic.screen.size_line = 0;
+// 	cub->mmap.minimap.addr_ptr = NULL;
+// 	cub->mmap.minimap.bpp = 0;
+// 	cub->mmap.minimap.endian = 0;
+// 	cub->mmap.minimap.img_ptr = NULL;
+// 	cub->mmap.minimap.size_line = 0;
+// }
+
+// #endif

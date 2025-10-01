@@ -14,6 +14,7 @@
 
 
 static void	init_img(t_cub *cub, t_img *img, int x, int y);
+static void	mm_size_calculator(t_cub *cub);
 
 /* taille de la minimap a gerermais /8 c est deja pas mal*/
 void	create_window(t_cub *cub)
@@ -25,9 +26,10 @@ void	create_window(t_cub *cub)
 	y = cub->graphic.s_height;
 	cub->graphic.mlx_ptr = mlx_init();
 	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr, x, y, G_NAME);
+	mm_size_calculator(cub);
 	init_img(cub, &cub->graphic.screen, x, y);
 	init_img(cub, &cub->mmap.minimap, cub->mmap.mm_width, cub->mmap.mm_height);
-	draw_minimap(cub);
+	mm_creation(cub);
 	mlx_hook(cub->graphic.win_ptr, 17, 0, clean_exit, cub);
 }
 
@@ -36,6 +38,24 @@ static void	init_img(t_cub *cub, t_img *img, int x, int y)
 	img->img_ptr = mlx_new_image(cub->graphic.mlx_ptr, x, y);
 	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line, 
 					&img->endian);
+}
+
+static void	mm_size_calculator(t_cub *cub)
+{
+	int	mm_ratio;
+
+	mm_ratio = cub->map.width / cub->map.height;
+	if (mm_ratio > 1)
+	{
+		cub->mmap.mm_width = MM_MAX_W;
+		cub->mmap.mm_height = MM_MAX_W / mm_ratio;
+	}
+	else
+	{
+		cub->mmap.mm_height = MM_MAX_H;
+		cub->mmap.mm_width = MM_MAX_H * mm_ratio;
+	}
+	cub->mmap.mm_square = cub->mmap.mm_width / cub->map.width;
 }
 
 /* 

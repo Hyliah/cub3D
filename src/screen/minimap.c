@@ -14,16 +14,78 @@
 
 /* MINI MAP VERSION PIXEL_PUT*/
 
-void	draw_minimap(t_cub *cub)
+static void mm_drawing(t_cub *cub);
+static void	mm_draw_pixel(t_cub *cub, int color, int x, int y);
+
+void	mm_creation(t_cub *cub)
 {
-	int x = 120;
-	int y = 60;
+	// int x = 470;
+	// int y = 230;
 
-	set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
+	// set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
 
+	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.minimap.img_ptr, 0, 0);
+	// printf("square : %d\n", cub->mmap.mm_square);
+	// printf("height : %d\n", cub->mmap.mm_height);
+
+	// //set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
+	mm_drawing(cub);
+
+	// int x = 120;
+	// int y = 40;
+
+	// set_pixel(&cub->graphic.screen, x, y, 0xFF0000);
+
+	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.minimap.img_ptr, 0, 0);
 }
 
+static void mm_drawing(t_cub *cub)
+{
+	int	y;
+	int	x;
+
+	printf("height : %d\n", cub->map.height);
+	printf("width: %d\n", cub->map.width);
+	y = 0;
+	while (y < cub->map.width)
+	{
+		puts("0");
+		x = 0;
+		while (x < cub->map.height)
+		{
+			puts("1");
+			if (cub->map.map_tab[x][y] == '1')
+				mm_draw_pixel(cub, 0x275E1F, x, y);
+			else if (cub->map.map_tab[x][y] == '0')
+				mm_draw_pixel(cub, 0xE4C095, x, y);
+			else if (cub->map.map_tab[x][y] == 'N')
+				mm_draw_pixel(cub, 0x622416, x, y);
+			x++;
+		}
+		y++;
+	}
+}
+
+static void	mm_draw_pixel(t_cub *cub, int color, int x, int y)
+{
+	int	px;
+	int	py;
+	int size_sq;
+
+	py = 0;
+	size_sq = cub->mmap.mm_square;
+	while (py < size_sq)
+	{
+		px = 0;
+		while (px < size_sq)
+		{
+			set_pixel(&cub->mmap.minimap, (y * size_sq + py), (x * size_sq + px), color);
+			px++;
+		}
+		py++;
+	}
+}
 
 
 	// int x = 960;

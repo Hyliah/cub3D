@@ -61,7 +61,7 @@ void    hardcode_map(t_cub *cub, char *arg)
     // cub->setting.f_color = 220,100,0;
 
     cub->map.height = 9;
-    cub->map.width = 18;
+    cub->map.width = 17;
 
 	/* mettre en place une double taille en fonction de la taille ? */
 	cub->mmap.mm_height = cub->map.height * 32;
