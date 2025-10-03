@@ -106,7 +106,21 @@ typedef struct s_mmap
 	int		mm_wid;
 	int		mm_sqr;
 
+	t_bool	mm_show;
+
 }	t_mmap;
+
+typedef struct s_key
+{
+	t_bool	k_a;
+	t_bool	k_s;
+	t_bool	k_d;
+	t_bool	k_w;
+	t_bool	k_le;
+	t_bool	k_ri;
+	t_bool	k_up;
+	t_bool	k_do;
+}	t_key;
 
 typedef struct s_graphic // repris de mon so_long
 {
@@ -131,6 +145,7 @@ typedef struct s_graphic // repris de mon so_long
 typedef struct s_cub
 {
 	t_map       map;
+	t_key		key;
 	t_mmap		mmap;
 	t_player    player;
 	t_setting   setting;

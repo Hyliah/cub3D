@@ -21,14 +21,14 @@ static void	mm_draw_mm_sqr(t_cub *cub, int color, int x, int y);
 void	mm_creation(t_cub *cub)
 {
 	mm_drawing(cub);
-	mm_player(cub);
+	mm_player_draw(cub, 0x622416);
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.img_player.img_ptr, 0, 0);
 }
 
 static void mm_drawing(t_cub *cub)
 {
-	int	y;
 	int	x;
+	int	y;
 
 	y = 0;
 	while (y < cub->map.width)

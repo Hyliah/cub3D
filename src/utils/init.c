@@ -45,6 +45,14 @@ static void	init_struct_player(t_cub *cub)
 	cub->player.pl_y = 0;
 	cub->player.pos_x = 0;
 	cub->player.pos_y = 0;
+	cub->key.k_a = FALSE;
+	cub->key.k_s = FALSE;
+	cub->key.k_d = FALSE;
+	cub->key.k_w = FALSE;
+	cub->key.k_up = FALSE;
+	cub->key.k_do = FALSE;
+	cub->key.k_le = FALSE;
+	cub->key.k_ri = FALSE;
 }
 
 
@@ -68,6 +76,7 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->mmap.img_mmap.endian = 0;
 	cub->mmap.img_mmap.img_ptr = NULL;
 	cub->mmap.img_mmap.size_line = 0;
+	cub->mmap.mm_show = TRUE;
 }
 
 // #ifdef __linux__
