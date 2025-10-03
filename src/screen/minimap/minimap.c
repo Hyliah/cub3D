@@ -15,13 +15,14 @@
 /* MINI MAP VERSION PIXEL_PUT*/
 
 static void mm_drawing(t_cub *cub);
-static void	mm_draw_pixel(t_cub *cub, int color, int x, int y);
+static void	mm_draw_mm_sqr(t_cub *cub, int color, int x, int y);
 
+//voir l utilite de cette fonction peut etre la mixer dans create window
 void	mm_creation(t_cub *cub)
 {
 	mm_drawing(cub);
 	mm_player(cub);
-	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.player.img_ptr, 0, 0);
+	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.img_player.img_ptr, 0, 0);
 }
 
 static void mm_drawing(t_cub *cub)
@@ -29,42 +30,41 @@ static void mm_drawing(t_cub *cub)
 	int	y;
 	int	x;
 
-	printf("height : %d\n", cub->map.height);
-	printf("width: %d\n", cub->map.width);
 	y = 0;
 	while (y < cub->map.width)
 	{
-		puts("0");
 		x = 0;
 		while (x < cub->map.height)
 		{
-			puts("1");
 			if (cub->map.map_tab[x][y] == '1')
-				mm_draw_pixel(cub, 0x275E1F, x, y);
-			else if (cub->map.map_tab[x][y] == '0')
-				mm_draw_pixel(cub, 0xE4C095, x, y);
-			else if (cub->map.map_tab[x][y] == 'N')
-				mm_draw_pixel(cub, 0x622416, x, y);
+				mm_draw_mm_sqr(cub, 0x275E1F, x, y);
+			else if (cub->map.map_tab[x][y] == '0' 
+					|| cub->map.map_tab[x][y] == 'N' 
+					|| cub->map.map_tab[x][y] == 'S' 
+					|| cub->map.map_tab[x][y] == 'E' 
+					|| cub->map.map_tab[x][y] == 'W')
+				mm_draw_mm_sqr(cub, 0xE4C095, x, y);
 			x++;
 		}
 		y++;
 	}
 }
 
-static void	mm_draw_pixel(t_cub *cub, int color, int x, int y)
+static void	mm_draw_mm_sqr(t_cub *cub, int color, int x, int y)
 {
 	int	px;
 	int	py;
-	int size_sq;
+	int sqr;
 
 	py = 0;
-	size_sq = cub->mmap.mm_square;
-	while (py < size_sq)
+	sqr = cub->mmap.mm_sqr;
+	while (py < sqr)
 	{
 		px = 0;
-		while (px < size_sq)
+		while (px < sqr)
 		{
-			set_pixel(&cub->mmap.minimap, (y * size_sq + py), (x * size_sq + px), color);
+			set_pixel(&cub->mmap.img_mmap,
+						(y * sqr + py), (x * sqr + px), color);
 			px++;
 		}
 		py++;

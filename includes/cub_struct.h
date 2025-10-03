@@ -27,8 +27,8 @@
 # define BMF "./src/images/minimap/maxi_mm_f.xpm"
 
 # ifdef __APPLE__
-# define MM_MAX_W 120
-# define MM_MAX_H 67
+# define MM_MAX_W 340
+# define MM_MAX_H 230
 # elif defined(__linux__)
 # define MM_MAX_W 680
 # define MM_MAX_H 470
@@ -99,11 +99,12 @@ typedef struct s_img
 
 typedef struct s_mmap
 {
-	t_img	minimap;
+	t_img	img_mmap;
+	t_img	img_player;
 	
-	int		mm_height;
-	int		mm_width;
-	int		mm_square;
+	int		mm_hei;
+	int		mm_wid;
+	int		mm_sqr;
 
 }	t_mmap;
 
@@ -117,7 +118,7 @@ typedef struct s_graphic // repris de mon so_long
 	int		s_height;
 	
 	//struct info par screen
-	t_img	screen;
+	t_img	img_screen;
 	
 	//images des murs et leurs liens
 	void	*img_w;

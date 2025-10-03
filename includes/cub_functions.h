@@ -18,16 +18,19 @@
 
 /* PARSING */
 
+/* CUSTOM MLX*/
+t_hex_c	get_pixel(t_img *img, int x, int y);
+
+void	set_pixel(t_img *img, int x, int y, t_hex_c color);
+
 /* SCREEN */
 int		handle_key(int keycode, t_cub *cub);
 
 void	create_window(t_cub *cub);
-void	mm_creation(t_cub *cub);
-//void	create_minimap(t_graphic *graphic, t_map *map);
-//void	create_tile(t_graphic *graphic, char c, int j, int i);
 
-void	set_pixel(t_img *img, int x, int y, t_hex_c color);
-unsigned int	get_pixel(t_img *img, int x, int y);
+/* MINIMAP*/
+void	mm_player(t_cub *cub);
+void	mm_creation(t_cub *cub);
 
 /* MALLOC & EXIT */
 int		clean_exit(t_cub *cub);
@@ -38,8 +41,5 @@ void	free_mid_tab(t_cub *cub, char ***tab, int i);
 
 /* UTILS */
 void	init_struct(t_cub *cub);
-
-void	pixel_put(t_graphic *graph, int x, int y, int color);
-char    *get_data_addr(t_graphic *g, int *bpp, int *size_line, int *endian);
 
 #endif

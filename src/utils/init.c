@@ -58,16 +58,16 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->graphic.img_w = 0;
 	cub->graphic.mlx_ptr = NULL;
 	cub->graphic.win_ptr = NULL;
-	cub->graphic.screen.addr_ptr = NULL;
-	cub->graphic.screen.bpp = 0;
-	cub->graphic.screen.endian = 0;
-	cub->graphic.screen.img_ptr = NULL;
-	cub->graphic.screen.size_line = 0;
-	cub->mmap.minimap.addr_ptr = NULL;
-	cub->mmap.minimap.bpp = 0;
-	cub->mmap.minimap.endian = 0;
-	cub->mmap.minimap.img_ptr = NULL;
-	cub->mmap.minimap.size_line = 0;
+	cub->graphic.img_screen.addr_ptr = NULL;
+	cub->graphic.img_screen.bpp = 0;
+	cub->graphic.img_screen.endian = 0;
+	cub->graphic.img_screen.img_ptr = NULL;
+	cub->graphic.img_screen.size_line = 0;
+	cub->mmap.img_mmap.addr_ptr = NULL;
+	cub->mmap.img_mmap.bpp = 0;
+	cub->mmap.img_mmap.endian = 0;
+	cub->mmap.img_mmap.img_ptr = NULL;
+	cub->mmap.img_mmap.size_line = 0;
 }
 
 // #ifdef __linux__

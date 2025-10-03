@@ -19,7 +19,6 @@
 # include <fcntl.h>
 
 # include "mlx.h"
-//# include "mlx_int.h"
 # include "libft.h"
 # include "cub_struct.h"
 # include "cub_keyboard.h"
