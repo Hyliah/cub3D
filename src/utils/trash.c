@@ -100,3 +100,39 @@
 // 		y++;
 // 	}
 // }
+
+
+
+
+
+/* MAYBEEEEEE */
+// static void	draw_mmap_background_and_border(t_cub *cub, int x_offset, int y_offset)
+// {
+// 	int	x;
+// 	int	y;
+// 	int	width = cub->mmap.img_mmap.width;
+// 	int	height = cub->mmap.img_mmap.height;
+
+// 	// fond gris foncé (semi-transparent visuellement)
+// 	int	background_color = 0x222222;
+// 	int	border_color = 0xAAAAAA;
+
+// 	// fond
+// 	for (y = 0; y < height; y++)
+// 	{
+// 		for (x = 0; x < width; x++)
+// 			set_pixel(&cub->graphic.img_screen, x + x_offset, y + y_offset, background_color);
+// 	}
+
+// 	// bordure (1 px)
+// 	for (x = -1; x <= width; x++)
+// 	{
+// 		set_pixel(&cub->graphic.img_screen, x + x_offset, -1 + y_offset, border_color); // haut
+// 		set_pixel(&cub->graphic.img_screen, x + x_offset, height + y_offset, border_color); // bas
+// 	}
+// 	for (y = -1; y <= height; y++)
+// 	{
+// 		set_pixel(&cub->graphic.img_screen, -1 + x_offset, y + y_offset, border_color); // gauche
+// 		set_pixel(&cub->graphic.img_screen, width + x_offset, y + y_offset, border_color); // droite
+// 	}
+// }

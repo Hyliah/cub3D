@@ -45,7 +45,7 @@ typedef enum s_dir
 	EAST, // = 1
 	SOUTH, // = 2
 	WEST // = 3
-}   t_dir;
+}  	t_dir;
 
 typedef enum s_bool
 {
@@ -60,8 +60,8 @@ typedef struct s_player
 	double		new_time;
 	double		old_time;
 	// position of the player on the map
-	float	    pos_x;
-	float	    pos_y;
+	float		pos_x;
+	float		pos_y;
 	// direction of the player -> vertical lane in front of the player
 	float		dir_x;
 	float		dir_y;
@@ -77,14 +77,14 @@ typedef struct s_map
 {
 	int		height;
 	int		width;
-	char    **map_tab;
+	char	**map_tab;
 }	t_map;
 
 typedef struct s_setting // struct pour recupérer les infos sur Parsing
 {
 	int		fd;
-	int     c_color; //ceiling color 
-	int     f_color; //floor color
+	int		c_color; //ceiling color 
+	int		f_color; //floor color
 	t_dir	start_dir; //le truc nord/sud/est/west
 }	t_setting;
 
@@ -144,12 +144,12 @@ typedef struct s_graphic // repris de mon so_long
 
 typedef struct s_cub
 {
-	t_map       map;
+	t_map		map;
 	t_key		key;
 	t_mmap		mmap;
-	t_player    player;
-	t_setting   setting;
-	t_graphic   graphic;
+	t_player	player;
+	t_setting	setting;
+	t_graphic	graphic;
 }	t_cub;
 
 #endif
