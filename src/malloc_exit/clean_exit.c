@@ -12,6 +12,7 @@
 
 #include "cub.h"
 
+// seulement apres init mlx 
 int	clean_exit(t_cub *cub)
 {
 	// destruction des images des murs
@@ -28,4 +29,15 @@ int	clean_exit(t_cub *cub)
 	free(cub->graphic.mlx_ptr);
 	cub->graphic.mlx_ptr = NULL;
 	exit (EXIT_SUCCESS);
+}
+
+// separer en deux fonctions 
+// car si on appelle des le parsing MLX pas init donc va crasher 
+
+int	clean_exit_parsing(t_cub *cub)
+{
+	// free tab chaque ligne puis le tableau
+	// free texture de tout 
+	// free cub
+	// exit 
 }

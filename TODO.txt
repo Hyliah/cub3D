@@ -1,19 +1,9 @@
-- Mettre la libft 
-- Corriger si besoin le Makefile
-- Faire le jeu
-
-
-creer l’architecture du projet include sources map texture makefile …
+UPDATE TO DO PARSING 
 
 faire des maps simples
-
 map complexes
-
 map fausses pour tester validité ?
 
-installer minilibx ( faire comme pour so_long ? Linux + mac )
-
-libft ? necessaire ou pas ?
 
 faire le parsing du projet
 
@@ -26,40 +16,26 @@ validité des caracteres comme ds so_long mais avec 0, 1, N, S, E, W
 faire des messages d’erreur pour chaque cas et quitter de maniere clean
 creer des structures
 
-struct player
-struct game
-struct pour texture ? couleur ?
-faire une struc generale avec tt dedans
-initialiser MLX et creer les fenetres
+- The map must be composed of only 6 possible characters: 0 for an empty space,
+1 for a wall, and N,S,E or W for the player’s start position and spawning
+orientation.
+- The map must be closed/surrounded by walls
+- Except for the map content, each type of element can be separated by one or more empty line(s).
+- Except for the map content which always has to be the last, each type of element can be set in any order in the file.
+- Except for the map, each type of information from an element can be separated
+by one or more space(s).
+- The map must be parsed as it looks in the file. Spaces are a valid part of the
+map and are up to you to handle. You must be able to parse any kind of map,
+as long as it respects the rules of the map.
 
-charger les textures (mlx_xpm_file_to_image)
+we are scanning the map from top to bottom, left to right :
 
-buffer d’image ??
-
-gerer fermeture fenetre ( ESC + la croix )
-
-RAYCASTING
-
-( plein de trucs a faire ici mais j’ai pas encore assez de connaissance pour savoir quoi )
-
-player avec touche W A S D
-
-mise a jour de position du joueur
-
-gerer les colisions avec les murs ( c’est bonus mais on va le faire immediatement parce que c’est naze de traverser les murs )
-
-boucle mlx comme ds so_long
-
-gerer évenement clavier et fermeture de fenetre
-
-liberer touuuuut
-
-les maps
-textures
-image buffer
-fenetre et struct mlx
-attention aux leaks valgrind etc …
-
+    Ignore all leading whitespaces.
+    If the current row is the 0th row or the final row, only accept '1's and ' 's.
+        else, The first and final character should always be a '1'.
+    In the case of any non leading whitespaces, the only acceptable characters adjacent to the space are '1's or ' 's.
+    If strlen(curr_row) > strlen(row_on_top) && current col > strlen(row_on_top), current character should be '1'
+    If strlen(curr_row) > strlen(row_on_bottom) && current col > strlen(row_on_bottom), current character should be '1'
 
 
 Conseils de Benedicte et choses auxquelles penser aussi :  

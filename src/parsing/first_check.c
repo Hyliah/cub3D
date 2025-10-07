@@ -12,36 +12,52 @@
 
 #include "cub.h"
 
-// renvoie 1 si la ligne continet un element de map donc 0 1 N S E W
-int	is_map_line(char *line)
+// check arg 
+void	check_arg(t_cub *cub, int ac, char **av) // ok test
 {
-	int	i;
-
-	i = 0;
-	while (line[i])
+	if (ac != 2)
 	{
-		if (line[i] == '0' || line[i] == '1'
-			|| line [i] == 'N' || line[i] == 'S'
-			|| line[i] == 'E' || line[i] == 'W')
-			return (1);
-		i++;
+		ft_error(ERR_ARGS);
+		clean_exit_parsing(cub);
 	}
-	return (0);
+	if (!av[1] || !av[1][0])
+	{
+		ft_error(ERR_ARGS); // (mettre un autre mess ?)
+		clean_exit_parsing(cub);
+	}
 }
 
-// renvoie 1 si la ligne est une ligen de texture
-int	is_texture_line(char *line)
+// check extension .cub
+// modif de la fonction check_ber de mon so_long
+void	check_cub(t_cub *cub, char *pathname) // ok test 
 {
-	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
-		|| !ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3))
-		return (1);
-	return (0);
+	int		len;
+	char	*extension;
+
+	len = ft_strlen(pathname);
+	if (len < 4)
+	{
+		ft_error(ERR_FILE_EXT);
+		clean_exit_parsing(cub);
+	}
+	extension = pathname + (len - 4);
+	if (ft_strncmp(extension, ".cub", 4) != 0)
+	{
+		ft_error(ERR_FILE_EXT);
+		clean_exit_parsing(cub);
+	}
 }
 
-//renvoie 1 si la ligne est une couleur pour F et C 
-int	is_color_line(char *line)
+//verif que le fichier est lisible ( open + gestion erreur )
+void	check_file_access(t_cub *cub, char *pathname) // ok test
 {
-	if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
-		return (1);
-	return (0);
+	int	fd;
+
+	fd = open(pathname, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_error(ERR_MAP_NOT_FOUND);
+		clean_exit_parsing(cub);
+	}
+	close(fd);
 }

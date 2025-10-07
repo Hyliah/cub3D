@@ -48,7 +48,8 @@ vpath %.c \
 # Sources and object files
 SRC = main.c \
 clean_exit.c free.c \
-parsing_utils.c parsing.c \
+first_check.c map_check.c other_check.c \
+parsing_utils.c parsing.c std_utils.c \
 key_handle.c window_creation.c\
 init.c \
 

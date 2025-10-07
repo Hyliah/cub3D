@@ -20,52 +20,17 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_arg(cub, ac, av);
 	check_cub(cub, av[1]);
 	check_file_access(cub, av[1]);
-	//parse_file(cub, av[1]): (pour lire ligne) a faire
-	//check_textures(cub);
-	//check_colors(cub);
-	//check_player(cub);
-	//check_map(cub); // avec dedans check_wall et check_invalid_char
+	//parse_file(cub, av[1]): // lecture complete et stock textures, couleur et map
+	//check_textures(cub); // verifie que c'est correct
+	//check_colors(cub); // same
+	check_map(cub); // invalid char, line, player puis wall (?) a supp si floodfill ? 
+	// flood fill ici ? A la toute fin ( apres player ) 
 
 }
 
-// check arg 
-void check_arg(t_cub *cub, int ac, char **av) // ok test
-{
-	if (ac != 2)
-	{	
-		ft_error(ERR_ARGS);
-		clean_exit(cub);
-	}
-	if (!av[1] || !av[1][0] )
-	{
-		ft_error(ERR_ARGS); // (mettre un autre mess ?)
-		clean_exit(cub);
-	}
-}
-
-// check extension .cub
-// modif de la fonction check_ber de mon so_long
-void	check_cub(t_cub *cub, char *pathname) // ok test 
-{
-	int		len;
-	char	*extension;
-
-	len = ft_strlen(pathname);
-	if (len < 4)
-	{
-		ft_error(ERR_FILE_EXT);
-		clean_exit(cub);
-	}
-	extension = pathname + (len - 4);
-	if (ft_strncmp(extension, ".cub", 4) != 0)
-	{
-		ft_error(ERR_FILE_EXT);
-		clean_exit(cub);
-	}
-}
 
 //OUVERTURE ET LECTURE DU FICHIER
-// verif que le fichier est lisible ( open + gestion erreur )
+// verif que le fichier est lisible ( open + gestion erreur ) OK ---
 // lecture ligne par ligen  ( get next line ?? ) 
 // ensuite check :
 // 1-  parametre ( texture et couleur )
@@ -77,43 +42,25 @@ void	check_cub(t_cub *cub, char *pathname) // ok test
 //			- map fermee par murs ( bordure avec 1 et flood fill aussi ?)
 
 
-
-//verif que le fichier est lisible ( open + gestion erreur )
-void	check_file_access(t_cub *cub, char *pathname) // ok test
-{
-	int fd;
-
-	fd = open(pathname, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_error(ERR_MAP_NOT_FOUND);
-		clean_exit(cub);
-	}
-	close(fd);
-}
-
 void	parse_file(t_cub *cub, char *pathname)
 {
 	int		fd;
 	char	*line;
 
 	fd = open(pathname, O_RDONLY);
-	while ( (line = get_next_line(fd)) != NULL)
+	while ((line = get_next_line(fd)) != NULL) // attention a reprednre 
 	{
 		// degager les \n ?? faire fonction 
-
 		// ignorer les lignes vides 
 
 		// detecter le debut de la map et mettre un flag debutdemap ( map_start)
 		// check si ya 0 1 n e ... et si oui flag ok
 
-		// sinon on parse les param 
-		//check_textures(cub);
-		//check_colors(cub);
-		// attention si qqch d'invalid free et exit 
+		// sinon on parse les param :
+		//parse_texture_line()
+		//parse_color_line()
+		// attention si qqch d'invalid free et exit a chaque fois 
 
-		// si la map ok 
-		//  (faire tout un tas de trucs ici pour stocker toutes ces merdes)
 
 		free(line);
 	}
@@ -123,41 +70,30 @@ void	parse_file(t_cub *cub, char *pathname)
 	//cub->map. ...
 	//cub->map. ... check la struct again 
 
-
-	// verif aussi le reste a la fin ? 
-	// check_player(cub);
-	// check_map(cub); // avec dedans check_wall et check_invalid_char
+	// free ?
+	// clean ?
 }
 
-// check presence de toutes les textures NO, SO, WE, EA
-void check_texture(t_cub *cub)
+// parsing de la ligne de texture : "NO ./path/to/texture.xpm"
+void	parse_texture_line(t_cub *cub, char *line)
 {
 
 }
 
-// check les couleurs ( entre 0 - 255)
-void check_color(t_cub *cub)
-{
-	
-}
-
-// faire comme so_long ? no player, too many player ?? 
-void check_player(t_cub *cub)
+// parsing de la ligne des couleurs floor et ceiling ex :  "F 220,100,0"
+void	parse_color_line(t_cub *cub, char *line)
 {
 
 }
 
-// check validité des maps
-// -> entourée de murs (1)
-void	check_wall(t_cub *cub)
+// alloc du tableau de ligen de la map 
+char	**alloc_map_line(char **map, int *count, char *line)
 {
 
 }
-// -> validité des caracteres comme ds so_long mais avec 0, 1, N, S, E, W
-void	check_invalid_char(t_cub *cub)
-{
 
-}
+
+
 // faire un flood fill aussi ? 
 // check path ? 
 // lignes vides avant et apres la map mais pas au milieu 
