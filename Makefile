@@ -50,7 +50,7 @@ vpath %.c \
 SRC = main.c \
 clean_exit.c free.c \
 get_pixel.c set_pixel.c merge_screen.c \
-key_handle.c window_creation.c screen_utils.c \
+key_handle.c move_player.c window_creation.c screen_utils.c \
 minimap.c mm_player.c\
 init.c \
 

@@ -21,15 +21,16 @@
 /* CUSTOM MLX*/
 t_hex_c	get_pixel(t_img *img, int x, int y);
 
+void	merge_screens(t_cub *cub);
 void	set_pixel(t_img *img, int x, int y, t_hex_c color);
 
 /* SCREEN */
-void	merge_screens(t_cub *cub);
 int		ft_abs(int i);
 int		key_press(int keycode, t_cub *cub);
 int		key_release(int keycode, t_cub *cub);
 
 void	create_window(t_cub *cub);
+void	move_player(t_cub *cub);
 
 /* MINIMAP*/
 void	mm_creation(t_cub *cub);

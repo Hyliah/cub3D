@@ -55,7 +55,6 @@ static void	init_struct_player(t_cub *cub)
 	cub->key.k_ri = FALSE;
 }
 
-
 static void	init_struct_graphic(t_cub *cub)
 {
 	cub->graphic.s_height = 1080;
@@ -103,7 +102,6 @@ static void	init_struct_graphic(t_cub *cub)
 // 	cub->mmap.minimap.img_ptr = NULL;
 // 	cub->mmap.minimap.size_line = 0;
 // }
-
 
 // #else
 

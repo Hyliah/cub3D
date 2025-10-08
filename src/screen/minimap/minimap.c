@@ -12,9 +12,7 @@
 
 #include "cub.h"
 
-/* MINI MAP VERSION PIXEL_PUT*/
-
-static void mm_drawing(t_cub *cub);
+static void	mm_drawing(t_cub *cub);
 static void	mm_draw_mm_sqr(t_cub *cub, int color, int x, int y);
 
 //voir l utilite de cette fonction peut etre la mixer dans create window
@@ -22,10 +20,9 @@ void	mm_creation(t_cub *cub)
 {
 	mm_drawing(cub);
 	mm_player_draw(cub, 0x622416);
-	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.img_player.img_ptr, 0, 0);
 }
 
-static void mm_drawing(t_cub *cub)
+static void	mm_drawing(t_cub *cub)
 {
 	int	x;
 	int	y;
@@ -38,10 +35,10 @@ static void mm_drawing(t_cub *cub)
 		{
 			if (cub->map.map_tab[x][y] == '1')
 				mm_draw_mm_sqr(cub, 0x275E1F, x, y);
-			else if (cub->map.map_tab[x][y] == '0' 
-					|| cub->map.map_tab[x][y] == 'N' 
-					|| cub->map.map_tab[x][y] == 'S' 
-					|| cub->map.map_tab[x][y] == 'E' 
+			else if (cub->map.map_tab[x][y] == '0'
+					|| cub->map.map_tab[x][y] == 'N'
+					|| cub->map.map_tab[x][y] == 'S'
+					|| cub->map.map_tab[x][y] == 'E'
 					|| cub->map.map_tab[x][y] == 'W')
 				mm_draw_mm_sqr(cub, 0xE4C095, x, y);
 			x++;
@@ -64,44 +61,9 @@ static void	mm_draw_mm_sqr(t_cub *cub, int color, int x, int y)
 		while (px < sqr)
 		{
 			set_pixel(&cub->mmap.img_mmap,
-						(y * sqr + py), (x * sqr + px), color);
+				(y * sqr + py), (x * sqr + px), color);
 			px++;
 		}
 		py++;
 	}
 }
-
-
-	// int x = 960;
-	// int y = 540;
-
-	// set_pixel(&cub->graphic.screen, x, y, 0xFF0000);
-
-	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
-
-
-
-
-	// int x = 470;
-	// int y = 230;
-
-	// set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
-
-	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.minimap.img_ptr, 0, 0);
-	// printf("square : %d\n", cub->mmap.mm_square);
-	// printf("height : %d\n", cub->mmap.mm_height);
-
-	// //set_pixel(&cub->mmap.minimap, x, y, 0xFF00FF);
-	//mm_drawing(cub);
-
-	// int x = 120;
-	// int y = 40;
-
-	// set_pixel(&cub->graphic.screen, x, y, 0xFF0000);
-
-	// mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->graphic.screen.img_ptr, 0, 0);
-
-
-
-
-

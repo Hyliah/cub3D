@@ -12,7 +12,6 @@
 
 #include "cub.h"
 
-
 static void	init_img(t_cub *cub, t_img *img, int x, int y);
 static void	mm_size_calculator(t_cub *cub);
 
@@ -36,11 +35,12 @@ void	create_window(t_cub *cub)
 static void	init_img(t_cub *cub, t_img *img, int x, int y)
 {
 	img->img_ptr = mlx_new_image(cub->graphic.mlx_ptr, x, y);
-	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line, 
-					&img->endian);
+	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
+			&img->endian);
 }
 
-//calcul pour connaitre le ration map/scren/minimap -> donne un square qui correspond a la taille d une unite sur la minimap
+//calcul pour connaitre le ration map/scren/minimap 
+//-> donne un square qui correspond a la taille d une unite sur la minimap
 static void	mm_size_calculator(t_cub *cub)
 {
 	int	mm_ratio;

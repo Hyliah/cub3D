@@ -25,7 +25,7 @@ void	mm_player_draw(t_cub *cub, int color)
 	y = (int)(cub->player.pos_y * (float)cub->mmap.mm_sqr);
 	thick = (cub->mmap.mm_sqr - 1) / 2;
 	if (thick < 1)
-		printf ("WARNING FAIRE MAP PLUS PETITE"); // mettre un autre warning mais en soit c est plus pour nous pour savoir ou mettre les limites
+		printf("GURL, NOPE, TOO BIG OF A MAP");
 	i = -thick;
 	while (i <= thick)
 	{
@@ -39,5 +39,3 @@ void	mm_player_draw(t_cub *cub, int color)
 		i++;
 	}
 }
-
-
