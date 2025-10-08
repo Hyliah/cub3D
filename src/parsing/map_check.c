@@ -15,7 +15,7 @@
 void	check_map(t_cub *cub)
 {
 	check_invalid_char(cub);
-	check_line_empty(cub);
+	check_line_empty_in_map(cub);
 	check_player(cub);
 	check_wall(cub);
 }
@@ -46,9 +46,23 @@ void	check_invalid_char(t_cub *cub)
 	}
 }
 
-void	check_line_empty(t_cub *cub)
+// Pas de ligen vide A L INTERIEUR la map 
+void	check_line_empty_in_map(t_cub *cub)
 {
-	// Pas de ligen vide au milieu de la map 
+	int	y;
+	int	empty;
+
+	y = 0;
+	empty = 0;
+	while ( cub->map.map_tab[y])
+	{
+		if ( is_empty_line(cub->map.map_tab[y]))
+			empty = 1;
+		else if (empty == 1)
+		{
+			ft_error(ERR_MAP_LINE);
+		}
+	}
 }
 
 // check validité des maps

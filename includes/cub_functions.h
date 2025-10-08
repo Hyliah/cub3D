@@ -24,7 +24,7 @@ void	check_file_access(t_cub *cub, char *pathname);
 
 void	check_map(t_cub *cub);
 void	check_invalid_char(t_cub *cub);
-void	check_line_empty(t_cub *cub);
+void	check_line_empty_in_map(t_cub *cub);
 void	check_wall(t_cub *cub);
 void 	check_player(t_cub *cub);
 
@@ -32,6 +32,7 @@ void 	check_texture(t_cub *cub);
 void 	check_color(t_cub *cub);
 
 int		is_map_line(char *line);
+int		is_empty_line(char *line);
 int		is_texture_line(char *line);
 int		is_color_line(char *line);
 
@@ -43,6 +44,7 @@ void	parse_color_line(t_cub *cub, char *line);
 char	**alloc_map_line(char **map, int *count, char *line);
 
 void	ft_error(t_error error);
+void	ft_strtrim_newline(char *line);
 
 /* SCREEN */
 int		handle_key(int keycode, t_cub *cub);

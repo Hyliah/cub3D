@@ -34,11 +34,21 @@ void	ft_error(t_error error)
 		ft_putstr_fd("Map not found\n", STDERR_FILENO);
 	else if (error == ERR_NO_PLAYER)
 		ft_putstr_fd("Need player on the map\n", STDERR_FILENO);
+	else if (error == ERR_MAP_LINE)
+		ft_putstr_fd("No empty line on the map\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 
-// changer faire un ft error exit ? avec cub et code pour affichage direct du mess et clean exit 
-
 // faire fonction de trim pour remplacer les \n par des \0 
+void	ft_strtrim_newline(char *line)
+{
+	int len;
+
+	if (!line)
+		return;
+	len = ft_strlen(line);
+	if ( len > 0 && line[len - 1] == '\n')
+		line[len - 1] = '\0';
+}
 
 // get map width pour renvoyer la longueru max ? 

@@ -35,7 +35,7 @@ void	check_texture(t_cub *cub)
 	check_file_access(cub, cub->setting.has_tex_we);
 }
 
-// check les couleurs ( entre 0 - 255)
+// check les couleurs ( entre 0 - 255) // faire modif mess erreur pour couleur ? 
 void	check_color(t_cub *cub)
 {
 	// flag

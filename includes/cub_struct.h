@@ -134,6 +134,7 @@ typedef enum e_error
 	ERR_MAP_PATH,
 	ERR_MAP_NOT_FOUND,
 	ERR_NO_PLAYER,
+	ERR_MAP_LINE,
 }	t_error;
 
 #endif
