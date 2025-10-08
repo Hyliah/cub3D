@@ -49,8 +49,8 @@ static void	init_struct_player(t_cub *cub)
 	cub->key.k_s = FALSE;
 	cub->key.k_d = FALSE;
 	cub->key.k_w = FALSE;
-	cub->key.k_up = FALSE;
-	cub->key.k_do = FALSE;
+	// cub->key.k_up = FALSE;
+	// cub->key.k_do = FALSE;
 	cub->key.k_le = FALSE;
 	cub->key.k_ri = FALSE;
 }

@@ -119,8 +119,8 @@ typedef struct s_key
 	t_bool	k_w;
 	t_bool	k_le;
 	t_bool	k_ri;
-	t_bool	k_up;
-	t_bool	k_do;
+	// t_bool	k_up;
+	// t_bool	k_do;
 }	t_key;
 
 typedef struct s_graphic // repris de mon so_long

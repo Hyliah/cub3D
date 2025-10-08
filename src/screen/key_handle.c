@@ -14,19 +14,12 @@
 
 static t_bool	safe_move(t_cub *cub, float new_x, float new_y);
 static void	mm_move_player(t_cub *cub, float new_x, float new_y);
-static void move_player(t_cub *cub, int keycode);
+static void move_player(t_cub *cub);
+static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed);
 
 int	key_press(int keycode, t_cub *cub)
 {
-	if (keycode == KEY_A)
-		move_player(cub, KEY_A);
-	if (keycode == KEY_S)
-		move_player(cub, KEY_S);
-	if (keycode == KEY_D)
-		move_player(cub, KEY_D);
-	if (keycode == KEY_W)
-		move_player(cub, KEY_W);
-
+	change_key_status(cub, keycode, TRUE);
 	if (keycode == KEY_M)
 	{
 		if (cub->mmap.mm_show == TRUE)
@@ -36,48 +29,60 @@ int	key_press(int keycode, t_cub *cub)
 	}
 	if (keycode == KEY_ESCAPE)
 		clean_exit(cub);
+	move_player(cub);
 	return (0);
 }
 
 int	key_release(int keycode, t_cub *cub)
 {
-	if (keycode == KEY_A)
-		cub->key.k_a= FALSE;
-	if (keycode == KEY_S)
-		cub->key.k_s= FALSE;
-	if (keycode == KEY_D)
-		cub->key.k_d= FALSE;
-	if (keycode == KEY_W)
-		cub->key.k_w= FALSE;
+	change_key_status(cub, keycode, FALSE);
 	return (0);
 }
 
-static void move_player(t_cub *cub, int keycode)
+static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed)
 {
 	if (keycode == KEY_A)
-	{
-		if (safe_move(cub, cub->player.pos_x - 0.4, cub->player.pos_y))
-			mm_move_player(cub, cub->player.pos_x - 0.1, cub->player.pos_y);
-		cub->key.k_a= TRUE;
-	}
-	if (keycode == KEY_D)
-	{
-		if (safe_move(cub, cub->player.pos_x + 0.4, cub->player.pos_y))
-			mm_move_player(cub, cub->player.pos_x + 0.1, cub->player.pos_y);
-		cub->key.k_d= TRUE;
-	}
+		cub->key.k_a = is_pressed;
 	if (keycode == KEY_S)
-	{
-		if (safe_move(cub, cub->player.pos_x, cub->player.pos_y +  0.4))
-			mm_move_player(cub, cub->player.pos_x, cub->player.pos_y + 0.1);
-		cub->key.k_s= TRUE;
-	}
+		cub->key.k_s = is_pressed;
+	if (keycode == KEY_D)
+		cub->key.k_d = is_pressed;
 	if (keycode == KEY_W)
-	{
-		if (safe_move(cub, cub->player.pos_x, cub->player.pos_y - 0.4))
-			mm_move_player(cub, cub->player.pos_x, cub->player.pos_y - 0.1);
-		cub->key.k_w= TRUE;
-	}
+		cub->key.k_w = is_pressed;
+	if (keycode == KEY_LEFTARROW)
+		cub->key.k_le = is_pressed;
+	if (keycode == KEY_RIGHTARROW)
+		cub->key.k_ri = is_pressed;
+	// if (keycode == KEY_UPARROW)
+	// 	cub->key.k_up = is_pressed;
+	// if (keycode == KEY_DOWNARROW)
+	// 	cub->key.k_do = is_pressed;
+}
+
+static void move_player(t_cub *cub)
+{
+	float	pos_x;
+	float	pos_y;
+
+	pos_x = cub->player.pos_x;
+	pos_y = cub->player.pos_y;
+
+	if (cub->key.k_a && safe_move(cub, pos_x - 0.4, pos_y))
+		pos_x = pos_x - 0.1;
+	if (cub->key.k_d && safe_move(cub, pos_x + 0.4, pos_y))
+		pos_x = pos_x + 0.1;
+	if (cub->key.k_s && safe_move(cub, pos_x, pos_y + 0.4))
+		pos_y = pos_y + 0.1;
+	if (cub->key.k_w && safe_move(cub, pos_x, pos_y - 0.4))
+		pos_y = pos_y - 0.1;
+	
+	/* faire les changements avec la plane de vision*/
+	// if (keycode == KEY_LEFTARROW)
+	// 	pos_x = pos_x - 0.1;
+	// if (keycode == KEY_RIGHTARROW)
+	// 	pos_x = pos_x + 0.1;
+	
+	mm_move_player(cub, pos_x, pos_y);
 }
 
 // si on met une porte peut etre mettre aussi une impossibilite d avancer si y a une porte ?
@@ -100,6 +105,30 @@ static void	mm_move_player(t_cub *cub, float new_x, float new_y)
 }
 
 
+
+
+// int	key_press(int keycode, t_cub *cub)
+// {
+// 	if (keycode == KEY_A)
+// 		move_player(cub, KEY_A);
+// 	if (keycode == KEY_S)
+// 		move_player(cub, KEY_S);
+// 	if (keycode == KEY_D)
+// 		move_player(cub, KEY_D);
+// 	if (keycode == KEY_W)
+// 		move_player(cub, KEY_W);
+
+// 	if (keycode == KEY_M)
+// 	{
+// 		if (cub->mmap.mm_show == TRUE)
+// 			cub->mmap.mm_show = FALSE;
+// 		else
+// 			cub->mmap.mm_show = TRUE;
+// 	}
+// 	if (keycode == KEY_ESCAPE)
+// 		clean_exit(cub);
+// 	return (0);
+// }
 
 
 
