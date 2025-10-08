@@ -68,13 +68,13 @@ static void move_player(t_cub *cub, int keycode)
 	}
 	if (keycode == KEY_S)
 	{
-		if (safe_move(cub, cub->player.pos_x, cub->player.pos_y +  1.1))
+		if (safe_move(cub, cub->player.pos_x, cub->player.pos_y +  0.4))
 			mm_move_player(cub, cub->player.pos_x, cub->player.pos_y + 0.1);
 		cub->key.k_s= TRUE;
 	}
 	if (keycode == KEY_W)
 	{
-		if (safe_move(cub, cub->player.pos_x, cub->player.pos_y - 1.1))
+		if (safe_move(cub, cub->player.pos_x, cub->player.pos_y - 0.4))
 			mm_move_player(cub, cub->player.pos_x, cub->player.pos_y - 0.1);
 		cub->key.k_w= TRUE;
 	}
@@ -96,8 +96,6 @@ static void	mm_move_player(t_cub *cub, float new_x, float new_y)
 	cub->player.pos_x = new_x;
 	cub->player.pos_y = new_y;
 	mm_player_draw(cub, 0x622416);
-	// en attendant mieux
-	//mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr, cub->mmap.img_player.img_ptr, 0, 0);
 	merge_screens(cub);
 }
 

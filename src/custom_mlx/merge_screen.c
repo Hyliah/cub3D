@@ -24,12 +24,11 @@ void	merge_screens(t_cub *cub)
 		int mmap_x;
 		int mmap_y;
 
-		// déclaration des offsets -> MODIFIABLE attention map n est pas allignée
-		// mmap_x = cub->graphic.s_width - cub->mmap.mm_wid - 20; // map + 20px depuis le bord droit
-		// mmap_y = 20; // a 20 de hauteur depuis le bord
-
-		mmap_x = cub->graphic.s_width - cub->mmap.mm_wid; // map + 20px depuis le bord droit
-		mmap_y = 0; // a 20 de hauteur depuis le bord
+		// déclaration des offsets -> modifiable
+		mmap_x = cub->graphic.s_width - cub->mmap.mm_wid - 20; // map + 20px depuis le bord droit
+		mmap_y = 20; // a 20 de hauteur depuis le bord
+		// mmap_x = cub->graphic.s_width - cub->mmap.mm_wid;
+		// mmap_y = 0; // a 20 de hauteur depuis le bord
 
 		// au cas ou
 		// draw_mmap_border mmap_x - 1 &&  mmap_y - 1;
@@ -39,7 +38,7 @@ void	merge_screens(t_cub *cub)
 	}
 
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
-	                        cub->graphic.img_screen.img_ptr, 0, 0);
+							cub->graphic.img_screen.img_ptr, 0, 0);
 }
 
 static void clear_image(t_cub *cub)

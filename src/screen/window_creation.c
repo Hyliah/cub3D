@@ -40,6 +40,7 @@ static void	init_img(t_cub *cub, t_img *img, int x, int y)
 					&img->endian);
 }
 
+//calcul pour connaitre le ration map/scren/minimap -> donne un square qui correspond a la taille d une unite sur la minimap
 static void	mm_size_calculator(t_cub *cub)
 {
 	int	mm_ratio;
@@ -57,35 +58,3 @@ static void	mm_size_calculator(t_cub *cub)
 	}
 	cub->mmap.mm_sqr = cub->mmap.mm_wid / cub->map.width;
 }
-
-/* 
-	mlx differente sur mac et linux, creation d un buffer maison pour mac 
-*/
-
-
-// #ifdef __APPLE__
-// static void init_buffer(t_cub *cub, int x, int y);
-// static void init_buffer(t_cub *cub, int x, int y)
-// {
-// 	cub->graphic.buffer = malloc(sizeof(unsigned int) * x * y);
-// 	if (!cub->graphic.buffer)
-// 	{
-// 		perror("malloc buffer");
-// 		exit(1);
-// 	}
-// 	ft_memset(cub->graphic.buffer, 0, sizeof(unsigned int) * x * y);
-// }
-// #else
-// static void init_buffer(t_cub *cub, int x, int y)
-// {
-// 	(void)cub;
-// 	(void)x;
-// 	(void)y;
-// }
-// #endif
-
-// void	create_image_test(t_cub *cub)
-// {
-// 	cub->graphic.img_co = mlx_xpm_file_to_image(graphic->mlx_ptr, CO, &x, &y);
-// }
-

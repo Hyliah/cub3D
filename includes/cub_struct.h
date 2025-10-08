@@ -110,6 +110,7 @@ typedef struct s_mmap
 
 }	t_mmap;
 
+// holding key
 typedef struct s_key
 {
 	t_bool	k_a;

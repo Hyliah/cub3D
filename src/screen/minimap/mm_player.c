@@ -12,6 +12,7 @@
 
 #include "cub.h"
 
+// dessiner le petit losange
 void	mm_player_draw(t_cub *cub, int color)
 {
 	int	i;
@@ -24,7 +25,7 @@ void	mm_player_draw(t_cub *cub, int color)
 	y = (int)(cub->player.pos_y * (float)cub->mmap.mm_sqr);
 	thick = (cub->mmap.mm_sqr - 1) / 2;
 	if (thick < 1)
-		printf ("WARNING FAIRE MAP PLUS PETITE");
+		printf ("WARNING FAIRE MAP PLUS PETITE"); // mettre un autre warning mais en soit c est plus pour nous pour savoir ou mettre les limites
 	i = -thick;
 	while (i <= thick)
 	{
