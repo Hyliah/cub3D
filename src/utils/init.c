@@ -18,6 +18,7 @@ static void	init_struct_player(t_cub *cub);
 
 void	init_struct(t_cub *cub)
 {
+	cub->game_on = FALSE;
 	init_struct_graphic(cub);
 	init_struct_map_settings(cub);
 	init_struct_player(cub);
@@ -49,8 +50,8 @@ static void	init_struct_player(t_cub *cub)
 	cub->key.k_s = FALSE;
 	cub->key.k_d = FALSE;
 	cub->key.k_w = FALSE;
-	// cub->key.k_up = FALSE;
-	// cub->key.k_do = FALSE;
+	cub->key.k_up = FALSE;
+	cub->key.k_do = FALSE;
 	cub->key.k_le = FALSE;
 	cub->key.k_ri = FALSE;
 }
@@ -76,6 +77,12 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->mmap.img_mmap.img_ptr = NULL;
 	cub->mmap.img_mmap.size_line = 0;
 	cub->mmap.mm_show = TRUE;
+	cub->oscreen.img_os = NULL;
+	cub->oscreen.img_pe = NULL;
+	cub->oscreen.img_si = NULL;
+	cub->oscreen.img_olp = NULL;
+	cub->oscreen.img_ols = NULL;
+	cub->oscreen.is_sirius = TRUE;
 }
 
 // #ifdef __linux__

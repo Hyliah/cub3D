@@ -22,20 +22,23 @@ void	move_player(t_cub *cub)
 
 	pos_x = cub->player.pos_x;
 	pos_y = cub->player.pos_y;
-	if (cub->key.k_a && safe_move(cub, pos_x - 0.3, pos_y))
-		pos_x = pos_x - 0.1;
-	if (cub->key.k_d && safe_move(cub, pos_x + 0.3, pos_y))
-		pos_x = pos_x + 0.1;
-	if (cub->key.k_s && safe_move(cub, pos_x, pos_y + 0.3))
-		pos_y = pos_y + 0.1;
-	if (cub->key.k_w && safe_move(cub, pos_x, pos_y - 0.3))
-		pos_y = pos_y - 0.1;
-	/* faire les changements avec la plane de vision*/
-	// if (keycode == KEY_LEFTARROW)
-	// 	pos_x = pos_x - 0.1;
-	// if (keycode == KEY_RIGHTARROW)
-	// 	pos_x = pos_x + 0.1;
-	mm_move_player(cub, pos_x, pos_y);
+	if (cub->game_on == TRUE)
+	{
+		if (cub->key.k_a && safe_move(cub, pos_x - 0.3, pos_y))
+			pos_x = pos_x - 0.1;
+		if (cub->key.k_d && safe_move(cub, pos_x + 0.3, pos_y))
+			pos_x = pos_x + 0.1;
+		if (cub->key.k_s && safe_move(cub, pos_x, pos_y + 0.3))
+			pos_y = pos_y + 0.1;
+		if (cub->key.k_w && safe_move(cub, pos_x, pos_y - 0.3))
+			pos_y = pos_y - 0.1;
+			/* faire les changements avec la plane de vision*/
+			// if (keycode == KEY_LEFTARROW)
+			// 	pos_x = pos_x - 0.1;
+			// if (keycode == KEY_RIGHTARROW)
+			// 	pos_x = pos_x + 0.1;
+		mm_move_player(cub, pos_x, pos_y);
+	}
 }
 
 // si porte ptetre mettre aussi une impossibilite d avancer si y a une porte ?

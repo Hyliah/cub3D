@@ -15,16 +15,22 @@
 
 # include "cub.h"
 
-# define G_NAME	"Cub Crossing : New maze adventure"
-# define IMG_TEST "./src/images/test.xpm"
+# define G_NAME	"Cub Crossing : La folle aventure de Sirius et Pepito en 3D"
 
-# define MMW "./src/images/minimap/tile_w.xpm"
-# define MMP "./src/images/minimap/tile_p.xpm"
-# define MMF "./src/images/minimap/tile_f.xpm"
+// pour l'overlay
+# define OVRLP "./src/images/overlay/overlay_s.xpm"
+# define OVRLS "./src/images/overlay/"
 
-# define BMW "./src/images/minimap/maxi_mm_w.xpm"
-# define BMP "./src/images/minimap/maxi_mm_p.xpm"
-# define BMF "./src/images/minimap/maxi_mm_f.xpm"
+// pour l opening screen
+# define OS "./src/images/opening_screen/open_screen.xpm"
+# define OSS "./src/images/opening_screen/os_sirius.xpm"
+# define OSP "./src/images/opening_screen/os_pepito.xpm"
+
+// pour les wall textures
+#define WTN "./src/images/wall_textures/"
+#define WTS "./src/images/wall_textures/"
+#define WTE "./src/images/wall_textures/"
+#define WTW "./src/images/wall_textures/"
 
 # ifdef __APPLE__
 # define MM_MAX_W 340
@@ -95,6 +101,8 @@ typedef struct s_img
 	int		bpp; //bits per pixel -> 1 pixel = 1 int -> 32 bits
 	int		size_line; //longueur d'une ligne actuelle de la window
 	int		endian; //endianness
+	int		width;
+	int		height;
 }	t_img;
 
 typedef struct s_mmap
@@ -119,8 +127,8 @@ typedef struct s_key
 	t_bool	k_w;
 	t_bool	k_le;
 	t_bool	k_ri;
-	// t_bool	k_up;
-	// t_bool	k_do;
+	t_bool	k_up;
+	t_bool	k_do;
 }	t_key;
 
 typedef struct s_graphic // repris de mon so_long
@@ -143,8 +151,21 @@ typedef struct s_graphic // repris de mon so_long
 
 }	t_graphic;
 
+typedef struct s_oscreen
+{
+	t_bool	is_sirius;
+	t_img	img_olay;
+	void	*img_os;
+	void	*img_si;
+	void	*img_pe;
+	void	*img_ols; //image overlay sirius
+	void	*img_olp; //image overlay pepito
+}	t_oscreen;
+
 typedef struct s_cub
 {
+	t_oscreen	oscreen;
+	t_bool		game_on;
 	t_map		map;
 	t_key		key;
 	t_mmap		mmap;

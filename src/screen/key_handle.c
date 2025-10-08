@@ -14,9 +14,9 @@
 
 static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed);
 
-int	key_press(int keycode, t_cub *cub)
+int	key_press(int key, t_cub *cub)
 {
-	change_key_status(cub, keycode, TRUE);
+	change_key_status(cub, key, TRUE);
 	//POUR LES PORTES SI ON EN FAIT
 	// if (keycode == KEY_O) 
 	// {
@@ -25,15 +25,16 @@ int	key_press(int keycode, t_cub *cub)
 	// 	else
 	// 		cub->mmap.mm_show = TRUE;
 	// }
-	if (keycode == KEY_M)
+	if (key == KEY_M)
 	{
 		if (cub->mmap.mm_show == TRUE)
 			cub->mmap.mm_show = FALSE;
 		else
 			cub->mmap.mm_show = TRUE;
 	}
-	if (keycode == KEY_ESCAPE)
+	if (key == KEY_ESCAPE)
 		clean_exit(cub);
+	opening_screen_handle(cub, key);
 	move_player(cub);
 	return (0);
 }
@@ -58,8 +59,8 @@ static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed)
 		cub->key.k_le = is_pressed;
 	if (keycode == KEY_RIGHTARROW)
 		cub->key.k_ri = is_pressed;
-	// if (keycode == KEY_UPARROW)
-	// 	cub->key.k_up = is_pressed;
-	// if (keycode == KEY_DOWNARROW)
-	// 	cub->key.k_do = is_pressed;
+	if (keycode == KEY_UPARROW)
+		cub->key.k_up = is_pressed;
+	if (keycode == KEY_DOWNARROW)
+		cub->key.k_do = is_pressed;
 }

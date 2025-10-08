@@ -43,15 +43,6 @@
 // 	}
 // }
 
-
-
-
-
-
-
-
-
-
 // void draw_minimap(t_cub *cub)
 // {
 // 	int	i;
@@ -101,15 +92,6 @@
 // 	}
 // }
 
-
-
-
-
-
-
-
-
-
 /* MAYBEEEEEE */
 // static void	draw_mmap_background_and_border(t_cub *cub, int x_offset, int y_offset)
 // {
@@ -141,16 +123,6 @@
 // 		set_pixel(&cub->graphic.img_screen, width + x_offset, y + y_offset, border_color); // droite
 // 	}
 // }
-
-
-
-
-
-
-
-
-
-
 
 /* MINI MAP VERSION SO_LONG*/
 
