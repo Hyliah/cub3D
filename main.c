@@ -49,11 +49,6 @@ int main (int ac, char **av)
 
 
 
-
-
-
-
-
 /* laide fonction a suppimer des que le parsing sera fait */
 void    hardcode_map(t_cub *cub, char *arg)
 {

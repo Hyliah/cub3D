@@ -34,13 +34,13 @@ static void	mm_drawing(t_cub *cub)
 		while (x < cub->map.height)
 		{
 			if (cub->map.map_tab[x][y] == '1')
-				mm_draw_mm_sqr(cub, 0x275E1F, x, y);
+				mm_draw_mm_sqr(cub, 0x4B6E49, x, y);
 			else if (cub->map.map_tab[x][y] == '0'
 					|| cub->map.map_tab[x][y] == 'N'
 					|| cub->map.map_tab[x][y] == 'S'
 					|| cub->map.map_tab[x][y] == 'E'
 					|| cub->map.map_tab[x][y] == 'W')
-				mm_draw_mm_sqr(cub, 0xE4C095, x, y);
+				mm_draw_mm_sqr(cub, 0xC7CB9F, x, y);
 			x++;
 		}
 		y++;

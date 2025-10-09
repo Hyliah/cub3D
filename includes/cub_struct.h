@@ -17,15 +17,6 @@
 
 # define G_NAME	"Cub Crossing : La folle aventure de Sirius et Pepito en 3D"
 
-// pour l'overlay
-# define OVRLP "./src/images/overlay/overlay_s.xpm"
-# define OVRLS "./src/images/overlay/"
-
-// pour l opening screen
-# define OS "./src/images/opening_screen/open_screen.xpm"
-# define OSS "./src/images/opening_screen/os_sirius.xpm"
-# define OSP "./src/images/opening_screen/os_pepito.xpm"
-
 // pour les wall textures
 #define WTN "./src/images/wall_textures/"
 #define WTS "./src/images/wall_textures/"
@@ -33,8 +24,30 @@
 #define WTW "./src/images/wall_textures/"
 
 # ifdef __APPLE__
-# define MM_MAX_W 340
-# define MM_MAX_H 230
+// pour l opening screen
+# define OVRLP "./src/images/overlay/overlay_pepito_mac.xpm"
+# define OVRLS "./src/images/overlay/overlay_sirius_mac.xpm"
+# elif defined(__linux__)
+// pour l opening screen
+# define OVRLP "./src/images/overlay/overlay_pepito_lin.xpm"
+# define OVRLS "./src/images/overlay/overlay_sirius_lin.xpm"
+# endif
+
+# ifdef __APPLE__
+// pour l opening screen
+# define OS "./src/images/opening_screen/os.xpm"
+# define OSS "./src/images/opening_screen/os_si.xpm"
+# define OSP "./src/images/opening_screen/os_pep.xpm"
+# elif defined(__linux__)
+// pour l opening screen
+# define OS "./src/images/opening_screen/open_screen.xpm"
+# define OSS "./src/images/opening_screen/os_sirius.xpm"
+# define OSP "./src/images/opening_screen/os_pepito.xpm"
+# endif
+
+# ifdef __APPLE__
+# define MM_MAX_W 5500
+# define MM_MAX_H 310
 # elif defined(__linux__)
 # define MM_MAX_W 680
 # define MM_MAX_H 470
@@ -44,6 +57,8 @@ typedef unsigned char t_rgba;
 typedef unsigned int t_hex_c;
 
 // 0xFFFFFF = rbg 255 255 255
+// sky is better : 67a0fc
+// floor is better in baed8e
 
 typedef enum s_dir
 {
