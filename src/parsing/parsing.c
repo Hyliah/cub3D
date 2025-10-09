@@ -34,8 +34,8 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_cub(cub, av[1]);
 	check_file_access(cub, av[1]);
 	parse_file(cub, av[1]); // lecture complete et stock textures, couleur et map
-	//check_textures(cub); // verifie que c'est correct
-	//check_colors(cub); // same
+	check_textures(cub); // verifie que c'est correct
+	check_colors(cub); // same
 	check_map(cub); // invalid char, line, player puis wall (?) a supp si floodfill ? 
 	// flood fill ici ? A la toute fin ( apres player ) 
 
@@ -56,7 +56,7 @@ void	parse_file(t_cub *cub, char *pathname)
 	fd = open(pathname, O_RDONLY);
 	if ( fd < 0)
 	{
-		ft_error(ERR_MAP_NOT_FOUND);
+		ft_error(ERR_FILE_NOT_FOUND);
 		clean_exit_parsing(cub);
 	}
 	line = get_next_line(fd);
@@ -97,6 +97,11 @@ void	parse_file(t_cub *cub, char *pathname)
 		// on va stocker la ligne de map
 		else 
 		{
+			if (!is_map_line(line)) // pour verif si y'a qqchose apres erreur 
+			{
+				ft_error(ERR_MAP_INVALID);
+				clean_exit_parsing(cub);
+			}
 			map_lines = alloc_map_line(map_lines, &map_count, line);
 			map_count++;
 		}
@@ -112,23 +117,11 @@ void	parse_file(t_cub *cub, char *pathname)
 		clean_exit_parsing(cub);
 	}
 	// remplir la struct avec les element du parsing 
-
 	cub->map.map_tab = map_lines;
 	cub->map.height = map_count;
-	//cub->map.width = //fonction get map width pour le flood fill plus tard 
+	cub->map.width = get_map_width(map_lines, map_count);
 }
 
-// parsing de la ligne de texture : "NO ./path/to/texture.xpm"
-void	parse_texture_line(t_cub *cub, char *line)
-{
-
-}
-
-// parsing de la ligne des couleurs floor et ceiling ex :  "F 220,100,0"
-void	parse_color_line(t_cub *cub, char *line)
-{
-
-}
 
 // alloc du tableau de ligen de la map 
 char	**alloc_map_line(char **map, int *count, char *line)

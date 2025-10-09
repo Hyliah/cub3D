@@ -96,23 +96,6 @@ void	check_wall(t_cub *cub)
 	}
 }
 
-// faire comme so_long ? no player, too many player ?? 
-void	check_player(t_cub *cub)
-{
-	// double boucle while y puis x
-	// check si deja un joueur = erreur 
-	// position a 0.5 ? 
-	// definir direction de depart pour la struct player dir 
-	// remplacer le joueur par le sol dans la map
-	if (cub->player.has_player == 0)
-	{
-		ft_error(ERR_NO_PLAYER);
-		clean_exit_parsing(cub);
-	}
-}
-
-// check player a la fin
-
 // si on veut faire un flood fill, faire apres avoir determine la position du player
 // faire copie de map pour ne pas modif l original en faisant le floofill avec des '*'
 

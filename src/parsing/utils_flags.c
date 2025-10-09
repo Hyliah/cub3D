@@ -29,7 +29,7 @@ int	is_map_line(char *line)
 	return (0);
 }
 
-// faire empty line . return 1 si empty 
+// Renvoie 1 si empty 
 int	is_empty_line(char *line)
 {
 	int	i;

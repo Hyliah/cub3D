@@ -30,9 +30,9 @@ typedef enum s_dir
 
 typedef struct s_rgb
 {
-    int r;
-    int g;
-    int b;
+    unsigned char	r;
+    unsigned char 	g;
+    unsigned char 	b;
 }   t_rgb;
 
 // contain information about the position of the player and FOV
@@ -132,9 +132,11 @@ typedef enum e_error
 	ERR_MAP_SIZE,
 	ERR_MAP_WALLS,
 	ERR_MAP_PATH,
-	ERR_MAP_NOT_FOUND,
+	ERR_FILE_NOT_FOUND,
 	ERR_NO_PLAYER,
+	ERR_TOO_MANY_PLAYERS,
 	ERR_MAP_LINE,
+	ERR_COLOR,
 }	t_error;
 
 #endif
