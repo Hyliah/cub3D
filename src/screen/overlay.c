@@ -21,10 +21,10 @@ void	init_overlays_weapons(t_cub *cub)
 	else
 		init_overlays(cub, &cub->oscreen.img_olay, OVRLP);
 	init_overlays(cub, &cub->weapons.img_w1, W1);
-	init_overlays(cub, &cub->weapons.img_w1, W2);
-	init_overlays(cub, &cub->weapons.img_w1, W3);
-	init_overlays(cub, &cub->weapons.img_w1, W4);
-	init_overlays(cub, &cub->weapons.img_w1, W5);
+	init_overlays(cub, &cub->weapons.img_w2, W2);
+	init_overlays(cub, &cub->weapons.img_w3, W3);
+	init_overlays(cub, &cub->weapons.img_w4, W4);
+	init_overlays(cub, &cub->weapons.img_w5, W5);
 }
 static void	init_overlays(t_cub *cub, t_img *img, char *xpm)
 {

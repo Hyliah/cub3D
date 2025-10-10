@@ -12,7 +12,7 @@
 
 #include "cub.h"
 
-//static void	clear_image(t_cub *cub);
+static void	clear_image(t_img *img);
 static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y);
 
 void	merge_screens(t_cub *cub)
@@ -20,7 +20,7 @@ void	merge_screens(t_cub *cub)
 	int	mmap_x;
 	int	mmap_y;
 
-	//clear_image(cub);
+	clear_image(&cub->graphic.img_screen);
 	if (cub->mmap.mm_show == TRUE)
 	{
 		// déclaration des offsets -> modifiable
@@ -38,23 +38,23 @@ void	merge_screens(t_cub *cub)
 }
 
 /* doest seem usefull */
-// static void	clear_image(t_cub *cub)
-// {
-// 	int	i;
-// 	int	j;
+static void	clear_image(t_img *img)
+{
+	int	i;
+	int	j;
 
-// 	j = 0;
-// 	while (j < cub->mmap.mm_wid)
-// 	{
-// 		i = 0;
-// 		while (i < cub->mmap.mm_hei)
-// 		{
-// 			set_pixel(&cub->graphic.img_screen, i, j, 0x000000);
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// }
+	j = 0;
+	while (j < img->height)
+	{
+		i = 0;
+		while (i < img->width)
+		{
+			set_pixel(img, i, j, 0x000000);
+			i++;
+		}
+		j++;
+	}
+}
 
 static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y)
 {
