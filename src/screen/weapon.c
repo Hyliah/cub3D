@@ -19,7 +19,6 @@ t_img	*move_weapon(t_cub *cub)
 	int		actual;
 	t_bool	is_up;
 
-	puts("1");
 	actual = cub->weapons.s_nb;
 	is_up = cub->weapons.up;
 	if (actual < 5 && is_up == TRUE)
@@ -36,14 +35,12 @@ t_img	*move_weapon(t_cub *cub)
 		if (actual == 1)
 		cub->weapons.up = TRUE;
 	}
-	puts("2");
 	return (change_frame(cub, actual));
 }
 
+// 12345432123.. system is working 
 static t_img	*change_frame(t_cub *cub, int actual)
 {
-	puts("3");
-	printf("actual = %d\n", actual);
 	if (actual == 1)
 		return (&cub->weapons.img_w1);
 	else if (actual == 2)

@@ -17,9 +17,9 @@ static void	init_overlays(t_cub *cub, t_img *img, char *xpm);
 void	init_overlays_weapons(t_cub *cub)
 {
 	if (cub->oscreen.is_sirius == TRUE)
-		init_overlays(cub, &cub->oscreen.img_olay, OVRLP);
-	else
 		init_overlays(cub, &cub->oscreen.img_olay, OVRLS);
+	else
+		init_overlays(cub, &cub->oscreen.img_olay, OVRLP);
 	init_overlays(cub, &cub->weapons.img_w1, W1);
 	init_overlays(cub, &cub->weapons.img_w1, W2);
 	init_overlays(cub, &cub->weapons.img_w1, W3);

@@ -12,7 +12,7 @@
 
 #include "cub.h"
 
-static void	clear_image(t_cub *cub);
+//static void	clear_image(t_cub *cub);
 static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y);
 
 void	merge_screens(t_cub *cub)
@@ -20,7 +20,7 @@ void	merge_screens(t_cub *cub)
 	int	mmap_x;
 	int	mmap_y;
 
-	clear_image(cub);
+	//clear_image(cub);
 	if (cub->mmap.mm_show == TRUE)
 	{
 		// déclaration des offsets -> modifiable
@@ -31,31 +31,30 @@ void	merge_screens(t_cub *cub)
 		merge_screen(cub, &cub->mmap.img_mmap, mmap_x, mmap_y);
 		merge_screen(cub, &cub->mmap.img_player, mmap_x, mmap_y);
 	}
-	puts("hello");
 	merge_screen(cub, move_weapon(cub), 0, 0);
-	puts("there");
 	merge_screen(cub, &cub->oscreen.img_olay, 0, 0);
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
 		cub->graphic.img_screen.img_ptr, 0, 0);
 }
 
-static void	clear_image(t_cub *cub)
-{
-	int	i;
-	int	j;
+/* doest seem usefull */
+// static void	clear_image(t_cub *cub)
+// {
+// 	int	i;
+// 	int	j;
 
-	j = 0;
-	while (j < cub->mmap.mm_wid)
-	{
-		i = 0;
-		while (i < cub->mmap.mm_hei)
-		{
-			set_pixel(&cub->graphic.img_screen, i, j, 0x000000);
-			i++;
-		}
-		j++;
-	}
-}
+// 	j = 0;
+// 	while (j < cub->mmap.mm_wid)
+// 	{
+// 		i = 0;
+// 		while (i < cub->mmap.mm_hei)
+// 		{
+// 			set_pixel(&cub->graphic.img_screen, i, j, 0x000000);
+// 			i++;
+// 		}
+// 		j++;
+// 	}
+// }
 
 static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y)
 {
@@ -77,26 +76,4 @@ static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y)
 		}
 		y++;
 	}
-	puts("lol what");
 }
-
-// static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y)
-// {
-// 	int		x;
-// 	int		y;
-// 	t_hex_c	pixel_color;
-
-// 	y = 0;
-// 	while (y < cub->mmap.mm_hei && (y + offset_y) < cub->graphic.s_height)
-// 	{
-// 		x = 0;
-// 		while (x < cub->mmap.mm_wid && (x + offset_x) < cub->graphic.s_width)
-// 		{
-// 			pixel_color = get_pixel(img, x, y);
-// 			if (pixel_color != 0x000000)
-// 				set_pixel(&cub->graphic.img_screen, x + offset_x, y + offset_y, pixel_color);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
