@@ -31,6 +31,9 @@ void	merge_screens(t_cub *cub)
 		merge_screen(cub, &cub->mmap.img_mmap, mmap_x, mmap_y);
 		merge_screen(cub, &cub->mmap.img_player, mmap_x, mmap_y);
 	}
+	puts("hello");
+	merge_screen(cub, move_weapon(cub), 0, 0);
+	puts("there");
 	merge_screen(cub, &cub->oscreen.img_olay, 0, 0);
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
 		cub->graphic.img_screen.img_ptr, 0, 0);
@@ -74,6 +77,7 @@ static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y)
 		}
 		y++;
 	}
+	puts("lol what");
 }
 
 // static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y)

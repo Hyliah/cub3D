@@ -12,6 +12,7 @@
 
 #include "cub.h"
 
+static void	init_t_img(t_img *img);
 static void	init_struct_graphic(t_cub *cub);
 static void	init_struct_map_settings(t_cub *cub);
 static void	init_struct_player(t_cub *cub);
@@ -68,23 +69,22 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->graphic.img_w = 0;
 	cub->graphic.mlx_ptr = NULL;
 	cub->graphic.win_ptr = NULL;
-	cub->graphic.img_screen.addr_ptr = NULL;
-	cub->graphic.img_screen.bpp = 0;
-	cub->graphic.img_screen.endian = 0;
-	cub->graphic.img_screen.img_ptr = NULL;
-	cub->graphic.img_screen.size_line = 0;
-	cub->mmap.img_mmap.addr_ptr = NULL;
-	cub->mmap.img_mmap.bpp = 0;
-	cub->mmap.img_mmap.endian = 0;
-	cub->mmap.img_mmap.img_ptr = NULL;
-	cub->mmap.img_mmap.size_line = 0;
 	cub->mmap.mm_show = TRUE;
 	cub->oscreen.img_os = NULL;
 	cub->oscreen.img_pe = NULL;
 	cub->oscreen.img_si = NULL;
-	cub->oscreen.img_olp = NULL;
-	cub->oscreen.img_ols = NULL;
 	cub->oscreen.is_sirius = TRUE;
+	cub->weapons.s_nb = 1;
+	cub->weapons.up = TRUE;
+	init_t_img(&cub->weapons.img_w1);
+	init_t_img(&cub->weapons.img_w2);
+	init_t_img(&cub->weapons.img_w3);
+	init_t_img(&cub->weapons.img_w4);
+	init_t_img(&cub->weapons.img_w5);
+	init_t_img(&cub->oscreen.img_olay);
+	init_t_img(&cub->graphic.img_screen);
+	init_t_img(&cub->mmap.img_mmap);
+	init_t_img(&cub->mmap.img_player);
 }
 
 #else
@@ -99,23 +99,30 @@ static void	init_struct_graphic(t_cub *cub)
 	cub->graphic.img_w = 0;
 	cub->graphic.mlx_ptr = NULL;
 	cub->graphic.win_ptr = NULL;
-	cub->graphic.img_screen.addr_ptr = NULL;
-	cub->graphic.img_screen.bpp = 0;
-	cub->graphic.img_screen.endian = 0;
-	cub->graphic.img_screen.img_ptr = NULL;
-	cub->graphic.img_screen.size_line = 0;
-	cub->mmap.img_mmap.addr_ptr = NULL;
-	cub->mmap.img_mmap.bpp = 0;
-	cub->mmap.img_mmap.endian = 0;
-	cub->mmap.img_mmap.img_ptr = NULL;
-	cub->mmap.img_mmap.size_line = 0;
 	cub->mmap.mm_show = TRUE;
 	cub->oscreen.img_os = NULL;
 	cub->oscreen.img_pe = NULL;
 	cub->oscreen.img_si = NULL;
-	cub->oscreen.img_olp = NULL;
-	cub->oscreen.img_ols = NULL;
 	cub->oscreen.is_sirius = TRUE;
+	cub->weapons.s_nb = 1;
+	cub->weapons.up = TRUE;
+	init_t_img(&cub->weapons.img_w1);
+	init_t_img(&cub->weapons.img_w2);
+	init_t_img(&cub->weapons.img_w3);
+	init_t_img(&cub->weapons.img_w4);
+	init_t_img(&cub->weapons.img_w5);
+	init_t_img(&cub->oscreen.img_olay);
+	init_t_img(&cub->graphic.img_screen);
+	init_t_img(&cub->mmap.img_mmap);
+	init_t_img(&cub->mmap.img_player);
 }
 
+static void	init_t_img(t_img *img)
+{
+	img->addr_ptr = NULL;
+	img->bpp = 0;
+	img->endian = 0;
+	img->img_ptr = NULL;
+	img->size_line = 0;
+}
 #endif

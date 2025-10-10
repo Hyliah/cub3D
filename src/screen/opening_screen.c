@@ -12,6 +12,7 @@
 
 #include "cub.h"
 
+/*possibilite de faire une fonction pour les init -> si trop long*/
 void	init_opening_screen(t_cub *cub)
 {
 	int	x;
@@ -19,12 +20,15 @@ void	init_opening_screen(t_cub *cub)
 
 	x = cub->graphic.s_width;
 	y = cub->graphic.s_height;
-
 	cub->oscreen.img_os = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OS, &x, &y);
+	//if (!cub->oscreen.img_os)
+		// 	infructuous_smth;	
 	cub->oscreen.img_pe = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OSP, &x, &y);
+	//if (!cub->oscreen.img_pe)
+		// 	infructuous_smth;	
 	cub->oscreen.img_si = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OSS, &x, &y);
-	cub->oscreen.img_olay.img_ptr = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OVRLP, &x, &y);
-	
+	//if (!cub->oscreen.img_si)
+		// 	infructuous_smth;
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
 		cub->oscreen.img_os, 0, 0);
 }

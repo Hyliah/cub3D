@@ -33,6 +33,9 @@ void	create_window(t_cub *cub);
 void	move_player(t_cub *cub);
 void	opening_screen_handle(t_cub *cub, int keycode);
 void	init_opening_screen(t_cub *cub);
+void	init_overlays_weapons(t_cub *cub);
+
+t_img	*move_weapon(t_cub *cub);
 
 /* MINIMAP*/
 void	mm_creation(t_cub *cub);

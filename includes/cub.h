@@ -20,6 +20,7 @@
 
 # include "mlx.h"
 # include "libft.h"
+# include "cub_define.h"
 # include "cub_struct.h"
 # include "cub_keyboard.h"
 # include "cub_functions.h"

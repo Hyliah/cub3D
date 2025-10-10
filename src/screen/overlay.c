@@ -11,3 +11,33 @@
 /*****************************************************************************/
 
 #include "cub.h"
+
+static void	init_overlays(t_cub *cub, t_img *img, char *xpm);
+
+void	init_overlays_weapons(t_cub *cub)
+{
+	if (cub->oscreen.is_sirius == TRUE)
+		init_overlays(cub, &cub->oscreen.img_olay, OVRLP);
+	else
+		init_overlays(cub, &cub->oscreen.img_olay, OVRLS);
+	init_overlays(cub, &cub->weapons.img_w1, W1);
+	init_overlays(cub, &cub->weapons.img_w1, W2);
+	init_overlays(cub, &cub->weapons.img_w1, W3);
+	init_overlays(cub, &cub->weapons.img_w1, W4);
+	init_overlays(cub, &cub->weapons.img_w1, W5);
+}
+static void	init_overlays(t_cub *cub, t_img *img, char *xpm)
+{
+	int	x;
+	int	y;
+
+	x = cub->graphic.s_width;
+	y = cub->graphic.s_height;
+	img->img_ptr = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, xpm, &x, &y);
+	// if (!img->img_ptr)
+	// 	infructuous_smth;
+	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
+				&img->endian);
+	img->width = x;
+	img->height = y;
+}
