@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <math.h>
 
 # include "mlx.h"
 # include "libft.h"

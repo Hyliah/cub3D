@@ -12,3 +12,7 @@
 
 #include "cub.h"
 
+float	cal_ray_dir(float dir, float plane, float camera_x)
+{
+	return (dir + plane * camera_x);
+}

@@ -32,7 +32,7 @@ void	mm_player_draw(t_cub *cub, int color)
 		j = -thick;
 		while (j <= thick)
 		{
-			if (ft_abs(i) + ft_abs(j) <= thick)
+			if (abs(i) + abs(j) <= thick)
 				set_pixel(&cub->mmap.img_player, (x + i), (y + j), color);
 			j++;
 		}

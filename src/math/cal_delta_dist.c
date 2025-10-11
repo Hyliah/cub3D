@@ -12,3 +12,10 @@
 
 #include "cub.h"
 
+float	cal_delta_dist(float ray_dir)
+{
+	if (ray_dir == 0.0f)
+		return (1e30f);
+	else
+		return(fabsf(1.0f/ray_dir));
+}

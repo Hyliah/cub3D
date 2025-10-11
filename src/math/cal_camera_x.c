@@ -12,3 +12,8 @@
 
 #include "cub.h"
 
+/* gerer les soucis de castage */
+float	cal_camera_x(int pixel_width, int x)
+{
+	return (2 * x / pixel_width - 1);
+}
