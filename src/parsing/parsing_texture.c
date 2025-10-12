@@ -23,7 +23,8 @@ void	parse_texture_line(t_cub *cub, char *line)
 	if (!split || !split[0] || !split[1])
 	{
 		free_tab(split);
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
+		// mess extra
 		clean_exit_parsing(cub);
 	}
 	orientation = split[0];
@@ -39,7 +40,7 @@ void	parse_texture_line(t_cub *cub, char *line)
 	else
 	{
 		free_tab(split);
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici ( invalid texture orientation)
 		clean_exit_parsing;
 	}
@@ -50,14 +51,14 @@ void	parse_text_no(t_cub *cub, char *path)
 {
 	if (cub->setting.has_tex_no)
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( texture already defined ? )
 		clean_exit_parsing;
 	}
 	cub->setting.tex_no = ft_strdup(path);
 	if (!cub->setting.tex_no)
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( memory failed for NO texture )
 		clean_exit_parsing;
 	}
@@ -68,14 +69,14 @@ void	parse_text_so(t_cub *cub, char *path)
 {
 	if (cub->setting.has_tex_so)
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( texture already defined ? )
 		clean_exit_parsing;
 	}
 	cub->setting.tex_so = ft_strdup(path);
 	if (!cub->setting.tex_so)
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( memory failed for SO texture )
 		clean_exit_parsing;
 	}
@@ -86,14 +87,14 @@ void	parse_text_ea(t_cub *cub, char *path)
 {
 	if (cub->setting.has_tex_ea)
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( texture already defined ? )
 		clean_exit_parsing;
 	}
 	cub->setting.tex_ea = ft_strdup(path);
 	if (!cub->setting.tex_ea)
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( memory failed for EA texture )
 		clean_exit_parsing;
 	}
@@ -104,15 +105,15 @@ void	parse_text_we(t_cub *cub, char *path)
 {
 	if (cub->setting.has_tex_we)
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( texture already defined ? )
 		clean_exit_parsing;
 	}
 	cub->setting.tex_we = ft_strdup(path);
 	if (!cub->setting.tex_we)
 	{
-		ft_error(ERR_MAP_INVALID);
-		// mess plus explicite ici aussi ? ( memory failed for SO texture )
+		ft_error(ERR_TEXTURE);
+		// mess plus explicite ici aussi ? ( memory failed for WE texture )
 		clean_exit_parsing;
 	}
 	cub->setting.has_tex_we = 1;

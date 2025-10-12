@@ -32,7 +32,8 @@ void	parse_color_line(t_cub *cub, char *line)
 		parse_color_ceiling(cub, color);
 	else
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_COLOR);
+		// extra mess ?
 		clean_exit_parsing(cub);
 	}
 	free_tab(split);

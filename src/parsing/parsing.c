@@ -100,6 +100,7 @@ void	parse_file(t_cub *cub, char *pathname)
 			if (!is_map_line(line)) // pour verif si y'a qqchose apres erreur 
 			{
 				ft_error(ERR_MAP_INVALID);
+				// mess extra 
 				clean_exit_parsing(cub);
 			}
 			map_lines = alloc_map_line(map_lines, &map_count, line);
@@ -114,6 +115,7 @@ void	parse_file(t_cub *cub, char *pathname)
 	if ( map_count == 0)
 	{
 		ft_error(ERR_MAP_INVALID);
+		// extra mess 
 		clean_exit_parsing(cub);
 	}
 	// remplir la struct avec les element du parsing 

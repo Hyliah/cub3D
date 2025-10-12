@@ -30,7 +30,8 @@ void	check_player(t_cub *cub)
 			{
 				if ( cub->player.has_player == 1) // check si deja un joueur = erreur 
 				{
-					ft_error(ERR_TOO_MANY_PLAYERS);
+					ft_error(ERR_PLAYER);
+					// too many player on the map \n
 					clean_exit_parsing;
 				}
 				init_player(cub, x, y, c);
@@ -47,7 +48,8 @@ void	check_no_player(t_cub *cub)
 {
 	if (cub->player.has_player == 0)
 	{
-		ft_error(ERR_NO_PLAYER);
+		ft_error(ERR_PLAYER);
+		// no player on the map \n
 		clean_exit_parsing(cub);
 	}
 }

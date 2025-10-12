@@ -32,14 +32,14 @@ void	ft_error(t_error error)
 		ft_putstr_fd("Invalid path\n", STDERR_FILENO);
 	else if (error == ERR_FILE_NOT_FOUND)
 		ft_putstr_fd("File not found\n", STDERR_FILENO);
-	else if (error == ERR_NO_PLAYER)
-		ft_putstr_fd("Need player on the map\n", STDERR_FILENO);
-	else if (error == ERR_TOO_MANY_PLAYERS)
-		ft_putstr_fd("Too many players on the map\n", STDERR_FILENO);
+	else if (error == ERR_PLAYER)
+		ft_putstr_fd("Error player: ", STDERR_FILENO); // pas de \n car mess apres 
 	else if (error == ERR_MAP_LINE)
 		ft_putstr_fd("No empty line on the map\n", STDERR_FILENO);
 	else if (error == ERR_COLOR)
-		ft_putstr_fd("Invalid color\n", STDERR_FILENO);
+		ft_putstr_fd("Invalid color: ", STDERR_FILENO); // pas de \n car mess apres 
+	else if (error == ERR_TEXTURE)
+		ft_putstr_fd("Invalid texture: ", STDERR_FILENO); // pas de \n car mess apres 
 	exit(EXIT_FAILURE);
 }
 

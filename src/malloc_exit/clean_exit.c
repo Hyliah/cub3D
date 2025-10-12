@@ -36,8 +36,32 @@ int	clean_exit(t_cub *cub)
 
 int	clean_exit_parsing(t_cub *cub)
 {
-	// free tab chaque ligne puis le tableau
-	// free texture de tout 
-	// free cub
-	// exit 
+	if (!cub)
+		exit(EXIT_FAILURE);
+	if (cub->setting.fd > 2) // fd == 0 (stdin) ou fd == 1/2 (stdout/stderr) ne doivent jamais être fermés. ?? a check 
+		close(cub->setting.fd);
+
+	// free texture de tout
+	if ( cub->setting.tex_no)
+		free(cub->setting.tex_no);
+	if ( cub->setting.tex_so)
+		free(cub->setting.tex_so);
+	if ( cub->setting.tex_ea)
+		free(cub->setting.tex_ea);
+	if ( cub->setting.tex_we)
+		free(cub->setting.tex_we);
+
+	// free la map
+	if(cub->map.map_tab)
+		free_tab(&cub->map.map_tab);
+	
+	// remettre les pointeurs a null
+	cub->setting.tex_no = NULL;
+	cub->setting.tex_so = NULL;
+	cub->setting.tex_ea = NULL;
+	cub->setting.tex_we = NULL;
+	cub->map.map_tab = NULL;
+
+	free(cub);
+	exit (EXIT_FAILURE);
 }
