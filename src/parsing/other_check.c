@@ -37,7 +37,9 @@ void	check_texture(t_cub *cub)
 	check_file_access(cub, cub->setting.has_tex_we);
 }
 
-// check les couleurs ( entre 0 - 255) // faire modif mess erreur pour couleur ? 
+// check les couleurs ( entre 0 - 255) 
+// apres le aprsing comnplet pour voir si tt est present et correct
+// faire modif mess erreur pour couleur ? 
 void	check_color(t_cub *cub)
 {
 	// flag
@@ -53,6 +55,7 @@ void	check_color(t_cub *cub)
 		|| !cub->setting.f_color.b < 0 || !cub->setting.f_color.b > 255)
 	{
 		ft_error(ERR_COLOR);
+		// extra mess
 		clean_exit_parsing(cub);
 	}
 	//ceiling
@@ -61,6 +64,7 @@ void	check_color(t_cub *cub)
 		|| !cub->setting.c_color.b < 0 || !cub->setting.c_color.b > 255)
 	{
 		ft_error(ERR_COLOR);
+		// extra mess 
 		clean_exit_parsing(cub);
 	}
 }
