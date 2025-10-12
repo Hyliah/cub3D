@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"cub_keyboard.h": "c"
+		"cub_keyboard.h": "c",
+		"cub.h": "c"
 	}
 }

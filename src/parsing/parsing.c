@@ -35,6 +35,7 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_file_access(cub, av[1]);
 	parse_file(cub, av[1]); // lecture complete et stock textures, couleur et map
 	check_texture(cub); // verifie que c'est correct
+	//printf("debug\n"); //---------------------------------------------------------------
 	check_color(cub); // same
 	check_map(cub); // invalid char, line, player puis wall (?) a supp si floodfill ? 
 	// flood fill ici ? A la toute fin ( apres player ) 
@@ -62,17 +63,13 @@ void	parse_file(t_cub *cub, char *pathname)
 	line = get_next_line(fd);
 	while (line != NULL) 
 	{
-		// degager les \n ?? faire fonction de trim ? 
 		ft_strtrim_newline(line);
-
-		// ignorer les lignes vides AVANT LA MAP //
 		if (is_empty_line(line))
 		{
 			free(line);
 			line = get_next_line(fd);
 			continue;
 		}
-
 		// detecter le debut de la map et mettre un flag debutdemap ( map_start)
 		if (!map_start)
 		{
@@ -90,6 +87,7 @@ void	parse_file(t_cub *cub, char *pathname)
 			{
 				free(line);
 				ft_error(ERR_MAP_INVALID);
+				printf("debug\n"); // a supp ----------------------------
 				clean_exit_parsing(cub);
 			}
 		}
@@ -100,7 +98,7 @@ void	parse_file(t_cub *cub, char *pathname)
 			if (!is_map_line(line)) // pour verif si y'a qqchose apres erreur 
 			{
 				ft_error(ERR_MAP_INVALID);
-				// mess extra 
+				ft_putstr_fd("Element shouldn't be after the map\n", 2);
 				clean_exit_parsing(cub);
 			}
 			map_lines = alloc_map_line(cub, map_lines, &map_count, line);
@@ -115,7 +113,7 @@ void	parse_file(t_cub *cub, char *pathname)
 	if ( map_count == 0)
 	{
 		ft_error(ERR_MAP_INVALID);
-		// extra mess 
+		ft_putstr_fd("No lines were found\n", 2);
 		clean_exit_parsing(cub);
 	}
 	// remplir la struct avec les element du parsing 
@@ -135,6 +133,7 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 	if (!new)
 	{
 		ft_error(ERR_MAP_INVALID);
+		printf("debug : malloc fail"); // a supp
 		clean_exit_parsing(cub);
 	}
 	i = 0;
@@ -148,6 +147,7 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 	{
 		free(new);
 		ft_error(ERR_MAP_INVALID);
+		printf("debug : strdundup fail"); // a supp
 		clean_exit_parsing(cub);
 	}
 	new[i + 1] = NULL;

@@ -22,7 +22,7 @@ int main (int ac, char **av)
     (void)av;
 
     init_struct(&cub);
-	parsing(&cub, ac, av); // MELO, qd ce sera fini 
+	parsing(&cub, ac, av);
     //hardcode_map(&cub, av[2]);
     //print_tab(cub.map.map_tab);
     // create_window(&cub);

@@ -19,16 +19,27 @@ void	parse_texture_line(t_cub *cub, char *line)
 	char	*orientation;
 	char	*path;
 
+	if (!line || !*line)
+	{
+		ft_error(ERR_TEXTURE);
+		ft_putstr_fd("Empty texture line\n", 2);
+		clean_exit_parsing(cub);
+	}
+
 	split = ft_split(line, ' '); // on split les 2 element : orientation et chemin de la texture
-	if (!split || !split[0] || !split[1])
+	if (!split || !split[0] || !split[1] || split[2])
 	{
 		free_tab(&split);
 		ft_error(ERR_TEXTURE);
-		// mess extra
+		ft_putstr_fd("Invalid texture format\n", 2);
 		clean_exit_parsing(cub);
 	}
 	orientation = split[0];
 	path = split[1];
+
+	//verif xpm
+
+
 	if (ft_strncmp(orientation, "NO", 3) == 0)
 		parse_text_no(cub, path);
 	else if (ft_strncmp(orientation, "SO", 3) == 0)
@@ -41,7 +52,7 @@ void	parse_texture_line(t_cub *cub, char *line)
 	{
 		free_tab(&split);
 		ft_error(ERR_TEXTURE);
-		// mess plus explicite ici ( invalid texture orientation)
+		ft_putstr_fd("Invalid texture orientation\n", 2);
 		clean_exit_parsing(cub);
 	}
 	free_tab(&split);
@@ -98,7 +109,7 @@ void	parse_text_ea(t_cub *cub, char *path)
 		// mess plus explicite ici aussi ? ( memory failed for EA texture )
 		clean_exit_parsing(cub);
 	}
-	cub->setting.has_tex_so = 1;
+	cub->setting.has_tex_ea = 1;
 }
 
 void	parse_text_we(t_cub *cub, char *path)

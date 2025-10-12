@@ -40,7 +40,6 @@ void	ft_error(t_error error)
 		ft_putstr_fd("Invalid color: ", STDERR_FILENO); // pas de \n car mess apres 
 	else if (error == ERR_TEXTURE)
 		ft_putstr_fd("Invalid texture: ", STDERR_FILENO); // pas de \n car mess apres 
-	exit(EXIT_FAILURE);
 }
 
 // faire fonction de trim pour remplacer les \n par des \0 
