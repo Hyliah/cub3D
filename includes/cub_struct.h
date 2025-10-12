@@ -32,18 +32,42 @@ typedef enum s_bool
 // contain information about the position of the player and FOV
 typedef struct s_player
 {
-	// gestion des fps
-	double		new_time;
-	double		old_time;
+	// gestion des fps -> creer une boucle while qui envoie tant de FPS
+	double	new_time;
+	double	old_time;
 	// position of the player on the map
-	float		pos_x;
-	float		pos_y;
+	float	pos_x;
+	float	pos_y;
 	// direction of the player -> vertical lane in front of the player
-	float		dir_x;
-	float		dir_y;
-	// camera plane -> horizontal lane of the player
-	float		pl_x;
-	float		pl_y;
+	float	dir_x;
+	float	dir_y;
+	// camera plane -> horizontal lane of the player -| from dir
+	float	pl_x;
+	float	pl_y;
+	// de -1 a 1 . 0 au centre
+	float	cam_x;
+	float	cam_y;
+
+	float	ray_dir_x;
+	float	ray_dir_y;
+	// distance ray has to travel from point to first xy side
+	float	side_dist_x;
+	float	side_dist_y;
+	// distance ray has to travel from 1 side xy to the next
+	float	delta_dist_x;
+	float	delta_dist_y;
+	// distance jusqu au mur
+	float	perp_wall_dist;
+	// hauteur du mur
+	int		line_height;
+
+	int		step_x;
+	int		step_y;
+	//sur quel carre on est
+	int		map_x;
+	int		map_y;
+
+
 	//pas sure si utile
 	t_dir   dir;
 }	t_player;

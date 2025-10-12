@@ -25,7 +25,6 @@ void	merge_screens(t_cub *cub);
 void	set_pixel(t_img *img, int x, int y, t_hex_c color);
 
 /* SCREEN */
-int		ft_abs(int i);
 int		key_press(int keycode, t_cub *cub);
 int		key_release(int keycode, t_cub *cub);
 
@@ -36,6 +35,16 @@ void	init_opening_screen(t_cub *cub);
 void	init_overlays_weapons(t_cub *cub);
 
 t_img	*move_weapon(t_cub *cub);
+
+/* MATH */
+void	cal_map(t_cub *cub);
+void	cal_step(t_cub *cub);
+void	cal_side_dist(t_cub *cub);
+void	cal_delta_dist(t_cub *cub);
+void	cal_delta_dist(t_cub *cub);
+void	cal_line_height(t_cub *cub);
+void	cal_camera_x(t_cub *cub, int x);
+void	cal_perp_wall_dist(t_cub *cub, int side);
 
 /* MINIMAP*/
 void	mm_creation(t_cub *cub);

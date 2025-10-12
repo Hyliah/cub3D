@@ -12,10 +12,14 @@
 
 #include "cub.h"
 
-float	cal_side_dist(float pos, float map, float delta_dist, float ray_dir)
+void	cal_step(t_cub *cub)
 {
-	if (ray_dir < 0)
-		return (-1);
+	if (cub->player.ray_dir_x < 0)
+		cub->player.step_x = -1;
 	else
-		return (1);
+		cub->player.step_x = 1;
+	if (cub->player.ray_dir_y < 0)
+		cub->player.step_y = -1;
+	else
+		cub->player.step_y = 1;
 }

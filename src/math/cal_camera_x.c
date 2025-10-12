@@ -13,7 +13,17 @@
 #include "cub.h"
 
 /* gerer les soucis de castage */
-float	cal_camera_x(int pixel_width, int x)
+void	cal_camera_x(t_cub *cub, int x)
 {
-	return (2 * x / pixel_width - 1);
+	cub->player.cam_x = (2 * x / cub->graphic.s_width - 1);
 }
+
+/*
+1 - camera x
+2 - ray dir xy
+3 - delta dist xy
+4 - mapx mapy
+5 - side dist xy
+6 - perp_wall_dist
+7 - line_height
+*/

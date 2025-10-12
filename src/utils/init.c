@@ -117,6 +117,8 @@ static void	init_struct_graphic(t_cub *cub)
 	init_t_img(&cub->mmap.img_player);
 }
 
+#endif
+
 static void	init_t_img(t_img *img)
 {
 	img->addr_ptr = NULL;
@@ -125,4 +127,3 @@ static void	init_t_img(t_img *img)
 	img->img_ptr = NULL;
 	img->size_line = 0;
 }
-#endif

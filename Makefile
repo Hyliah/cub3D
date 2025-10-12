@@ -41,6 +41,7 @@ vpath %.c \
 	$(SRCDIR) \
 	$(SRCDIR)/utils \
 	$(SRCDIR)/parsing \
+	$(SRCDIR)/math \
 	$(SRCDIR)/screen \
 	$(SRCDIR)/screen/minimap \
 	$(SRCDIR)/malloc_exit \
@@ -52,6 +53,7 @@ clean_exit.c free.c \
 get_pixel.c set_pixel.c merge_screen.c \
 key_handle.c move_player.c weapon.c window_creation.c opening_screen.c overlay.c screen_utils.c \
 minimap.c mm_player.c\
+cal_camera_x.c cal_delta_dist.c cal_ray_dir.c cal_side_dist.c cal_step.c \
 init.c \
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))

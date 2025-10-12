@@ -12,10 +12,15 @@
 
 #include "cub.h"
 
-float	cal_delta_dist(float ray_dir)
+void	cal_delta_dist(t_cub *cub)
 {
-	if (ray_dir == 0.0f)
-		return (1e30f);
+	if (cub->player.ray_dir_x == 0.0f)
+		cub->player.delta_dist_x = 1e30f;
 	else
-		return(fabsf(1.0f/ray_dir));
+		cub->player.delta_dist_x = fabsf(1.0f/cub->player.ray_dir_x);
+	if (cub->player.ray_dir_y == 0.0f)
+		cub->player.delta_dist_y = 1e30f;
+	else
+		cub->player.delta_dist_y = fabsf(1.0f/cub->player.ray_dir_y);
+
 }
