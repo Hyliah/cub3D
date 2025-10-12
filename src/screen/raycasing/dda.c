@@ -12,17 +12,28 @@
 
 #include "cub.h"
 
-void	cal_camera_x(t_cub *cub, int x)
+int	dda(t_cub *cub)
 {
-	cub->player.cam_x = (float)(2 * x / cub->graphic.s_width - 1);
-}
+	int	hit;
+	int	side;
 
-/*
-1 - camera x
-2 - ray dir xy
-3 - delta dist xy
-4 - mapx mapy
-5 - side dist xy
-6 - perp_wall_dist
-7 - line_height
-*/
+	hit = 0;
+	while (hit == 0)
+	{
+		if (cub->player.side_dist_x < cub->player.side_dist_y)
+		{
+			cub->player.side_dist_x += cub->player.side_dist_x;
+			cub->player.map_x += cub->player.step_x;
+			side = 0;
+		}
+		else
+		{
+			cub->player.side_dist_y += cub->player.side_dist_y;
+			cub->player.map_y += cub->player.step_y;
+			side = 1;
+		}
+		if (cub->map.map_tab[cub->player.map_x][cub->player.map_y] > 0)
+			hit = 1;
+	}
+	return (side);
+}

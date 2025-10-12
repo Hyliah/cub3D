@@ -30,6 +30,7 @@ void	create_window(t_cub *cub)
 	init_img(cub, &cub->graphic.img_screen, x, y);
 	init_img(cub, &cub->mmap.img_mmap, cub->mmap.mm_wid, cub->mmap.mm_hei);
 	init_img(cub, &cub->mmap.img_player, cub->mmap.mm_wid, cub->mmap.mm_hei);
+	// deplacer ca ?
 	mm_creation(cub);
 	mlx_hook(cub->graphic.win_ptr, 17, 0, clean_exit, cub);
 }

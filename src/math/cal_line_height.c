@@ -14,8 +14,8 @@
 
 void	cal_line_height(t_cub *cub)
 {
-	cub->player.line_height =
-		(int)(cub->graphic.s_height / cub->player.perp_wall_dist);
+	cub->player.line_height
+		= (int)(cub->graphic.s_height / cub->player.perp_wall_dist);
 }
 
 // int drawStart = -lineHeight / 2 + h / 2;

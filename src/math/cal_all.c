@@ -12,9 +12,16 @@
 
 #include "cub.h"
 
-void	cal_camera_x(t_cub *cub, int x)
+void	cal_all(t_cub *cub, int x, int side)
 {
-	cub->player.cam_x = (float)(2 * x / cub->graphic.s_width - 1);
+	cal_camera_x(cub, x);
+    cal_ray_dir(cub);
+    cal_delta_dist(cub);
+    cal_map(cub);
+    cal_step(cub);
+    cal_side_dist(cub);
+    cal_perp_wall_dist(cub, side);
+    cal_line_height(cub);
 }
 
 /*
@@ -22,7 +29,8 @@ void	cal_camera_x(t_cub *cub, int x)
 2 - ray dir xy
 3 - delta dist xy
 4 - mapx mapy
-5 - side dist xy
-6 - perp_wall_dist
-7 - line_height
+5 - step
+6 - side dist xy
+7 - perp_wall_dist
+8 - line_height
 */

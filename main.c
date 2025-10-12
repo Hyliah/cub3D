@@ -13,7 +13,6 @@
 #include "cub.h"
 
 void        hardcode_map(t_cub *cub, char *arg);
-//static void	print_tab(char **tab);
 
 int main (int ac, char **av)
 {
@@ -32,14 +31,13 @@ int main (int ac, char **av)
 
 		// mise en place de la window
 		create_window(&cub);
+
+		while (cub.game_on == TRUE)
+			raycasting(&cub);
 		// gestion des boutons
 		mlx_hook(cub.graphic.win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press, &cub);
 		mlx_hook(cub.graphic.win_ptr, KEY_RELEASE, KEY_RELEASE_MASK, key_release, &cub);
 		
-		
-		/* cett shit ne marche pas mais j ai une autre solution*/
-		//mlx_loop_hook(cub.graphic.mlx_ptr, move_player, &cub);
-		//mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
 		// loop la window pour pas quelle se barre
 		mlx_loop(cub.graphic.mlx_ptr);
 	}
