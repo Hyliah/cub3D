@@ -31,10 +31,10 @@ void	check_texture(t_cub *cub)
 		ft_putstr_fd("Invalid texture\n", 2);
 		clean_exit_parsing(cub);
 	}
-	check_file_access(cub, cub->setting.has_tex_no);
-	check_file_access(cub, cub->setting.has_tex_so);
-	check_file_access(cub, cub->setting.has_tex_ea);
-	check_file_access(cub, cub->setting.has_tex_we);
+	check_file_access(cub, cub->setting.tex_no);
+	check_file_access(cub, cub->setting.tex_so);
+	check_file_access(cub, cub->setting.tex_ea);
+	check_file_access(cub, cub->setting.tex_we);
 }
 
 // check les couleurs ( entre 0 - 255) 
@@ -50,21 +50,21 @@ void	check_color(t_cub *cub)
 		clean_exit_parsing(cub);
 	}
 	// floor
-	if (!cub->setting.f_color.r < 0 || !cub->setting.f_color.r > 255
-		|| !cub->setting.f_color.g < 0 || !cub->setting.f_color.g > 255
-		|| !cub->setting.f_color.b < 0 || !cub->setting.f_color.b > 255)
+	if (cub->setting.f_color.r < 0 || cub->setting.f_color.r > 255
+		|| cub->setting.f_color.g < 0 || cub->setting.f_color.g > 255
+		|| cub->setting.f_color.b < 0 || cub->setting.f_color.b > 255)
 	{
 		ft_error(ERR_COLOR);
-		// extra mess
+		// extra mess , invalide floor color , must be 0 - 255 
 		clean_exit_parsing(cub);
 	}
 	//ceiling
-	if (!cub->setting.c_color.r < 0 || !cub->setting.c_color.r > 255
-		|| !cub->setting.c_color.g < 0 || !cub->setting.c_color.g > 255
-		|| !cub->setting.c_color.b < 0 || !cub->setting.c_color.b > 255)
+	if (cub->setting.c_color.r < 0 || cub->setting.c_color.r > 255
+		|| cub->setting.c_color.g < 0 || cub->setting.c_color.g > 255
+		|| cub->setting.c_color.b < 0 || cub->setting.c_color.b > 255)
 	{
 		ft_error(ERR_COLOR);
-		// extra mess 
+		// extra mess , invalide ceiling color , must be 0 - 255 
 		clean_exit_parsing(cub);
 	}
 }

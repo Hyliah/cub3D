@@ -37,7 +37,7 @@ int		is_color_line(char *line);
 
 void	parsing(t_cub *cub, int ac, char **av);
 void	parse_file(t_cub *cub, char *pathname);
-char	**alloc_map_line(char **map, int *count, char *line);
+char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line);
 
 void 	check_player(t_cub *cub);
 void	check_no_player(t_cub *cub);

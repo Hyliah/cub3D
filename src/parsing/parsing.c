@@ -34,8 +34,8 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_cub(cub, av[1]);
 	check_file_access(cub, av[1]);
 	parse_file(cub, av[1]); // lecture complete et stock textures, couleur et map
-	check_textures(cub); // verifie que c'est correct
-	check_colors(cub); // same
+	check_texture(cub); // verifie que c'est correct
+	check_color(cub); // same
 	check_map(cub); // invalid char, line, player puis wall (?) a supp si floodfill ? 
 	// flood fill ici ? A la toute fin ( apres player ) 
 
@@ -79,7 +79,7 @@ void	parse_file(t_cub *cub, char *pathname)
 			if (is_map_line(line)) // evite de skip la first line 
 			{
 				map_start = 1;
-				map_lines = alloc_map_line(map_lines, &map_count, line);
+				map_lines = alloc_map_line(cub, map_lines, &map_count, line);
 				map_count++;
 			}
 			else if (is_texture_line(line))
@@ -103,7 +103,7 @@ void	parse_file(t_cub *cub, char *pathname)
 				// mess extra 
 				clean_exit_parsing(cub);
 			}
-			map_lines = alloc_map_line(map_lines, &map_count, line);
+			map_lines = alloc_map_line(cub, map_lines, &map_count, line);
 			map_count++;
 		}
 		free(line);
@@ -126,7 +126,7 @@ void	parse_file(t_cub *cub, char *pathname)
 
 
 // alloc du tableau de ligen de la map 
-char	**alloc_map_line(char **map, int *count, char *line)
+char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 {
 	char	**new;
 	int 	i;
@@ -135,7 +135,7 @@ char	**alloc_map_line(char **map, int *count, char *line)
 	if (!new)
 	{
 		ft_error(ERR_MAP_INVALID);
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	i = 0;
 	while ( i < *count)
@@ -148,7 +148,7 @@ char	**alloc_map_line(char **map, int *count, char *line)
 	{
 		free(new);
 		ft_error(ERR_MAP_INVALID);
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	new[i + 1] = NULL;
 	free(map);

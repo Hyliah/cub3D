@@ -30,9 +30,9 @@ typedef enum s_dir
 
 typedef struct s_rgb
 {
-    unsigned char	r;
-    unsigned char 	g;
-    unsigned char 	b;
+    int		r; // unsigned char ? mais verif deja faire ds le parsing donc tt changer ? 
+    int 	g;
+    int 	b;
 }   t_rgb;
 
 // contain information about the position of the player and FOV

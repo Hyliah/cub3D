@@ -32,7 +32,7 @@ void	check_player(t_cub *cub)
 				{
 					ft_error(ERR_PLAYER);
 					// too many player on the map \n
-					clean_exit_parsing;
+					clean_exit_parsing(cub);
 				}
 				init_player(cub, x, y, c);
 				cub->map.map_tab[y][x] = '0';	// remplacer le joueur par le sol dans la map

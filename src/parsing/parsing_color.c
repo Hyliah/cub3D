@@ -36,7 +36,7 @@ void	parse_color_line(t_cub *cub, char *line)
 		// extra mess ?
 		clean_exit_parsing(cub);
 	}
-	free_tab(split);
+	free_tab(&split);
 }
 void	parse_color_floor(t_cub *cub, t_rgb color)
 {
@@ -77,7 +77,7 @@ t_rgb	parse_rgb(t_cub *cub, char *str)
 	color.r = ft_atoi(rgb[0]);
 	color.g = ft_atoi(rgb[1]);
 	color.b = ft_atoi(rgb[2]);
-	free_tab(rgb);
+	free_tab(&rgb);
 	if (color.r < 0 || color.r > 255 || color.g < 0 ||
 		color.g > 255 || color.b < 0 || color.b > 255)
 		{

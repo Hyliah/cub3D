@@ -22,7 +22,7 @@ void	parse_texture_line(t_cub *cub, char *line)
 	split = ft_split(line, ' '); // on split les 2 element : orientation et chemin de la texture
 	if (!split || !split[0] || !split[1])
 	{
-		free_tab(split);
+		free_tab(&split);
 		ft_error(ERR_TEXTURE);
 		// mess extra
 		clean_exit_parsing(cub);
@@ -39,12 +39,12 @@ void	parse_texture_line(t_cub *cub, char *line)
 		parse_text_we(cub, path);
 	else
 	{
-		free_tab(split);
+		free_tab(&split);
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici ( invalid texture orientation)
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
-	free_tab(split);
+	free_tab(&split);
 }
 
 void	parse_text_no(t_cub *cub, char *path)
@@ -53,14 +53,14 @@ void	parse_text_no(t_cub *cub, char *path)
 	{
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( texture already defined ? )
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	cub->setting.tex_no = ft_strdup(path);
 	if (!cub->setting.tex_no)
 	{
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( memory failed for NO texture )
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	cub->setting.has_tex_no = 1;
 }
@@ -71,14 +71,14 @@ void	parse_text_so(t_cub *cub, char *path)
 	{
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( texture already defined ? )
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	cub->setting.tex_so = ft_strdup(path);
 	if (!cub->setting.tex_so)
 	{
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( memory failed for SO texture )
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	cub->setting.has_tex_so = 1;
 }
@@ -89,14 +89,14 @@ void	parse_text_ea(t_cub *cub, char *path)
 	{
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( texture already defined ? )
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	cub->setting.tex_ea = ft_strdup(path);
 	if (!cub->setting.tex_ea)
 	{
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( memory failed for EA texture )
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	cub->setting.has_tex_so = 1;
 }
@@ -107,14 +107,14 @@ void	parse_text_we(t_cub *cub, char *path)
 	{
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( texture already defined ? )
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	cub->setting.tex_we = ft_strdup(path);
 	if (!cub->setting.tex_we)
 	{
 		ft_error(ERR_TEXTURE);
 		// mess plus explicite ici aussi ? ( memory failed for WE texture )
-		clean_exit_parsing;
+		clean_exit_parsing(cub);
 	}
 	cub->setting.has_tex_we = 1;
 }
