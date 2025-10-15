@@ -33,7 +33,9 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_arg(cub, ac, av);
 	check_cub(cub, av[1]);
 	check_file_access(cub, av[1]);
+	// ok so far -------------------------------------------------------------------------
 	parse_file(cub, av[1]); // lecture complete et stock textures, couleur et map
+	//printf("apres parse file\n");
 	check_texture(cub); // verifie que c'est correct
 	//printf("debug\n"); //---------------------------------------------------------------
 	check_color(cub); // same
@@ -42,123 +44,96 @@ void	parsing(t_cub *cub, int ac, char **av)
 
 }
 
-void	parse_file(t_cub *cub, char *pathname)
+void	parse_file(t_cub *cub, char *pathname )
 {
 	int		fd;
 	char	*line;
-	int		map_start;
-	int		map_count;
-	char	**map_lines ;
 
-	map_start = 0;
-	map_count = 0;
-	map_lines = NULL;
+	fd = open_cub_file(cub, pathname);
+	line = get_next_valid_line(fd);
+	while (line)
+	{
+		if (!cub->map.map_start)
+			process_config_line(cub, line);
+		else
+			process_map_line(cub, line);
+		free(line);
+		line = get_next_valid_line(fd);
+	}
+	close(fd);
+	finalize_map_parsing(cub);
+}
+
+// ouvre le fihcier et renvoie le FD 
+int	open_cub_file(t_cub *cub, char *pathname)
+{
+	int	fd;
 
 	fd = open(pathname, O_RDONLY);
-	if ( fd < 0)
+	if (fd < 0)
 	{
 		ft_error(ERR_FILE_NOT_FOUND);
 		clean_exit_parsing(cub);
 	}
+	return (fd);
+}
+
+// va lire la prochaine line pas vide et supp le \n avec trim
+char	*get_next_valid_line(int fd)
+{
+	char		*line;
+
 	line = get_next_line(fd);
-	while (line != NULL) 
+	while (line)
 	{
 		ft_strtrim_newline(line);
-		if (is_empty_line(line))
-		{
-			free(line);
-			line = get_next_line(fd);
-			continue;
-		}
-		// detecter le debut de la map et mettre un flag debutdemap ( map_start)
-		if (!map_start)
-		{
-			if (is_map_line(line)) // evite de skip la first line 
-			{
-				map_start = 1;
-				map_lines = alloc_map_line(cub, map_lines, &map_count, line);
-				map_count++;
-			}
-			else if (is_texture_line(line))
-				parse_texture_line(cub, line);
-			else if (is_color_line(line))
-				parse_color_line(cub, line);
-			else
-			{
-				free(line);
-				ft_error(ERR_MAP_INVALID);
-				printf("debug\n"); // a supp ----------------------------
-				clean_exit_parsing(cub);
-			}
-		}
-
-		// on va stocker la ligne de map
-		else 
-		{
-			if (!is_map_line(line)) // pour verif si y'a qqchose apres erreur 
-			{
-				ft_error(ERR_MAP_INVALID);
-				ft_putstr_fd("Element shouldn't be after the map\n", 2);
-				clean_exit_parsing(cub);
-			}
-			map_lines = alloc_map_line(cub, map_lines, &map_count, line);
-			map_count++;
-		}
+		if (!is_empty_line(line))
+			return (line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
-
-	// verif si aucune ligne trouvee 
-	if ( map_count == 0)
-	{
-		ft_error(ERR_MAP_INVALID);
-		ft_putstr_fd("No lines were found\n", 2);
-		clean_exit_parsing(cub);
-	}
-	// remplir la struct avec les element du parsing 
-	cub->map.map_tab = map_lines;
-	cub->map.height = map_count;
-	cub->map.width = get_map_width(map_lines, map_count);
+	return (NULL);
 }
-
-
-// alloc du tableau de ligen de la map 
-char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
+// Juste pour les lignes de config AVANT la map  ( texture et color)
+void	process_config_line(t_cub *cub, char *line)
 {
-	char	**new;
-	int 	i;
-
-	new = malloc(sizeof(char *) * (*count + 2));
-	if (!new)
+	if (is_map_line(line))
+	{
+		cub->map.map_start = 1;
+		cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab, &cub->map.height, line);
+	}
+	else if (is_texture_line(line))
+		parse_texture_line(cub, line);
+	else if (is_color_line(line))
+		parse_color_line(cub, line);
+	else
 	{
 		ft_error(ERR_MAP_INVALID);
-		printf("debug : malloc fail"); // a supp
+		ft_putstr_fd("Invalid config line\n", 2);
 		clean_exit_parsing(cub);
 	}
-	i = 0;
-	while ( i < *count)
-	{
-		new[i] = map[i];
-		i++;
-	}
-	new[i] = ft_strdup(line);
-	if (!new[i])
-	{
-		free(new);
-		ft_error(ERR_MAP_INVALID);
-		printf("debug : strdundup fail"); // a supp
-		clean_exit_parsing(cub);
-	}
-	new[i + 1] = NULL;
-	free(map);
-	return (new);
 }
 
+//gere uniauement les ligens de map une fois qu'elle a commence
+void	process_map_line(t_cub *cub, char *line)
+{
+	if (!is_map_line(line))
+	{
+		ft_error(ERR_MAP_INVALID);
+		ft_putstr_fd("Element should not be after the map\n", 2);
+		clean_exit_parsing(cub);
+	}
+	cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab, &cub->map.height, line);
+}
 
-
-// faire un flood fill aussi ? 
-// check path ? 
-// lignes vides avant et apres la map mais pas au milieu 
-
-// faire des messages d’erreur pour chaque cas et quitter de maniere clean
+// verif qu'au moins une ligen a ete lue et calcul la largeur max 
+void	finalize_map_parsing(t_cub *cub)
+{
+	if (cub->map.height == 0)
+	{
+		ft_error(ERR_MAP_INVALID);
+		ft_putstr_fd("No map lines were found\n", 2);
+		clean_exit_parsing(cub);
+	}
+	cub->map.width = get_map_width(cub->map.map_tab, cub->map.height);
+}

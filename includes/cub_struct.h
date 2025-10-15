@@ -58,6 +58,7 @@ typedef struct s_player
 // Field of vision is 2 * atan(0.66/1.0)=66°
 typedef struct s_map
 {
+	int		map_start;
 	int		height;
 	int		width;
 	char    **map_tab;

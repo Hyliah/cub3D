@@ -48,6 +48,7 @@ vpath %.c \
 # Sources and object files
 SRC = main.c \
 clean_exit.c free.c \
+alloc_map.c \
 first_check.c map_check.c other_check.c player_check.c \
 utils_parsing.c parsing.c parsing_texture.c parsing_color.c \
 utils_flags.c \

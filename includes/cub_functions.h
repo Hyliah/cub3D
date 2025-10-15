@@ -18,6 +18,8 @@
 
 
 /* PARSING */
+char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line);
+
 void 	check_arg(t_cub *cub, int ac, char **av);
 void	check_cub(t_cub *cub, char *pathname);
 void	check_file_access(t_cub *cub, char *pathname);
@@ -37,7 +39,11 @@ int		is_color_line(char *line);
 
 void	parsing(t_cub *cub, int ac, char **av);
 void	parse_file(t_cub *cub, char *pathname);
-char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line);
+int		open_cub_file(t_cub *cub, char *pathname);
+char	*get_next_valid_line(int fd);
+void	process_config_line(t_cub *cub, char *line);
+void	process_map_line(t_cub *cub, char *line);
+void	finalize_map_parsing(t_cub *cub);
 
 void 	check_player(t_cub *cub);
 void	check_no_player(t_cub *cub);
