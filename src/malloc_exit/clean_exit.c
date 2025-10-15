@@ -38,39 +38,20 @@ int	clean_exit_parsing(t_cub *cub)
 {
 	if (!cub)
 		exit(EXIT_FAILURE);
-
-	if (cub->setting.fd > 2) 
-	{// fd == 0 (stdin) ou fd == 1/2 (stdout/stderr) ne doivent jamais être fermés. ?? a check 
+	if (cub->setting.fd > 2)
+	{
 		close(cub->setting.fd);
 		cub->setting.fd = -1;
 	}
-	// free texture de tout et remise a NULL
-	if (cub->setting.tex_no)
-    {
-        free(cub->setting.tex_no);
-        cub->setting.tex_no = NULL;
-    }
-    if (cub->setting.tex_so)
-    {
-        free(cub->setting.tex_so);
-        cub->setting.tex_so = NULL;
-    }
-    if (cub->setting.tex_ea)
-    {
-        free(cub->setting.tex_ea);
-        cub->setting.tex_ea = NULL;
-    }
-    if (cub->setting.tex_we)
-    {
-        free(cub->setting.tex_we);
-        cub->setting.tex_we = NULL;
-    }
-	// free la map
-	if(cub->map.map_tab)
-	{
+	// free texture et mise a null direct avec la fonction free ptr
+	free_ptr((void **)&cub->setting.tex_no);
+	free_ptr((void **)&cub->setting.tex_so);
+	free_ptr((void **)&cub->setting.tex_we);
+	free_ptr((void **)&cub->setting.tex_ea);
+	if (cub->map.map_tab)
 		free_tab(&cub->map.map_tab);
-		cub->map.map_tab = NULL;
-	}
-	free(cub);
-	exit (EXIT_FAILURE);
+	cub->map.height = 0;
+	cub->map.width = 0;
+	cub->map.map_start = 0;
+	exit(EXIT_FAILURE);
 }

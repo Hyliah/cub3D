@@ -43,7 +43,7 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 	}
 	new[i + 1] = NULL;
 	free(map);
-	//(*count)++;  pas clair cette histoire ----------------------------
+	(*count)++; // pas clair cette histoire ----------------------------
 	return (new);
 }
 

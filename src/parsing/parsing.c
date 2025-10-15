@@ -49,10 +49,14 @@ void	parse_file(t_cub *cub, char *pathname )
 	int		fd;
 	char	*line;
 
+	printf("DEBUG: open_cub_file\n"); // ---------------------------------------------------
 	fd = open_cub_file(cub, pathname);
+	printf("DEBUG: get_next_valid_line\n"); // ---------------------------------------------------
 	line = get_next_valid_line(fd);
 	while (line)
 	{
+
+		printf("DEBUG: new line -> '%s'\n", line); // ---------------------------------------------------
 		if (!cub->map.map_start)
 			process_config_line(cub, line);
 		else
@@ -61,7 +65,9 @@ void	parse_file(t_cub *cub, char *pathname )
 		line = get_next_valid_line(fd);
 	}
 	close(fd);
+	printf("DEBUG: finalize map\n"); // ---------------------------------------------------
 	finalize_map_parsing(cub);
+	printf("DEBUG: end of parse_file\n"); // ---------------------------------------------------
 }
 
 // ouvre le fihcier et renvoie le FD 

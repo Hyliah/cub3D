@@ -13,67 +13,101 @@
 #include "cub.h"
 
 // check que tt a bine ete trouve et parse 
-
 // check presence de toutes les textures NO, SO, WE, EA
+// test test test 
 void	check_texture(t_cub *cub)
 {
-	//debug ------------------------------------------------------------------
-	printf("NO: %s (%d)\n", cub->setting.tex_no, cub->setting.has_tex_no);
-	printf("SO: %s (%d)\n", cub->setting.tex_so, cub->setting.has_tex_so);
-	printf("EA: %s (%d)\n", cub->setting.tex_ea, cub->setting.has_tex_ea);
-	printf("WE: %s (%d)\n", cub->setting.tex_we, cub->setting.has_tex_we);
-
 	if (!cub->setting.has_tex_no || !cub->setting.has_tex_so
 		|| !cub->setting.has_tex_ea || !cub->setting.has_tex_we)
 	{
 		ft_error(ERR_MAP_INVALID);
-		ft_putstr_fd("Doesn't have texture\n", 2);
+		ft_putstr_fd("Missing texture identifier (NO/SO/WE/EA)\n", 2);
 		clean_exit_parsing(cub);
-		return; // 
 	}
 	if (!cub->setting.tex_no || !cub->setting.tex_so
 		|| !cub->setting.tex_ea || !cub->setting.tex_we)
 	{
 		ft_error(ERR_MAP_INVALID);
-		ft_putstr_fd("Invalid texture\n", 2);
+		ft_putstr_fd("One or more texture paths are NULL\n", 2);
+		if (!cub->setting.tex_no)
+			ft_putstr_fd("tex_no is NULL\n", 2);
+		if (!cub->setting.tex_so)
+			ft_putstr_fd("tex_so is NULL\n", 2);
+		if (!cub->setting.tex_we)
+			ft_putstr_fd("tex_we is NULL\n", 2);
+		if (!cub->setting.tex_ea)
+			ft_putstr_fd("tex_ea is NULL\n", 2);
 		clean_exit_parsing(cub);
-		return; // 
 	}
-	// check_file_access(cub, cub->setting.tex_no);
-	// check_file_access(cub, cub->setting.tex_so);
-	// check_file_access(cub, cub->setting.tex_ea);
-	// check_file_access(cub, cub->setting.tex_we);
-
-	// check file access one by one to identify which file has issues
-	if (access(cub->setting.tex_no, F_OK | R_OK) != 0)
-    {
-        ft_error(ERR_MAP_INVALID);
-        ft_putstr_fd("Cannot access NO texture file\n", 2);
-        clean_exit_parsing(cub);
-        return;
-    }
-    if (access(cub->setting.tex_so, F_OK | R_OK) != 0)
-    {
-        ft_error(ERR_MAP_INVALID);
-        ft_putstr_fd("Cannot access SO texture file\n", 2);
-        clean_exit_parsing(cub);
-        return;
-    }
-    if (access(cub->setting.tex_ea, F_OK | R_OK) != 0)
-    {
-        ft_error(ERR_MAP_INVALID);
-        ft_putstr_fd("Cannot access EA texture file\n", 2);
-        clean_exit_parsing(cub);
-        return;
-    }
-    if (access(cub->setting.tex_we, F_OK | R_OK) != 0)
-    {
-        ft_error(ERR_MAP_INVALID);
-        ft_putstr_fd("Cannot access WE texture file\n", 2);
-        clean_exit_parsing(cub);
-        return;
-    }
+	check_file_access(cub, cub->setting.tex_no);
+	check_file_access(cub, cub->setting.tex_so);
+	check_file_access(cub, cub->setting.tex_ea);
+	check_file_access(cub, cub->setting.tex_we);
 }
+
+
+// // check presence de toutes les textures NO, SO, WE, EA
+// void	check_texture(t_cub *cub)
+// {
+// 	//debug ------------------------------------------------------------------
+// 	// printf("NO: %s (%d)\n", cub->setting.tex_no, cub->setting.has_tex_no);
+// 	// printf("SO: %s (%d)\n", cub->setting.tex_so, cub->setting.has_tex_so);
+// 	// printf("EA: %s (%d)\n", cub->setting.tex_ea, cub->setting.has_tex_ea);
+// 	// printf("WE: %s (%d)\n", cub->setting.tex_we, cub->setting.has_tex_we);
+
+// 	if (!cub->setting.has_tex_no || !cub->setting.has_tex_so
+// 		|| !cub->setting.has_tex_ea || !cub->setting.has_tex_we)
+// 	{
+// 		ft_error(ERR_MAP_INVALID);
+// 		ft_putstr_fd("Doesn't have texture\n", 2);
+// 		clean_exit_parsing(cub);
+// 		return; // 
+// 	}
+// 	if (!cub->setting.tex_no || !cub->setting.tex_so
+// 		|| !cub->setting.tex_ea || !cub->setting.tex_we)
+// 	{
+// 		ft_error(ERR_MAP_INVALID);
+// 		ft_putstr_fd("Invalid texture\n", 2);
+// 		clean_exit_parsing(cub);
+// 		return; // 
+// 	}
+// 	// check_file_access(cub, cub->setting.tex_no);
+// 	// check_file_access(cub, cub->setting.tex_so);
+// 	// check_file_access(cub, cub->setting.tex_ea);
+// 	// check_file_access(cub, cub->setting.tex_we);
+
+// 	// check file access one by one to identify which file has issues
+// 	if (access(cub->setting.tex_no, F_OK | R_OK) != 0)
+//     {
+//         ft_error(ERR_MAP_INVALID);
+//         ft_putstr_fd("Cannot access NO texture file\n", 2);
+//         clean_exit_parsing(cub);
+//         return;
+//     }
+//     if (access(cub->setting.tex_so, F_OK | R_OK) != 0)
+//     {
+//         ft_error(ERR_MAP_INVALID);
+//         ft_putstr_fd("Cannot access SO texture file\n", 2);
+//         clean_exit_parsing(cub);
+//         return;
+//     }
+//     if (access(cub->setting.tex_ea, F_OK | R_OK) != 0)
+//     {
+//         ft_error(ERR_MAP_INVALID);
+//         ft_putstr_fd("Cannot access EA texture file\n", 2);
+//         clean_exit_parsing(cub);
+//         return;
+//     }
+//     if (access(cub->setting.tex_we, F_OK | R_OK) != 0)
+//     {
+//         ft_error(ERR_MAP_INVALID);
+//         ft_putstr_fd("Cannot access WE texture file\n", 2);
+//         clean_exit_parsing(cub);
+//         return;
+//     }
+// }
+
+
 
 // check les couleurs ( entre 0 - 255) 
 // apres le aprsing comnplet pour voir si tt est present et correct
