@@ -14,8 +14,10 @@
 
 void	cal_camera_x(t_cub *cub, int x)
 {
-	cub->player.cam_x = (float)(2 * x / cub->graphic.s_width - 1);
+	cub->player.cam_x = 2.0f * x / (float)cub->graphic.s_width - 1.0f;
 }
+
+
 
 /*
 1 - camera x

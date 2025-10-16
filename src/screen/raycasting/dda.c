@@ -12,23 +12,28 @@
 
 #include "cub.h"
 
-void	raycasting(t_cub *cub)
+int	dda(t_cub *cub)
 {
-	int x;
+	int	hit;
 	int	side;
 
-	x = 0;
-	while (x < cub->graphic.s_width)
+	hit = 0;
+	while (hit == 0)
 	{
-		cal_camera_x(cub, x);
-		cal_ray_dir(cub);
-		cal_map(cub);
-		cal_delta_dist(cub);
-		cal_side_dist(cub);
-		cal_step(cub);
-		side = dda(cub);
-		cal_perp_wall_dist(cub, side);
-		cal_line_height(cub);
-		x++;
+		if (cub->player.side_dist_x < cub->player.side_dist_y)
+		{
+			cub->player.side_dist_x += cub->player.delta_dist_x;
+			cub->player.map_x += cub->player.step_x;
+			side = 0;
+		}
+		else
+		{
+			cub->player.side_dist_y += cub->player.delta_dist_y;
+			cub->player.map_y += cub->player.step_y;
+			side = 1;
+		}
+		if (cub->map.map_tab[cub->player.map_y][cub->player.map_x] != '0')
+			hit = 1;
 	}
+	return (side);
 }

@@ -31,9 +31,8 @@ int main (int ac, char **av)
 
 		// mise en place de la window
 		create_window(&cub);
-
-		while (cub.game_on == TRUE)
-			raycasting(&cub);
+		// while (cub.game_on == TRUE)
+		// 	raycasting(&cub);
 		// gestion des boutons
 		mlx_hook(cub.graphic.win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press, &cub);
 		mlx_hook(cub.graphic.win_ptr, KEY_RELEASE, KEY_RELEASE_MASK, key_release, &cub);
@@ -46,14 +45,16 @@ int main (int ac, char **av)
 
 
 
-
 /* laide fonction a suppimer des que le parsing sera fait */
 void    hardcode_map(t_cub *cub, char *arg)
 {
-    cub->player.pos_x = 15.5;
-    cub->player.pos_y = 4.5;
-    cub->player.dir_x = -1;
-    cub->player.pl_y = 0.66;
+    cub->player.pos_x = 10.5;
+    cub->player.pos_y = 5.5;
+
+	cub->player.dir_x = -1.0f;
+	cub->player.dir_y = 0.0f;
+	cub->player.pl_x = 0.0f;
+	cub->player.pl_y = 0.66f;
 
     cub->setting.start_dir = NORTH;
     // cub->setting.c_color = 225,30,0;
@@ -65,6 +66,9 @@ void    hardcode_map(t_cub *cub, char *arg)
 	/* mettre en place une double taille en fonction de la taille ? */
 	cub->mmap.mm_hei = cub->map.height * 32;
 	cub->mmap.mm_wid = cub->map.width * 32;
+
+	cub->setting.c_color = 0x67a0fc;
+	cub->setting.f_color = 0xbaed8e;
 
     int	i;
     char *line;

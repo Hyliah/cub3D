@@ -20,22 +20,24 @@
 
 /* CUSTOM MLX*/
 t_hex_c	get_pixel(t_img *img, int x, int y);
-
 void	merge_screens(t_cub *cub);
 void	set_pixel(t_img *img, int x, int y, t_hex_c color);
 
 /* SCREEN */
+void	move_player(t_cub *cub);
+void	create_window(t_cub *cub);
 int		key_press(int keycode, t_cub *cub);
 int		key_release(int keycode, t_cub *cub);
 
-void	raycasting(t_cub *cub);
-void	move_player(t_cub *cub);
-void	create_window(t_cub *cub);
-void	opening_screen_handle(t_cub *cub, int keycode);
-void	init_opening_screen(t_cub *cub);
-void	init_overlays_weapons(t_cub *cub);
-
+/* OVERLAY ELEMENTS */
 t_img	*move_weapon(t_cub *cub);
+void	opening_screen_handle(t_cub *cub, int keycode);
+void	init_overlays_weapons(t_cub *cub);
+void	init_opening_screen(t_cub *cub);
+
+/* RAYCASTING */
+int     dda(t_cub *cub);
+void	raycasting(t_cub *cub);
 
 /* MATH */
 void	cal_map(t_cub *cub);
@@ -45,7 +47,6 @@ void	cal_side_dist(t_cub *cub);
 void	cal_delta_dist(t_cub *cub);
 void	cal_line_height(t_cub *cub);
 void	cal_camera_x(t_cub *cub, int x);
-void	cal_all(t_cub *cub, int x, int side);
 void	cal_perp_wall_dist(t_cub *cub, int side);
 
 /* MINIMAP*/
@@ -54,7 +55,6 @@ void	mm_player_draw(t_cub *cub, int color);
 
 /* MALLOC & EXIT */
 int		clean_exit(t_cub *cub);
-
 void	free_tab(char ***tab);
 void	*free_ptr(void **ptr);
 void	free_mid_tab(t_cub *cub, char ***tab, int i);

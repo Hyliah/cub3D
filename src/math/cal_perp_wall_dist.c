@@ -15,7 +15,9 @@
 void	cal_perp_wall_dist(t_cub *cub, int side)
 {
 	if (side == 0)
-		return (cub->player.side_dist_x - cub->player.delta_dist_x);
+		cub->player.perp_wall_dist
+			= cub->player.side_dist_x - cub->player.delta_dist_x;
 	else
-		return (cub->player.side_dist_y - cub->player.delta_dist_y);
+		cub->player.perp_wall_dist
+			= cub->player.side_dist_y - cub->player.delta_dist_y;
 }
