@@ -64,6 +64,8 @@ void	ft_error(t_error error);
 void	ft_strtrim_newline(char *line);
 int		get_map_width(char **map, int height);
 
+void	print_debug_settings(t_setting *set); // a supp 
+
 /* SCREEN */
 int		handle_key(int keycode, t_cub *cub);
 

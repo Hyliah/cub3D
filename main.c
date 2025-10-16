@@ -89,3 +89,40 @@ void    hardcode_map(t_cub *cub, char *arg)
 // 		i++;
 // 	}
 // }
+
+void	print_debug_settings(t_setting *set)
+{
+	printf("\n========== DEBUG SETTINGS ==========\n");
+
+	printf("Textures:\n");
+	printf("  NO: %s\n", set->tex_no ? set->tex_no : "(null)");
+	printf("  SO: %s\n", set->tex_so ? set->tex_so : "(null)");
+	printf("  WE: %s\n", set->tex_we ? set->tex_we : "(null)");
+	printf("  EA: %s\n", set->tex_ea ? set->tex_ea : "(null)");
+
+	printf("\nFlags:\n");
+	printf("  has_tex_no: %d\n", set->has_tex_no);
+	printf("  has_tex_so: %d\n", set->has_tex_so);
+	printf("  has_tex_we: %d\n", set->has_tex_we);
+	printf("  has_tex_ea: %d\n", set->has_tex_ea);
+	printf("  has_floor:  %d\n", set->has_floor);
+	printf("  has_ceiling:%d\n", set->has_ceiling);
+
+	printf("\nColors (RGB):\n");
+	printf("  Floor:   R=%d, G=%d, B=%d\n", set->f_color.r, set->f_color.g, set->f_color.b);
+	printf("  Ceiling: R=%d, G=%d, B=%d\n", set->c_color.r, set->c_color.g, set->c_color.b);
+
+	printf("\nStart direction: ");
+	if (set->start_dir == NORTH)
+		printf("NORTH\n");
+	else if (set->start_dir == SOUTH)
+		printf("SOUTH\n");
+	else if (set->start_dir == EAST)
+		printf("EAST\n");
+	else if (set->start_dir == WEST)
+		printf("WEST\n");
+	else
+		printf("(not set)\n");
+
+	printf("====================================\n\n");
+}

@@ -1,3 +1,10 @@
+ATTENTION ( 16 oct )
+Pour invalid color le mess qui suit ne s'affiche pas
+Pas le temps de chercher pourquoi, a verif plus tard
+
+
+
+
 UPDATE TO DO PARSING 
 
 faire des maps simples

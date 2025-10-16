@@ -1,5 +1,5 @@
-NO src/images/brick_wall.xpm
-SO src/images/brick_wall.xpm
+NO ./src/images/brick_wall.xpm
+SO ./src/images/brick_wall.xpm
 WE ./src/images/brick_wall.xpm
 EA ./src/images/brick_wall.xpm
 
@@ -12,6 +12,7 @@ C 155,226,255
         1001000000000000000000001
 111111111011000001110000000000001
 100000000011000001110111111111111
+
 11110111111111011100000010001
 11110111111111011101010010001
 11000000110101011100000010001

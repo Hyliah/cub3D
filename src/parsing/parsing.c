@@ -34,11 +34,12 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_cub(cub, av[1]);
 	check_file_access(cub, av[1]);
 	// ok so far -------------------------------------------------------------------------
-	parse_file(cub, av[1]); // lecture complete et stock textures, couleur et map
-	//printf("apres parse file\n");
-	check_texture(cub); // verifie que c'est correct
-	//printf("debug\n"); //---------------------------------------------------------------
-	check_color(cub); // same
+	parse_file(cub, av[1]); 
+	// seems ok jusque la, refaire tt les tests 
+	check_texture(cub);
+	check_color(cub);
+	// pb avec mess d'erreur, check to do again 
+	print_debug_settings(&cub->setting); 
 	check_map(cub); // invalid char, line, player puis wall (?) a supp si floodfill ? 
 	// flood fill ici ? A la toute fin ( apres player ) 
 
@@ -49,9 +50,9 @@ void	parse_file(t_cub *cub, char *pathname )
 	int		fd;
 	char	*line;
 
-	printf("DEBUG: open_cub_file\n"); // ---------------------------------------------------
+	//printf("DEBUG: open_cub_file\n"); // ---------------------------------------------------
 	fd = open_cub_file(cub, pathname);
-	printf("DEBUG: get_next_valid_line\n"); // ---------------------------------------------------
+	//printf("DEBUG: get_next_valid_line\n"); // ---------------------------------------------------
 	line = get_next_valid_line(fd);
 	while (line)
 	{
@@ -100,16 +101,22 @@ char	*get_next_valid_line(int fd)
 	}
 	return (NULL);
 }
+
 // Juste pour les lignes de config AVANT la map  ( texture et color)
 void	process_config_line(t_cub *cub, char *line)
 {
+	//printf("rentre ds config line\n"); // a supp -------------------------------------
 	if (is_map_line(line))
 	{
+		//printf("si c'est map line\n"); // a supp -------------------------------------
 		cub->map.map_start = 1;
 		cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab, &cub->map.height, line);
 	}
 	else if (is_texture_line(line))
+	{
+		//printf("reconnait que c'est une map line\n"); // a supp -------------------------------------
 		parse_texture_line(cub, line);
+	}
 	else if (is_color_line(line))
 		parse_color_line(cub, line);
 	else

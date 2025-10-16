@@ -16,8 +16,8 @@ void	check_map(t_cub *cub)
 {
 	check_invalid_char(cub);
 	check_line_empty_in_map(cub);
-	check_player(cub);
-	check_wall(cub);
+	// check_player(cub);
+	// check_wall(cub);
 }
 
 // -> validité des caracteres comme ds so_long mais avec 0, 1, N, S, E, W
@@ -62,6 +62,7 @@ void	check_line_empty_in_map(t_cub *cub)
 		{
 			ft_error(ERR_MAP_LINE);
 		}
+		y++;
 	}
 }
 

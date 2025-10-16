@@ -12,22 +12,58 @@
 
 #include "cub.h"
 
-// renvoie 1 si la ligne continet un element de map donc 0 1 N S E W
+// test test test 
 int	is_map_line(char *line)
 {
 	int	i;
 
+	if (!line)
+		return (0);
+	while (*line && (*line == ' ' || *line == '\t'))
+		line++;
+	if (!ft_strncmp(line, "NO ", 3)
+		|| !ft_strncmp(line, "SO ", 3)
+		|| !ft_strncmp(line, "WE ", 3)
+		|| !ft_strncmp(line, "EA ", 3)
+		|| line[0] == 'F'
+		|| line[0] == 'C')
+		return (0);
 	i = 0;
 	while (line[i])
 	{
 		if (line[i] == '0' || line[i] == '1'
-			|| line [i] == 'N' || line[i] == 'S'
+			|| line[i] == 'N' || line[i] == 'S'
 			|| line[i] == 'E' || line[i] == 'W')
 			return (1);
 		i++;
 	}
 	return (0);
 }
+
+
+// modif le 16 oct mais pas sure 
+// renvoie 1 si la ligne continet un element de map donc 0 1 N S E W
+// int	is_map_line(char *line)
+// {
+// 	int	i;
+
+// 	if (!line)
+// 		return (0);
+// 	i = 0;
+// 	while ( line[i] == ' ' || line[i] == '	')
+// 		i++;
+// 	if (line[i] == '\0')
+// 		return (0);
+// 	while (line[i])
+// 	{
+// 		if (line[i] == '0' || line[i] == '1'
+// 			|| line [i] == 'N' || line[i] == 'S'
+// 			|| line[i] == 'E' || line[i] == 'W')
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 // Renvoie 1 si empty 
 int	is_empty_line(char *line)
@@ -49,9 +85,11 @@ int	is_empty_line(char *line)
 // renvoie 1 si la ligne est une ligen de texture
 int	is_texture_line(char *line)
 {
+	//printf("rentre dans la fonction is_texture line\n");
 	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
 		|| !ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3))
 		return (1);
+	//printf("is texture line presente\n");
 	return (0);
 }
 
