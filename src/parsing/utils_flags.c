@@ -65,22 +65,41 @@ int	is_map_line(char *line)
 // 	return (0);
 // }
 
-// Renvoie 1 si empty 
+
+//new version si ligne est aussi avec juste espace ou tab 
 int	is_empty_line(char *line)
 {
 	int	i;
 
-	i = 0;
 	if (!line)
 		return (1);
-	while ( line[i])
+	i = 0;
+	while (line[i])
 	{
-		if (line[i] != ' ' && line[i] != '\t')
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
+
+
+// Renvoie 1 si empty 
+// int	is_empty_line(char *line)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	if (!line)
+// 		return (1);
+// 	while ( line[i])
+// 	{
+// 		if (line[i] != ' ' && line[i] != '\t')
+// 			return (0);
+// 		i++;
+// 	}
+// 	return(1);
+// }
 
 // renvoie 1 si la ligne est une ligen de texture
 int	is_texture_line(char *line)

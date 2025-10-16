@@ -15,7 +15,7 @@
 void	check_map(t_cub *cub)
 {
 	check_invalid_char(cub);
-	check_line_empty_in_map(cub);
+	check_line_empty_in_map(cub); // ne fontcionne pas - a checker again !!!!
 	// check_player(cub);
 	// check_wall(cub);
 }
@@ -45,6 +45,45 @@ void	check_invalid_char(t_cub *cub)
 		y++;
 	}
 }
+// // version de debu pour test 
+// void	check_line_empty_in_map(t_cub *cub)
+// {
+// 	int	y;
+// 	int	empty;
+
+// 	y = 0;
+// 	empty = 0;
+// 	while (cub->map.map_tab[y])
+// 	{
+// 		// Debug : afficher la ligne avec ses caractères spéciaux visibles
+// 		printf("DEBUG map line %d -> '%s'\n", y, cub->map.map_tab[y]);
+
+// 		// Vérifie si la ligne est vide (ou contient seulement des espaces/tabs)
+// 		int line_empty = 1;
+// 		for (int i = 0; cub->map.map_tab[y][i]; i++)
+// 		{
+// 			if (cub->map.map_tab[y][i] != ' ' && cub->map.map_tab[y][i] != '\t')
+// 			{
+// 				line_empty = 0;
+// 				break;
+// 			}
+// 		}
+
+// 		if (line_empty)
+// 		{
+// 			printf("DEBUG: ligne %d vide détectée\n", y);
+// 			empty = 1;
+// 		}
+// 		else if (empty == 1)
+// 		{
+// 			// Une ligne non vide après une ligne vide : erreur map
+// 			fprintf(stderr, "Error: ligne non vide après une ligne vide à la ligne %d\n", y);
+// 			ft_error(ERR_MAP_LINE);
+// 		}
+// 		y++;
+// 	}
+// }
+
 
 // Pas de ligen vide A L INTERIEUR la map 
 void	check_line_empty_in_map(t_cub *cub)

@@ -38,8 +38,8 @@ void	parsing(t_cub *cub, int ac, char **av)
 	// seems ok jusque la, refaire tt les tests 
 	check_texture(cub);
 	check_color(cub);
-	// pb avec mess d'erreur, check to do again 
-	print_debug_settings(&cub->setting); 
+	// pb avec mess d'erreur extra , check to do !!!
+	//print_debug_settings(&cub->setting); -------------------------------------------------------------------------
 	check_map(cub); // invalid char, line, player puis wall (?) a supp si floodfill ? 
 	// flood fill ici ? A la toute fin ( apres player ) 
 
