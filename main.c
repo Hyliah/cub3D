@@ -51,12 +51,15 @@ void    hardcode_map(t_cub *cub, char *arg)
     cub->player.pos_x = 10.5;
     cub->player.pos_y = 5.5;
 
-	cub->player.dir_x = -1.0f;
-	cub->player.dir_y = 0.0f;
-	cub->player.pl_x = 0.0f;
-	cub->player.pl_y = 0.66f;
+	cub->player.dir_x = 0.0f;
+	cub->player.dir_y = -1.0f;
+	cub->player.pl_x = 0.66f;
+	cub->player.pl_y = 0.0f;
 
+	// je crois pas que ce truc soit utile en fait / doublon avec le player
     cub->setting.start_dir = NORTH;
+	
+	cub->player.angle = 90;
     // cub->setting.c_color = 225,30,0;
     // cub->setting.f_color = 220,100,0;
 

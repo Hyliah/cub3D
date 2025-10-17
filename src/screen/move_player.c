@@ -14,6 +14,7 @@
 
 static t_bool	safe_move(t_cub *cub, float new_x, float new_y);
 static void		mm_move_player(t_cub *cub, float new_x, float new_y);
+static int		change_angle(int new_angle);
 
 void	move_player(t_cub *cub)
 {
@@ -33,10 +34,10 @@ void	move_player(t_cub *cub)
 		if (cub->key.k_w && safe_move(cub, pos_x, pos_y - 0.3))
 			pos_y = pos_y - 0.1;
 			/* faire les changements avec la plane de vision*/
-			// if (keycode == KEY_LEFTARROW)
-			// 	pos_x = pos_x - 0.1;
-			// if (keycode == KEY_RIGHTARROW)
-			// 	pos_x = pos_x + 0.1;
+		if (cub->key.k_le)
+			cub->player.angle = change_angle(cub->player.angle + 2);
+		if (cub->key.k_ri)
+			cub->player.angle = change_angle(cub->player.angle - 2);
 		mm_move_player(cub, pos_x, pos_y);
 	}
 }
@@ -60,4 +61,14 @@ static void	mm_move_player(t_cub *cub, float new_x, float new_y)
 	cub->player.pos_y = new_y;
 	mm_player_draw(cub, 0x622416);
 	merge_screens(cub);
+}
+
+static int	change_angle(int new_angle)
+{
+	if (new_angle > 360)
+		return (0);
+	else if (new_angle < 0)
+		return (360);
+	else
+		return (new_angle);
 }

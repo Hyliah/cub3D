@@ -67,9 +67,11 @@ typedef struct s_player
 	int		map_x;
 	int		map_y;
 
+	int		angle;
 
 	//pas sure si utile
 	t_dir   dir;
+
 }	t_player;
 
 // Field of vision is 2 * atan(0.66/1.0)= 66°

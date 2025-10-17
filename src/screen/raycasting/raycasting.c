@@ -22,6 +22,7 @@ void	raycasting(t_cub *cub)
 	int	side;
 
 	x = 0;
+	cal_view(cub);
 	while (x < cub->graphic.s_width)
 	{
 		cal_camera_x(cub, x);

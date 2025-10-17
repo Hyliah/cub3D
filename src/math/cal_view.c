@@ -12,8 +12,16 @@
 
 #include "cub.h"
 
-void	cal_line_height(t_cub *cub)
+void	cal_view(t_cub *cub)
 {
-	cub->player.line_height
-		= (int)(cub->graphic.s_height / cub->player.perp_wall_dist);
+	float	angle;
+	float	fov;
+
+	angle = cub->player.angle * M_PI / 180.0;
+	fov = 0.66;
+
+	cub->player.dir_x = cos(angle);
+	cub->player.dir_y = -sin(angle);
+	cub->player.pl_x = sin(angle) * fov;
+	cub->player.pl_y = cos(angle) * fov;
 }

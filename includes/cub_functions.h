@@ -41,6 +41,7 @@ void	raycasting(t_cub *cub);
 
 /* MATH */
 void	cal_map(t_cub *cub);
+void	cal_view(t_cub *cub);
 void	cal_step(t_cub *cub);
 void	cal_ray_dir(t_cub *cub);
 void	cal_side_dist(t_cub *cub);
