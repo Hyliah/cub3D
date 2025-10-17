@@ -26,6 +26,7 @@ void	init_overlays_weapons(t_cub *cub)
 	init_overlays(cub, &cub->weapons.img_w4, W4);
 	init_overlays(cub, &cub->weapons.img_w5, W5);
 }
+
 static void	init_overlays(t_cub *cub, t_img *img, char *xpm)
 {
 	int	x;
@@ -37,7 +38,7 @@ static void	init_overlays(t_cub *cub, t_img *img, char *xpm)
 	// if (!img->img_ptr)
 	// 	infructuous_smth;
 	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
-				&img->endian);
+			&img->endian);
 	img->width = x;
 	img->height = y;
 }

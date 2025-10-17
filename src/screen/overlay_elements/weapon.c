@@ -12,9 +12,27 @@
 
 #include "cub.h"
 
+static int		change_frame_number(t_cub *cub);
 static t_img	*change_frame(t_cub *cub, int actual);
 
 t_img	*move_weapon(t_cub *cub)
+{
+	static int	actual = 1;
+	static int	i = 0;
+
+	if (cub->key.k_a || cub->key.k_s || cub->key.k_d || cub->key.k_w)
+	{
+		if (i == 10)
+		{
+			i = 0;
+			actual = change_frame_number(cub);
+		}
+		i++;
+	}
+	return (change_frame(cub, actual));
+}
+
+static int	change_frame_number(t_cub *cub)
 {
 	int		actual;
 	t_bool	is_up;
@@ -33,12 +51,11 @@ t_img	*move_weapon(t_cub *cub)
 		actual--;
 		cub->weapons.s_nb = actual;
 		if (actual == 1)
-		cub->weapons.up = TRUE;
+			cub->weapons.up = TRUE;
 	}
-	return (change_frame(cub, actual));
+	return (actual);
 }
 
-// 12345432123.. system is working 
 static t_img	*change_frame(t_cub *cub, int actual)
 {
 	if (actual == 1)

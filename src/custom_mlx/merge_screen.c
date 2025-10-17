@@ -19,7 +19,6 @@ void	merge_screens(t_cub *cub)
 	int	mmap_x;
 	int	mmap_y;
 
-
 	if (cub->game_on == TRUE)
 		raycasting(cub);
 	if (cub->mmap.mm_show == TRUE)
@@ -59,22 +58,3 @@ static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y)
 		y++;
 	}
 }
-
-/* doest seem usefull */
-// static void	clear_image(t_img *img)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	j = 0;
-// 	while (j < img->height)
-// 	{
-// 		i = 0;
-// 		while (i < img->width)
-// 		{
-// 			set_pixel(img, i, j, 0x000000);
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// }

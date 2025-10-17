@@ -25,12 +25,10 @@ void	create_window(t_cub *cub)
 	cub->graphic.mlx_ptr = mlx_init();
 	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr, x, y, G_NAME);
 	mm_size_calculator(cub);
-
 	init_opening_screen(cub);
 	init_img(cub, &cub->graphic.img_screen, x, y);
 	init_img(cub, &cub->mmap.img_mmap, cub->mmap.mm_wid, cub->mmap.mm_hei);
 	init_img(cub, &cub->mmap.img_player, cub->mmap.mm_wid, cub->mmap.mm_hei);
-
 	mm_creation(cub);
 	while (cub->game_on == TRUE)
 		raycasting(cub);

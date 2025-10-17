@@ -19,7 +19,6 @@ void	cal_view(t_cub *cub)
 
 	angle = cub->player.angle * M_PI / 180.0;
 	fov = 0.66;
-
 	cub->player.dir_x = cos(angle);
 	cub->player.dir_y = -sin(angle);
 	cub->player.pl_x = sin(angle) * fov;

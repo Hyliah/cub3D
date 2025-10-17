@@ -18,7 +18,7 @@ static void	create_pixel_line(t_cub *cub, int x, int start, int end);
 
 void	raycasting(t_cub *cub)
 {
-	int x;
+	int	x;
 	int	side;
 
 	x = 0;
@@ -79,12 +79,12 @@ static void	create_pixel_line(t_cub *cub, int x, int start, int end)
 		set_pixel(&cub->graphic.img_screen, x, i, cub->setting.c_color);
 		i++;
 	}
-		while (i < end)
+	while (i < end)
 	{
 		set_pixel(&cub->graphic.img_screen, x, i, 0xFF99FF);
 		i++;
 	}
-		while (i < cub->graphic.s_height)
+	while (i < cub->graphic.s_height)
 	{
 		set_pixel(&cub->graphic.img_screen, x, i, cub->setting.f_color);
 		i++;
