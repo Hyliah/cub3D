@@ -17,14 +17,24 @@ static void	init_overlays(t_cub *cub, t_img *img, char *xpm);
 void	init_overlays_weapons(t_cub *cub)
 {
 	if (cub->oscreen.is_sirius == TRUE)
+	{
 		init_overlays(cub, &cub->oscreen.img_olay, OVRLS);
+		init_overlays(cub, &cub->weapons.img_w1, W1S);
+		init_overlays(cub, &cub->weapons.img_w2, W2S);
+		init_overlays(cub, &cub->weapons.img_w3, W3S);
+		init_overlays(cub, &cub->weapons.img_w4, W4S);
+		init_overlays(cub, &cub->weapons.img_w5, W5S);
+	}
 	else
+	{
 		init_overlays(cub, &cub->oscreen.img_olay, OVRLP);
-	init_overlays(cub, &cub->weapons.img_w1, W1);
-	init_overlays(cub, &cub->weapons.img_w2, W2);
-	init_overlays(cub, &cub->weapons.img_w3, W3);
-	init_overlays(cub, &cub->weapons.img_w4, W4);
-	init_overlays(cub, &cub->weapons.img_w5, W5);
+		init_overlays(cub, &cub->weapons.img_w1, W1P);
+		init_overlays(cub, &cub->weapons.img_w2, W2P);
+		init_overlays(cub, &cub->weapons.img_w3, W3P);
+		init_overlays(cub, &cub->weapons.img_w4, W4P);
+		init_overlays(cub, &cub->weapons.img_w5, W5P);
+	}
+
 }
 
 static void	init_overlays(t_cub *cub, t_img *img, char *xpm)

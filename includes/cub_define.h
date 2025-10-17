@@ -35,18 +35,28 @@
 
 # ifdef __APPLE__
 // pour les armes
-# define W1 "./src/images/weapons/W1_mac.xpm"
-# define W2 "./src/images/weapons/W2_mac.xpm"
-# define W3 "./src/images/weapons/W3_mac.xpm"
-# define W4 "./src/images/weapons/W4_mac.xpm"
-# define W5 "./src/images/weapons/W5_mac.xpm"
+# define W1P "./src/images/weapons/w1pm.xpm"
+# define W2P "./src/images/weapons/w2pm.xpm"
+# define W3P "./src/images/weapons/w3pm.xpm"
+# define W4P "./src/images/weapons/w4pm.xpm"
+# define W5P "./src/images/weapons/w5pm.xpm"
+# define W1S "./src/images/weapons/w1sm.xpm"
+# define W2S "./src/images/weapons/w2sm.xpm"
+# define W3S "./src/images/weapons/w3sm.xpm"
+# define W4S "./src/images/weapons/w4sm.xpm"
+# define W5S "./src/images/weapons/w5sm.xpm"
 # elif defined(__linux__)
 // pour les armes
-# define W1 "./src/images/weapons/w1.xpm"
-# define W2 "./src/images/weapons/w2.xpm"
-# define W3 "./src/images/weapons/w3.xpm"
-# define W4 "./src/images/weapons/w4.xpm"
-# define W5 "./src/images/weapons/w5.xpm"
+# define W2P "./src/images/weapons/w2p.xpm"
+# define W1P "./src/images/weapons/w1p.xpm"
+# define W3P "./src/images/weapons/w3p.xpm"
+# define W4P "./src/images/weapons/w4p.xpm"
+# define W5P "./src/images/weapons/w5p.xpm"
+# define W1S "./src/images/weapons/w1s.xpm"
+# define W2S "./src/images/weapons/w2s.xpm"
+# define W3S "./src/images/weapons/w3s.xpm"
+# define W4S "./src/images/weapons/w4s.xpm"
+# define W5S "./src/images/weapons/w5s.xpm"
 # endif
 
 # ifdef __APPLE__
