@@ -1,0 +1,24 @@
+DEBUG: new line -> 'NO ./src/images/brick_wall.xpm'
+DEBUG: new line -> 'SO ./src/images/brick_wall.xpm'
+DEBUG: new line -> 'WE ./src/images/brick_wall.xpm'
+DEBUG: new line -> 'EA ./src/images/brick_wall.xpm'
+DEBUG: new line -> 'F 0,129,71
+'
+DEBUG: new line -> 'C 155,226,255'
+DEBUG: new line -> '      1111111111111111111111111111
+'
+DEBUG: new line -> '        1000000000110000000000001'
+DEBUG: new line -> '        1011000001110000000000001'
+DEBUG: new line -> '        1001000000000000000000001'
+DEBUG: new line -> '111111111011000001110000000000001'
+DEBUG: new line -> '100000000011000001110111111111111'
+DEBUG: new line -> '11110111111111011100000010001'
+DEBUG: new line -> '11110111111111011101010010001'
+DEBUG: new line -> '11000000110101011100000010001'
+DEBUG: new line -> '10000000000000001100000010001'
+DEBUG: new line -> '10000000000000001101010010001'
+DEBUG: new line -> '11000001110101011111011110N0111'
+DEBUG: new line -> '11110111 1110101 101111010001'
+DEBUG: new line -> '11111111 1111111 111111111111'
+DEBUG: finalize map
+DEBUG: end of parse_file

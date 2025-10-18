@@ -98,6 +98,7 @@ char    *get_next_valid_line(t_cub *cub, int fd)
         {
             free(line);
             line = get_next_line(fd);
+			ft_strtrim_newline(line);
         }
         return (line);
     }
