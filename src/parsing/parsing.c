@@ -53,7 +53,7 @@ void	parse_file(t_cub *cub, char *pathname )
 	//printf("DEBUG: open_cub_file\n"); // ---------------------------------------------------
 	fd = open_cub_file(cub, pathname);
 	//printf("DEBUG: get_next_valid_line\n"); // ---------------------------------------------------
-	line = get_next_valid_line(fd);
+	line = get_next_valid_line(cub, fd);
 	while (line)
 	{
 
@@ -63,7 +63,7 @@ void	parse_file(t_cub *cub, char *pathname )
 		else
 			process_map_line(cub, line);
 		free(line);
-		line = get_next_valid_line(fd);
+		line = get_next_valid_line(cub, fd);
 	}
 	close(fd);
 	printf("DEBUG: finalize map\n"); // ---------------------------------------------------
@@ -86,20 +86,22 @@ int	open_cub_file(t_cub *cub, char *pathname)
 }
 
 // va lire la prochaine line pas vide et supp le \n avec trim
-char	*get_next_valid_line(int fd)
+char    *get_next_valid_line(t_cub *cub, int fd)
 {
-	char		*line;
+    char        *line;
 
-	line = get_next_line(fd);
-	while (line)
-	{
-		ft_strtrim_newline(line);
-		if (!is_empty_line(line))
-			return (line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	return (NULL);
+    line = get_next_line(fd);
+    while (line)
+    {
+        ft_strtrim_newline(line);
+        if (!cub->map.map_start && is_empty_line(line))
+        {
+            free(line);
+            line = get_next_line(fd);
+        }
+        return (line);
+    }
+    return (NULL);
 }
 
 // Juste pour les lignes de config AVANT la map  ( texture et color)

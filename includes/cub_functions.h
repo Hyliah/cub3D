@@ -40,7 +40,7 @@ int		is_color_line(char *line);
 void	parsing(t_cub *cub, int ac, char **av);
 void	parse_file(t_cub *cub, char *pathname);
 int		open_cub_file(t_cub *cub, char *pathname);
-char	*get_next_valid_line(int fd);
+char	*get_next_valid_line(t_cub *cub, int fd);
 void	process_config_line(t_cub *cub, char *line);
 void	process_map_line(t_cub *cub, char *line);
 void	finalize_map_parsing(t_cub *cub);
