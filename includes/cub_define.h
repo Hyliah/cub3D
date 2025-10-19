@@ -18,10 +18,10 @@
 # define G_NAME	"Cub Crossing : La folle aventure de Sirius et Pepito en 3D"
 
 // pour les wall textures
-#define WTN "./src/images/wall_textures/"
-#define WTS "./src/images/wall_textures/"
-#define WTE "./src/images/wall_textures/"
-#define WTW "./src/images/wall_textures/"
+#define WTN "./src/images/wall_textures/text_n.xpm"
+#define WTS "./src/images/wall_textures/text_s.xpm"
+#define WTE "./src/images/wall_textures/text_e.xpm"
+#define WTW "./src/images/wall_textures/text_w.xpm"
 
 # ifdef __APPLE__
 // pour le layover

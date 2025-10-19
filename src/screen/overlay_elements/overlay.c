@@ -34,7 +34,6 @@ void	init_overlays_weapons(t_cub *cub)
 		init_overlays(cub, &cub->weapons.img_w4, W4P);
 		init_overlays(cub, &cub->weapons.img_w5, W5P);
 	}
-
 }
 
 static void	init_overlays(t_cub *cub, t_img *img, char *xpm)

@@ -1,4 +1,4 @@
-obj/cal_camera_x.o: src/math/cal_camera_x.c includes/cub.h \
+obj/wall_textures.o: src/screen/raycasting/wall_textures.c includes/cub.h \
  attached/minilibx-linux/mlx.h includes/libft.h includes/cub_define.h \
  includes/cub.h includes/cub_struct.h includes/cub_keyboard.h \
  includes/cub_functions.h includes/cub_buttoncode.h

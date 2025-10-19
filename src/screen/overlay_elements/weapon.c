@@ -22,7 +22,7 @@ t_img	*move_weapon(t_cub *cub)
 
 	if (cub->key.k_a || cub->key.k_s || cub->key.k_d || cub->key.k_w)
 	{
-		if (i == 10)
+		if (i == 3)
 		{
 			i = 0;
 			actual = change_frame_number(cub);

@@ -140,11 +140,11 @@ typedef struct s_graphic // repris de mon so_long
 	t_img	img_screen;
 	
 	//images des murs et leurs liens
-	void	*img_w;
-	void	*img_e;
-	void	*img_s;
-	void	*img_n;
-
+	t_img	img_e;
+	t_img	img_s;
+	t_img	img_n;
+	t_img	img_w;
+	
 }	t_graphic;
 
 typedef struct s_oscreen
