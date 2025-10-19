@@ -17,8 +17,6 @@ int	is_map_line(char *line)
 {
 	int	i;
 
-	if (!line)
-		return (0);
 	while (*line && (*line == ' ' || *line == '\t'))
 		line++;
 	if (!ft_strncmp(line, "NO ", 3)

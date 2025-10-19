@@ -108,6 +108,8 @@ char    *get_next_valid_line(t_cub *cub, int fd)
 // Juste pour les lignes de config AVANT la map  ( texture et color)
 void	process_config_line(t_cub *cub, char *line)
 {
+	if (!line)
+		return;
 	//printf("rentre ds config line\n"); // a supp -------------------------------------
 	if (is_map_line(line))
 	{

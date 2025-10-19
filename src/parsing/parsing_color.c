@@ -13,32 +13,38 @@
 #include "cub.h"
 
 // parsing de la ligne des couleurs floor et ceiling ex :  "F 220,100,0"
-void	parse_color_line(t_cub *cub, char *line)
+void parse_color_line(t_cub *cub, char *line)
 {
-	char	**split;
-	t_rgb	color;
+    t_rgb   color;
+    int     i;
 
-	split = ft_split(line, ' ');
-	if (!split || !split[0] || !split[1])
-	{
-		ft_error(ERR_COLOR);
-		// mess extra ici ?
-		free_tab(&split); // ajout aussi mais pas sure 
-		clean_exit_parsing(cub);
-	}
-	color = parse_rgb(cub, split[1]);
-	if (ft_strncmp(split[0], "F", 2) == 0)
-		parse_color_floor(cub, color);
-	else if (ft_strncmp(split[0], "C", 2) == 0)
-		parse_color_ceiling(cub, color);
-	else
-	{
-		ft_error(ERR_COLOR);
-		// extra mess ?
-		clean_exit_parsing(cub);
-	}
-	free_tab(&split);
+    i = 0;
+    while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+        i++;
+    if (!line[i] || (line[i] != 'F' && line[i] != 'C'))
+    {
+        ft_error(ERR_COLOR);
+        ft_putstr_fd("Invalid color identifier (must be F or C)\n", 2);
+        clean_exit_parsing(cub);
+    }
+    
+    char identifier = line[i];
+    i++; // Passe le F ou C
+
+    // Skip les espaces entre F/C et les valeurs RGB
+    while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+        i++;
+
+    // Parse la partie RGB
+    color = parse_rgb(cub, &line[i]);
+
+    // Assigne la couleur au bon composant
+    if (identifier == 'F')
+        parse_color_floor(cub, color);
+    else
+        parse_color_ceiling(cub, color);
 }
+
 void	parse_color_floor(t_cub *cub, t_rgb color)
 {
 	if (cub->setting.has_floor)
