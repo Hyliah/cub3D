@@ -96,17 +96,19 @@ int	is_empty_line(char *line)
 // renvoie 1 si la ligne est une ligen de texture
 int	is_texture_line(char *line)
 {
-	//printf("rentre dans la fonction is_texture line\n");
+	while (*line && (*line == ' ' || *line == '\t'))
+		line++;
 	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
 		|| !ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3))
 		return (1);
-	//printf("is texture line presente\n");
 	return (0);
 }
 
 //renvoie 1 si la ligne est une couleur pour F et C 
 int	is_color_line(char *line)
 {
+	while (*line && (*line == ' ' || *line == '\t'))
+		line++;
 	if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
 		return (1);
 	return (0);
