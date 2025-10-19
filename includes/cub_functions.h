@@ -59,9 +59,12 @@ void	parse_color_line(t_cub *cub, char *line);
 void	parse_color_floor(t_cub *cub, t_rgb color);
 void	parse_color_ceiling(t_cub *cub, t_rgb color);
 t_rgb	parse_rgb(t_cub *cub, char *str);
+void	check_rgb_format(t_cub *cub, char *str);
+t_rgb	convert_and_check_rgb(t_cub *cub, char **rgb);
 
 void	ft_error(t_error error);
 void	ft_strtrim_newline(char *line);
+void	ft_strtrim_spaces(char *s);
 int		get_map_width(char **map, int height);
 
 void	print_debug_settings(t_setting *set); // a supp 

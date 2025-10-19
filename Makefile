@@ -50,7 +50,7 @@ SRC = main.c \
 clean_exit.c free.c \
 alloc_map.c \
 first_check.c map_check.c other_check.c player_check.c \
-utils_parsing.c parsing.c parsing_texture.c parsing_color.c \
+utils_parsing.c parsing.c parsing_texture.c parsing_color.c parsing_rgb.c \
 utils_flags.c \
 key_handle.c window_creation.c\
 init.c \

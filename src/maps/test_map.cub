@@ -4,7 +4,7 @@ WE ./src/images/brick_wall.xpm
 EA ./src/images/brick_wall.xpm
 
 F 0,129,71
-C 155,226,255
+C 155,226,25
 
       1111111111111111111111111111
         1000000000110000000000001

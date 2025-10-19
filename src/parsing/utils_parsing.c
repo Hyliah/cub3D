@@ -53,6 +53,18 @@ void	ft_strtrim_newline(char *line)
 	if ( len > 0 && line[len - 1] == '\n')
 		line[len - 1] = '\0';
 }
+// test test test pour trim les espacvves pour les colors 
+void	ft_strtrim_spaces(char *s)
+{
+	char	*dst = s;
+	while (*s)
+	{
+		if (*s != ' ' && *s != '\t')
+			*dst++ = *s;
+		s++;
+	}
+	*dst = '\0';
+}
 
 // get map width pour renvoyer la longueru max ? 
 int	get_map_width(char **map, int height)
