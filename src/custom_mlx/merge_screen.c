@@ -33,6 +33,7 @@ void	merge_screens(t_cub *cub)
 	}
 	merge_screen(cub, move_weapon(cub), 0, 0);
 	merge_screen(cub, &cub->oscreen.img_olay, 0, 0);
+	// trouver sa meilleure place limit_fps(cub);
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
 		cub->graphic.img_screen.img_ptr, 0, 0);
 }

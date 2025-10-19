@@ -18,7 +18,7 @@ static int		change_angle(int new_angle);
 
 void	move_player(t_cub *cub)
 {
-	//puts("move_p");
+	puts("hello");
 	if (cub->game_on == TRUE)
 	{
 		if (cub->key.k_a)
@@ -39,16 +39,28 @@ void	move_player(t_cub *cub)
 
 static void	move(t_cub *cub, float direction)
 {
+	double 	speed;
 	float	angle;
 	float	new_x;
 	float	new_y;
-
-	puts("move_");
+	
+	//frame_time(cub);
+	// faire les changements de speed comme on veut bien
+	// if (cub->key.k_s)
+	// 	speed = cub->fps.frame_time * 5.0;
+	// else if (cub->key.k_sh)
+	// 	speed = cub->fps.frame_time * 5.0;
+	// else
+	// 	speed = cub->fps.frame_time * 2.0;
+	speed = 0.5;
+	debug_log("como esta");
+	printf("speed = %d\n", speed);
+	puts("3");
 	if (direction > 360)
 		direction = direction - 360;
 	angle = direction * M_PI / 180.0;
-	new_x = cub->player.pos_x + (cos(angle)) * 0.05f;
-	new_y = cub->player.pos_y + (-sin(angle)) * 0.05f;
+	new_x = cub->player.pos_x + (cos(angle)) * speed;
+	new_y = cub->player.pos_y + (-sin(angle)) * speed;
 	if (safe_move(cub, new_x, new_y))
 	{
 		mm_player_draw(cub, 0x0000000);

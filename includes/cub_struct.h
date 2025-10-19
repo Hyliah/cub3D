@@ -32,9 +32,6 @@ typedef enum s_bool
 // contain information about the position of the player and FOV
 typedef struct s_player
 {
-	// gestion des fps -> creer une boucle while qui envoie tant de FPS
-	double	new_time;
-	double	old_time;
 	// position of the player on the map
 	float	pos_x;
 	float	pos_y;
@@ -125,6 +122,7 @@ typedef struct s_key
 	t_bool	k_ri;
 	t_bool	k_up;
 	t_bool	k_do;
+	t_bool	k_sh;
 }	t_key;
 
 typedef struct s_graphic // repris de mon so_long
@@ -168,17 +166,26 @@ typedef struct s_weapons
 
 }	t_weapons;
 
+typedef struct s_fps
+{
+    double  frame_time;
+    double  start_time;
+    double  old_time;
+}   t_fps;
+
 typedef struct s_cub
 {
-	t_weapons	weapons;
-	t_oscreen	oscreen;
-	t_bool		game_on;
-	t_map		map;
-	t_key		key;
-	t_mmap		mmap;
-	t_player	player;
-	t_setting	setting;
-	t_graphic	graphic;
-}	t_cub;
+    t_weapons   weapons;
+    t_oscreen   oscreen;
+    t_bool      game_on;
+    t_map       map;
+    t_key       key;
+    t_fps       fps;
+    t_mmap      mmap;
+    t_player    player;
+    t_setting   setting;
+    t_graphic   graphic;
+}   t_cub;
+
 
 #endif

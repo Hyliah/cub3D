@@ -15,7 +15,6 @@
 #ifndef CUB_FUNCTIONS_H
 # define CUB_FUNCTION_H
 
-
 /* PARSING */
 
 /* CUSTOM MLX*/
@@ -36,8 +35,10 @@ void	init_overlays_weapons(t_cub *cub);
 void	init_opening_screen(t_cub *cub);
 
 /* RAYCASTING */
-int     dda(t_cub *cub);
+int		dda(t_cub *cub);
 void	raycasting(t_cub *cub);
+void	frame_time(t_cub *cub);
+void	limit_fps(t_cub *cub);
 
 /* MATH */
 void	cal_map(t_cub *cub);
@@ -63,5 +64,7 @@ void	free_mid_tab(t_cub *cub, char ***tab, int i);
 /* UTILS */
 void	init_struct(t_cub *cub);
 
+
+void debug_log(const char *msg);
 
 #endif

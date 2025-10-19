@@ -16,7 +16,6 @@ static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed);
 
 int	key_press(int key, t_cub *cub)
 {
-	puts("hello key_press");
 	change_key_status(cub, key, TRUE);
 	//POUR LES PORTES SI ON EN FAIT
 	// if (keycode == KEY_O) 
@@ -26,7 +25,6 @@ int	key_press(int key, t_cub *cub)
 	// 	else
 	// 		cub->mmap.mm_show = TRUE;
 	// }
-
 	if (key == KEY_M)
 	{
 		if (cub->mmap.mm_show == TRUE)
@@ -65,4 +63,6 @@ static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed)
 		cub->key.k_up = is_pressed;
 	if (keycode == KEY_DOWNARROW)
 		cub->key.k_do = is_pressed;
+	if (keycode == KEY_SHIFT)
+		cub->key.k_sh = is_pressed;
 }

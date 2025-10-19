@@ -2,6 +2,7 @@
 	"files.associations": {
 		"cub_keyboard.h": "c",
 		"cub.h": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"__locale": "c"
 	}
 }

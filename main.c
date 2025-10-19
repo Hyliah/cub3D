@@ -20,8 +20,19 @@ int game_loop(t_cub *cub)
 	return 0;
 }
 
+void debug_log(const char *msg)
+{
+    FILE *f = fopen("debug.log", "a");
+    if (f)
+    {
+        fprintf(f, "%s\n", msg);
+        fclose(f);
+    }
+}
+
 int main (int ac, char **av)
 {
+
 	t_cub   cub;
 	(void)ac;
 	(void)av;
@@ -34,7 +45,6 @@ int main (int ac, char **av)
 		// hardcode de la map -> enlever quand parsing est fait
 		hardcode_map(&cub, av[1]);
 		// mettre le parsing ici
-
 		// mise en place de la window
 		create_window(&cub);
 		// while (cub.game_on == TRUE)

@@ -41,8 +41,6 @@ static void	init_struct_player(t_cub *cub)
 	cub->player.dir = 0;
 	cub->player.dir_x = 0;
 	cub->player.dir_y = 0;
-	cub->player.new_time = 0;
-	cub->player.old_time = 0;
 	cub->player.pl_x = 0;
 	cub->player.pl_y = 0;
 	cub->player.pos_x = 0;
@@ -55,6 +53,7 @@ static void	init_struct_player(t_cub *cub)
 	cub->key.k_do = FALSE;
 	cub->key.k_le = FALSE;
 	cub->key.k_ri = FALSE;
+	cub->key.k_sh = FALSE;
 }
 
 #ifdef __linux__
@@ -93,10 +92,6 @@ static void	init_struct_graphic(t_cub *cub)
 {
 	cub->graphic.s_height = 540;
 	cub->graphic.s_width = 960;
-	cub->graphic.img_e = 0;
-	cub->graphic.img_n = 0;
-	cub->graphic.img_s = 0;
-	cub->graphic.img_w = 0;
 	cub->graphic.mlx_ptr = NULL;
 	cub->graphic.win_ptr = NULL;
 	cub->mmap.mm_show = TRUE;
@@ -115,6 +110,10 @@ static void	init_struct_graphic(t_cub *cub)
 	init_t_img(&cub->graphic.img_screen);
 	init_t_img(&cub->mmap.img_mmap);
 	init_t_img(&cub->mmap.img_player);
+	init_t_img(&cub->graphic.img_e);
+	init_t_img(&cub->graphic.img_s);
+	init_t_img(&cub->graphic.img_n);
+	init_t_img(&cub->graphic.img_w);
 }
 
 #endif
