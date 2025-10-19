@@ -42,7 +42,6 @@ void	opening_screen_handle(t_cub *cub, int keycode)
 	if (keycode == KEY_RETURN)
 	{
 		cub->game_on = TRUE;
-		//init_opening_screen(cub);
 		init_overlays_weapons(cub);
 	}
 	else if (cub->key.k_up && cub->game_on == FALSE)

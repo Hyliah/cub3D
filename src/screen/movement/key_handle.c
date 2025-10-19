@@ -14,17 +14,12 @@
 
 static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed);
 
+	// need to check on linux
+	//printf("key = %d\n", key);
+
 int	key_press(int key, t_cub *cub)
 {
 	change_key_status(cub, key, TRUE);
-	//POUR LES PORTES SI ON EN FAIT
-	// if (keycode == KEY_O) 
-	// {
-	// 	if (cub->mmap.mm_show = TRUE) //mettre la struct porte
-	// 		cub->mmap.mm_show = FALSE;
-	// 	else
-	// 		cub->mmap.mm_show = TRUE;
-	// }
 	if (key == KEY_M)
 	{
 		if (cub->mmap.mm_show == TRUE)
@@ -35,7 +30,6 @@ int	key_press(int key, t_cub *cub)
 	if (key == KEY_ESCAPE)
 		clean_exit(cub);
 	opening_screen_handle(cub, key);
-	//move_player(cub);
 	return (0);
 }
 
@@ -66,3 +60,12 @@ static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed)
 	if (keycode == KEY_SHIFT)
 		cub->key.k_sh = is_pressed;
 }
+
+	//POUR LES PORTES SI ON EN FAIT
+	// if (keycode == KEY_O) 
+	// {
+	// 	if (cub->mmap.mm_show = TRUE) //mettre la struct porte
+	// 		cub->mmap.mm_show = FALSE;
+	// 	else
+	// 		cub->mmap.mm_show = TRUE;
+	// }

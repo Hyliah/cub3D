@@ -16,6 +16,7 @@ void        hardcode_map(t_cub *cub, char *arg);
 
 int game_loop(t_cub *cub)
 {
+	limit_fps(cub);
 	move_player(cub);
 	return 0;
 }

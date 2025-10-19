@@ -23,6 +23,7 @@ void	init_struct(t_cub *cub)
 	init_struct_graphic(cub);
 	init_struct_map_settings(cub);
 	init_struct_player(cub);
+	frame_time(cub);
 }
 
 static void	init_struct_map_settings(t_cub *cub)

@@ -14,21 +14,20 @@
 
 static double	get_current_time(void);
 
-void limit_fps(t_cub *cub)
+void	limit_fps(t_cub *cub)
 {
 	double	current_time;
 	double	frame_duration_ms;
 	double	elapsed;
 	int		max_fps;
 
-	max_fps = 40;
+	max_fps = 60;
 	current_time = get_current_time();
 	frame_duration_ms = 1000.0 / max_fps;
 	elapsed = current_time - cub->fps.start_time;
 	if (elapsed < frame_duration_ms)
 		usleep((useconds_t)((frame_duration_ms - elapsed) * 1000.0));
 	cub->fps.start_time = get_current_time();
-	puts("hello");
 }
 
 void	frame_time(t_cub *cub)
@@ -49,6 +48,5 @@ static double	get_current_time(void)
 		printf("issue while getting time\n");
 		return (0);
 	}
-	return (tv.tv_sec * 1000.0f + tv.tv_usec / 1000.0);
+	return (tv.tv_sec * 1000.0 + tv.tv_usec / 1000.0);
 }
-
