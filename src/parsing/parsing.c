@@ -50,18 +50,18 @@ void	parse_file(t_cub *cub, char *pathname )
 	int		fd;
 	char	*line;
 
-	//printf("DEBUG: open_cub_file\n"); // ---------------------------------------------------
 	fd = open_cub_file(cub, pathname);
-	//printf("DEBUG: get_next_valid_line\n"); // ---------------------------------------------------
 	line = get_next_valid_line(cub, fd);
 	while (line)
 	{
-
-		printf("DEBUG: new line -> '%s'\n", line); // ---------------------------------------------------
-		if (!cub->map.map_start)
-			process_config_line(cub, line);
-		else
-			process_map_line(cub, line);
+		if (line[0])
+		{
+			printf("DEBUG: new line -> '%s'\n", line); // ---------------------------------------------------
+			if (!cub->map.map_start)
+				process_config_line(cub, line);
+			if (cub->map.map_start)
+				process_map_line(cub, line);
+		}
 		free(line);
 		line = get_next_valid_line(cub, fd);
 	}
@@ -108,20 +108,13 @@ char    *get_next_valid_line(t_cub *cub, int fd)
 // Juste pour les lignes de config AVANT la map  ( texture et color)
 void	process_config_line(t_cub *cub, char *line)
 {
-	if (!line)
-		return;
-	//printf("rentre ds config line\n"); // a supp -------------------------------------
 	if (is_map_line(line))
 	{
-		//printf("si c'est map line\n"); // a supp -------------------------------------
 		cub->map.map_start = 1;
-		cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab, &cub->map.height, line);
+		//cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab, &cub->map.height, line);
 	}
 	else if (is_texture_line(line))
-	{
-		//printf("reconnait que c'est une map line\n"); // a supp -------------------------------------
 		parse_texture_line(cub, line);
-	}
 	else if (is_color_line(line))
 		parse_color_line(cub, line);
 	else
@@ -138,7 +131,7 @@ void	process_map_line(t_cub *cub, char *line)
 	if (!is_map_line(line))
 	{
 		ft_error(ERR_MAP_INVALID);
-		ft_putstr_fd("Element should not be after the map\n", 2);
+		ft_putstr_fd("Element should not be after the map\n", 2); // pb ici 
 		clean_exit_parsing(cub);
 	}
 	cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab, &cub->map.height, line);

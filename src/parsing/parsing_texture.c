@@ -29,7 +29,7 @@ void	parse_texture_line(t_cub *cub, char *line)
 	}
 
 	split = ft_split(line, ' '); // on split les 2 element : orientation et chemin de la texture
-	if (!split || !split[0] || !split[1] || split[2])
+	if (!split || !split[0] || !split[1] || split[2]) // heck again pour 1 et 2 ???? 
 	{
 		free_tab(&split);
 		ft_error(ERR_TEXTURE);

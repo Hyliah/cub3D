@@ -60,12 +60,15 @@ void	check_line_empty_in_map(t_cub *cub)
 		if ( is_empty_line(cub->map.map_tab[y]))
 		{
 			if(!map_ended)
-			map_ended = 1;
+				map_ended = 1;
 		}
 		else
 		{
 			if (map_ended)
-			ft_error(ERR_MAP_LINE);
+			{
+				ft_error(ERR_MAP_LINE);
+				clean_exit_parsing(cub);
+			}
 		}
 		y++;
 	}

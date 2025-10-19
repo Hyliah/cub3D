@@ -22,7 +22,6 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 	if (!new)
 	{
 		ft_error(ERR_MAP_INVALID);
-		printf("debug : malloc fail"); // a supp ----------------------------
 		clean_exit_parsing(cub);
 	}
 	i = 0;
@@ -38,7 +37,6 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 			free(new[i]);
 		free(new);
 		ft_error(ERR_MAP_INVALID);
-		printf("debug : strdundup fail"); // a supp ----------------------------
 		clean_exit_parsing(cub);
 	}
 	new[i + 1] = NULL;
