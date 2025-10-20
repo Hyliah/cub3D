@@ -14,7 +14,7 @@
 
 // test test test 
 
-int is_config_line(char *line)
+int	is_config_line(char *line)
 {
 	while (*line && (*line == ' ' || *line == '\t'))
 		line++;
@@ -39,43 +39,14 @@ int	is_map_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] != '0' && line[i] != '1' && line[i] != 'N' && line[i] != 'S' && line[i] != 'E' && line[i] != 'W' && line[i] != ' ' )
+		if (line[i] != '0' && line[i] != '1' && line[i] != 'N' && line[i] != 'S'
+			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' ' )
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-
-// modif le 16 oct mais pas sure 
-// renvoie 1 si la ligne continet un element de map donc 0 1 N S E W
-// int	is_map_line(char *line)
-// {
-// 	int	i;
-
-// 	// if (!line)
-// 	// 	return (0);
-// 	i = 0;
-// 	while ( line[i] == ' ' || line[i] == '\t')
-// 		i++;
-// 	if (line[i] == '\0')
-// 		return (0);
-// 	while (line[i])
-// 	{
-// 		if (line[i] == '0' || line[i] == '1'
-// 			|| line [i] == 'N' || line[i] == 'S'
-// 			|| line[i] == 'E' || line[i] == 'W' || line[i] == ' ')
-// 			{
-// 				return (1);
-// 			}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
-
-// Renvoie 1 si empty 
-//new version si ligne est aussi avec juste espace ou tab 
 int	is_empty_line(char *line)
 {
 	int	i;
@@ -92,8 +63,6 @@ int	is_empty_line(char *line)
 	return (1);
 }
 
-
-// renvoie 1 si la ligne est une ligen de texture
 int	is_texture_line(char *line)
 {
 	while (*line && (*line == ' ' || *line == '\t'))
@@ -104,7 +73,6 @@ int	is_texture_line(char *line)
 	return (0);
 }
 
-//renvoie 1 si la ligne est une couleur pour F et C 
 int	is_color_line(char *line)
 {
 	while (*line && (*line == ' ' || *line == '\t'))

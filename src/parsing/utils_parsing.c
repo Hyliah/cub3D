@@ -33,30 +33,32 @@ void	ft_error(t_error error)
 	else if (error == ERR_FILE_NOT_FOUND)
 		ft_putstr_fd("File not found\n", STDERR_FILENO);
 	else if (error == ERR_PLAYER)
-		ft_putstr_fd("Error player: ", STDERR_FILENO); // pas de \n car mess apres 
+		ft_putstr_fd("Error player: ", STDERR_FILENO);
 	else if (error == ERR_MAP_LINE)
 		ft_putstr_fd("No empty line on the map\n", STDERR_FILENO);
 	else if (error == ERR_COLOR)
-		ft_putstr_fd("Invalid color: ", STDERR_FILENO); // pas de \n car mess apres 
+		ft_putstr_fd("Invalid color: ", STDERR_FILENO);
 	else if (error == ERR_TEXTURE)
-		ft_putstr_fd("Invalid texture: ", STDERR_FILENO); // pas de \n car mess apres 
+		ft_putstr_fd("Invalid texture: ", STDERR_FILENO);
 }
 
 // faire fonction de trim pour remplacer les \n par des \0 
 void	ft_strtrim_newline(char *line)
 {
-	int len;
+	int	len;
 
 	if (!line)
-		return;
+		return ;
 	len = ft_strlen(line);
-	if ( len > 0 && line[len - 1] == '\n')
+	if (len > 0 && line[len - 1] == '\n')
 		line[len - 1] = '\0';
 }
+
 // test test test pour trim les espacvves pour les colors 
 void	ft_strtrim_spaces(char *s)
 {
 	char	*dst = s;
+
 	while (*s)
 	{
 		if (*s != ' ' && *s != '\t')
@@ -77,12 +79,12 @@ int	get_map_width(char **map, int height)
 		return (0);
 	max_width = 0;
 	i = 0;
-	while ( i < height)
+	while (i < height)
 	{
 		current_width = ft_strlen(map[i]);
 		if (current_width > max_width)
 			max_width = current_width;
 		i++;
 	}
-	return(max_width);
+	return (max_width);
 }

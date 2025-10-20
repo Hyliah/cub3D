@@ -15,12 +15,11 @@
 void	check_map(t_cub *cub)
 {
 	check_invalid_char(cub);
-	check_line_empty_in_map(cub); // ne fontcionne pas - a checker again !!!!
+	check_line_empty_in_map(cub);
 	// check_player(cub);
 	// check_wall(cub);
 }
 
-// -> validité des caracteres comme ds so_long mais avec 0, 1, N, S, E, W
 void	check_invalid_char(t_cub *cub)
 {
 	int		y;
@@ -37,7 +36,8 @@ void	check_invalid_char(t_cub *cub)
 			if (c != '0' && c != '1' && c != 'N' && c != 'S'
 				&& c != 'E' && c != 'W' && c != ' ' && c != '\n')
 			{
-				printf("Invalid char (ASCII %d) found at y=%d x=%d -> '%c'\n", c, y, x, c);
+				printf("Invalid char (ASCII %d) found at y=%d x=%d -> '%c'\n",
+					c, y, x, c);
 				ft_error(ERR_MAP_INVALID_CHAR);
 				clean_exit_parsing(cub);
 			}
@@ -47,7 +47,6 @@ void	check_invalid_char(t_cub *cub)
 	}
 }
 
-// Pas de ligen vide A L INTERIEUR la map 
 void	check_line_empty_in_map(t_cub *cub)
 {
 	int	y;
@@ -55,11 +54,11 @@ void	check_line_empty_in_map(t_cub *cub)
 
 	y = 0;
 	map_ended = 0;
-	while ( cub->map.map_tab[y])
+	while (cub->map.map_tab[y])
 	{
-		if ( is_empty_line(cub->map.map_tab[y]))
+		if (s_empty_line(cub->map.map_tab[y]))
 		{
-			if(!map_ended)
+			if (!map_ended)
 				map_ended = 1;
 		}
 		else

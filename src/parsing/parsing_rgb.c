@@ -21,7 +21,6 @@ t_rgb	parse_rgb(t_cub *cub, char *str)
 	int		count;
 
 	check_rgb_format(cub, str);
-	//printf("After trim: '%s' (length: %d)\n", str, ft_strlen(str));
 	rgb = ft_split(str, ',');
 	if (!rgb)
 		clean_exit_parsing(cub);
@@ -32,41 +31,41 @@ t_rgb	parse_rgb(t_cub *cub, char *str)
 		check_rgb_component(cub, rgb[count]);
 		count++;
 	}
-	if(count != 3)
+	if (count != 3)
 	{
 		ft_error(ERR_COLOR);
-		ft_putstr_fd("Invalid RGB format (need 3 components : R, G, B)\n", 2); // ok test
+		ft_putstr_fd("Invalid RGB format (need 3 components : R, G, B)\n", 2);
 		free_tab(&rgb);
 		clean_exit_parsing(cub);
 	}
 	color = convert_and_check_rgb(cub, rgb);
-	return(color);
+	return (color);
 }
-
 
 void	check_rgb_format(t_cub *cub, char *str)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ',' && str[i] != ' ' && str[i] != '\t')
+		if (!ft_isdigit(str[i]) && str[i] != ',' && str[i] != ' '
+			&& str[i] != '\t')
 		{
 			ft_error(ERR_COLOR);
-			ft_putstr_fd("Invalid RGB format (must contain only digits and commas)\n", 2); // ok test
+			ft_putstr_fd("Invalid RGB format (must contain only digits and commas)\n", 2);
 			clean_exit_parsing(cub);
 		}
 		if (ft_isdigit(str[i]) && (str[i + 1] == ' ' || str[i + 1] == '\t'))
 		{
 			j = i + 1;
-			while(str[j] == ' ' || str[j] == '\t')
+			while (str[j] == ' ' || str[j] == '\t')
 				j++;
 			if (ft_isdigit(str[j]))
 			{
 				ft_error(ERR_COLOR);
-				ft_putstr_fd("Invalid RGB format (space between digits)\n", 2); // ok test
+				ft_putstr_fd("Invalid RGB format (space between digits)\n", 2);
 				clean_exit_parsing(cub);
 			}
 		}
@@ -74,12 +73,12 @@ void	check_rgb_format(t_cub *cub, char *str)
 	}
 }
 
-void check_rgb_component(t_cub *cub, char *comp) // ???? 
+void	check_rgb_component(t_cub *cub, char *comp) // ???? 
 {
 	int	i;
 
 	i = 0;
-	if(!comp || !*comp)
+	if (!comp || !*comp)
 	{
 		ft_error(ERR_COLOR);
 		ft_putstr_fd("RGB component missing\n", 2);
@@ -96,7 +95,7 @@ void check_rgb_component(t_cub *cub, char *comp) // ????
 		i++;
 	}
 }
-// pour refacto 
+
 t_rgb	convert_and_check_rgb(t_cub *cub, char **rgb)
 {
 	t_rgb	color;
@@ -105,15 +104,13 @@ t_rgb	convert_and_check_rgb(t_cub *cub, char **rgb)
 	color.g = ft_atoi(rgb[1]);
 	color.b = ft_atoi(rgb[2]);
 	free_tab(&rgb);
-
 	if (color.r < 0 || color.r > 255
 		|| color.g < 0 || color.g > 255
 		|| color.b < 0 || color.b > 255)
 	{
 		ft_error(ERR_COLOR);
-		ft_putstr_fd("Color value must be between 0 and 255\n", 2); // ok test
+		ft_putstr_fd("Color value must be between 0 and 255\n", 2);
 		clean_exit_parsing(cub);
 	}
-	return(color);
+	return (color);
 }
-

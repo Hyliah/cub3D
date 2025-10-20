@@ -12,7 +12,6 @@
 
 #include "cub.h"
 
-// check arg 
 void	check_arg(t_cub *cub, int ac, char **av) // ok test
 {
 	if (ac != 2)
@@ -27,8 +26,6 @@ void	check_arg(t_cub *cub, int ac, char **av) // ok test
 	}
 }
 
-// check extension .cub
-// modif de la fonction check_ber de mon so_long
 void	check_cub(t_cub *cub, char *pathname) // ok test 
 {
 	int		len;
@@ -48,7 +45,6 @@ void	check_cub(t_cub *cub, char *pathname) // ok test
 	}
 }
 
-//verif que le fichier est lisible ( open + gestion erreur )
 void	check_file_access(t_cub *cub, char *pathname) // ok test
 {
 	int	fd;

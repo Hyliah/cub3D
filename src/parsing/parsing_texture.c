@@ -27,8 +27,8 @@ void	parse_texture_line(t_cub *cub, char *line)
 	}
 	while (*line && (*line == ' ' || *line == '\t'))
 		line++;
-	split = ft_split(line, ' '); // on split les 2 element : orientation et chemin de la texture
-	if (!split || !split[0] || !split[1] || split[2]) // heck again pour 1 et 2 ???? 
+	split = ft_split(line, ' ');
+	if (!split || !split[0] || !split[1] || split[2])
 	{
 		free_tab(&split);
 		ft_error(ERR_TEXTURE);
@@ -37,10 +37,6 @@ void	parse_texture_line(t_cub *cub, char *line)
 	}
 	orientation = split[0];
 	path = split[1];
-
-	// printf("DEBUG: orientation='%s', path='%s'\n", orientation, path); // -----------------------------------
-
-	//verif xpm
 	if (ft_strncmp(orientation, "NO", 3) == 0)
 		parse_text_no(cub, path);
 	else if (ft_strncmp(orientation, "SO", 3) == 0)
@@ -57,23 +53,10 @@ void	parse_texture_line(t_cub *cub, char *line)
 		clean_exit_parsing(cub);
 	}
 	free_tab(&split);
-
-	// DEBUG : afficher l’état après parse -----------------------------------
-	// printf("DEBUG: has_tex_no=%d, has_tex_so=%d, has_tex_ea=%d, has_tex_we=%d\n",
-	// 	cub->setting.has_tex_no,
-	// 	cub->setting.has_tex_so,
-	// 	cub->setting.has_tex_ea,
-	// 	cub->setting.has_tex_we);
-	// printf("DEBUG: tex_no=%p, tex_so=%p, tex_ea=%p, tex_we=%p\n",
-	// 	cub->setting.tex_no,
-	// 	cub->setting.tex_so,
-	// 	cub->setting.tex_ea,
-	// 	cub->setting.tex_we);
 }
 
 void	parse_text_no(t_cub *cub, char *path)
 {
-	//printf("DEBUG: parse_text_no path='%s'\n", path);
 	if (cub->setting.has_tex_no)
 	{
 		ft_error(ERR_TEXTURE);
@@ -92,7 +75,6 @@ void	parse_text_no(t_cub *cub, char *path)
 
 void	parse_text_so(t_cub *cub, char *path)
 {
-	//printf("DEBUG: parse_text_so path='%s'\n", path);
 	if (cub->setting.has_tex_so)
 	{
 		ft_error(ERR_TEXTURE);
@@ -111,7 +93,6 @@ void	parse_text_so(t_cub *cub, char *path)
 
 void	parse_text_ea(t_cub *cub, char *path)
 {
-	//printf("DEBUG: parse_text_ea path='%s'\n", path);
 	if (cub->setting.has_tex_ea)
 	{
 		ft_error(ERR_TEXTURE);
@@ -130,7 +111,6 @@ void	parse_text_ea(t_cub *cub, char *path)
 
 void	parse_text_we(t_cub *cub, char *path)
 {
-	//printf("DEBUG: parse_text_we path='%s'\n", path);
 	if (cub->setting.has_tex_we)
 	{
 		ft_error(ERR_TEXTURE);

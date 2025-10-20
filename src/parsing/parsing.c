@@ -25,24 +25,19 @@
 //			- caractere valide only comme ds so_long mais avec 0, 1, N, S, E, W
 //			- un seul joueur 
 //			- map fermee par murs ( bordure avec 1 et flood fill aussi ?)
-
-
 // faire fonction globale avec tt dedans 
+
 void	parsing(t_cub *cub, int ac, char **av)
 {
 	check_arg(cub, ac, av);
 	check_cub(cub, av[1]);
 	check_file_access(cub, av[1]);
-	// ok so far -------------------------------------------------------------------------
-	parse_file(cub, av[1]); 
-	// seems ok jusque la, refaire tt les tests 
+	parse_file(cub, av[1]);
 	check_texture(cub);
 	check_color(cub);
 	// pb avec mess d'erreur extra , check to do !!!
-	//print_debug_settings(&cub->setting); -------------------------------------------------------------------------
-	check_map(cub); // invalid char, line, player puis wall (?) a supp si floodfill ? 
+	check_map(cub);
 	// flood fill ici ? A la toute fin ( apres player ) 
-
 }
 
 void	parse_file(t_cub *cub, char *pathname )
@@ -85,34 +80,30 @@ int	open_cub_file(t_cub *cub, char *pathname)
 	return (fd);
 }
 
-// va lire la prochaine line pas vide et supp le \n avec trim
-char    *get_next_valid_line(t_cub *cub, int fd)
+char	*get_next_valid_line(t_cub *cub, int fd)
 {
-    char        *line;
+	char	*line;
 
-    line = get_next_line(fd);
-    while (line)
-    {
-        ft_strtrim_newline(line);
-        if (!cub->map.map_start && is_empty_line(line))
-        {
-            free(line);
-            line = get_next_line(fd);
+	line = get_next_line(fd);
+	while (line)
+	{
+		ft_strtrim_newline(line);
+		if (!cub->map.map_start && is_empty_line(line))
+		{
+			free(line);
+			line = get_next_line(fd);
 			ft_strtrim_newline(line);
-        }
-        return (line);
-    }
-    return (NULL);
+		}
+		return (line);
+	}
+	return (NULL);
 }
 
 // Juste pour les lignes de config AVANT la map  ( texture et color)
 void	process_config_line(t_cub *cub, char *line)
 {
 	if (is_map_line(line))
-	{
 		cub->map.map_start = 1;
-		//cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab, &cub->map.height, line);
-	}
 	else if (is_texture_line(line))
 		parse_texture_line(cub, line);
 	else if (is_color_line(line))
@@ -125,16 +116,16 @@ void	process_config_line(t_cub *cub, char *line)
 	}
 }
 
-//gere uniauement les ligens de map une fois qu'elle a commence
 void	process_map_line(t_cub *cub, char *line)
 {
 	if (!is_map_line(line))
 	{
 		ft_error(ERR_MAP_INVALID);
-		ft_putstr_fd("Element should not be after the map\n", 2); // pb ici 
+		ft_putstr_fd("Element should not be after the map\n", 2);
 		clean_exit_parsing(cub);
 	}
-	cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab, &cub->map.height, line);
+	cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab,
+			&cub->map.height, line);
 }
 
 // verif qu'au moins une ligen a ete lue et calcul la largeur max 

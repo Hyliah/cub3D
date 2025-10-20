@@ -16,7 +16,7 @@
 char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 {
 	char	**new;
-	int 	i;
+	int		i;
 
 	new = malloc(sizeof(char *) * (*count + 2));
 	if (!new)
@@ -25,7 +25,7 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 		clean_exit_parsing(cub);
 	}
 	i = 0;
-	while ( i < *count)
+	while (i < *count)
 	{
 		new[i] = map[i];
 		i++;
@@ -41,11 +41,9 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 	}
 	new[i + 1] = NULL;
 	free(map);
-	(*count)++; // pas clair cette histoire ----------------------------
+	(*count)++;
 	return (new);
 }
-
-
 
 // faire un flood fill aussi ? 
 // check path ? 
