@@ -12,91 +12,73 @@
 
 #include "cub.h"
 
-// static void	init_wall(t_cub *cub, t_img *img, char *xpm);
+static t_img	*choose_wall(t_cub *cub, int side);
+static void		fill_pixels(t_cub *cub, t_img *tex, int x);
 
-// void	init_walls(t_cub *cub)
-// {
-// 	init_wall(cub, &cub->graphic.img_e, WTE);
-// 	init_wall(cub, &cub->graphic.img_s, WTS);
-// 	init_wall(cub, &cub->graphic.img_w, WTW);
-// 	init_wall(cub, &cub->graphic.img_n, WTN);
-// }
+void	texture_cal(t_cub *cub, int x, int side)
+{
+	t_img	*tex;
 
-// static void	init_wall(t_cub *cub, t_img *img, char *xpm)
-// {
-// 	int	x;
-// 	int	y;
+	tex = choose_wall(cub, side);
+	if (side == 0)
+		cub->tex.wall_x = cub->player.pos_y
+			+ cub->player.perp_wall_dist * cub->player.ray_dir_y;
+	else
+		cub->tex.wall_x = cub->player.pos_x
+			+ cub->player.perp_wall_dist * cub->player.ray_dir_x;
+	cub->tex.wall_x -= floor(cub->tex.wall_x);
+	cub->tex.tex_x = (int)(cub->tex.wall_x * (float)tex->width);
+	if ((side == 0 && cub->player.ray_dir_x > 0)
+		|| (side == 1 && cub->player.ray_dir_y < 0))
+		cub->tex.tex_x = tex->width - cub->tex.tex_x - 1;
+	cub->tex.step = 1.0f * tex->height / cub->player.line_height;
+	cub->tex.draw_start = cal_range(cub, TRUE);
+	cub->tex.draw_end = cal_range(cub, FALSE);
+	cub->tex.tex_pos = (cub->tex.draw_start - cub->graphic.s_height / 2
+			+ cub->player.line_height / 2) * cub->tex.step;
+	fill_pixels(cub, tex, x);
+}
 
-// 	x = 1024;
-// 	y = 1024;
-// 	img->img_ptr = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, xpm, &x, &y);
-// 	// if (!img->img_ptr)
-// 	// 	infructuous_smth;
-// 	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
-// 			&img->endian);
-// 	img->width = x;
-// 	img->height = y;
+static void	fill_pixels(t_cub *cub, t_img *tex, int x)
+{
+	int		y;
+	t_hex_c	color;
 
-// 	//maybe here change the way of xy for a more simple raycastng
-// }
+	y = 0;
+	while (y < cub->tex.draw_start)
+	{
+		set_pixel(&cub->graphic.img_screen, x, y, cub->setting.c_color);
+		y++;
+	}
+	while (y < cub->tex.draw_end)
+	{
+		cub->tex.tex_y = (int)cub->tex.tex_pos & (tex->height - 1);
+		cub->tex.tex_pos += cub->tex.step;
+		color = get_pixel(tex, cub->tex.tex_x, cub->tex.tex_y);
+		set_pixel(&cub->graphic.img_screen, x, y, color);
+		y++;
+	}
+	while (y < cub->graphic.s_height)
+	{
+		set_pixel(&cub->graphic.img_screen, x, y, cub->setting.f_color);
+		y++;
+	}
+}
 
-// void	texture_cal(t_cub *cub, int x, int y, int side)
-// {
-// 	int		text_num;
-// 	int		text_x;
-// 	float	wall_x;
-// 	float	step;
-// 	float	tex_pos;
-
-// 	text_num = cub->map.map_tab[x][y] - 1;
-// 	if (side == 0)
-// 		wall_x = cub->player.pos_y + cub->player.perp_wall_dist * cub->player.ray_dir_y;
-// 	else
-// 		wall_x = cub->player.pos_x + cub->player.perp_wall_dist * cub->player.ray_dir_x;
-	
-// 	// floor arrondi a l x.x le plus proche
-// 	wall_x -= floor((double)wall_x);
-// 	text_x = (int)wall_x * 1024;
-// 	if ((side == 0 && cub->player.ray_dir_x > 0) || (side == 1 && cub->player.ray_dir_y < 0))
-// 		text_x = 1024 - text_x - 1;
-
-// 	step = 1.0f * 1024 / cub->player.line_height;
-	
-// }
-/*
-
-
-			//texturing calculations
-			int texNum = worldMap[mapX][mapY] - 1; //1 subtracted from it so that texture 0 can be used!
-
-			//calculate value of wallX
-			double wallX; //where exactly the wall was hit
-			if (side == 0) wallX = posY + perpWallDist * rayDirY;
-			else           wallX = posX + perpWallDist * rayDirX;
-			wallX -= floor((wallX));
-
-			//x coordinate on the texture
-			int texX = int(wallX * double(texWidth));
-			if(side == 0 && rayDirX > 0) texX = texWidth - texX - 1;
-			if(side == 1 && rayDirY < 0) texX = texWidth - texX - 1;
-
-
-
-
-		
-				// How much to increase the texture coordinate per screen pixel
-			double step = 1.0 * texHeight / lineHeight;
-			// Starting texture coordinate
-			double texPos = (drawStart - h / 2 + lineHeight / 2) * step;
-			for(int y = drawStart; y<drawEnd; y++)
-			{
-				// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-				int texY = (int)texPos & (texHeight - 1);
-				texPos += step;
-				Uint32 color = texture[texNum][texHeight * texY + texX];
-				//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-				if(side == 1) color = (color >> 1) & 8355711;
-				buffer[y][x] = color;
-			}
-		}
-*/
+static t_img	*choose_wall(t_cub *cub, int side)
+{
+	if (side == 0)
+	{
+		if (cub->player.ray_dir_x > 0)
+			return (&cub->graphic.img_w);
+		else
+			return (&cub->graphic.img_e);
+	}
+	else
+	{
+		if (cub->player.ray_dir_y > 0)
+			return (&cub->graphic.img_n);
+		else
+			return (&cub->graphic.img_s);
+	}
+}

@@ -39,7 +39,6 @@ static void	init_struct_map_settings(t_cub *cub)
 
 static void	init_struct_player(t_cub *cub)
 {
-	cub->player.dir = 0;
 	cub->player.dir_x = 0;
 	cub->player.dir_y = 0;
 	cub->player.pl_x = 0;

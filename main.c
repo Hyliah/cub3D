@@ -88,8 +88,8 @@ void    hardcode_map(t_cub *cub, char *arg)
 	cub->mmap.mm_hei = cub->map.height * 32;
 	cub->mmap.mm_wid = cub->map.width * 32;
 
-	cub->setting.c_color = 0x67a0fc;
-	cub->setting.f_color = 0xbaed8e;
+	cub->setting.c_color = 0xa1c8f4;
+	cub->setting.f_color = 0x8fa959;
 
 	int	i;
 	char *line;

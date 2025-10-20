@@ -1,4 +1,4 @@
-obj/screen_utils.o: src/screen/screen_utils.c includes/cub.h \
+obj/rc_utils.o: src/screen/raycasting/rc_utils.c includes/cub.h \
   attached/minilibx_macos_opengl/mlx.h includes/libft.h \
   includes/cub_define.h includes/cub_struct.h includes/cub_keyboard.h \
   includes/cub_functions.h includes/cub_buttoncode.h

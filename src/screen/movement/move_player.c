@@ -12,20 +12,6 @@
 
 #include "cub.h"
 
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
-
-#include "cub.h"
-
 static double	cal_speed(t_cub *cub);
 static t_bool	safe_move(t_cub *cub, float new_x, float new_y);
 static void		move(t_cub *cub, float direction);
@@ -79,7 +65,7 @@ static double	cal_speed(t_cub *cub)
 
 	frame_time(cub);
 	if (cub->key.k_sh && cub->key.k_w)
-		speed = cub->fps.frame_time * 5.0;
+		speed = cub->fps.frame_time * 4.0;
 	else if (cub->key.k_s)
 		speed = cub->fps.frame_time * 1.0;
 	else

@@ -35,10 +35,13 @@ void	init_overlays_weapons(t_cub *cub);
 void	init_opening_screen(t_cub *cub);
 
 /* RAYCASTING */
-int		dda(t_cub *cub);
 void	raycasting(t_cub *cub);
 void	frame_time(t_cub *cub);
 void	limit_fps(t_cub *cub);
+void	init_walls(t_cub *cub);
+void	texture_cal(t_cub *cub, int x, int side);
+int		dda(t_cub *cub);
+int		cal_range(t_cub *cub, t_bool is_start);
 
 /* MATH */
 void	cal_map(t_cub *cub);

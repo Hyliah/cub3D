@@ -17,10 +17,10 @@
 
 typedef enum s_dir
 {
-	NORTH, // = 0
-	EAST, // = 1
-	SOUTH, // = 2
-	WEST // = 3
+	NORTH,
+	EAST,
+	SOUTH,
+	WEST
 }  	t_dir;
 
 typedef enum s_bool
@@ -29,7 +29,6 @@ typedef enum s_bool
 	TRUE
 }	t_bool;
 
-// contain information about the position of the player and FOV
 typedef struct s_player
 {
 	// position of the player on the map
@@ -44,7 +43,6 @@ typedef struct s_player
 	// de -1 a 1 . 0 au centre
 	float	cam_x;
 	float	cam_y;
-
 	float	ray_dir_x;
 	float	ray_dir_y;
 	// distance ray has to travel from point to first xy side
@@ -57,18 +55,12 @@ typedef struct s_player
 	float	perp_wall_dist;
 	// hauteur du mur
 	int		line_height;
-
 	int		step_x;
 	int		step_y;
 	//sur quel carre on est
 	int		map_x;
 	int		map_y;
-
 	int		angle;
-
-	//pas sure si utile
-	t_dir   dir;
-
 }	t_player;
 
 // Field of vision is 2 * atan(0.66/1.0)= 66°
@@ -129,14 +121,11 @@ typedef struct s_graphic // repris de mon so_long
 {
 	void	*mlx_ptr; //pour creation de la window
 	void	*win_ptr; //pour la creation de la window
-
 	// en pixel 
 	int		s_width;
 	int		s_height;
-	
 	//struct info par screen
 	t_img	img_screen;
-	
 	//images des murs et leurs liens
 	t_img	img_e;
 	t_img	img_s;
@@ -144,6 +133,18 @@ typedef struct s_graphic // repris de mon so_long
 	t_img	img_w;
 	
 }	t_graphic;
+
+typedef struct s_tex // repris de mon so_long
+{
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	int		tex_y;
+	float	wall_x;
+	float	step;
+	float	tex_pos;
+	
+}	t_tex;
 
 typedef struct s_oscreen
 {
@@ -180,6 +181,7 @@ typedef struct s_cub
     t_bool      game_on;
     t_map       map;
     t_key       key;
+	t_tex		tex;
     t_fps       fps;
     t_mmap      mmap;
     t_player    player;
