@@ -45,7 +45,7 @@ void	free_tab(char ***tab)
 
 void	*free_ptr(void **ptr)
 {
-	if (*ptr && ptr)
+	if (ptr && *ptr)
 	{
 		free(*ptr);
 		*ptr = NULL;

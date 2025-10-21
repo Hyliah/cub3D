@@ -14,9 +14,6 @@
 
 static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed);
 
-	// need to check on linux
-	//printf("key = %d\n", key);
-
 int	key_press(int key, t_cub *cub)
 {
 	change_key_status(cub, key, TRUE);

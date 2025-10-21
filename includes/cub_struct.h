@@ -21,7 +21,7 @@ typedef enum s_dir
 	EAST,
 	SOUTH,
 	WEST
-}  	t_dir;
+}	t_dir;
 
 typedef enum s_bool
 {
@@ -81,11 +81,11 @@ typedef struct s_setting // struct pour recupérer les infos sur Parsing
 
 typedef struct s_img
 {
-	void	*img_ptr; //buffer image
-	char	*addr_ptr; //adresse mémoire du buffer d image (recup avec get data addr) le tableau 1D
-	int		bpp; //bits per pixel -> 1 pixel = 1 int -> 32 bits
-	int		size_line; //longueur d'une ligne actuelle de la window
-	int		endian; //endianness
+	void	*img_ptr;
+	char	*addr_ptr;
+	int		bpp;
+	int		size_line;
+	int		endian;
 	int		width;
 	int		height;
 }	t_img;
@@ -94,12 +94,10 @@ typedef struct s_mmap
 {
 	t_img	img_mmap;
 	t_img	img_player;
-	
+	t_bool	mm_show;
 	int		mm_hei;
 	int		mm_wid;
 	int		mm_sqr;
-
-	t_bool	mm_show;
 
 }	t_mmap;
 
@@ -119,14 +117,11 @@ typedef struct s_key
 
 typedef struct s_graphic // repris de mon so_long
 {
-	void	*mlx_ptr; //pour creation de la window
-	void	*win_ptr; //pour la creation de la window
-	// en pixel 
+	void	*mlx_ptr;
+	void	*win_ptr;
 	int		s_width;
 	int		s_height;
-	//struct info par screen
 	t_img	img_screen;
-	//images des murs et leurs liens
 	t_img	img_e;
 	t_img	img_s;
 	t_img	img_n;
@@ -169,25 +164,25 @@ typedef struct s_weapons
 
 typedef struct s_fps
 {
-    double  frame_time;
-    double  start_time;
-    double  old_time;
-}   t_fps;
+	double	frame_time;
+	double	start_time;
+	double	old_time;
+}	t_fps;
 
 typedef struct s_cub
 {
-    t_weapons   weapons;
-    t_oscreen   oscreen;
-    t_bool      game_on;
-    t_map       map;
-    t_key       key;
+	t_weapons	weapons;
+	t_oscreen	oscreen;
+	t_bool		game_on;
+	t_map		map;
+	t_key		key;
 	t_tex		tex;
-    t_fps       fps;
-    t_mmap      mmap;
-    t_player    player;
-    t_setting   setting;
-    t_graphic   graphic;
-}   t_cub;
+	t_fps		fps;
+	t_mmap		mmap;
+	t_player	player;
+	t_setting	setting;
+	t_graphic	graphic;
+}	t_cub;
 
 
 #endif

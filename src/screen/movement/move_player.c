@@ -30,9 +30,9 @@ void	move_player(t_cub *cub)
 		if (cub->key.k_w)
 			move(cub, cub->player.angle);
 		if (cub->key.k_le)
-			cub->player.angle = change_angle(cub->player.angle + 2);
+			cub->player.angle = change_angle(cub->player.angle + 4);
 		if (cub->key.k_ri)
-			cub->player.angle = change_angle(cub->player.angle - 2);
+			cub->player.angle = change_angle(cub->player.angle - 4);
 		merge_screens(cub);
 	}
 }
@@ -65,15 +65,17 @@ static double	cal_speed(t_cub *cub)
 
 	frame_time(cub);
 	if (cub->key.k_sh && cub->key.k_w)
+	{
 		speed = cub->fps.frame_time * 4.0;
+	}
 	else if (cub->key.k_s)
-		speed = cub->fps.frame_time * 1.0;
+		speed = cub->fps.frame_time * 0.75;
 	else
-		speed = cub->fps.frame_time * 2.0;
+		speed = cub->fps.frame_time * 1.5;
 	if (speed < 0.1)
 		return (speed);
 	else
-		return (0.05);
+		return (0.15);
 }
 
 // si porte ptetre mettre aussi une impossibilite d avancer si y a une porte ?

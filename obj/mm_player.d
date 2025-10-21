@@ -1,11 +1,12 @@
 obj/mm_player.o: src/screen/minimap/mm_player.c includes/cub.h \
-  attached/minilibx_macos_opengl/mlx.h includes/libft.h \
-  includes/cub_define.h includes/cub_struct.h includes/cub_keyboard.h \
-  includes/cub_functions.h includes/cub_buttoncode.h
+ attached/minilibx-linux/mlx.h includes/libft.h includes/cub_define.h \
+ includes/cub.h includes/cub_struct.h includes/cub_keyboard.h \
+ includes/cub_functions.h includes/cub_buttoncode.h
 includes/cub.h:
-attached/minilibx_macos_opengl/mlx.h:
+attached/minilibx-linux/mlx.h:
 includes/libft.h:
 includes/cub_define.h:
+includes/cub.h:
 includes/cub_struct.h:
 includes/cub_keyboard.h:
 includes/cub_functions.h:

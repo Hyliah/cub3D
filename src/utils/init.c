@@ -62,10 +62,6 @@ static void	init_struct_graphic(t_cub *cub)
 {
 	cub->graphic.s_height = 1080;
 	cub->graphic.s_width = 1920;
-	cub->graphic.img_e = 0;
-	cub->graphic.img_n = 0;
-	cub->graphic.img_s = 0;
-	cub->graphic.img_w = 0;
 	cub->graphic.mlx_ptr = NULL;
 	cub->graphic.win_ptr = NULL;
 	cub->mmap.mm_show = TRUE;

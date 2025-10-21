@@ -12,14 +12,10 @@
 
 #include "cub.h"
 
-void        hardcode_map(t_cub *cub, char *arg);
+int game_loop(t_cub *cub);
+void	hardcode_map(t_cub *cub, char *arg);
 
-int game_loop(t_cub *cub)
-{
-	limit_fps(cub);
-	move_player(cub);
-	return 0;
-}
+
 
 void debug_log(const char *msg)
 {
@@ -41,45 +37,40 @@ int main (int ac, char **av)
 	{
 		// premiers checks ici
 
-		// init de la struct
 		init_struct(&cub);
 		// hardcode de la map -> enlever quand parsing est fait
 		hardcode_map(&cub, av[1]);
 		// mettre le parsing ici
-		// mise en place de la window
 		create_window(&cub);
-		// while (cub.game_on == TRUE)
-		// 	raycasting(&cub);
-		// gestion des boutons
 		mlx_hook(cub.graphic.win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press, &cub);
 		mlx_hook(cub.graphic.win_ptr, KEY_RELEASE, KEY_RELEASE_MASK, key_release, &cub);
-		
-		// loop la window pour pas quelle se barre
 		mlx_loop_hook(cub.graphic.mlx_ptr, game_loop, &cub);
 		mlx_loop(cub.graphic.mlx_ptr);
 	}
 	return (0);
 }
 
-
+int game_loop(t_cub *cub)
+{
+	if (cub->game_on)
+		limit_fps(cub);
+	move_player(cub);
+	return 0;
+}
 
 /* laide fonction a suppimer des que le parsing sera fait */
 void    hardcode_map(t_cub *cub, char *arg)
 {
 	cub->player.pos_x = 10.5;
 	cub->player.pos_y = 5.5;
-
 	cub->player.dir_x = 0.0f;
 	cub->player.dir_y = -1.0f;
 	cub->player.pl_x = 0.66f;
 	cub->player.pl_y = 0.0f;
-
 	// je crois pas que ce truc soit utile en fait / doublon avec le player
 	cub->setting.start_dir = NORTH;
 	
 	cub->player.angle = 90;
-	// cub->setting.c_color = 225,30,0;
-	// cub->setting.f_color = 220,100,0;
 
 	cub->map.height = 9;
 	cub->map.width = 17;
@@ -114,7 +105,6 @@ void    hardcode_map(t_cub *cub, char *arg)
 	}
 	cub->map.map_tab[i] = NULL;
 	close(cub->setting.fd);
-
 }
 
 // AUTHORIZED FUNCTIONS :
