@@ -20,18 +20,18 @@ void	check_player(t_cub *cub)
 	char	c;
 
 	y = 0;
-	while ( cub->map.map_tab[y])
+	while (cub->map.map_tab[y])
 	{
 		x = 0;
-		while ( cub->map.map_tab[y][x])
+		while (cub->map.map_tab[y][x])
 		{
 			c = cub->map.map_tab[y][x];
 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
-				if ( cub->player.has_player == 1)
+				if (cub->player.has_player == 1)
 				{
 					ft_error(ERR_PLAYER);
-					// too many player on the map \n
+					ft_putstr_fd("Too many players on the map\n", 2);
 					clean_exit_parsing(cub);
 				}
 				init_player(cub, x, y, c);
@@ -49,7 +49,7 @@ void	check_no_player(t_cub *cub)
 	if (cub->player.has_player == 0)
 	{
 		ft_error(ERR_PLAYER);
-		// no player on the map \n
+		ft_putstr_fd("No player on the map\n", 2);
 		clean_exit_parsing(cub);
 	}
 }

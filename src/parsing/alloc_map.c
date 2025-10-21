@@ -12,7 +12,6 @@
 
 #include "cub.h"
 
-// alloc du tableau de ligen de la map 
 char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 {
 	char	**new;
@@ -30,6 +29,15 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 		new[i] = map[i];
 		i++;
 	}
+	dup_map(cub, new, i, line);
+	new[i + 1] = NULL;
+	free(map);
+	(*count)++;
+	return (new);
+}
+
+void	dup_map(t_cub *cub, char **new, int i, char *line)
+{
 	new[i] = ft_strdup(line);
 	if (!new[i])
 	{
@@ -39,14 +47,7 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 		ft_error(ERR_MAP_INVALID);
 		clean_exit_parsing(cub);
 	}
-	new[i + 1] = NULL;
-	free(map);
-	(*count)++;
-	return (new);
 }
 
 // faire un flood fill aussi ? 
 // check path ? 
-// lignes vides avant et apres la map mais pas au milieu 
-
-// faire des messages d’erreur pour chaque cas et quitter de maniere clean

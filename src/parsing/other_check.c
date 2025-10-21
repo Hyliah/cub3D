@@ -12,9 +12,6 @@
 
 #include "cub.h"
 
-// check que tt a bine ete trouve et parse 
-// check presence de toutes les textures NO, SO, WE, EA
-// test test test 
 void	check_texture(t_cub *cub)
 {
 	if (!cub->setting.has_tex_no || !cub->setting.has_tex_so
@@ -39,6 +36,11 @@ void	check_texture(t_cub *cub)
 			ft_putstr_fd("tex_ea is NULL\n", 2);
 		clean_exit_parsing(cub);
 	}
+	check_access_texture(cub);
+}
+
+void	check_access_texture(t_cub *cub)
+{
 	check_file_access(cub, cub->setting.tex_no);
 	check_file_access(cub, cub->setting.tex_so);
 	check_file_access(cub, cub->setting.tex_ea);

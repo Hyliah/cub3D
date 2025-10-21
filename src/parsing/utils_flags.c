@@ -12,8 +12,6 @@
 
 #include "cub.h"
 
-// test test test 
-
 int	is_config_line(char *line)
 {
 	while (*line && (*line == ' ' || *line == '\t'))
@@ -56,7 +54,7 @@ int	is_empty_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n') // ajout \r ? important ? 
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
 			return (0);
 		i++;
 	}

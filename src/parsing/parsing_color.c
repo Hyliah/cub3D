@@ -12,7 +12,6 @@
 
 #include "cub.h"
 
-// parsing de la ligne des couleurs floor et ceiling ex :  "F 220,100,0"
 void	parse_color_line(t_cub *cub, char *line)
 {
 	t_rgb	color;

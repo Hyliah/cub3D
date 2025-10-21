@@ -12,19 +12,30 @@
 
 #include "cub.h"
 
-// parsing de la ligne de texture : "NO ./path/to/texture.xpm"
 void	parse_texture_line(t_cub *cub, char *line)
 {
 	char	**split;
-	char	*orientation;
-	char	*path;
 
+	empty_texture_line(cub, line);
+	split = split_texture_line(cub, line);
+	parse_orientation(cub, split);
+	free_tab(&split);
+}
+
+void	empty_texture_line(t_cub *cub, char *line)
+{
 	if (!line || !*line)
 	{
 		ft_error(ERR_TEXTURE);
 		ft_putstr_fd("Empty texture line\n", 2);
 		clean_exit_parsing(cub);
 	}
+}
+
+char	**split_texture_line(t_cub *cub, char *line)
+{
+	char	**split;
+
 	while (*line && (*line == ' ' || *line == '\t'))
 		line++;
 	split = ft_split(line, ' ');
@@ -35,6 +46,14 @@ void	parse_texture_line(t_cub *cub, char *line)
 		ft_putstr_fd("Invalid texture format\n", 2);
 		clean_exit_parsing(cub);
 	}
+	return (split);
+}
+
+void	parse_orientation(t_cub *cub, char **split)
+{
+	char	*orientation;
+	char	*path;
+
 	orientation = split[0];
 	path = split[1];
 	if (ft_strncmp(orientation, "NO", 3) == 0)
@@ -52,77 +71,4 @@ void	parse_texture_line(t_cub *cub, char *line)
 		ft_putstr_fd("Invalid texture orientation\n", 2);
 		clean_exit_parsing(cub);
 	}
-	free_tab(&split);
-}
-
-void	parse_text_no(t_cub *cub, char *path)
-{
-	if (cub->setting.has_tex_no)
-	{
-		ft_error(ERR_TEXTURE);
-		ft_putstr_fd("Texture NO already defined\n", 2);
-		clean_exit_parsing(cub);
-	}
-	cub->setting.tex_no = ft_strdup(path);
-	if (!cub->setting.tex_no)
-	{
-		ft_error(ERR_TEXTURE);
-		ft_putstr_fd("Memory failed for NO texture\n", 2);
-		clean_exit_parsing(cub);
-	}
-	cub->setting.has_tex_no = 1;
-}
-
-void	parse_text_so(t_cub *cub, char *path)
-{
-	if (cub->setting.has_tex_so)
-	{
-		ft_error(ERR_TEXTURE);
-		ft_putstr_fd("Texture SO already defined\n", 2);
-		clean_exit_parsing(cub);
-	}
-	cub->setting.tex_so = ft_strdup(path);
-	if (!cub->setting.tex_so)
-	{
-		ft_error(ERR_TEXTURE);
-		ft_putstr_fd("Memory failed for SO texture\n", 2);
-		clean_exit_parsing(cub);
-	}
-	cub->setting.has_tex_so = 1;
-}
-
-void	parse_text_ea(t_cub *cub, char *path)
-{
-	if (cub->setting.has_tex_ea)
-	{
-		ft_error(ERR_TEXTURE);
-		ft_putstr_fd("Texture EA already defined\n", 2);
-		clean_exit_parsing(cub);
-	}
-	cub->setting.tex_ea = ft_strdup(path);
-	if (!cub->setting.tex_ea)
-	{
-		ft_error(ERR_TEXTURE);
-		ft_putstr_fd("Memory failed for EA texture\n", 2);
-		clean_exit_parsing(cub);
-	}
-	cub->setting.has_tex_ea = 1;
-}
-
-void	parse_text_we(t_cub *cub, char *path)
-{
-	if (cub->setting.has_tex_we)
-	{
-		ft_error(ERR_TEXTURE);
-		ft_putstr_fd("Texture WE already defined\n", 2);
-		clean_exit_parsing(cub);
-	}
-	cub->setting.tex_we = ft_strdup(path);
-	if (!cub->setting.tex_we)
-	{
-		ft_error(ERR_TEXTURE);
-		ft_putstr_fd("Memory failed for WE texture\n", 2);
-		clean_exit_parsing(cub);
-	}
-	cub->setting.has_tex_we = 1;
 }

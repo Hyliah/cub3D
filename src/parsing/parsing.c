@@ -12,21 +12,6 @@
 
 #include "cub.h"
 
-// TO DO POUR LE PARSING
-
-//OUVERTURE ET LECTURE DU FICHIER
-// verif que le fichier est lisible ( open + gestion erreur ) OK ---
-// lecture ligne par ligen  ( get next line ?? ) 
-// ensuite check :
-// 1-  parametre ( texture et couleur )
-// 			- texture ( NO SO ...) definie une seule fois + verif que le chemin existe ( open)
-//			- couleur ( FC ) : velur separe par ',' + 3 composantes + chaque composante (0 255)
-// 2- la map ( 0 1 N S E W)
-//			- caractere valide only comme ds so_long mais avec 0, 1, N, S, E, W
-//			- un seul joueur 
-//			- map fermee par murs ( bordure avec 1 et flood fill aussi ?)
-// faire fonction globale avec tt dedans 
-
 void	parsing(t_cub *cub, int ac, char **av)
 {
 	check_arg(cub, ac, av);
@@ -66,40 +51,7 @@ void	parse_file(t_cub *cub, char *pathname )
 	printf("DEBUG: end of parse_file\n"); // ---------------------------------------------------
 }
 
-// ouvre le fihcier et renvoie le FD 
-int	open_cub_file(t_cub *cub, char *pathname)
-{
-	int	fd;
 
-	fd = open(pathname, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_error(ERR_FILE_NOT_FOUND);
-		clean_exit_parsing(cub);
-	}
-	return (fd);
-}
-
-char	*get_next_valid_line(t_cub *cub, int fd)
-{
-	char	*line;
-
-	line = get_next_line(fd);
-	while (line)
-	{
-		ft_strtrim_newline(line);
-		if (!cub->map.map_start && is_empty_line(line))
-		{
-			free(line);
-			line = get_next_line(fd);
-			ft_strtrim_newline(line);
-		}
-		return (line);
-	}
-	return (NULL);
-}
-
-// Juste pour les lignes de config AVANT la map  ( texture et color)
 void	process_config_line(t_cub *cub, char *line)
 {
 	if (is_map_line(line))
@@ -128,7 +80,6 @@ void	process_map_line(t_cub *cub, char *line)
 			&cub->map.height, line);
 }
 
-// verif qu'au moins une ligen a ete lue et calcul la largeur max 
 void	finalize_map_parsing(t_cub *cub)
 {
 	if (cub->map.height == 0)

@@ -12,7 +12,7 @@
 
 #include "cub.h"
 
-void	check_arg(t_cub *cub, int ac, char **av) // ok test
+void	check_arg(t_cub *cub, int ac, char **av)
 {
 	if (ac != 2)
 	{
@@ -26,7 +26,7 @@ void	check_arg(t_cub *cub, int ac, char **av) // ok test
 	}
 }
 
-void	check_cub(t_cub *cub, char *pathname) // ok test 
+void	check_cub(t_cub *cub, char *pathname)
 {
 	int		len;
 	char	*extension;
@@ -45,7 +45,7 @@ void	check_cub(t_cub *cub, char *pathname) // ok test
 	}
 }
 
-void	check_file_access(t_cub *cub, char *pathname) // ok test
+void	check_file_access(t_cub *cub, char *pathname)
 {
 	int	fd;
 

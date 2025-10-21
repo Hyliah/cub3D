@@ -12,37 +12,6 @@
 
 #include "cub.h"
 
-// ma fonction ft_error de so_long
-void	ft_error(t_error error)
-{
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	if (error == ERR_ARGS)
-		ft_putstr_fd("Need: ./cub3d map.cub\n", STDERR_FILENO);
-	else if (error == ERR_FILE_EXT)
-		ft_putstr_fd("File must have .cub extension\n", STDERR_FILENO);
-	else if (error == ERR_MAP_SIZE)
-		ft_putstr_fd("Map must be ... something \n", STDERR_FILENO); // a garder ?? pas utilise so far
-	else if (error == ERR_MAP_INVALID)
-		ft_putstr_fd("Map invalid\n", STDERR_FILENO);
-	else if (error == ERR_MAP_INVALID_CHAR)
-		ft_putstr_fd("Map invalid (wrong char)\n", STDERR_FILENO);
-	else if (error == ERR_MAP_WALLS)
-		ft_putstr_fd("Map not enclosed with walls\n", STDERR_FILENO);
-	else if (error == ERR_MAP_PATH)
-		ft_putstr_fd("Invalid path\n", STDERR_FILENO);
-	else if (error == ERR_FILE_NOT_FOUND)
-		ft_putstr_fd("File not found\n", STDERR_FILENO);
-	else if (error == ERR_PLAYER)
-		ft_putstr_fd("Error player: ", STDERR_FILENO);
-	else if (error == ERR_MAP_LINE)
-		ft_putstr_fd("No empty line on the map\n", STDERR_FILENO);
-	else if (error == ERR_COLOR)
-		ft_putstr_fd("Invalid color: ", STDERR_FILENO);
-	else if (error == ERR_TEXTURE)
-		ft_putstr_fd("Invalid texture: ", STDERR_FILENO);
-}
-
-// faire fonction de trim pour remplacer les \n par des \0 
 void	ft_strtrim_newline(char *line)
 {
 	int	len;
@@ -54,11 +23,11 @@ void	ft_strtrim_newline(char *line)
 		line[len - 1] = '\0';
 }
 
-// test test test pour trim les espacvves pour les colors 
 void	ft_strtrim_spaces(char *s)
 {
-	char	*dst = s;
+	char	*dst;
 
+	dst = s;
 	while (*s)
 	{
 		if (*s != ' ' && *s != '\t')
@@ -68,7 +37,6 @@ void	ft_strtrim_spaces(char *s)
 	*dst = '\0';
 }
 
-// get map width pour renvoyer la longueru max ? 
 int	get_map_width(char **map, int height)
 {
 	int	max_width;
@@ -87,4 +55,36 @@ int	get_map_width(char **map, int height)
 		i++;
 	}
 	return (max_width);
+}
+
+char	*get_next_valid_line(t_cub *cub, int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		ft_strtrim_newline(line);
+		if (!cub->map.map_start && is_empty_line(line))
+		{
+			free(line);
+			line = get_next_line(fd);
+			ft_strtrim_newline(line);
+		}
+		return (line);
+	}
+	return (NULL);
+}
+
+int	open_cub_file(t_cub *cub, char *pathname)
+{
+	int	fd;
+
+	fd = open(pathname, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_error(ERR_FILE_NOT_FOUND);
+		clean_exit_parsing(cub);
+	}
+	return (fd);
 }

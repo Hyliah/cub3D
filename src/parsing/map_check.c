@@ -56,7 +56,7 @@ void	check_line_empty_in_map(t_cub *cub)
 	map_ended = 0;
 	while (cub->map.map_tab[y])
 	{
-		if (s_empty_line(cub->map.map_tab[y]))
+		if (is_empty_line(cub->map.map_tab[y]))
 		{
 			if (!map_ended)
 				map_ended = 1;
@@ -73,8 +73,6 @@ void	check_line_empty_in_map(t_cub *cub)
 	}
 }
 
-// check validité des maps
-// -> entourée de murs (1)
 void	check_wall(t_cub *cub)
 {
 	int		y;

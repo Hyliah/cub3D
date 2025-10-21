@@ -11,9 +11,7 @@
 /*****************************************************************************/
 
 #include "cub.h"
-#include "stdbool.h"
 
-// fonction parse rgb 
 t_rgb	parse_rgb(t_cub *cub, char *str)
 {
 	char	**rgb;
@@ -45,7 +43,6 @@ t_rgb	parse_rgb(t_cub *cub, char *str)
 void	check_rgb_format(t_cub *cub, char *str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (str[i])
@@ -54,22 +51,30 @@ void	check_rgb_format(t_cub *cub, char *str)
 			&& str[i] != '\t')
 		{
 			ft_error(ERR_COLOR);
-			ft_putstr_fd("Invalid RGB format (must contain only digits and commas)\n", 2);
+			ft_putstr_fd("Invalid RGB format", 2);
+			ft_putstr_fd(" (must contain only digits and commas)\n", 2);
 			clean_exit_parsing(cub);
 		}
-		if (ft_isdigit(str[i]) && (str[i + 1] == ' ' || str[i + 1] == '\t'))
-		{
-			j = i + 1;
-			while (str[j] == ' ' || str[j] == '\t')
-				j++;
-			if (ft_isdigit(str[j]))
-			{
-				ft_error(ERR_COLOR);
-				ft_putstr_fd("Invalid RGB format (space between digits)\n", 2);
-				clean_exit_parsing(cub);
-			}
-		}
+		check_no_space_between_digits(cub, str, i);
 		i++;
+	}
+}
+
+void	check_no_space_between_digits(t_cub *cub, char *str, int i)
+{
+	int	j;
+
+	if (ft_isdigit(str[i]) && (str[i + 1] == ' ' || str[i + 1] == '\t'))
+	{
+		j = i + 1;
+		while (str[j] == ' ' || str[j] == '\t')
+			j++;
+		if (ft_isdigit(str[j]))
+		{
+			ft_error(ERR_COLOR);
+			ft_putstr_fd("Invalid RGB format (space between digits)\n", 2);
+			clean_exit_parsing(cub);
+		}
 	}
 }
 

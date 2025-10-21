@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "stdbool.h"
 
 # include "mlx.h"
 //# include "mlx_int.h"
