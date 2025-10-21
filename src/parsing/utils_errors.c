@@ -19,8 +19,8 @@ void	ft_error(t_error error)
 		ft_putstr_fd("Need: ./cub3d map.cub\n", STDERR_FILENO);
 	else if (error == ERR_FILE_EXT)
 		ft_putstr_fd("File must have .cub extension\n", STDERR_FILENO);
-	else if (error == ERR_MAP_SIZE)
-		ft_putstr_fd("Map must be ... something \n", STDERR_FILENO); // a garder ?? pas utilise so far
+	else if (error == ERR_MEMORY)
+		ft_putstr_fd("Memory allocation failed while ", STDERR_FILENO);
 	else if (error == ERR_MAP_INVALID)
 		ft_putstr_fd("Map invalid\n", STDERR_FILENO);
 	else if (error == ERR_MAP_INVALID_CHAR)

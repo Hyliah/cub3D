@@ -20,7 +20,8 @@ char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 	new = malloc(sizeof(char *) * (*count + 2));
 	if (!new)
 	{
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_MEMORY);
+		ft_putstr_fd("adding new map line\n", 2);
 		clean_exit_parsing(cub);
 	}
 	i = 0;
@@ -44,7 +45,8 @@ void	dup_map(t_cub *cub, char **new, int i, char *line)
 		while (i--)
 			free(new[i]);
 		free(new);
-		ft_error(ERR_MAP_INVALID);
+		ft_error(ERR_MEMORY);
+		ft_putstr_fd("duplicating map line\n", 2);
 		clean_exit_parsing(cub);
 	}
 }

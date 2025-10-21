@@ -51,8 +51,7 @@ void	parse_file(t_cub *cub, char *pathname )
 	printf("DEBUG: end of parse_file\n"); // ---------------------------------------------------
 }
 
-
-void	process_config_line(t_cub *cub, char *line)
+void	 process_config_line(t_cub *cub, char *line)
 {
 	if (is_map_line(line))
 		cub->map.map_start = 1;
