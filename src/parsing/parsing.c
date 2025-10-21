@@ -20,8 +20,7 @@ void	parsing(t_cub *cub, int ac, char **av)
 	parse_file(cub, av[1]);
 	check_texture(cub);
 	check_color(cub);
-	// pb avec mess d'erreur extra , check to do !!!
-	check_map(cub);
+	check_map(cub); // attention ordre est peut etre pas bon du coup 
 	// flood fill ici ? A la toute fin ( apres player ) 
 }
 
@@ -51,7 +50,7 @@ void	parse_file(t_cub *cub, char *pathname )
 	printf("DEBUG: end of parse_file\n"); // ---------------------------------------------------
 }
 
-void	 process_config_line(t_cub *cub, char *line)
+void	process_config_line(t_cub *cub, char *line)
 {
 	if (is_map_line(line))
 		cub->map.map_start = 1;
