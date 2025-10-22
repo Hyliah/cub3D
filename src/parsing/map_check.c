@@ -36,9 +36,9 @@ void	check_invalid_char(t_cub *cub)
 			if (c != '0' && c != '1' && c != 'N' && c != 'S'
 				&& c != 'E' && c != 'W' && c != ' ' && c != '\n')
 			{
+				ft_error(ERR_MAP_INVALID_CHAR);
 				printf("Invalid char (ASCII %d) found at y=%d x=%d -> '%c'\n",
 					c, y, x, c);
-				ft_error(ERR_MAP_INVALID_CHAR);
 				clean_exit_parsing(cub);
 			}
 			x++;

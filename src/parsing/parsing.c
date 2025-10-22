@@ -20,7 +20,7 @@ void	parsing(t_cub *cub, int ac, char **av)
 	parse_file(cub, av[1]);
 	check_texture(cub);
 	check_color(cub);
-	check_map(cub); // attention ordre est peut etre pas bon du coup 
+	//check_map(cub); // attention ordre est peut etre pas bon du coup 
 	// flood fill ici ? A la toute fin ( apres player ) 
 }
 
@@ -68,14 +68,16 @@ void	process_config_line(t_cub *cub, char *line)
 
 void	process_map_line(t_cub *cub, char *line)
 {
+	cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab,
+			&cub->map.height, line);
+	check_invalid_char(cub);
+	check_line_empty_in_map(cub);
 	if (!is_map_line(line))
 	{
 		ft_error(ERR_MAP_INVALID);
 		ft_putstr_fd("Element should not be after the map\n", 2);
 		clean_exit_parsing(cub);
 	}
-	cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab,
-			&cub->map.height, line);
 }
 
 void	finalize_map_parsing(t_cub *cub)
