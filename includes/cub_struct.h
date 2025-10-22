@@ -59,6 +59,8 @@ typedef struct s_player
 typedef struct s_map
 {
 	int		map_start;
+	int		map_end;
+	int		count_only_one;
 	int		height;
 	int		width;
 	char    **map_tab;

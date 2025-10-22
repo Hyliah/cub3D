@@ -12,18 +12,6 @@
 
 #include "cub.h"
 
-// void	check_map(t_cub *cub)
-// {
-// 	check_invalid_char(cub);
-// 	check_line_empty_in_map(cub);
-// 	// check_player(cub);
-// 	// check_wall(cub);
-// }
-
-// check map start
-
-// check map end 
-
 void	check_invalid_char(t_cub *cub)
 {
 	int		y;
@@ -104,6 +92,24 @@ void	check_wall(t_cub *cub)
 		}
 		y++;
 	}
+}
+
+int	is_map_bottom_line(char *line)
+{
+	int	i;
+
+	i = 0;
+
+	if (!line)
+		return (0);
+	while (line[i])
+	{
+		if (line[i] == '1' || line[i] == ' ')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }
 
 // si on veut faire un flood fill, faire apres avoir determine la position du player

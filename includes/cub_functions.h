@@ -76,6 +76,8 @@ int		get_map_width(char **map, int height);
 char	*get_next_valid_line(t_cub *cub, int fd);
 int		open_cub_file(t_cub *cub, char *pathname);
 
+int is_map_bottom_line(char *line);
+
 void	print_debug_settings(t_setting *set); // a supp 
 
 /* SCREEN */

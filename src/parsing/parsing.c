@@ -39,9 +39,9 @@ void	parse_file(t_cub *cub, char *pathname )
 			printf("DEBUG: new line -> '%s'\n", line); // ---------------------------------------------------
 			if (!cub->map.map_start)
 				process_config_line(cub, line);
-			if (cub->map.map_start)
-				process_map_line(cub, line);
 		}
+		if (cub->map.map_start)
+			process_map_line(cub, line);
 		free(line);
 		line = get_next_valid_line(cub, fd);
 	}
@@ -53,7 +53,7 @@ void	parse_file(t_cub *cub, char *pathname )
 
 void	process_config_line(t_cub *cub, char *line)
 {
-	if (is_map_line(line)) // a changer ici pour le concept de map start 
+	if (is_map_line(line))
 		cub->map.map_start = 1;
 	else if (is_texture_line(line))
 		parse_texture_line(cub, line);
@@ -69,17 +69,22 @@ void	process_config_line(t_cub *cub, char *line)
 
 void	process_map_line(t_cub *cub, char *line)
 {
+	int	is_only_one;
+
+	is_only_one = 0;
 	cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab,
 			&cub->map.height, line);
-	// mettre qqpart la detection du flag map ended ? 
-	check_invalid_char(cub);
-	check_line_empty_in_map(cub); // marche pas donc a recheck avec nouveau check de map start etc
-	if (!is_map_line(line)) // changer en if map end 
+	is_only_one = is_map_bottom_line(line);
+	if (is_only_one == 1)
+		cub->map.count_only_one++;
+	if (cub->map.count_only_one == 2 && !is_map_line(line))
 	{
 		ft_error(ERR_MAP_INVALID);
 		ft_putstr_fd("Element should not be after the map\n", 2);
 		clean_exit_parsing(cub);
 	}
+	check_invalid_char(cub);
+	check_line_empty_in_map(cub);
 }
 
 void	finalize_map_parsing(t_cub *cub)

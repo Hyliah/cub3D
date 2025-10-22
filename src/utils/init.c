@@ -26,6 +26,8 @@ void	init_struct(t_cub *cub)
 static void	init_struct_map_settings(t_cub *cub)
 {
 	cub->map.map_start = 0;
+	cub->map.map_end = 0;
+	cub->map.count_only_one = 0;
 	cub->map.height = 0;
 	cub->map.width = 0;
 	cub->map.map_tab = NULL;
