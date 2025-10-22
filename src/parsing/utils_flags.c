@@ -30,7 +30,7 @@ int	is_map_line(char *line)
 {
 	int	i;
 
-	while (*line && (*line == ' ' || *line == '\t')) // attention parce que du coup ca va skipper les lignes vides ... 
+	while (*line && (*line == ' ' || *line == '\t')) // attention parce que du coup ca va skipper les lignes vides ???
 		line++;
 	if (is_config_line(line))
 		return (0);

@@ -20,7 +20,8 @@ void	parsing(t_cub *cub, int ac, char **av)
 	parse_file(cub, av[1]);
 	check_texture(cub);
 	check_color(cub);
-	//check_map(cub); // attention ordre est peut etre pas bon du coup 
+	// faire check player
+	// check wall a supp ? car floodfill instead 
 	// flood fill ici ? A la toute fin ( apres player ) 
 }
 
@@ -52,7 +53,7 @@ void	parse_file(t_cub *cub, char *pathname )
 
 void	process_config_line(t_cub *cub, char *line)
 {
-	if (is_map_line(line))
+	if (is_map_line(line)) // a changer ici pour le concept de map start 
 		cub->map.map_start = 1;
 	else if (is_texture_line(line))
 		parse_texture_line(cub, line);
@@ -70,9 +71,10 @@ void	process_map_line(t_cub *cub, char *line)
 {
 	cub->map.map_tab = alloc_map_line(cub, cub->map.map_tab,
 			&cub->map.height, line);
+	// mettre qqpart la detection du flag map ended ? 
 	check_invalid_char(cub);
-	check_line_empty_in_map(cub);
-	if (!is_map_line(line))
+	check_line_empty_in_map(cub); // marche pas donc a recheck avec nouveau check de map start etc
+	if (!is_map_line(line)) // changer en if map end 
 	{
 		ft_error(ERR_MAP_INVALID);
 		ft_putstr_fd("Element should not be after the map\n", 2);

@@ -12,13 +12,17 @@
 
 #include "cub.h"
 
-void	check_map(t_cub *cub)
-{
-	check_invalid_char(cub);
-	check_line_empty_in_map(cub);
-	// check_player(cub);
-	// check_wall(cub);
-}
+// void	check_map(t_cub *cub)
+// {
+// 	check_invalid_char(cub);
+// 	check_line_empty_in_map(cub);
+// 	// check_player(cub);
+// 	// check_wall(cub);
+// }
+
+// check map start
+
+// check map end 
 
 void	check_invalid_char(t_cub *cub)
 {
