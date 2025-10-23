@@ -23,7 +23,7 @@ void	check_arg(t_cub *cub, int ac, char **av);
 void	check_cub(t_cub *cub, char *pathname);
 void	check_file_access(t_cub *cub, char *pathname);
 
-void	check_map(t_cub *cub);
+//void	check_map(t_cub *cub);
 void	check_invalid_char(t_cub *cub);
 void	check_line_empty_in_map(t_cub *cub);
 void	check_wall(t_cub *cub);
@@ -61,6 +61,7 @@ void	finalize_map_parsing(t_cub *cub);
 void	check_player(t_cub *cub);
 void	check_no_player(t_cub *cub);
 void	init_player(t_cub *cub, int x, int y, char dir);
+void	init_player_angle(t_player *player);
 
 void	ft_error(t_error error);
 
@@ -76,7 +77,7 @@ int		get_map_width(char **map, int height);
 char	*get_next_valid_line(t_cub *cub, int fd);
 int		open_cub_file(t_cub *cub, char *pathname);
 
-int is_map_bottom_line(char *line);
+int		is_map_bottom_line(char *line);
 
 void	print_debug_settings(t_setting *set); // a supp 
 

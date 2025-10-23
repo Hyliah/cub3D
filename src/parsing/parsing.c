@@ -20,7 +20,8 @@ void	parsing(t_cub *cub, int ac, char **av)
 	parse_file(cub, av[1]);
 	check_texture(cub);
 	check_color(cub);
-	// faire check player
+	check_player(cub);
+
 	// check wall a supp ? car floodfill instead 
 	// flood fill ici ? A la toute fin ( apres player ) 
 }

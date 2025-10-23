@@ -12,7 +12,6 @@
 
 #include "cub.h"
 
-// faire comme so_long ? no player, too many player ?? 
 void	check_player(t_cub *cub)
 {
 	int		x;
@@ -57,15 +56,44 @@ void	check_no_player(t_cub *cub)
 void	init_player(t_cub *cub, int x, int y, char dir)
 {
 	cub->player.has_player = 1;
-	cub->player.pos_x = x + 0.5; // position a 0.5 ? ou autre mesure ? 
+	cub->player.pos_x = x + 0.5;
 	cub->player.pos_y = y + 0.5;
-	// definir direction de depart pour la struct player dir 
 	if (dir == 'N')
-		cub->player.dir = NORTH;
+		cub->player.dir = NORTH; // 90
 	else if (dir == 'S')
-		cub->player.dir = SOUTH;
+		cub->player.dir = SOUTH; // 270
 	else if (dir == 'E')
-		cub->player.dir = EAST;
+		cub->player.dir = EAST; // 0
 	else if (dir == 'W')
-		cub->player.dir = WEST;
+		cub->player.dir = WEST; // 180
+	else
+	{
+		ft_error(ERR_PLAYER);
+		ft_putstr_fd("Invalid player direction\n", 2);
+		clean_exit_parsing(cub);
+	}
+	init_player_angle(&cub->player);
 }
+
+void	init_player_angle(t_player *player)
+{
+	if (player->dir == NORTH)
+		player->angle = 90.0;
+	if (player->dir == SOUTH)
+		player->angle = 270.0;
+	if (player->dir == EAST)
+		player->angle = 0.0;
+	if (player->dir == WEST)
+		player->angle = 180.0;
+}
+
+// check fonction pour height et width 
+
+// faire cehck taille de map si tro grande si trop petit 
+
+// transorfrer rgb en exadecimal 
+
+// cub->setting.c_color = 0xa1c8f4;
+// cub->setting.f_color = 0x8fa959;
+
+// check leaks et tout 

@@ -52,6 +52,7 @@ typedef struct s_player
 	double		pl_y;
 	//pas sure si utile
 	t_dir   	dir;
+	double		angle;
 	int			has_player; // flag 
 }	t_player;
 

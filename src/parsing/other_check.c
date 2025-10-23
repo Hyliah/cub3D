@@ -60,7 +60,7 @@ void	check_color(t_cub *cub)
 		|| cub->setting.f_color.b < 0 || cub->setting.f_color.b > 255)
 	{
 		ft_error(ERR_COLOR);
-		ft_putstr_fd("Invalid floor color: must be between 0 - 255", 2); 
+		ft_putstr_fd("Invalid floor color: must be between 0 - 255", 2);
 		clean_exit_parsing(cub);
 	}
 	if (cub->setting.c_color.r < 0 || cub->setting.c_color.r > 255
@@ -68,7 +68,7 @@ void	check_color(t_cub *cub)
 		|| cub->setting.c_color.b < 0 || cub->setting.c_color.b > 255)
 	{
 		ft_error(ERR_COLOR);
-		ft_putstr_fd("Invalid ceiling color: must be between 0 - 255", 2); 
+		ft_putstr_fd("Invalid ceiling color: must be between 0 - 255", 2);
 		clean_exit_parsing(cub);
 	}
 }
