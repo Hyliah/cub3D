@@ -96,5 +96,6 @@ void	finalize_map_parsing(t_cub *cub)
 		ft_putstr_fd("No map lines were found\n", 2);
 		clean_exit_parsing(cub);
 	}
+	cub->map.height = get_map_height(cub->map.map_tab);
 	cub->map.width = get_map_width(cub->map.map_tab, cub->map.height);
 }

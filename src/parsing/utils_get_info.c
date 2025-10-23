@@ -12,40 +12,53 @@
 
 #include "cub.h"
 
-void	ft_strtrim_newline(char *line)
+char	*get_next_valid_line(t_cub *cub, int fd)
 {
-	int	len;
+	char	*line;
 
-	if (!line)
-		return ;
-	len = ft_strlen(line);
-	if (len > 0 && line[len - 1] == '\n')
-		line[len - 1] = '\0';
+	line = get_next_line(fd);
+	while (line)
+	{
+		ft_strtrim_newline(line);
+		if (!cub->map.map_start && is_empty_line(line))
+		{
+			free(line);
+			line = get_next_line(fd);
+			ft_strtrim_newline(line);
+		}
+		return (line);
+	}
+	return (NULL);
 }
 
-void	ft_strtrim_spaces(char *s)
+int	get_map_width(char **map, int height)
 {
-	char	*dst;
+	int	max_width;
+	int	current_width;
+	int	i;
 
-	dst = s;
-	while (*s)
+	if (!map || height == 0)
+		return (0);
+	max_width = 0;
+	i = 0;
+	while (i < height)
 	{
-		if (*s != ' ' && *s != '\t')
-			*dst++ = *s;
-		s++;
+		current_width = ft_strlen(map[i]);
+		if (current_width > max_width)
+			max_width = current_width;
+		i++;
 	}
-	*dst = '\0';
+	return (max_width);
 }
 
-int	open_cub_file(t_cub *cub, char *pathname)
+int	get_map_height(char **map)
 {
-	int	fd;
+	int	height;
 
-	fd = open(pathname, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_error(ERR_FILE_NOT_FOUND);
-		clean_exit_parsing(cub);
-	}
-	return (fd);
+	height = 0;
+	if (!map)
+		return (0);
+	while (map[height])
+		height++;
+	return (height);
 }

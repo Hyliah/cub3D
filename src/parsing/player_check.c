@@ -27,12 +27,7 @@ void	check_player(t_cub *cub)
 			c = cub->map.map_tab[y][x];
 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
-				if (cub->player.has_player == 1)
-				{
-					ft_error(ERR_PLAYER);
-					ft_putstr_fd("Too many players on the map\n", 2);
-					clean_exit_parsing(cub);
-				}
+				check_too_many_players(cub);
 				init_player(cub, x, y, c);
 				cub->map.map_tab[y][x] = '0';
 			}
@@ -41,6 +36,16 @@ void	check_player(t_cub *cub)
 		y++;
 	}
 	check_no_player(cub);
+}
+
+void	check_too_many_players(t_cub *cub)
+{
+	if (cub->player.has_player == 1)
+	{
+		ft_error(ERR_PLAYER);
+		ft_putstr_fd("Too many players on the map\n", 2);
+		clean_exit_parsing(cub);
+	}
 }
 
 void	check_no_player(t_cub *cub)
@@ -86,8 +91,6 @@ void	init_player_angle(t_player *player)
 	if (player->dir == WEST)
 		player->angle = 180.0;
 }
-
-// check fonction pour height et width 
 
 // faire cehck taille de map si tro grande si trop petit 
 

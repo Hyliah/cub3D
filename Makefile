@@ -51,7 +51,7 @@ clean_exit.c free.c \
 alloc_map.c \
 first_check.c map_check.c other_check.c player_check.c parsing_orientation.c\
 parsing.c parsing_texture.c parsing_color.c parsing_rgb.c \
-utils_parsing.c  utils_flags.c utils_errors.c \
+utils_parsing.c  utils_flags.c utils_errors.c utils_get_info.c\
 key_handle.c window_creation.c\
 init.c \
 

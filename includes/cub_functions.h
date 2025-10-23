@@ -59,6 +59,7 @@ void	process_map_line(t_cub *cub, char *line);
 void	finalize_map_parsing(t_cub *cub);
 
 void	check_player(t_cub *cub);
+void	check_too_many_players(t_cub *cub);
 void	check_no_player(t_cub *cub);
 void	init_player(t_cub *cub, int x, int y, char dir);
 void	init_player_angle(t_player *player);
@@ -74,6 +75,7 @@ int		is_color_line(char *line);
 void	ft_strtrim_newline(char *line);
 void	ft_strtrim_spaces(char *s);
 int		get_map_width(char **map, int height);
+int		get_map_height(char **map);
 char	*get_next_valid_line(t_cub *cub, int fd);
 int		open_cub_file(t_cub *cub, char *pathname);
 
