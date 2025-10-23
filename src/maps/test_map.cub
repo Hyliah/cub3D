@@ -3,8 +3,8 @@ SO ./src/images/brick_wall.xpm
 WE ./src/images/brick_wall.xpm
 EA ./src/images/brick_wall.xpm
 
-F 0,129,71
-C 155,226,25
+F 143,169,89
+C 161,200,244
 
       1111111111111111111111111111
         100000000011000000000001

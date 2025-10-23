@@ -35,13 +35,17 @@ static void	init_struct_map_settings(t_cub *cub)
 	cub->setting.start_dir = -1;
 
 	// couleurs initialisées à "non définies"
-	cub->setting.c_color.r = -1;
-	cub->setting.c_color.g = -1;
-	cub->setting.c_color.b = -1;
+	cub->setting.rgb_c_color.r = -1;
+	cub->setting.rgb_c_color.g = -1;
+	cub->setting.rgb_c_color.b = -1;
 
-	cub->setting.f_color.r = -1;
-	cub->setting.f_color.g = -1;
-	cub->setting.f_color.b = -1;
+	cub->setting.rgb_f_color.r = -1;
+	cub->setting.rgb_f_color.g = -1;
+	cub->setting.rgb_f_color.b = -1;
+	
+	// init le color int pour hygie 
+	cub->setting.c_color = -1;
+	cub->setting.f_color = -1;
 
 	// textures paths
 	cub->setting.tex_no = NULL;

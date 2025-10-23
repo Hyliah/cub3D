@@ -46,7 +46,8 @@ void	parse_color_floor(t_cub *cub, t_rgb color)
 		ft_putstr_fd("Duplicate floor color definition\n", 2);
 		clean_exit_parsing(cub);
 	}
-	cub->setting.f_color = color;
+	cub->setting.rgb_f_color = color;
+	cub->setting.f_color = rgb_to_hex(color);
 	cub->setting.has_floor = 1;
 }
 
@@ -58,6 +59,13 @@ void	parse_color_ceiling(t_cub *cub, t_rgb color)
 		ft_putstr_fd("Duplicate ceiling color definition\n", 2);
 		clean_exit_parsing(cub);
 	}
-	cub->setting.c_color = color;
+	cub->setting.rgb_c_color = color;
+	cub->setting.c_color = rgb_to_hex(color);
 	cub->setting.has_ceiling = 1;
+}
+
+// conversion rgb to hex 
+int	rgb_to_hex(t_rgb color)
+{
+	return ((color.r << 16) | (color.g << 8) | color.b);
 }

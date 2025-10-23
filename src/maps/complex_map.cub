@@ -3,9 +3,8 @@ SO
 WE 
 EA 
 
-// color pour floor et ceiling here ( en RBG )
-// F 0,0,0
-// C 0,0,0
+F 143,169,89
+C 161,200,244
 
 // map there 
 // mettre le player avec son orientation 

@@ -78,7 +78,7 @@ void	check_no_space_between_digits(t_cub *cub, char *str, int i)
 	}
 }
 
-void	check_rgb_component(t_cub *cub, char *comp) // ???? 
+void	check_rgb_component(t_cub *cub, char *comp)
 {
 	int	i;
 

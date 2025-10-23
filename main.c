@@ -109,8 +109,8 @@ void	print_debug_settings(t_setting *set)
 	printf("  has_ceiling:%d\n", set->has_ceiling);
 
 	printf("\nColors (RGB):\n");
-	printf("  Floor:   R=%d, G=%d, B=%d\n", set->f_color.r, set->f_color.g, set->f_color.b);
-	printf("  Ceiling: R=%d, G=%d, B=%d\n", set->c_color.r, set->c_color.g, set->c_color.b);
+	printf("  Floor:   R=%d, G=%d, B=%d\n", set->rgb_f_color.r, set->rgb_f_color.g, set->rgb_f_color.b);
+	printf("  Ceiling: R=%d, G=%d, B=%d\n", set->rgb_c_color.r, set->rgb_c_color.g, set->rgb_c_color.b);
 
 	printf("\nStart direction: ");
 	if (set->start_dir == NORTH)

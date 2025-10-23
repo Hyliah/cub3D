@@ -70,8 +70,10 @@ typedef struct s_map
 typedef struct s_setting // struct pour recupérer les infos sur Parsing
 {
 	int		fd;
-	t_rgb   c_color; //ceiling color // modif avec struct rgb
-	t_rgb   f_color; //floor color // modif avec struct rgb
+	t_rgb   rgb_c_color; //ceiling color // modif avec struct rgb
+	t_rgb   rgb_f_color; //floor color // modif avec struct rgb
+	int		c_color; //ceiling color 
+	int		f_color; //floor color
 	t_dir	start_dir; //le truc nord/sud/est/west
 
 	char    *tex_no;// stockage des textures 

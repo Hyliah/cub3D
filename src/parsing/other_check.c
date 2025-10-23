@@ -55,17 +55,17 @@ void	check_color(t_cub *cub)
 		ft_putstr_fd("Doesn't have ceiling / floor\n", 2);
 		clean_exit_parsing(cub);
 	}
-	if (cub->setting.f_color.r < 0 || cub->setting.f_color.r > 255
-		|| cub->setting.f_color.g < 0 || cub->setting.f_color.g > 255
-		|| cub->setting.f_color.b < 0 || cub->setting.f_color.b > 255)
+	if (cub->setting.rgb_f_color.r < 0 || cub->setting.rgb_f_color.r > 255
+		|| cub->setting.rgb_f_color.g < 0 || cub->setting.rgb_f_color.g > 255
+		|| cub->setting.rgb_f_color.b < 0 || cub->setting.rgb_f_color.b > 255)
 	{
 		ft_error(ERR_COLOR);
 		ft_putstr_fd("Invalid floor color: must be between 0 - 255", 2);
 		clean_exit_parsing(cub);
 	}
-	if (cub->setting.c_color.r < 0 || cub->setting.c_color.r > 255
-		|| cub->setting.c_color.g < 0 || cub->setting.c_color.g > 255
-		|| cub->setting.c_color.b < 0 || cub->setting.c_color.b > 255)
+	if (cub->setting.rgb_c_color.r < 0 || cub->setting.rgb_c_color.r > 255
+		|| cub->setting.rgb_c_color.g < 0 || cub->setting.rgb_c_color.g > 255
+		|| cub->setting.rgb_c_color.b < 0 || cub->setting.rgb_c_color.b > 255)
 	{
 		ft_error(ERR_COLOR);
 		ft_putstr_fd("Invalid ceiling color: must be between 0 - 255", 2);

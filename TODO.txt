@@ -1,8 +1,22 @@
+
+// faire cehck taille de map si tro grande si trop petit 
+
+// verifie si fichier bine xpm 
+
+
+// check leaks et tout 
+
+// transorfrer rgb en exadecimal  OK -----
+// cub->setting.c_color = 0xa1c8f4; = 161, 200, 244
+// cub->setting.f_color = 0x8fa959; = 143, 169, 89
+
+
 Todo discussion Hygie ( 17 oct )
 checker si l'ordre des config a une importance ( si on commence par SO, WE ... )
 faire aussi un gestionnaire pour les map de taille trop grandes ou trop petites
 on accept que des xpm qui font que 1024 par 1024 
 que ca soit un fichier xpm !! faire une fonction de verif comme check ber / check cub 
+
 
 ATTENTION ( 16 oct )
 Pour invalid color le mess qui suit ne s'affiche pas

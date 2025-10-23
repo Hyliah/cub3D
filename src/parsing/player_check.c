@@ -94,9 +94,4 @@ void	init_player_angle(t_player *player)
 
 // faire cehck taille de map si tro grande si trop petit 
 
-// transorfrer rgb en exadecimal 
-
-// cub->setting.c_color = 0xa1c8f4;
-// cub->setting.f_color = 0x8fa959;
-
 // check leaks et tout 
