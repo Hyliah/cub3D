@@ -14,16 +14,28 @@
 
 static void	init_overlays(t_cub *cub, t_img *img, char *xpm);
 
-void	init_overlays_weapons(t_cub *cub)
+int	init_overlays_weapons(t_cub *cub)
 {
 	if (cub->oscreen.is_sirius == TRUE)
 	{
 		init_overlays(cub, &cub->oscreen.img_olay, OVRLS);
+		if (!&cub->oscreen.img_olay)
+			return (free_mid_init(cub, 6), 1);
 		init_overlays(cub, &cub->weapons.img_w1, W1S);
+		if (!&cub->weapons.img_w1)
+			return (free_mid_init(cub, 7), 1);
 		init_overlays(cub, &cub->weapons.img_w2, W2S);
+		if (!&cub->weapons.img_w2)
+			return (free_mid_init(cub, 8), 1);
 		init_overlays(cub, &cub->weapons.img_w3, W3S);
+		if (!&cub->weapons.img_w3)
+			return (free_mid_init(cub, 9), 1);
 		init_overlays(cub, &cub->weapons.img_w4, W4S);
+		if (!&cub->weapons.img_w4)
+			return (free_mid_init(cub, 10), 1);
 		init_overlays(cub, &cub->weapons.img_w5, W5S);
+		if (!&cub->weapons.img_w5)
+			return (free_mid_init(cub, 10), 1);
 	}
 	else
 	{
