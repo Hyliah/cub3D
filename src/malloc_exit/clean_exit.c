@@ -31,11 +31,10 @@ int	clean_exit(t_cub *cub)
 	exit (EXIT_SUCCESS);
 }
 
-// separer en deux fonctions 
-// car si on appelle des le parsing MLX pas init donc va crasher 
-
 int	clean_exit_parsing(t_cub *cub)
 {
+	// if (line)
+	// 	free(line); // tentative still reacheable
 	if (!cub)
 		exit(EXIT_FAILURE);
 	if (cub->setting.fd > 2)
@@ -43,15 +42,8 @@ int	clean_exit_parsing(t_cub *cub)
 		close(cub->setting.fd);
 		cub->setting.fd = -1;
 	}
-	// free texture et mise a null direct avec la fonction free ptr
-	free_ptr((void **)&cub->setting.tex_no);
-	free_ptr((void **)&cub->setting.tex_so);
-	free_ptr((void **)&cub->setting.tex_we);
-	free_ptr((void **)&cub->setting.tex_ea);
-	if (cub->map.map_tab)
-		free_tab(&cub->map.map_tab);
-	cub->map.height = 0;
-	cub->map.width = 0;
+	free_textures(cub);
+	free_map(cub);
 	cub->map.map_start = 0;
 	exit(EXIT_FAILURE);
 }

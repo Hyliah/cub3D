@@ -81,6 +81,8 @@ void	ft_strtrim_newline(char *line);
 void	ft_strtrim_spaces(char *s);
 int		open_cub_file(t_cub *cub, char *pathname);
 
+void	free_textures(t_cub *cub);
+void	free_map(t_cub *cub); // test
 void	print_debug_settings(t_setting *set); // a supp 
 
 /* SCREEN */

@@ -59,3 +59,19 @@ void	*free_ptr(void **ptr)
 	}
 	return (NULL);
 }
+
+void	free_textures(t_cub *cub)
+{
+	free_ptr((void **)&cub->setting.tex_no);
+	free_ptr((void **)&cub->setting.tex_so);
+	free_ptr((void **)&cub->setting.tex_we);
+	free_ptr((void **)&cub->setting.tex_ea);
+}
+
+void	free_map(t_cub *cub)
+{
+	if (cub->map.map_tab)
+		free_tab(&cub->map.map_tab);
+	cub->map.height = 0;
+	cub->map.width = 0;
+}

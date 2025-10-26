@@ -12,6 +12,7 @@
 
 #include "cub.h"
 
+
 char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 {
 	char	**new;

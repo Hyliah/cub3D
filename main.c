@@ -28,7 +28,9 @@ int main (int ac, char **av)
     // create_window(&cub);
 	// mlx_loop(cub.graphic.mlx_ptr);
     // mlx_key_hook(cub.graphic.win_ptr, handle_key, &cub);
-    return (0);
+    free_textures(&cub);
+    free_map(&cub);
+	return (0);
 }
 
 
