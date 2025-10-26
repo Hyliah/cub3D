@@ -33,8 +33,11 @@ int	clean_exit(t_cub *cub)
 
 int	clean_exit_parsing(t_cub *cub)
 {
-	// if (line)
-	// 	free(line); // tentative still reacheable
+	if (cub->map.current_line)
+	{
+		free(cub->map.current_line);
+		cub->map.current_line = NULL;
+	}
 	if (!cub)
 		exit(EXIT_FAILURE);
 	if (cub->setting.fd > 2)

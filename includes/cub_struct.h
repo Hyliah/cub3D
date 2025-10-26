@@ -65,6 +65,7 @@ typedef struct s_map
 	int		height;
 	int		width;
 	char    **map_tab;
+	char	*current_line;
 }	t_map;
 
 typedef struct s_setting // struct pour recupérer les infos sur Parsing

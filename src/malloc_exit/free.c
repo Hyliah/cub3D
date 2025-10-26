@@ -68,10 +68,25 @@ void	free_textures(t_cub *cub)
 	free_ptr((void **)&cub->setting.tex_ea);
 }
 
+// void	free_map(t_cub *cub)
+// {
+// 	if (cub->map.map_tab)
+// 		free_tab(&cub->map.map_tab);
+// 	cub->map.height = 0;
+// 	cub->map.width = 0;
+// }
+
+//test test test 
 void	free_map(t_cub *cub)
 {
 	if (cub->map.map_tab)
 		free_tab(&cub->map.map_tab);
 	cub->map.height = 0;
 	cub->map.width = 0;
+
+	if (cub->map.current_line)
+	{
+		free(cub->map.current_line);
+		cub->map.current_line = NULL;
+	}
 }

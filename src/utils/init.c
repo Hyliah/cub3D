@@ -31,6 +31,7 @@ static void	init_struct_map_settings(t_cub *cub)
 	cub->map.height = 0;
 	cub->map.width = 0;
 	cub->map.map_tab = NULL;
+	cub->map.current_line = NULL;
 	cub->setting.fd = -1;
 	cub->setting.start_dir = -1;
 

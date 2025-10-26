@@ -32,6 +32,7 @@ void	parse_file(t_cub *cub, char *pathname )
 
 	fd = open_cub_file(cub, pathname);
 	line = get_next_valid_line(cub, fd);
+	cub->map.current_line = line;
 	while (line)
 	{
 		if (line[0])
@@ -43,7 +44,9 @@ void	parse_file(t_cub *cub, char *pathname )
 		if (cub->map.map_start)
 			process_map_line(cub, line);
 		free(line);
+		cub->map.current_line = NULL;
 		line = get_next_valid_line(cub, fd);
+		cub->map.current_line = line;
 	}
 	close(fd);
 	printf("DEBUG: finalize map\n"); // ---------------------------------------------------
