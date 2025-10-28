@@ -21,7 +21,7 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_texture(cub);
 	check_color(cub);
 	check_player(cub);
-	// check wall a supp ? car floodfill instead 
+	check_wall(cub); 
 	// flood fill ici ? A la toute fin ( apres player ) 
 }
 
@@ -52,14 +52,6 @@ void	parse_file(t_cub *cub, char *pathname )
 	printf("DEBUG: finalize map\n"); // ---------------------------------------------------
 	finalize_map_parsing(cub);
 	printf("DEBUG: end of parse_file\n"); // ---------------------------------------------------
-
-	// Verif stockage des color RGB  + hexa, tt ok 
-	// printf("\nColors (RGB):\n");
-	// printf("  Floor:   R=%d, G=%d, B=%d\n",cub->setting.rgb_f_color.r, cub->setting.rgb_f_color.g, cub->setting.rgb_f_color.b);
-	// printf("  Ceiling: R=%d, G=%d, B=%d\n", cub->setting.rgb_c_color.r, cub->setting.rgb_c_color.g, cub->setting.rgb_c_color.b);
-	// printf("\nColors hexa:\n");
-	// printf("  Floor:	%x\n", cub->setting.f_color);
-	// printf("  Ceiling:	%x\n", cub->setting.c_color);
 }
 
 void	process_config_line(t_cub *cub, char *line)

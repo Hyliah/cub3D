@@ -12,7 +12,6 @@
 
 #include "cub.h"
 
-
 char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line)
 {
 	char	**new;
@@ -52,5 +51,3 @@ void	dup_map(t_cub *cub, char **new, int i, char *line)
 	}
 }
 
-// faire un flood fill aussi ? 
-// check path ? 
