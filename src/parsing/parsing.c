@@ -21,7 +21,9 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_texture(cub);
 	check_color(cub);
 	check_player(cub);
+	printf("DEBUG: Player position %f, et %f\n", cub->player.pos_x, cub->player.pos_y); 
 	check_wall(cub); 
+	//check_valid_map_flood(cub);
 	// flood fill ici ? A la toute fin ( apres player ) 
 }
 

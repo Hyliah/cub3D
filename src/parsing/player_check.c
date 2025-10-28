@@ -64,13 +64,13 @@ void	init_player(t_cub *cub, int x, int y, char dir)
 	cub->player.pos_x = x + 0.5;
 	cub->player.pos_y = y + 0.5;
 	if (dir == 'N')
-		cub->player.dir = NORTH; // 90
+		cub->player.dir = NORTH;
 	else if (dir == 'S')
-		cub->player.dir = SOUTH; // 270
+		cub->player.dir = SOUTH;
 	else if (dir == 'E')
-		cub->player.dir = EAST; // 0
+		cub->player.dir = EAST;
 	else if (dir == 'W')
-		cub->player.dir = WEST; // 180
+		cub->player.dir = WEST;
 	else
 	{
 		ft_error(ERR_PLAYER);
@@ -91,7 +91,3 @@ void	init_player_angle(t_player *player)
 	if (player->dir == WEST)
 		player->angle = 180.0;
 }
-
-// faire cehck taille de map si tro grande si trop petit 
-
-// check leaks et tout 

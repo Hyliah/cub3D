@@ -23,6 +23,10 @@ void	check_arg(t_cub *cub, int ac, char **av);
 void	check_cub(t_cub *cub, char *pathname);
 void	check_file_access(t_cub *cub, char *pathname);
 
+void	flood_fill(t_cub *cub, int y, int x);
+int		is_touching_void(t_cub *cub);
+void	check_valid_map_flood(t_cub *cub);
+
 void	check_invalid_char(t_cub *cub);
 void	check_line_empty_in_map(t_cub *cub);
 void	check_wall(t_cub *cub);
@@ -83,6 +87,8 @@ int		open_cub_file(t_cub *cub, char *pathname);
 
 void	free_textures(t_cub *cub);
 void	free_map(t_cub *cub); // test
+int		tab_height(char **src); // test 
+char	**dup_tab(char **src);
 void	print_debug_settings(t_setting *set); // a supp 
 
 /* SCREEN */
