@@ -12,10 +12,11 @@
 
 #include "cub.h"
 
-void	parse_text_no(t_cub *cub, char *path)
+void	parse_text_no(t_cub *cub, char *path, char **split)
 {
 	if (cub->setting.has_tex_no)
 	{
+		free_tab(&split); // tentative 28 oct
 		ft_error(ERR_TEXTURE);
 		ft_putstr_fd("Texture NO already defined\n", 2);
 		clean_exit_parsing(cub);
@@ -30,10 +31,11 @@ void	parse_text_no(t_cub *cub, char *path)
 	cub->setting.has_tex_no = 1;
 }
 
-void	parse_text_so(t_cub *cub, char *path)
+void	parse_text_so(t_cub *cub, char *path, char **split)
 {
 	if (cub->setting.has_tex_so)
 	{
+		free_tab(&split);
 		ft_error(ERR_TEXTURE);
 		ft_putstr_fd("Texture SO already defined\n", 2);
 		clean_exit_parsing(cub);
@@ -48,10 +50,11 @@ void	parse_text_so(t_cub *cub, char *path)
 	cub->setting.has_tex_so = 1;
 }
 
-void	parse_text_ea(t_cub *cub, char *path)
+void	parse_text_ea(t_cub *cub, char *path, char **split)
 {
 	if (cub->setting.has_tex_ea)
 	{
+		free_tab(&split);
 		ft_error(ERR_TEXTURE);
 		ft_putstr_fd("Texture EA already defined\n", 2);
 		clean_exit_parsing(cub);
@@ -66,10 +69,11 @@ void	parse_text_ea(t_cub *cub, char *path)
 	cub->setting.has_tex_ea = 1;
 }
 
-void	parse_text_we(t_cub *cub, char *path)
+void	parse_text_we(t_cub *cub, char *path, char **split)
 {
 	if (cub->setting.has_tex_we)
 	{
+		free_tab(&split);
 		ft_error(ERR_TEXTURE);
 		ft_putstr_fd("Texture WE already defined\n", 2);
 		clean_exit_parsing(cub);

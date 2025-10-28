@@ -37,10 +37,10 @@ void	parse_color_floor(t_cub *cub, t_rgb color);
 void	parse_color_ceiling(t_cub *cub, t_rgb color);
 int		rgb_to_hex(t_rgb color);
 
-void	parse_text_no(t_cub *cub, char *path);
-void	parse_text_so(t_cub *cub, char *path);
-void	parse_text_ea(t_cub *cub, char *path);
-void	parse_text_we(t_cub *cub, char *path);
+void	parse_text_no(t_cub *cub, char *path, char **split);
+void	parse_text_so(t_cub *cub, char *path, char **split);
+void	parse_text_ea(t_cub *cub, char *path, char **split);
+void	parse_text_we(t_cub *cub, char *path, char **split);
 
 t_rgb	parse_rgb(t_cub *cub, char *str);
 void	check_rgb_format(t_cub *cub, char *str);

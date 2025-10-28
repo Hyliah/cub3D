@@ -57,13 +57,13 @@ void	parse_orientation(t_cub *cub, char **split)
 	orientation = split[0];
 	path = split[1];
 	if (ft_strncmp(orientation, "NO", 3) == 0)
-		parse_text_no(cub, path);
+		parse_text_no(cub, path, split);
 	else if (ft_strncmp(orientation, "SO", 3) == 0)
-		parse_text_so(cub, path);
+		parse_text_so(cub, path, split);
 	else if (ft_strncmp(orientation, "EA", 3) == 0)
-		parse_text_ea(cub, path);
+		parse_text_ea(cub, path, split);
 	else if (ft_strncmp(orientation, "WE", 3) == 0)
-		parse_text_we(cub, path);
+		parse_text_we(cub, path, split);
 	else
 	{
 		free_tab(&split); //tentaive 
