@@ -65,34 +65,7 @@ void	check_line_empty_in_map(t_cub *cub)
 	}
 }
 
-void	check_wall(t_cub *cub)
-{
-	int		y;
-	int		x;
-	char	**map;
 
-	map = cub->map.map_tab;
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == '0')
-			{
-				if (y == 0 || x == 0 || !map[y + 1] || !map[y][x + 1]
-				|| map[y - 1][x] == ' ' || map[y + 1][x] == ' '
-				|| map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
-				{
-					ft_error(ERR_MAP_WALLS);
-					clean_exit_parsing(cub);
-				}
-			}
-			x++;
-		}
-		y++;
-	}
-}
 
 int	is_map_bottom_line(char *line)
 {

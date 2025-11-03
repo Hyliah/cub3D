@@ -84,3 +84,41 @@ void	check_valid_map_flood(t_cub *cub)
 	}
 	free_tab(&dup);
 }
+// Compte le nombre de lignes dans un tableau 2D
+int	tab_height(char **src)
+{
+	int	i = 0;
+	while (src && src[i])
+		i++;
+	return (i);
+}
+
+// Duplique un tableau 2D de char **
+char	**dup_tab(char **src)
+{
+	char	**dup;
+	int		i;
+	int		height;
+
+	if (!src)
+		return (NULL);
+	height = tab_height(src);
+	dup = malloc(sizeof(char *) * (height + 1));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (i < height)
+	{
+		dup[i] = ft_strdup(src[i]);
+		if (!dup[i])
+		{
+			while (i > 0)
+				free(dup[--i]);
+			free(dup);
+			return (NULL);
+		}
+		i++;
+	}
+	dup[i] = NULL;
+	return (dup);
+}

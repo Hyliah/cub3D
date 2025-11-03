@@ -16,7 +16,7 @@ void	parse_text_no(t_cub *cub, char *path, char **split)
 {
 	if (cub->setting.has_tex_no)
 	{
-		free_tab(&split); // tentative 28 oct
+		free_tab(&split);
 		ft_error(ERR_TEXTURE);
 		ft_putstr_fd("Texture NO already defined\n", 2);
 		clean_exit_parsing(cub);
