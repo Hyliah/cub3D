@@ -18,7 +18,6 @@
 # define G_NAME	"Cub Crossing : New maze adventure"
 # define IMG_TEST "./src/images/test.xpm"
 
-
 typedef enum s_dir
 {
 	NORTH, // = 0

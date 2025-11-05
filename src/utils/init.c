@@ -34,7 +34,7 @@ static void	init_struct_map_settings(t_cub *cub)
 	cub->map.current_line = NULL;
 	cub->setting.fd = -1;
 	cub->setting.start_dir = -1;
-
+	
 	// couleurs initialisées à "non définies"
 	cub->setting.rgb_c_color.r = -1;
 	cub->setting.rgb_c_color.g = -1;

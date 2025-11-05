@@ -66,7 +66,7 @@ void	parse_orientation(t_cub *cub, char **split)
 		parse_text_we(cub, path, split);
 	else
 	{
-		free_tab(&split); //tentaive 
+		free_tab(&split);
 		ft_error(ERR_TEXTURE);
 		ft_putstr_fd("Invalid texture orientation\n", 2);
 		clean_exit_parsing(cub);

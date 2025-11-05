@@ -65,14 +65,11 @@ void	check_line_empty_in_map(t_cub *cub)
 	}
 }
 
-
-
 int	is_map_bottom_line(char *line)
 {
 	int	i;
 
 	i = 0;
-
 	if (!line)
 		return (0);
 	while (line[i])
@@ -84,8 +81,3 @@ int	is_map_bottom_line(char *line)
 	}
 	return (1);
 }
-
-// si on veut faire un flood fill, faire apres avoir determine la position du player
-// faire copie de map pour ne pas modif l original en faisant le floofill avec des '*'
-
-// si on faiyt un flood fill du coup check wall devient inutile ? Flood fill better ? 

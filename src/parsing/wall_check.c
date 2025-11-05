@@ -19,7 +19,6 @@ int	is_invalid_position(char **map, int y, int x)
 	int	below_len;
 
 	len = ft_strlen(map[y]);
-
 	if (y > 0 && map[y - 1])
 		above_len = ft_strlen(map[y - 1]);
 	else
@@ -39,7 +38,7 @@ int	is_invalid_position(char **map, int y, int x)
 
 void	check_line_walls(t_cub *cub, int y)
 {
-	int	x;
+	int		x;
 	char	**map;
 
 	map = cub->map.map_tab;

@@ -64,7 +64,6 @@ void	parse_color_ceiling(t_cub *cub, t_rgb color)
 	cub->setting.has_ceiling = 1;
 }
 
-// conversion rgb to hex 
 int	rgb_to_hex(t_rgb color)
 {
 	return ((color.r << 16) | (color.g << 8) | color.b);

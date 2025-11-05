@@ -19,7 +19,6 @@ void	unfructuous_malloc(t_cub *cub)
 	exit(EXIT_FAILURE);
 }
 
-
 void	free_mid_tab(t_cub *cub, char ***tab, int i)
 {
 	if (!tab && !*tab)
@@ -83,7 +82,6 @@ void	free_map(t_cub *cub)
 		free_tab(&cub->map.map_tab);
 	cub->map.height = 0;
 	cub->map.width = 0;
-
 	if (cub->map.current_line)
 	{
 		free(cub->map.current_line);

@@ -50,4 +50,3 @@ void	dup_map(t_cub *cub, char **new, int i, char *line)
 		clean_exit_parsing(cub);
 	}
 }
-
