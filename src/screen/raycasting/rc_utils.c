@@ -12,7 +12,7 @@
 
 #include "cub.h"
 
-static void	init_wall(t_cub *cub, t_img *img, char *xpm);
+static int	init_wall(t_cub *cub, t_img *img, char *xpm, int exit);
 
 int	cal_range(t_cub *cub, t_bool is_start)
 {
@@ -34,15 +34,20 @@ int	cal_range(t_cub *cub, t_bool is_start)
 	}
 }
 
-void	init_walls(t_cub *cub)
+int	init_walls(t_cub *cub)
 {
-	init_wall(cub, &cub->graphic.img_e, WTE);
-	init_wall(cub, &cub->graphic.img_s, WTS);
-	init_wall(cub, &cub->graphic.img_w, WTW);
-	init_wall(cub, &cub->graphic.img_n, WTN);
+	if (init_wall(cub, &cub->graphic.img_e, WTE, 12))
+		return (1);
+	if (init_wall(cub, &cub->graphic.img_s, WTS, 13))
+		return (1);
+	if (init_wall(cub, &cub->graphic.img_w, WTW, 14))
+		return (1);
+	if (init_wall(cub, &cub->graphic.img_n, WTN, 15))
+		return (1);
+	return (0);
 }
 
-static void	init_wall(t_cub *cub, t_img *img, char *xpm)
+static int	init_wall(t_cub *cub, t_img *img, char *xpm, int exit)
 {
 	int	x;
 	int	y;
@@ -50,11 +55,12 @@ static void	init_wall(t_cub *cub, t_img *img, char *xpm)
 	x = 1024;
 	y = 1024;
 	img->img_ptr = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, xpm, &x, &y);
-	// if (!img->img_ptr)
-	// 	infructuous_smth;
+	if (!img->img_ptr)
+		return (free_mid_init(cub, exit), 1);
 	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
 			&img->endian);
 	img->width = x;
 	img->height = y;
+	return (0);
 }
 

@@ -14,44 +14,55 @@
 
 static void	game_on(t_cub *cub);
 static void	mm_size_calculator(t_cub *cub);
-static void	init_img(t_cub *cub, t_img *img, int x, int y);
+static int	init_img(t_cub *cub, t_img *img, t_bool minimap, int exit);
 
-void	create_window(t_cub *cub)
+int	create_window(t_cub *cub)
+{
+	cub->graphic.mlx_ptr = mlx_init();
+	if (!cub->graphic.mlx_ptr)
+		return (free_mid_init(cub, 1), 1);
+	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr,
+			cub->graphic.s_width, cub->graphic.s_height, G_NAME);
+	if (!cub->graphic.win_ptr)
+		return (free_mid_init(cub, 2), 1);
+	mm_size_calculator(cub);
+	if (init_opening_screen(cub))
+		return (1);
+	if (init_walls(cub))
+		return (1);
+	if (init_img(cub, &cub->graphic.img_screen, FALSE, 16))
+		return (1);
+	if (init_img(cub, &cub->mmap.img_mmap, TRUE, 17))
+		return (1);
+	if (init_img(cub, &cub->mmap.img_player, TRUE, 18))
+		return (1);
+	game_on(cub);
+	return (0);
+}
+
+static int	init_img(t_cub *cub, t_img *img, t_bool minimap, int exit)
 {
 	int	x;
 	int	y;
-	int	ret;
 
-	x = cub->graphic.s_width;
-	y = cub->graphic.s_height;
-	cub->graphic.mlx_ptr = mlx_init();
-	if (!cub->graphic.mlx_ptr)
-		return (free_mid_init(cub, 1), NULL);
-	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr, x, y, G_NAME);
-	if (!cub->graphic.win_ptr)
-		return (free_mid_init(cub, 2), NULL);
-	mm_size_calculator(cub);
-	init_opening_screen(cub);
-	init_walls(cub);
-	init_img(cub, &cub->graphic.img_screen, x, y);
-	if (!&cub->graphic.img_screen)
-		return (free_mid_init(cub, 8), NULL);
-	init_img(cub, &cub->mmap.img_mmap, cub->mmap.mm_wid, cub->mmap.mm_hei);
-	if (!&cub->mmap.img_mmap)
-		return (free_mid_init(cub, 9), NULL);
-	init_img(cub, &cub->mmap.img_player, cub->mmap.mm_wid, cub->mmap.mm_hei);
-	if (!&cub->mmap.img_player)
-		return (free_mid_init(cub, 10), NULL);
-	game_on(cub);
-}
-
-static void	init_img(t_cub *cub, t_img *img, int x, int y)
-{
+	if (minimap)
+	{
+		x = cub->mmap.mm_wid;
+		y = cub->mmap.mm_hei;
+	}
+	else
+	{
+		x = cub->graphic.s_width;
+		y = cub->graphic.s_height;
+	}
 	img->img_ptr = mlx_new_image(cub->graphic.mlx_ptr, x, y);
+	if (!img->img_ptr)
+		return (free_mid_init(cub, exit), 1);
 	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
 			&img->endian);
 	img->width = x;
 	img->height = y;
+	return (0);
 }
 
 //calcul pour connaitre le ration map/scren/minimap 

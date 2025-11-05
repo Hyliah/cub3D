@@ -12,8 +12,7 @@
 
 #include "cub.h"
 
-/*possibilite de faire une fonction pour les init -> si trop long*/
-void	init_opening_screen(t_cub *cub)
+int	init_opening_screen(t_cub *cub)
 {
 	int	x;
 	int	y;
@@ -23,26 +22,27 @@ void	init_opening_screen(t_cub *cub)
 	cub->oscreen.img_os
 		= mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OS, &x, &y);
 	if (!cub->oscreen.img_os)
-		free_mid_init(cub, 3);	
+		return (free_mid_init(cub, 3), 1);	
 	cub->oscreen.img_pe
 		= mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OSP, &x, &y);
 	if (!cub->oscreen.img_pe)
-		free_mid_init(cub, 4);	
+		return (free_mid_init(cub, 4), 1);	
 	cub->oscreen.img_si
 		= mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OSS, &x, &y);
 	if (!cub->oscreen.img_si)
-		free_mid_init(cub, 5);
+		return (free_mid_init(cub, 5), 1);
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
 		cub->oscreen.img_os, 0, 0);
+	return (0);
 }
 
-// all good
-void	opening_screen_handle(t_cub *cub, int keycode)
+int	opening_screen_handle(t_cub *cub, int keycode)
 {
 	if (keycode == KEY_RETURN)
 	{
 		cub->game_on = TRUE;
-		init_overlays_weapons(cub);
+		if (init_overlays_weapons(cub))
+			return (1);
 	}
 	else if (cub->key.k_up && cub->game_on == FALSE)
 	{
@@ -56,4 +56,5 @@ void	opening_screen_handle(t_cub *cub, int keycode)
 		mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
 			cub->oscreen.img_pe, 0, 0);
 	}
+	return (0);
 }

@@ -24,23 +24,23 @@ void	set_pixel(t_img *img, int x, int y, t_hex_c color);
 
 /* SCREEN */
 void	move_player(t_cub *cub);
-void	create_window(t_cub *cub);
+int		create_window(t_cub *cub);
 int		key_press(int keycode, t_cub *cub);
 int		key_release(int keycode, t_cub *cub);
 
 /* OVERLAY ELEMENTS */
 t_img	*move_weapon(t_cub *cub);
-void	opening_screen_handle(t_cub *cub, int keycode);
-void	init_overlays_weapons(t_cub *cub);
-void	init_opening_screen(t_cub *cub);
+int		init_opening_screen(t_cub *cub);
+int		init_overlays_weapons(t_cub *cub);
+int		opening_screen_handle(t_cub *cub, int keycode);
 
 /* RAYCASTING */
 void	raycasting(t_cub *cub);
 void	frame_time(t_cub *cub);
 void	limit_fps(t_cub *cub);
-void	init_walls(t_cub *cub);
 void	texture_cal(t_cub *cub, int x, int side);
 int		dda(t_cub *cub);
+int		init_walls(t_cub *cub);
 int		cal_range(t_cub *cub, t_bool is_start);
 
 /* MATH */
@@ -62,12 +62,12 @@ void	mm_player_draw(t_cub *cub, int color);
 int		clean_exit(t_cub *cub);
 void	free_tab(char ***tab);
 void	*free_ptr(void **ptr);
+void	free_t_img(t_cub *cub, t_img *img);
 void	free_mid_tab(t_cub *cub, char ***tab, int i);
 void	free_mid_init(t_cub *cub, int exit_nb);
 
 /* UTILS */
 void	init_struct(t_cub *cub);
-
 
 void debug_log(const char *msg);
 

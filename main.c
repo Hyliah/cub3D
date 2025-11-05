@@ -41,7 +41,8 @@ int main (int ac, char **av)
 		// hardcode de la map -> enlever quand parsing est fait
 		hardcode_map(&cub, av[1]);
 		// mettre le parsing ici
-		create_window(&cub);
+		if (create_window(&cub))
+			return (1);
 		mlx_hook(cub.graphic.win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press, &cub);
 		mlx_hook(cub.graphic.win_ptr, KEY_RELEASE, KEY_RELEASE_MASK, key_release, &cub);
 		mlx_loop_hook(cub.graphic.mlx_ptr, game_loop, &cub);
