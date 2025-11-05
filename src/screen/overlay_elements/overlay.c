@@ -12,40 +12,56 @@
 
 #include "cub.h"
 
+static int	init_ol_sirius(t_cub *cub);
+static int	init_ol_pepito(t_cub *cub);
 static int	init_overlays(t_cub *cub, t_img *img, char *xpm, int exit);
 
 int	init_overlays_weapons(t_cub *cub)
 {
 	if (cub->oscreen.is_sirius == TRUE)
 	{
-		if (init_overlays(cub, &cub->oscreen.img_olay, OVRLS, 6))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w1, W1S, 7))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w2, W2S, 8))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w3, W3S, 9))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w4, W4S, 10))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w5, W5S, 11))
+		if (init_ol_sirius(cub))
 			return (1);
 	}
 	else
 	{
-		if (init_overlays(cub, &cub->oscreen.img_olay, OVRLP, 6))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w1, W1P, 7))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w2, W2P, 8))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w3, W3P, 9))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w4, W4P, 10))
-			return (1);
-		if (init_overlays(cub, &cub->weapons.img_w5, W5P, 11))
+		if (init_ol_pepito(cub))
 			return (1);
 	}
+	return (0);
+}
+
+static int	init_ol_sirius(t_cub *cub)
+{
+	if (init_overlays(cub, &cub->oscreen.img_olay, OVRLS, 6))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w1, W1S, 7))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w2, W2S, 8))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w3, W3S, 9))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w4, W4S, 10))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w5, W5S, 11))
+		return (1);
+	return (0);
+}
+
+static int	init_ol_pepito(t_cub *cub)
+{
+	if (init_overlays(cub, &cub->oscreen.img_olay, OVRLP, 6))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w1, W1P, 7))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w2, W2P, 8))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w3, W3P, 9))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w4, W4P, 10))
+		return (1);
+	if (init_overlays(cub, &cub->weapons.img_w5, W5P, 11))
+		return (1);
 	return (0);
 }
 
@@ -65,4 +81,3 @@ static int	init_overlays(t_cub *cub, t_img *img, char *xpm, int exit)
 	img->height = y;
 	return (0);
 }
-

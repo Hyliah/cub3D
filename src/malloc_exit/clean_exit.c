@@ -15,7 +15,7 @@
 static void	free_after_game(t_cub *cub);
 
 int	clean_exit(t_cub *cub)
-{	
+{
 	if (cub->game_on == TRUE)
 		free_after_game(cub);
 	free_t_img(cub, &cub->mmap.img_mmap);

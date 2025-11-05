@@ -63,4 +63,3 @@ static int	init_wall(t_cub *cub, t_img *img, char *xpm, int exit)
 	img->height = y;
 	return (0);
 }
-

@@ -35,7 +35,6 @@ void	free_mid_init(t_cub *cub, int exit_nb)
 		free_t_img(cub, &cub->mmap.img_mmap);
 	if (exit_nb <= 19)
 		free_t_img(cub, &cub->mmap.img_player);
-
 }
 
 static void	free_mid_init_1(t_cub *cub, int exit_nb)
