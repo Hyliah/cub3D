@@ -19,6 +19,10 @@
 char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line);
 void	dup_map(t_cub *cub, char **new, int i, char *line);
 
+int		is_invalid_position(char **map, int y, int x);
+void	check_line_walls(t_cub *cub, int y);
+void	check_wall(t_cub *cub);
+
 void	check_arg(t_cub *cub, int ac, char **av);
 void	check_cub(t_cub *cub, char *pathname);
 void	check_file_access(t_cub *cub, char *pathname);

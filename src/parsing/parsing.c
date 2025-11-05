@@ -22,7 +22,6 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_color(cub);
 	check_player(cub);
 	check_wall(cub); 
-	//check_valid_map_flood(cub);
 }
 
 void	parse_file(t_cub *cub, char *pathname )
@@ -37,7 +36,6 @@ void	parse_file(t_cub *cub, char *pathname )
 	{
 		if (line[0])
 		{
-			printf("DEBUG: new line -> '%s'\n", line); // ---------------------------------------------------
 			if (!cub->map.map_start)
 				process_config_line(cub, line);
 		}
@@ -49,9 +47,7 @@ void	parse_file(t_cub *cub, char *pathname )
 		cub->map.current_line = line;
 	}
 	close(fd);
-	printf("DEBUG: finalize map\n"); // ---------------------------------------------------
 	finalize_map_parsing(cub);
-	printf("DEBUG: end of parse_file\n"); // ---------------------------------------------------
 }
 
 void	process_config_line(t_cub *cub, char *line)
