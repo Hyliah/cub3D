@@ -62,6 +62,10 @@ key_handle.c move_player.c fps_handler.c \
 dda.c raycasting.c wall_textures.c rc_utils.c \
 cal_perp_wall_dist.c cal_ray_dir.c cal_side_dist.c cal_step.c \
 cal_camera_x.c cal_delta_dist.c cal_line_height.c cal_map.c cal_view.c \
+alloc_map.c wall_check.c \
+first_check.c map_check.c other_check.c player_check.c parsing_orientation.c\
+parsing.c parsing_texture.c parsing_color.c parsing_rgb.c \
+utils_parsing.c  utils_flags.c utils_errors.c utils_get_info.c\
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 

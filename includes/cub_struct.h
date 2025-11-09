@@ -29,6 +29,29 @@ typedef enum s_bool
 	TRUE
 }	t_bool;
 
+typedef enum e_error
+{
+	ERR_ARGS,
+	ERR_FILE_EXT,
+	ERR_MAP_INVALID_CHAR,
+	ERR_MAP_INVALID,
+	ERR_MEMORY,
+	ERR_MAP_WALLS,
+	ERR_MAP_PATH,
+	ERR_FILE_NOT_FOUND,
+	ERR_PLAYER,
+	ERR_MAP_LINE,
+	ERR_COLOR,
+	ERR_TEXTURE,
+}	t_error;
+
+typedef struct s_rgb
+{
+    int		r; // unsigned char ? mais verif deja faire ds le parsing donc tt changer ? 
+    int 	g;
+    int 	b;
+}   t_rgb;
+
 typedef struct s_player
 {
 	// position of the player on the map
@@ -60,23 +83,44 @@ typedef struct s_player
 	//sur quel carre on est
 	int		map_x;
 	int		map_y;
-	int		angle;
+	//int		angle;
+	t_dir   dir;
+	double	angle;
+	int		has_player; // flag 
 }	t_player;
 
 // Field of vision is 2 * atan(0.66/1.0)= 66°
 typedef struct s_map
 {
+	int		map_start;
+	int		map_end;
+	int		count_only_one;
 	int		height;
 	int		width;
-	char	**map_tab;
+	char    **map_tab;
+	char	*current_line;
 }	t_map;
 
 typedef struct s_setting // struct pour recupérer les infos sur Parsing
 {
 	int		fd;
+	t_rgb   rgb_c_color; //ceiling color // modif avec struct rgb
+	t_rgb   rgb_f_color; //floor color // modif avec struct rgb
 	int		c_color; //ceiling color 
 	int		f_color; //floor color
 	t_dir	start_dir; //le truc nord/sud/est/west
+
+	char    *tex_no;// stockage des textures 
+    char    *tex_so;
+    char    *tex_we;
+    char    *tex_ea;
+
+	int     has_floor; // ajout des flags de verif 
+    int     has_ceiling;
+    int     has_tex_no;
+    int     has_tex_so;
+    int     has_tex_we;
+    int     has_tex_ea;
 }	t_setting;
 
 typedef struct s_img

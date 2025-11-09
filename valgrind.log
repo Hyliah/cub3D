@@ -1,15 +1,160 @@
-==2385475== Memcheck, a memory error detector
-==2385475== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==2385475== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==2385475== Command: ./cub3d src/maps/test2_ok.ber
-==2385475== Parent PID: 2377624
-==2385475== 
-==2385475== 
-==2385475== HEAP SUMMARY:
-==2385475==     in use at exit: 0 bytes in 0 blocks
-==2385475==   total heap usage: 43,647 allocs, 43,647 frees, 4,577,765 bytes allocated
-==2385475== 
-==2385475== All heap blocks were freed -- no leaks are possible
-==2385475== 
-==2385475== For lists of detected and suppressed errors, rerun with: -s
-==2385475== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+==285935== Memcheck, a memory error detector
+==285935== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==285935== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==285935== Command: ./cub3d src/maps/test_map.cub
+==285935== Parent PID: 277898
+==285935== 
+==285935== Invalid read of size 1
+==285935==    at 0x1105A8: mm_drawing (minimap.c:36)
+==285935==    by 0x110548: mm_creation (minimap.c:21)
+==285935==    by 0x1104DE: game_on (window_creation.c:90)
+==285935==    by 0x11033D: create_window (window_creation.c:39)
+==285935==    by 0x10FA3C: main (main.c:45)
+==285935==  Address 0x4d3ee3e is 0 bytes after a block of size 30 alloc'd
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x113358: dup_map (alloc_map.c:42)
+==285935==    by 0x1132DB: alloc_map_line (alloc_map.c:33)
+==285935==    by 0x114673: process_map_line (parsing.c:74)
+==285935==    by 0x11451E: parse_file (parsing.c:43)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== Invalid read of size 1
+==285935==    at 0x1105EE: mm_drawing (minimap.c:38)
+==285935==    by 0x110548: mm_creation (minimap.c:21)
+==285935==    by 0x1104DE: game_on (window_creation.c:90)
+==285935==    by 0x11033D: create_window (window_creation.c:39)
+==285935==    by 0x10FA3C: main (main.c:45)
+==285935==  Address 0x4d3ee3e is 0 bytes after a block of size 30 alloc'd
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x113358: dup_map (alloc_map.c:42)
+==285935==    by 0x1132DB: alloc_map_line (alloc_map.c:33)
+==285935==    by 0x114673: process_map_line (parsing.c:74)
+==285935==    by 0x11451E: parse_file (parsing.c:43)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== Invalid read of size 1
+==285935==    at 0x11061C: mm_drawing (minimap.c:39)
+==285935==    by 0x110548: mm_creation (minimap.c:21)
+==285935==    by 0x1104DE: game_on (window_creation.c:90)
+==285935==    by 0x11033D: create_window (window_creation.c:39)
+==285935==    by 0x10FA3C: main (main.c:45)
+==285935==  Address 0x4d3ee3e is 0 bytes after a block of size 30 alloc'd
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x113358: dup_map (alloc_map.c:42)
+==285935==    by 0x1132DB: alloc_map_line (alloc_map.c:33)
+==285935==    by 0x114673: process_map_line (parsing.c:74)
+==285935==    by 0x11451E: parse_file (parsing.c:43)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== Invalid read of size 1
+==285935==    at 0x110646: mm_drawing (minimap.c:40)
+==285935==    by 0x110548: mm_creation (minimap.c:21)
+==285935==    by 0x1104DE: game_on (window_creation.c:90)
+==285935==    by 0x11033D: create_window (window_creation.c:39)
+==285935==    by 0x10FA3C: main (main.c:45)
+==285935==  Address 0x4d3ee3e is 0 bytes after a block of size 30 alloc'd
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x113358: dup_map (alloc_map.c:42)
+==285935==    by 0x1132DB: alloc_map_line (alloc_map.c:33)
+==285935==    by 0x114673: process_map_line (parsing.c:74)
+==285935==    by 0x11451E: parse_file (parsing.c:43)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== Invalid read of size 1
+==285935==    at 0x110670: mm_drawing (minimap.c:41)
+==285935==    by 0x110548: mm_creation (minimap.c:21)
+==285935==    by 0x1104DE: game_on (window_creation.c:90)
+==285935==    by 0x11033D: create_window (window_creation.c:39)
+==285935==    by 0x10FA3C: main (main.c:45)
+==285935==  Address 0x4d3ee3e is 0 bytes after a block of size 30 alloc'd
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x113358: dup_map (alloc_map.c:42)
+==285935==    by 0x1132DB: alloc_map_line (alloc_map.c:33)
+==285935==    by 0x114673: process_map_line (parsing.c:74)
+==285935==    by 0x11451E: parse_file (parsing.c:43)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== Invalid read of size 1
+==285935==    at 0x11069A: mm_drawing (minimap.c:42)
+==285935==    by 0x110548: mm_creation (minimap.c:21)
+==285935==    by 0x1104DE: game_on (window_creation.c:90)
+==285935==    by 0x11033D: create_window (window_creation.c:39)
+==285935==    by 0x10FA3C: main (main.c:45)
+==285935==  Address 0x4d3ee3e is 0 bytes after a block of size 30 alloc'd
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x113358: dup_map (alloc_map.c:42)
+==285935==    by 0x1132DB: alloc_map_line (alloc_map.c:33)
+==285935==    by 0x114673: process_map_line (parsing.c:74)
+==285935==    by 0x11451E: parse_file (parsing.c:43)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== 
+==285935== HEAP SUMMARY:
+==285935==     in use at exit: 152 bytes in 4 blocks
+==285935==   total heap usage: 216,731 allocs, 216,727 frees, 8,729,959 bytes allocated
+==285935== 
+==285935== 38 bytes in 1 blocks are still reachable in loss record 1 of 4
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x114141: parse_text_no (parsing_orientation.c:24)
+==285935==    by 0x1149BB: parse_orientation (parsing_texture.c:60)
+==285935==    by 0x1147FF: parse_texture_line (parsing_texture.c:21)
+==285935==    by 0x1145D8: process_config_line (parsing.c:58)
+==285935==    by 0x1144FD: parse_file (parsing.c:40)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== 38 bytes in 1 blocks are still reachable in loss record 2 of 4
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x1141FF: parse_text_so (parsing_orientation.c:43)
+==285935==    by 0x1149F6: parse_orientation (parsing_texture.c:62)
+==285935==    by 0x1147FF: parse_texture_line (parsing_texture.c:21)
+==285935==    by 0x1145D8: process_config_line (parsing.c:58)
+==285935==    by 0x1144FD: parse_file (parsing.c:40)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== 38 bytes in 1 blocks are still reachable in loss record 3 of 4
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x11437B: parse_text_we (parsing_orientation.c:81)
+==285935==    by 0x114A69: parse_orientation (parsing_texture.c:66)
+==285935==    by 0x1147FF: parse_texture_line (parsing_texture.c:21)
+==285935==    by 0x1145D8: process_config_line (parsing.c:58)
+==285935==    by 0x1144FD: parse_file (parsing.c:40)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== 38 bytes in 1 blocks are still reachable in loss record 4 of 4
+==285935==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==285935==    by 0x115E50: ft_strdup (ft_strdup.c:23)
+==285935==    by 0x1142BD: parse_text_ea (parsing_orientation.c:62)
+==285935==    by 0x114A31: parse_orientation (parsing_texture.c:64)
+==285935==    by 0x1147FF: parse_texture_line (parsing_texture.c:21)
+==285935==    by 0x1145D8: process_config_line (parsing.c:58)
+==285935==    by 0x1144FD: parse_file (parsing.c:40)
+==285935==    by 0x11444B: parsing (parsing.c:20)
+==285935==    by 0x10FA2D: main (main.c:44)
+==285935== 
+==285935== LEAK SUMMARY:
+==285935==    definitely lost: 0 bytes in 0 blocks
+==285935==    indirectly lost: 0 bytes in 0 blocks
+==285935==      possibly lost: 0 bytes in 0 blocks
+==285935==    still reachable: 152 bytes in 4 blocks
+==285935==         suppressed: 0 bytes in 0 blocks
+==285935== 
+==285935== For lists of detected and suppressed errors, rerun with: -s
+==285935== ERROR SUMMARY: 132 errors from 6 contexts (suppressed: 1 from 1)

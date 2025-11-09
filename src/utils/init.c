@@ -13,6 +13,7 @@
 #include "cub.h"
 
 static void	init_setting_map_fps(t_cub *cub);
+static void	init_parsing(t_cub *cub);
 static void	init_player_oscreen(t_cub *cub);
 static void	init_t_imgs(t_cub *cub);
 static void	init_t_img(t_img *img);
@@ -32,6 +33,7 @@ void	init_struct(t_cub *cub)
 	init_setting_map_fps(cub);
 	init_player_oscreen(cub);
 	init_t_imgs(cub);
+	init_parsing(cub);
 	frame_time(cub);
 }
 
@@ -68,8 +70,6 @@ static void	init_setting_map_fps(t_cub *cub)
 	cub->mmap.mm_hei = 0;
 	cub->mmap.mm_sqr = 0;
 	cub->mmap.mm_wid = 0;
-	cub->setting.c_color = 0;
-	cub->setting.f_color = 0;
 	cub->setting.start_dir = 0;
 	cub->tex.draw_end = 0;
 	cub->tex.draw_start = 0;
@@ -141,4 +141,38 @@ static void	init_t_img(t_img *img)
 	img->endian = 0;
 	img->img_ptr = NULL;
 	img->size_line = 0;
+}
+
+static void	init_parsing(t_cub *cub)
+{
+	cub->map.map_start = 0;
+	cub->map.map_end = 0;
+	cub->map.count_only_one = 0;
+	cub->map.current_line = NULL;
+	cub->setting.start_dir = -1;
+	cub->setting.rgb_c_color.r = -1;
+	cub->setting.rgb_c_color.g = -1;
+	cub->setting.rgb_c_color.b = -1;
+
+	cub->setting.rgb_f_color.r = -1;
+	cub->setting.rgb_f_color.g = -1;
+	cub->setting.rgb_f_color.b = -1;
+	cub->setting.c_color = -1;
+	cub->setting.f_color = -1;
+
+	cub->setting.tex_no = NULL;
+	cub->setting.tex_so = NULL;
+	cub->setting.tex_we = NULL;
+	cub->setting.tex_ea = NULL;
+
+	// flags de validation
+	cub->setting.has_floor = 0;
+	cub->setting.has_ceiling = 0;
+
+	cub->setting.has_tex_no = 0;
+	cub->setting.has_tex_so = 0;
+	cub->setting.has_tex_we = 0;
+	cub->setting.has_tex_ea = 0;
+	cub->player.dir = -1;
+	cub->player.has_player = 0;
 }

@@ -36,13 +36,13 @@ int	cal_range(t_cub *cub, t_bool is_start)
 
 int	init_walls(t_cub *cub)
 {
-	if (init_wall(cub, &cub->graphic.img_e, WTE, 12))
+	if (init_wall(cub, &cub->graphic.img_e, cub->setting.tex_ea, 12))
 		return (1);
-	if (init_wall(cub, &cub->graphic.img_s, WTS, 13))
+	if (init_wall(cub, &cub->graphic.img_s, cub->setting.tex_so, 13))
 		return (1);
-	if (init_wall(cub, &cub->graphic.img_w, WTW, 14))
+	if (init_wall(cub, &cub->graphic.img_w, cub->setting.tex_we, 14))
 		return (1);
-	if (init_wall(cub, &cub->graphic.img_n, WTN, 15))
+	if (init_wall(cub, &cub->graphic.img_n, cub->setting.tex_no, 15))
 		return (1);
 	return (0);
 }

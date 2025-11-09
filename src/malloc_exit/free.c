@@ -12,6 +12,13 @@
 
 #include "cub.h"
 
+void	unfructuous_malloc(t_cub *cub)
+{
+	ft_putstr_fd("Unfructuous Malloc: Cannot allocate memory", STDERR_FILENO);
+	clean_exit(cub);
+	exit(EXIT_FAILURE);
+}
+
 void	free_mid_tab(t_cub *cub, char ***tab, int i)
 {
 	if (!tab && !*tab)
@@ -23,8 +30,7 @@ void	free_mid_tab(t_cub *cub, char ***tab, int i)
 	}
 	free(*tab);
 	*tab = NULL;
-	//unfructuous_malloc(cub);
-	(void)cub;
+	unfructuous_malloc(cub);
 }
 
 void	free_tab(char ***tab)
@@ -51,4 +57,25 @@ void	*free_ptr(void **ptr)
 		*ptr = NULL;
 	}
 	return (NULL);
+}
+
+void	free_textures(t_cub *cub)
+{
+	free_ptr((void **)&cub->setting.tex_no);
+	free_ptr((void **)&cub->setting.tex_so);
+	free_ptr((void **)&cub->setting.tex_we);
+	free_ptr((void **)&cub->setting.tex_ea);
+}
+
+void	free_map(t_cub *cub)
+{
+	if (cub->map.map_tab)
+		free_tab(&cub->map.map_tab);
+	cub->map.height = 0;
+	cub->map.width = 0;
+	if (cub->map.current_line)
+	{
+		free(cub->map.current_line);
+		cub->map.current_line = NULL;
+	}
 }
