@@ -14,33 +14,33 @@
 
 static void	game_on(t_cub *cub);
 static void	mm_size_calculator(t_cub *cub);
-static int	init_img(t_cub *cub, t_img *img, t_bool minimap, int exit);
+static int	init_img(t_cub *cub, t_img *img, t_bool minimap);
 
 int	create_window(t_cub *cub)
 {
 	cub->graphic.mlx_ptr = mlx_init();
 	if (!cub->graphic.mlx_ptr)
-		return (free_mid_init(cub, 1), 1);
+		return (clean_exit(cub), 1);
 	cub->graphic.win_ptr = mlx_new_window(cub->graphic.mlx_ptr,
 			cub->graphic.s_width, cub->graphic.s_height, G_NAME);
 	if (!cub->graphic.win_ptr)
-		return (free_mid_init(cub, 2), 1);
+		return (clean_exit(cub), 1);
 	mm_size_calculator(cub);
 	if (init_opening_screen(cub))
 		return (1);
 	if (init_walls(cub))
 		return (1);
-	if (init_img(cub, &cub->graphic.img_screen, FALSE, 16))
+	if (init_img(cub, &cub->graphic.img_screen, FALSE))
 		return (1);
-	if (init_img(cub, &cub->mmap.img_mmap, TRUE, 17))
+	if (init_img(cub, &cub->mmap.img_mmap, TRUE))
 		return (1);
-	if (init_img(cub, &cub->mmap.img_player, TRUE, 18))
+	if (init_img(cub, &cub->mmap.img_player, TRUE))
 		return (1);
 	game_on(cub);
 	return (0);
 }
 
-static int	init_img(t_cub *cub, t_img *img, t_bool minimap, int exit)
+static int	init_img(t_cub *cub, t_img *img, t_bool minimap)
 {
 	int	x;
 	int	y;
@@ -57,7 +57,7 @@ static int	init_img(t_cub *cub, t_img *img, t_bool minimap, int exit)
 	}
 	img->img_ptr = mlx_new_image(cub->graphic.mlx_ptr, x, y);
 	if (!img->img_ptr)
-		return (free_mid_init(cub, exit), 1);
+		return (clean_exit(cub), 1);
 	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
 			&img->endian);
 	img->width = x;

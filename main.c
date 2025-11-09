@@ -35,12 +35,7 @@ int main (int ac, char **av)
 	(void)av;
 	if (ac == 2)
 	{
-		// premiers checks ici
-
 		init_struct(&cub);
-		// hardcode de la map -> enlever quand parsing est fait
-		//hardcode_map(&cub, av[1]);
-		// mettre le parsing ici
 		parsing(&cub, ac, av);
 		if (create_window(&cub))
 			return (1);

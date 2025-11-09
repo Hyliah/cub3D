@@ -22,15 +22,15 @@ int	init_opening_screen(t_cub *cub)
 	cub->oscreen.img_os
 		= mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OS, &x, &y);
 	if (!cub->oscreen.img_os)
-		return (free_mid_init(cub, 3), 1);
+		return (clean_exit(cub), 1);
 	cub->oscreen.img_pe
 		= mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OSP, &x, &y);
 	if (!cub->oscreen.img_pe)
-		return (free_mid_init(cub, 4), 1);
+		return (clean_exit(cub), 1);
 	cub->oscreen.img_si
 		= mlx_xpm_file_to_image(cub->graphic.mlx_ptr, OSS, &x, &y);
 	if (!cub->oscreen.img_si)
-		return (free_mid_init(cub, 5), 1);
+		return (clean_exit(cub), 1);
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
 		cub->oscreen.img_os, 0, 0);
 	return (0);

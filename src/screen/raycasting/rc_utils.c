@@ -12,7 +12,7 @@
 
 #include "cub.h"
 
-static int	init_wall(t_cub *cub, t_img *img, char *xpm, int exit);
+static int	init_wall(t_cub *cub, t_img *img, char *xpm);
 
 int	cal_range(t_cub *cub, t_bool is_start)
 {
@@ -36,18 +36,39 @@ int	cal_range(t_cub *cub, t_bool is_start)
 
 int	init_walls(t_cub *cub)
 {
-	if (init_wall(cub, &cub->graphic.img_e, cub->setting.tex_ea, 12))
+	if (init_wall(cub, &cub->graphic.img_e, cub->setting.tex_ea))
+		return (puts("hello"), 1);
+	if (init_wall(cub, &cub->graphic.img_s, cub->setting.tex_so))
 		return (1);
-	if (init_wall(cub, &cub->graphic.img_s, cub->setting.tex_so, 13))
+	if (init_wall(cub, &cub->graphic.img_w, cub->setting.tex_we))
 		return (1);
-	if (init_wall(cub, &cub->graphic.img_w, cub->setting.tex_we, 14))
-		return (1);
-	if (init_wall(cub, &cub->graphic.img_n, cub->setting.tex_no, 15))
+	if (init_wall(cub, &cub->graphic.img_n, cub->setting.tex_no))
 		return (1);
 	return (0);
 }
 
-static int	init_wall(t_cub *cub, t_img *img, char *xpm, int exit)
+// static int	init_wall(t_cub *cub, t_img *img, char *xpm, int exit)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	(void)exit;
+// 	x = 1024;
+// 	y = 1024;
+// 	img->img_ptr = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, xpm, &x, &y);
+// 	if (!img->img_ptr)
+// 	{
+// 		puts("pete couille");
+// 		return (free_mid_init(cub, exit), 1);
+// 	}
+// 	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
+// 			&img->endian);
+// 	img->width = x;
+// 	img->height = y;
+// 	return (0);
+// }
+
+static int	init_wall(t_cub *cub, t_img *img, char *xpm)
 {
 	int	x;
 	int	y;
@@ -56,9 +77,19 @@ static int	init_wall(t_cub *cub, t_img *img, char *xpm, int exit)
 	y = 1024;
 	img->img_ptr = mlx_xpm_file_to_image(cub->graphic.mlx_ptr, xpm, &x, &y);
 	if (!img->img_ptr)
-		return (free_mid_init(cub, exit), 1);
-	img->addr_ptr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
-			&img->endian);
+	{
+		ft_putendl_fd("Error: failed to load XPM texture.", 2);
+		return (clean_exit(cub), 1);
+	}
+	img->addr_ptr = mlx_get_data_addr(img->img_ptr,
+			&img->bpp, &img->size_line, &img->endian);
+	if (!img->addr_ptr)
+	{
+		ft_putendl_fd("Error: failed to get image data address.", 2);
+		mlx_destroy_image(cub->graphic.mlx_ptr, img->img_ptr);
+		img->img_ptr = NULL;
+		return (clean_exit(cub), 1);
+	}
 	img->width = x;
 	img->height = y;
 	return (0);

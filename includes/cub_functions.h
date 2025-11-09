@@ -137,15 +137,16 @@ void	mm_creation(t_cub *cub);
 void	mm_player_draw(t_cub *cub, int color);
 
 /* MALLOC & EXIT */
-int		clean_exit(t_cub *cub);
+void		clean_exit(t_cub *cub);
 int		clean_exit_parsing(t_cub *cub);
 void	free_map(t_cub *cub);
 void	*free_ptr(void **ptr);
 void	free_tab(char ***tab);
 void	free_textures(t_cub *cub);
 void	free_t_img(t_cub *cub, t_img *img);
-void	free_mid_init(t_cub *cub, int exit_nb);
+void	free_mid_init(t_cub *cub);
 void	free_mid_tab(t_cub *cub, char ***tab, int i);
+void	safe_destroy_image(void *mlx_ptr, void **img_ptr);
 
 /* UTILS */
 void	init_struct(t_cub *cub);
