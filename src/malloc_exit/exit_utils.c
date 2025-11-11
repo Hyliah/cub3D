@@ -35,7 +35,7 @@ int	clean_exit_parsing(t_cub *cub)
 void	free_t_img(t_cub *cub, t_img *img)
 {
 	if (!cub || !img)
-		return;
+		return ;
 	safe_destroy_image(cub->graphic.mlx_ptr, (void **)&img->img_ptr);
 	img->addr_ptr = NULL;
 }

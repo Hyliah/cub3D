@@ -10,10 +10,10 @@
 /*                                                                           */
 /*****************************************************************************/
 
-#include "cub.h"
+#ifndef CUB_BUTTONCODE_H
+# define CUB_BUTTONCODE_H
 
-#ifndef CUB_BUTTONCODES_H
-# define CUB_BUTTONCODES_H
+# include "cub.h"
 
 # define BUTTON_LEFT 1
 # define BUTTON_RIGHT 2
@@ -247,6 +247,6 @@
 #  define KEY_RIGHTARROW 0xFF53
 #  define KEY_DOWNARROW 0xFF54
 #  define KEY_UPARROW 0xFF52
-#  endif
+# endif
 
 #endif 

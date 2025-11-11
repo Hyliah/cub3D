@@ -12,62 +12,39 @@
 
 #include "cub.h"
 
-void	unfructuous_malloc(t_cub *cub)
+static void	init_t_img(t_img *img);
+
+void	init_t_imgs(t_cub *cub)
 {
-	ft_putstr_fd("Unfructuous Malloc: Cannot allocate memory", STDERR_FILENO);
-	clean_exit(cub);
-	exit(EXIT_FAILURE);
+	init_t_img(&cub->weapons.img_w1);
+	init_t_img(&cub->weapons.img_w2);
+	init_t_img(&cub->weapons.img_w3);
+	init_t_img(&cub->weapons.img_w4);
+	init_t_img(&cub->weapons.img_w5);
+	init_t_img(&cub->oscreen.img_olay);
+	init_t_img(&cub->graphic.img_screen);
+	init_t_img(&cub->graphic.img_e);
+	init_t_img(&cub->graphic.img_s);
+	init_t_img(&cub->graphic.img_w);
+	init_t_img(&cub->graphic.img_n);
+	init_t_img(&cub->mmap.img_mmap);
+	init_t_img(&cub->mmap.img_player);
+	cub->key.k_a = FALSE;
+	cub->key.k_s = FALSE;
+	cub->key.k_d = FALSE;
+	cub->key.k_w = FALSE;
+	cub->key.k_up = FALSE;
+	cub->key.k_do = FALSE;
+	cub->key.k_le = FALSE;
+	cub->key.k_ri = FALSE;
+	cub->key.k_sh = FALSE;
 }
 
-void	free_mid_tab(t_cub *cub, char ***tab, int i)
+static void	init_t_img(t_img *img)
 {
-	if (!tab && !*tab)
-		return ;
-	while (i > 0)
-	{
-		i--;
-		free_ptr((void **)&((*tab)[i]));
-	}
-	free(*tab);
-	*tab = NULL;
-	unfructuous_malloc(cub);
-}
-
-void	free_tab(char ***tab)
-{
-	int	i;
-
-	i = 0;
-	if (!tab || !*tab)
-		return ;
-	while ((*tab)[i])
-	{
-		free_ptr((void **)&((*tab)[i]));
-		i++;
-	}
-	free(*tab);
-	*tab = NULL;
-}
-
-void	*free_ptr(void **ptr)
-{
-	if (*ptr && ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
-	return (NULL);
-}
-
-void	free_map(t_cub *cub)
-{
-	if (cub->map.map_tab)
-		free_tab(&cub->map.map_tab);
-	cub->map.height = 0;
-	cub->map.width = 0;
-	if (cub->map.current_line)
-	{
-		free(cub->map.current_line);
-		cub->map.current_line = NULL;
-	}
+	img->addr_ptr = NULL;
+	img->bpp = 0;
+	img->endian = 0;
+	img->img_ptr = NULL;
+	img->size_line = 0;
 }

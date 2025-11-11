@@ -15,8 +15,6 @@
 static void	init_setting_map_fps(t_cub *cub);
 static void	init_parsing(t_cub *cub);
 static void	init_player_oscreen(t_cub *cub);
-static void	init_t_imgs(t_cub *cub);
-static void	init_t_img(t_img *img);
 
 #ifdef __linux__
 
@@ -80,32 +78,6 @@ static void	init_setting_map_fps(t_cub *cub)
 	cub->tex.wall_x = 0;
 }
 
-static void	init_t_imgs(t_cub *cub)
-{
-	init_t_img(&cub->weapons.img_w1);
-	init_t_img(&cub->weapons.img_w2);
-	init_t_img(&cub->weapons.img_w3);
-	init_t_img(&cub->weapons.img_w4);
-	init_t_img(&cub->weapons.img_w5);
-	init_t_img(&cub->oscreen.img_olay);
-	init_t_img(&cub->graphic.img_screen);
-	init_t_img(&cub->graphic.img_e);
-	init_t_img(&cub->graphic.img_s);
-	init_t_img(&cub->graphic.img_w);
-	init_t_img(&cub->graphic.img_n);
-	init_t_img(&cub->mmap.img_mmap);
-	init_t_img(&cub->mmap.img_player);
-	cub->key.k_a = FALSE;
-	cub->key.k_s = FALSE;
-	cub->key.k_d = FALSE;
-	cub->key.k_w = FALSE;
-	cub->key.k_up = FALSE;
-	cub->key.k_do = FALSE;
-	cub->key.k_le = FALSE;
-	cub->key.k_ri = FALSE;
-	cub->key.k_sh = FALSE;
-}
-
 static void	init_player_oscreen(t_cub *cub)
 {
 	cub->player.angle = 0;
@@ -134,15 +106,6 @@ static void	init_player_oscreen(t_cub *cub)
 	cub->oscreen.img_si = NULL;
 }
 
-static void	init_t_img(t_img *img)
-{
-	img->addr_ptr = NULL;
-	img->bpp = 0;
-	img->endian = 0;
-	img->img_ptr = NULL;
-	img->size_line = 0;
-}
-
 static void	init_parsing(t_cub *cub)
 {
 	cub->map.map_start = 0;
@@ -153,22 +116,17 @@ static void	init_parsing(t_cub *cub)
 	cub->setting.rgb_c_color.r = -1;
 	cub->setting.rgb_c_color.g = -1;
 	cub->setting.rgb_c_color.b = -1;
-
 	cub->setting.rgb_f_color.r = -1;
 	cub->setting.rgb_f_color.g = -1;
 	cub->setting.rgb_f_color.b = -1;
 	cub->setting.c_color = -1;
 	cub->setting.f_color = -1;
-
 	cub->setting.tex_no = NULL;
 	cub->setting.tex_so = NULL;
 	cub->setting.tex_we = NULL;
 	cub->setting.tex_ea = NULL;
-
-	// flags de validation
 	cub->setting.has_floor = 0;
 	cub->setting.has_ceiling = 0;
-
 	cub->setting.has_tex_no = 0;
 	cub->setting.has_tex_so = 0;
 	cub->setting.has_tex_we = 0;

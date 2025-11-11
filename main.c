@@ -30,7 +30,6 @@ int main (int ac, char **av)
 		mlx_loop_hook(cub.graphic.mlx_ptr, game_loop, &cub);
 		mlx_loop(cub.graphic.mlx_ptr);
 	}
-
 	return (0);
 }
 
@@ -41,4 +40,3 @@ int game_loop(t_cub *cub)
 	move_player(cub);
 	return 0;
 }
-

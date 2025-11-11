@@ -10,10 +10,10 @@
 /*                                                                           */
 /*****************************************************************************/
 
-# include "cub.h"
-
 #ifndef CUB_STRUCT_H
 # define CUB_STRUCT_H
+
+# include "cub.h"
 
 typedef enum s_dir
 {
@@ -47,49 +47,38 @@ typedef enum e_error
 
 typedef struct s_rgb
 {
-    int		r; // unsigned char ? mais verif deja faire ds le parsing donc tt changer ? 
-    int 	g;
-    int 	b;
-}   t_rgb;
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb;
 
 typedef struct s_player
 {
-	// position of the player on the map
 	float	pos_x;
 	float	pos_y;
-	// direction of the player -> vertical lane in front of the player
 	float	dir_x;
 	float	dir_y;
-	// camera plane -> horizontal lane of the player -| from dir
 	float	pl_x;
 	float	pl_y;
-	// de -1 a 1 . 0 au centre
 	float	cam_x;
 	float	cam_y;
 	float	ray_dir_x;
 	float	ray_dir_y;
-	// distance ray has to travel from point to first xy side
 	float	side_dist_x;
 	float	side_dist_y;
-	// distance ray has to travel from 1 side xy to the next
 	float	delta_dist_x;
 	float	delta_dist_y;
-	// distance jusqu au mur
 	float	perp_wall_dist;
-	// hauteur du mur
 	int		line_height;
 	int		step_x;
 	int		step_y;
-	//sur quel carre on est
 	int		map_x;
 	int		map_y;
-	//int		angle;
-	t_dir   dir;
+	t_dir	dir;
 	double	angle;
-	int		has_player; // flag 
+	int		has_player;
 }	t_player;
 
-// Field of vision is 2 * atan(0.66/1.0)= 66°
 typedef struct s_map
 {
 	int		map_start;
@@ -97,30 +86,30 @@ typedef struct s_map
 	int		count_only_one;
 	int		height;
 	int		width;
-	char    **map_tab;
+	char	**map_tab;
 	char	*current_line;
 }	t_map;
 
-typedef struct s_setting // struct pour recupérer les infos sur Parsing
+typedef struct s_setting
 {
 	int		fd;
-	t_rgb   rgb_c_color; //ceiling color // modif avec struct rgb
-	t_rgb   rgb_f_color; //floor color // modif avec struct rgb
-	int		c_color; //ceiling color 
-	int		f_color; //floor color
-	t_dir	start_dir; //le truc nord/sud/est/west
+	t_rgb	rgb_c_color;
+	t_rgb	rgb_f_color;
+	int		c_color;
+	int		f_color;
+	t_dir	start_dir;
 
-	char    *tex_no;// stockage des textures 
-    char    *tex_so;
-    char    *tex_we;
-    char    *tex_ea;
+	char	*tex_no;
+	char	*tex_so;
+	char	*tex_we;
+	char	*tex_ea;
 
-	int     has_floor; // ajout des flags de verif 
-    int     has_ceiling;
-    int     has_tex_no;
-    int     has_tex_so;
-    int     has_tex_we;
-    int     has_tex_ea;
+	int		has_floor;
+	int		has_ceiling;
+	int		has_tex_no;
+	int		has_tex_so;
+	int		has_tex_we;
+	int		has_tex_ea;
 }	t_setting;
 
 typedef struct s_img
@@ -145,7 +134,6 @@ typedef struct s_mmap
 
 }	t_mmap;
 
-// holding key
 typedef struct s_key
 {
 	t_bool	k_a;
@@ -159,7 +147,7 @@ typedef struct s_key
 	t_bool	k_sh;
 }	t_key;
 
-typedef struct s_graphic // repris de mon so_long
+typedef struct s_graphic
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -170,10 +158,9 @@ typedef struct s_graphic // repris de mon so_long
 	t_img	img_s;
 	t_img	img_n;
 	t_img	img_w;
-	
 }	t_graphic;
 
-typedef struct s_tex // repris de mon so_long
+typedef struct s_tex
 {
 	int		draw_start;
 	int		draw_end;
@@ -182,7 +169,6 @@ typedef struct s_tex // repris de mon so_long
 	float	wall_x;
 	float	step;
 	float	tex_pos;
-	
 }	t_tex;
 
 typedef struct s_oscreen
@@ -227,6 +213,5 @@ typedef struct s_cub
 	t_setting	setting;
 	t_graphic	graphic;
 }	t_cub;
-
 
 #endif

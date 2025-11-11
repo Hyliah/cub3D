@@ -23,17 +23,13 @@ void	merge_screens(t_cub *cub)
 		raycasting(cub);
 	if (cub->mmap.mm_show == TRUE)
 	{
-		// déclaration des offsets -> modifiable
 		mmap_x = cub->graphic.s_width - cub->mmap.mm_wid - 20;
-		mmap_y = 20; // a 20 de hauteur depuis le bord
-		// au cas ou
-		// draw_mmap_border mmap_x - 1 &&  mmap_y - 1;
+		mmap_y = 20;
 		merge_screen(cub, &cub->mmap.img_mmap, mmap_x, mmap_y);
 		merge_screen(cub, &cub->mmap.img_player, mmap_x, mmap_y);
 	}
 	merge_screen(cub, move_weapon(cub), 0, 0);
 	merge_screen(cub, &cub->oscreen.img_olay, 0, 0);
-	// trouver sa meilleure place limit_fps(cub);
 	mlx_put_image_to_window(cub->graphic.mlx_ptr, cub->graphic.win_ptr,
 		cub->graphic.img_screen.img_ptr, 0, 0);
 }

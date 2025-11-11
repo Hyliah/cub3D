@@ -52,7 +52,7 @@ vpath %.c \
 
 # Sources and object files
 SRC = main.c \
-init.c \
+init.c init_img.c\
 window_creation.c \
 minimap.c mm_player.c \
 clean_exit.c free.c exit_utils.c \

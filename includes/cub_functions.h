@@ -10,10 +10,10 @@
 /*                                                                           */
 /*****************************************************************************/
 
-#include "cub.h"
-
 #ifndef CUB_FUNCTIONS_H
-# define CUB_FUNCTION_H
+# define CUB_FUNCTIONS_H
+
+# include "cub.h"
 
 /* PARSING */
 char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line);
@@ -150,5 +150,6 @@ void	safe_destroy_image(void *mlx_ptr, void **img_ptr);
 
 /* UTILS */
 void	init_struct(t_cub *cub);
+void	init_t_imgs(t_cub *cub);
 
 #endif
