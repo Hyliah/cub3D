@@ -137,7 +137,7 @@ void	mm_creation(t_cub *cub);
 void	mm_player_draw(t_cub *cub, int color);
 
 /* MALLOC & EXIT */
-void		clean_exit(t_cub *cub);
+int		clean_exit(t_cub *cub);
 int		clean_exit_parsing(t_cub *cub);
 void	free_map(t_cub *cub);
 void	*free_ptr(void **ptr);
@@ -150,7 +150,5 @@ void	safe_destroy_image(void *mlx_ptr, void **img_ptr);
 
 /* UTILS */
 void	init_struct(t_cub *cub);
-
-void debug_log(const char *msg);
 
 #endif

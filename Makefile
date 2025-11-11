@@ -55,7 +55,7 @@ SRC = main.c \
 init.c \
 window_creation.c \
 minimap.c mm_player.c \
-clean_exit.c free.c free_mid_init.c \
+clean_exit.c free.c exit_utils.c \
 weapon.c opening_screen.c overlay.c \
 get_pixel.c set_pixel.c merge_screen.c \
 key_handle.c move_player.c fps_handler.c \

@@ -12,33 +12,39 @@
 
 #include "cub.h"
 
-int game_loop(t_cub *cub);
-
-int main (int ac, char **av)
+int	clean_exit_parsing(t_cub *cub)
 {
-	t_cub   cub;
-	(void)ac;
-	(void)av;
-	if (ac == 2)
+	if (cub->map.current_line)
 	{
-		init_struct(&cub);
-		parsing(&cub, ac, av);
-		if (create_window(&cub))
-			return (1);
-		mlx_hook(cub.graphic.win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press, &cub);
-		mlx_hook(cub.graphic.win_ptr, KEY_RELEASE, KEY_RELEASE_MASK, key_release, &cub);
-		mlx_loop_hook(cub.graphic.mlx_ptr, game_loop, &cub);
-		mlx_loop(cub.graphic.mlx_ptr);
+		free(cub->map.current_line);
+		cub->map.current_line = NULL;
 	}
-
-	return (0);
+	if (!cub)
+		exit(EXIT_FAILURE);
+	if (cub->setting.fd > 2)
+	{
+		close(cub->setting.fd);
+		cub->setting.fd = -1;
+	}
+	free_textures(cub);
+	free_map(cub);
+	cub->map.map_start = 0;
+	exit(EXIT_FAILURE);
 }
 
-int game_loop(t_cub *cub)
+void	free_t_img(t_cub *cub, t_img *img)
 {
-	if (cub->game_on)
-		limit_fps(cub);
-	move_player(cub);
-	return 0;
+	if (!cub || !img)
+		return;
+	safe_destroy_image(cub->graphic.mlx_ptr, (void **)&img->img_ptr);
+	img->addr_ptr = NULL;
 }
 
+void	safe_destroy_image(void *mlx_ptr, void **img_ptr)
+{
+	if (mlx_ptr && *img_ptr)
+	{
+		mlx_destroy_image(mlx_ptr, *img_ptr);
+		*img_ptr = NULL;
+	}
+}
