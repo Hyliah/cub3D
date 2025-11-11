@@ -21,8 +21,10 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_texture(cub);
 	check_color(cub);
 	check_player(cub);
+	check_size(cub);
 	check_wall(cub);
 }
+
 
 void	parse_file(t_cub *cub, char *pathname )
 {

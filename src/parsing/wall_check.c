@@ -67,3 +67,13 @@ void	check_wall(t_cub *cub)
 		y++;
 	}
 }
+
+void	check_size(t_cub *cub)
+{
+	if (cub->map.height > 100 || cub->map.width > 200)
+	{
+		ft_error(ERR_MAP_INVALID);
+		ft_putendl_fd("Map too big", 2);
+		clean_exit_parsing(cub);
+	}
+}

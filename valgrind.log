@@ -1,15 +1,15 @@
-==105248== Memcheck, a memory error detector
-==105248== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==105248== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==105248== Command: ./cub3d src/maps/test_map.cub
-==105248== Parent PID: 100714
-==105248== 
-==105248== 
-==105248== HEAP SUMMARY:
-==105248==     in use at exit: 0 bytes in 0 blocks
-==105248==   total heap usage: 59,901 allocs, 59,901 frees, 4,965,906 bytes allocated
-==105248== 
-==105248== All heap blocks were freed -- no leaks are possible
-==105248== 
-==105248== For lists of detected and suppressed errors, rerun with: -s
-==105248== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+==116337== Memcheck, a memory error detector
+==116337== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==116337== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==116337== Command: ./cub3d src/maps/test_map_gigi.cub
+==116337== Parent PID: 100714
+==116337== 
+==116337== 
+==116337== HEAP SUMMARY:
+==116337==     in use at exit: 0 bytes in 0 blocks
+==116337==   total heap usage: 119 allocs, 119 frees, 4,556 bytes allocated
+==116337== 
+==116337== All heap blocks were freed -- no leaks are possible
+==116337== 
+==116337== For lists of detected and suppressed errors, rerun with: -s
+==116337== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

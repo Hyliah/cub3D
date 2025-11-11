@@ -37,7 +37,7 @@ int	cal_range(t_cub *cub, t_bool is_start)
 int	init_walls(t_cub *cub)
 {
 	if (init_wall(cub, &cub->graphic.img_e, cub->setting.tex_ea))
-		return (puts("hello"), 1);
+		return (1);
 	if (init_wall(cub, &cub->graphic.img_s, cub->setting.tex_so))
 		return (1);
 	if (init_wall(cub, &cub->graphic.img_w, cub->setting.tex_we))

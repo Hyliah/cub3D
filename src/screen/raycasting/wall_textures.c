@@ -77,8 +77,8 @@ static t_img	*choose_wall(t_cub *cub, int side)
 	else
 	{
 		if (cub->player.ray_dir_y > 0)
-			return (&cub->graphic.img_n);
-		else
 			return (&cub->graphic.img_s);
+		else
+			return (&cub->graphic.img_n);
 	}
 }

@@ -93,7 +93,7 @@ void	free_textures(t_cub *cub);
 void	free_map(t_cub *cub); // test
 int		tab_height(char **src); // test 
 char	**dup_tab(char **src);
-void	print_debug_settings(t_setting *set); // a supp 
+void	check_size(t_cub *cub);
 
 /* CUSTOM MLX*/
 t_hex_c	get_pixel(t_img *img, int x, int y);
