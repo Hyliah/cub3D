@@ -40,3 +40,27 @@ int game_loop(t_cub *cub)
 	move_player(cub);
 	return 0;
 }
+
+static t_bool	check_comma(t_cub *cub, char *str)
+{
+	int	comma;
+	int	i;
+
+	comma = 1;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] && str[i] == ',')
+		{
+			if (comma)
+				return (FALSE);
+			comma = 1;
+		}
+		else if (str[i] && str[i] != ',')
+			comma = 0;
+		i++;
+	}
+	if (comma = 1)
+		return (FALSE);
+	return (TRUE);
+}
