@@ -83,10 +83,11 @@ void	check_rgb_component(t_cub *cub, char *comp, char **rgb)
 	int	i;
 
 	i = 0;
-	if (!comp || !*comp)
+	if (comp[0] == '0' && comp[1] != '\0')
 	{
 		ft_error(ERR_COLOR);
-		ft_putstr_fd("RGB component missing\n", 2);
+		ft_putstr_fd("Invalid RGB component (no '0' at the beggining)\n", 2);
+		free_tab(&rgb);
 		clean_exit_parsing(cub);
 	}
 	check_rgb_component_length(cub, comp, rgb);
@@ -110,7 +111,7 @@ t_rgb	convert_and_check_rgb(t_cub *cub, char **rgb)
 	color.r = ft_atoi(rgb[0]);
 	color.g = ft_atoi(rgb[1]);
 	color.b = ft_atoi(rgb[2]);
-	free_tab(&rgb); //check pour double free 
+	free_tab(&rgb);
 	if (color.r < 0 || color.r > 255
 		|| color.g < 0 || color.g > 255
 		|| color.b < 0 || color.b > 255)
