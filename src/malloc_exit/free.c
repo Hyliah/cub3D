@@ -71,3 +71,4 @@ void	free_map(t_cub *cub)
 		cub->map.current_line = NULL;
 	}
 }
+

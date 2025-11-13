@@ -27,10 +27,6 @@ void	check_arg(t_cub *cub, int ac, char **av);
 void	check_cub(t_cub *cub, char *pathname);
 void	check_file_access(t_cub *cub, char *pathname);
 
-void	flood_fill(t_cub *cub, int y, int x);
-int		is_touching_void(t_cub *cub);
-void	check_valid_map_flood(t_cub *cub);
-
 void	check_invalid_char(t_cub *cub);
 void	check_line_empty_in_map(t_cub *cub);
 void	check_wall(t_cub *cub);
@@ -55,7 +51,7 @@ t_rgb	parse_rgb(t_cub *cub, char *str);
 t_rgb	convert_and_check_rgb(t_cub *cub, char **rgb);
 void	check_rgb_format(t_cub *cub, char *str);
 void	check_no_space_between_digits(t_cub *cub, char *str, int i);
-void	check_rgb_component(t_cub *cub, char *comp);
+void	check_rgb_component(t_cub *cub, char *comp, char **rgb);
 
 void	parse_texture_line(t_cub *cub, char *line);
 void	empty_texture_line(t_cub *cub, char *line);
@@ -90,11 +86,10 @@ void	ft_strtrim_newline(char *line);
 void	ft_strtrim_spaces(char *s);
 int		open_cub_file(t_cub *cub, char *pathname);
 int		ft_strcmp(char *s1, char *s2);
+void	check_rgb_component_length(t_cub *cub, char *comp, char **rgb);
 
 void	free_textures(t_cub *cub);
-void	free_map(t_cub *cub); // test
-int		tab_height(char **src); // test 
-char	**dup_tab(char **src);
+void	free_map(t_cub *cub);
 void	check_size(t_cub *cub);
 
 /* CUSTOM MLX*/

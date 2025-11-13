@@ -61,3 +61,17 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return (s1[i] - s2[i]);
 }
+
+void	check_rgb_component_length(t_cub *cub, char *comp, char **rgb)
+{
+	int	len;
+
+	len = ft_strlen(comp);
+	if (len > 3)
+	{
+		ft_error(ERR_COLOR);
+		ft_putstr_fd("RGB component too long (max 3 digits per value)\n", 2);
+		free_tab(&rgb);
+		clean_exit_parsing(cub);
+	}
+}
