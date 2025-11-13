@@ -99,7 +99,6 @@ void	check_duplicate_texture(t_cub *cub)
 	so = cub->setting.tex_so;
 	ea = cub->setting.tex_ea;
 	we = cub->setting.tex_we;
-
 	if (ft_strcmp(no, so) == 0 || ft_strcmp(no, ea) == 0
 		|| ft_strcmp(no, we) == 0 || ft_strcmp(so, ea) == 0
 		|| ft_strcmp(so, we) == 0 || ft_strcmp(ea, we) == 0)

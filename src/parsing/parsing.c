@@ -25,7 +25,6 @@ void	parsing(t_cub *cub, int ac, char **av)
 	check_wall(cub);
 }
 
-
 void	parse_file(t_cub *cub, char *pathname )
 {
 	int		fd;
