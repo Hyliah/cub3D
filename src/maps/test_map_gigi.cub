@@ -1,5 +1,5 @@
 EA ./src/images/wall_textures/text_e.xpm
-NO ./src/images/wall_textures/text_n.xpm
+NO ./src/images/wall_textures/text_e.xpm
 SO ./src/images/wall_textures/text_s.xpm
 WE ./src/images/wall_textures/text_w.xpm
 

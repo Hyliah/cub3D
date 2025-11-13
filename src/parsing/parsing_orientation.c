@@ -87,3 +87,26 @@ void	parse_text_we(t_cub *cub, char *path, char **split)
 	}
 	cub->setting.has_tex_we = 1;
 }
+
+void	check_duplicate_texture(t_cub *cub)
+{
+	char	*no;
+	char	*so;
+	char	*ea;
+	char	*we;
+
+	no = cub->setting.tex_no;
+	so = cub->setting.tex_so;
+	ea = cub->setting.tex_ea;
+	we = cub->setting.tex_we;
+
+	if (ft_strcmp(no, so) == 0 || ft_strcmp(no, ea) == 0
+		|| ft_strcmp(no, we) == 0 || ft_strcmp(so, ea) == 0
+		|| ft_strcmp(so, we) == 0 || ft_strcmp(ea, we) == 0)
+	{
+		ft_error(ERR_TEXTURE);
+		ft_putstr_fd("Duplicate texture file ", 2);
+		ft_putstr_fd("(NO/SO/EA/WE must be different)\n", 2);
+		clean_exit_parsing(cub);
+	}
+}

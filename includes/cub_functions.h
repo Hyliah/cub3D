@@ -49,6 +49,7 @@ void	parse_text_no(t_cub *cub, char *path, char **split);
 void	parse_text_so(t_cub *cub, char *path, char **split);
 void	parse_text_ea(t_cub *cub, char *path, char **split);
 void	parse_text_we(t_cub *cub, char *path, char **split);
+void	check_duplicate_texture(t_cub *cub);
 
 t_rgb	parse_rgb(t_cub *cub, char *str);
 t_rgb	convert_and_check_rgb(t_cub *cub, char **rgb);
@@ -88,6 +89,7 @@ int		get_map_height(char **map);
 void	ft_strtrim_newline(char *line);
 void	ft_strtrim_spaces(char *s);
 int		open_cub_file(t_cub *cub, char *pathname);
+int		ft_strcmp(char *s1, char *s2);
 
 void	free_textures(t_cub *cub);
 void	free_map(t_cub *cub); // test

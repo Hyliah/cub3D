@@ -37,6 +37,7 @@ void	check_texture(t_cub *cub)
 		clean_exit_parsing(cub);
 	}
 	check_access_texture(cub);
+	check_duplicate_texture(cub);
 }
 
 void	check_access_texture(t_cub *cub)
