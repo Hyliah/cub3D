@@ -28,6 +28,7 @@ int	clean_exit(t_cub *cub)
 	free_t_img(cub, &cub->graphic.img_s);
 	free_t_img(cub, &cub->graphic.img_w);
 	free_t_img(cub, &cub->graphic.img_e);
+	free_t_img(cub, &cub->graphic.img_door);
 	free_t_img(cub, &cub->graphic.img_screen);
 	safe_destroy_image(cub->graphic.mlx_ptr, (void **)&cub->oscreen.img_os);
 	safe_destroy_image(cub->graphic.mlx_ptr, (void **)&cub->oscreen.img_pe);

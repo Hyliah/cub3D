@@ -26,7 +26,7 @@ void	check_invalid_char(t_cub *cub)
 		{
 			c = cub->map.map_tab[y][x];
 			if (c != '0' && c != '1' && c != 'N' && c != 'S'
-				&& c != 'E' && c != 'W' && c != ' ' && c != '\n')
+				&& c != 'E' && c != 'W' && c != 'D' && c != ' ' && c != '\n')
 			{
 				ft_error(ERR_MAP_INVALID_CHAR);
 				printf("Invalid char (ASCII %d) found at y=%d x=%d -> '%c'\n",

@@ -38,7 +38,8 @@ int	is_map_line(char *line)
 	while (line[i])
 	{
 		if (line[i] != '0' && line[i] != '1' && line[i] != 'N' && line[i] != 'S'
-			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' ' )
+			&& line[i] != 'E' && line[i] != 'W' && line[i] != ' '
+			&& line[i] != 'D')
 			return (0);
 		i++;
 	}

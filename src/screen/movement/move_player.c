@@ -78,8 +78,6 @@ static double	cal_speed(t_cub *cub)
 		return (0.15);
 }
 
-// si porte ptetre mettre aussi une impossibilite d avancer si y a une porte ?
-// ptetre avec un bool de door -> if door=FALSE on passse pas et inversement ?
 static t_bool	safe_move(t_cub *cub, float new_x, float new_y)
 {
 	float	r;
@@ -91,6 +89,15 @@ static t_bool	safe_move(t_cub *cub, float new_x, float new_y)
 		|| cub->map.map_tab[(int)(new_y)][(int)(new_x + r)] == '1'
 		|| cub->map.map_tab[(int)(new_y)][(int)(new_x - r)] == '1')
 		return (FALSE);
+	if (cub->map.is_door_open == FALSE)
+	{		
+		if (cub->map.map_tab[(int)(new_y)][(int)(new_x)] == 'D'
+			|| cub->map.map_tab[(int)(new_y + r)][(int)(new_x)] == 'D'
+			|| cub->map.map_tab[(int)(new_y - r)][(int)(new_x)] == 'D'
+			|| cub->map.map_tab[(int)(new_y)][(int)(new_x + r)] == 'D'
+			|| cub->map.map_tab[(int)(new_y)][(int)(new_x - r)] == 'D')
+			return (FALSE);
+	}
 	return (TRUE);
 }
 

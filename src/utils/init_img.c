@@ -27,6 +27,7 @@ void	init_t_imgs(t_cub *cub)
 	init_t_img(&cub->graphic.img_s);
 	init_t_img(&cub->graphic.img_w);
 	init_t_img(&cub->graphic.img_n);
+	init_t_img(&cub->graphic.img_door);
 	init_t_img(&cub->mmap.img_mmap);
 	init_t_img(&cub->mmap.img_player);
 	cub->key.k_a = FALSE;

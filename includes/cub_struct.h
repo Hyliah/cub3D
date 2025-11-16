@@ -77,6 +77,7 @@ typedef struct s_player
 	t_dir	dir;
 	double	angle;
 	int		has_player;
+	t_bool	is_door;
 }	t_player;
 
 typedef struct s_map
@@ -88,6 +89,7 @@ typedef struct s_map
 	int		width;
 	char	**map_tab;
 	char	*current_line;
+	t_bool	is_door_open;
 }	t_map;
 
 typedef struct s_setting
@@ -158,6 +160,7 @@ typedef struct s_graphic
 	t_img	img_s;
 	t_img	img_n;
 	t_img	img_w;
+	t_img	img_door;
 }	t_graphic;
 
 typedef struct s_tex
