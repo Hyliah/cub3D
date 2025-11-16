@@ -65,25 +65,6 @@ static void	fill_pixels(t_cub *cub, t_img *tex, int x)
 	}
 }
 
-// static t_img	*choose_wall(t_cub *cub, int side)
-// {
-// 	if (side == 0)
-// 	{
-// 		if (cub->player.ray_dir_x > 0)
-// 			return (&cub->graphic.img_e);
-// 		else
-// 			return (&cub->graphic.img_w);
-// 	}
-// 	else
-// 	{
-// 		if (cub->player.ray_dir_y > 0)
-// 			return (&cub->graphic.img_s);
-// 		else
-// 			return (&cub->graphic.img_n);
-// 	}
-// }
-
-
 static t_img	*choose_wall(t_cub *cub, int side)
 {
 	if (cub->player.is_door == FALSE)
