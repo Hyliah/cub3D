@@ -36,6 +36,8 @@ static void	mm_drawing(t_cub *cub)
 		{
 			if (cub->map.map_tab[x][y] == '1')
 				mm_draw_mm_sqr(cub, 0x4B6E49, x, y);
+			if (cub->map.map_tab[x][y] == 'D')
+				mm_draw_mm_sqr(cub, 0x499E49, x, y);
 			else if (cub->map.map_tab[x][y] == '0'
 				|| cub->map.map_tab[x][y] == 'N'
 				|| cub->map.map_tab[x][y] == 'S'

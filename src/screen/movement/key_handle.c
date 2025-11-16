@@ -24,7 +24,7 @@ int	key_press(int key, t_cub *cub)
 		else
 			cub->mmap.mm_show = TRUE;
 	}
-	if (key == KEY_O) 
+	if (key == KEY_O)
 	{
 		if (cub->map.is_door_open == TRUE)
 			cub->map.is_door_open = FALSE;

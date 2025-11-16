@@ -45,7 +45,8 @@ void	check_line_walls(t_cub *cub, int y)
 	x = 0;
 	while (map[y][x])
 	{
-		if (map[y][x] == '0' && is_invalid_position(map, y, x))
+		if ((map[y][x] == '0' || map[y][x] == 'D')
+			&& is_invalid_position(map, y, x))
 		{
 			ft_error(ERR_MAP_WALLS);
 			clean_exit_parsing(cub);
