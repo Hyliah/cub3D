@@ -114,6 +114,12 @@ typedef struct s_setting
 	int		has_tex_ea;
 }	t_setting;
 
+typedef struct s_mouse
+{
+    t_bool    pressed;
+    int        last_x;
+}    t_mouse;
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -211,6 +217,7 @@ typedef struct s_cub
 	t_key		key;
 	t_tex		tex;
 	t_fps		fps;
+	t_mouse		mouse;
 	t_mmap		mmap;
 	t_player	player;
 	t_setting	setting;
