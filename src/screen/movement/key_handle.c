@@ -24,6 +24,13 @@ int	key_press(int key, t_cub *cub)
 		else
 			cub->mmap.mm_show = TRUE;
 	}
+	if (key == KEY_O) 
+	{
+		if (cub->map.is_door_open == TRUE)
+			cub->map.is_door_open = FALSE;
+		else
+			cub->map.is_door_open = TRUE;
+	}
 	if (key == KEY_ESCAPE)
 		clean_exit(cub);
 	opening_screen_handle(cub, key);
@@ -57,12 +64,3 @@ static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed)
 	if (keycode == KEY_SHIFT)
 		cub->key.k_sh = is_pressed;
 }
-
-	//POUR LES PORTES SI ON EN FAIT
-	// if (keycode == KEY_O) 
-	// {
-	// 	if (cub->mmap.mm_show = TRUE) //mettre la struct porte
-	// 		cub->mmap.mm_show = FALSE;
-	// 	else
-	// 		cub->mmap.mm_show = TRUE;
-	// }
