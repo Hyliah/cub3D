@@ -134,31 +134,3 @@ static t_bool	safe_move(t_cub *cub, float new_x, float new_y)
 	}
 	return (TRUE);
 }
-
-// void move_player(t_cub *cub)
-// {
-//     if (!cub->game_on)
-//         return;
-
-//     int dx = 0;
-//     int dy = 0;
-
-//     if (cub->key.k_w) dy -= 1;
-//     if (cub->key.k_s) dy += 1;
-//     if (cub->key.k_a) dx -= 1;
-//     if (cub->key.k_d) dx += 1;
-
-//     if (dx != 0 || dy != 0)
-//     {
-//         float angle = atan2(-dy, dx) * 180.0f / M_PI; 
-//         float final_angle = cub->player.angle + angle;
-//         move(cub, final_angle);
-//     }
-
-//     if (cub->key.k_le)
-//         cub->player.angle = change_angle(cub->player.angle + 4);
-//     if (cub->key.k_ri)
-//         cub->player.angle = change_angle(cub->player.angle - 4);
-
-//     merge_screens(cub);
-// }

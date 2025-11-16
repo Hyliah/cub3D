@@ -17,7 +17,7 @@ static void	rotate_player(t_cub *cub, double angle);
 int	mouse_press(int button, int x, int y, t_cub *cub)
 {
 	(void)y;
-	if (button == 1) /* bouton gauche */
+	if (button == 1)
 	{
 		cub->mouse.pressed = TRUE;
 		cub->mouse.last_x = x;
@@ -27,7 +27,8 @@ int	mouse_press(int button, int x, int y, t_cub *cub)
 
 int	mouse_release(int button, int x, int y, t_cub *cub)
 {
-	(void)x; (void)y;
+	(void)x;
+	(void)y;
 	if (button == 1)
 		cub->mouse.pressed = FALSE;
 	return (0);
@@ -43,8 +44,6 @@ int	mouse_move(int x, int y, t_cub *cub)
 		return (0);
 	dx = x - cub->mouse.last_x;
 	cub->mouse.last_x = x;
-	if (dx == 0)
-		return (0);
 	angle = dx * MOUSE_SENSITIVITY;
 	rotate_player(cub, angle);
 	return (0);
@@ -52,14 +51,10 @@ int	mouse_move(int x, int y, t_cub *cub)
 
 static void	rotate_player(t_cub *cub, double angle)
 {
-	double	old_dir_x;
-	double	old_pl_x;
+	double	old_angle;
+	double	new_angle;
 
-	old_dir_x = cub->player.dir_x;
-	old_pl_x = cub->player.pl_x;
-	cub->player.dir_x = old_dir_x * cos(angle) - cub->player.dir_y * sin(angle);
-	cub->player.dir_y = old_dir_x * sin(angle) + cub->player.dir_y * cos(angle);
-	cub->player.pl_x = old_pl_x * cos(angle) - cub->player.pl_y * sin(angle);
-	cub->player.pl_y = old_pl_x * sin(angle) + cub->player.pl_y * cos(angle);
-	cub->player.angle += angle;
+	old_angle = cub->player.angle;
+	new_angle = old_angle + (angle * 4);
+	cub->player.angle = new_angle;
 }
