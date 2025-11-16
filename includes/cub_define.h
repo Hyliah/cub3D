@@ -27,7 +27,7 @@
 # endif
 
 # define DOOR "./src/images/wall_textures/door.xpm"
-
+# define COMMA "Bitch better handle that comma correctly mhm\n"
 # ifdef __APPLE__
 // pour les armes
 #  define W1P "./src/images/weapons/w1pm.xpm"

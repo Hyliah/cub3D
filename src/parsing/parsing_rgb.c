@@ -61,7 +61,7 @@ void	check_rgb_format(t_cub *cub, char *str)
 	if (check_comma(str) == FALSE)
 	{
 		ft_error(ERR_COLOR);
-		ft_putstr_fd("Invalid RGB format (comma)\n", 2);
+		ft_putstr_fd(COMMA, 2);
 		clean_exit_parsing(cub);
 	}
 }

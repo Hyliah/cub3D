@@ -24,8 +24,6 @@ void	mm_player_draw(t_cub *cub, int color)
 	x = (int)(cub->player.pos_x * (float)cub->mmap.mm_sqr);
 	y = (int)(cub->player.pos_y * (float)cub->mmap.mm_sqr);
 	thick = (cub->mmap.mm_sqr - 1) / 2;
-	if (thick < 1)
-		printf("GURL, NOPE, TOO BIG OF A MAP");
 	i = -thick;
 	while (i <= thick)
 	{

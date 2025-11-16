@@ -15,24 +15,58 @@
 static double	cal_speed(t_cub *cub);
 static t_bool	safe_move(t_cub *cub, float new_x, float new_y);
 static void		move(t_cub *cub, float direction);
-static int		change_angle(int new_angle);
+static void		change_angle_merge(t_cub *cub);
 
 void	move_player(t_cub *cub)
 {
 	if (cub->game_on == TRUE)
 	{
-		if (cub->key.k_a)
-			move(cub, cub->player.angle + 90.0f);
-		if (cub->key.k_d)
-			move(cub, cub->player.angle + 270.0f);
-		if (cub->key.k_s)
-			move(cub, cub->player.angle + 180.0f);
-		if (cub->key.k_w)
-			move(cub, cub->player.angle);
+		if ((cub->key.k_a && cub->key.k_d) || (cub->key.k_s && cub->key.k_w))
+			change_angle_merge(cub);
+		else
+		{
+			if (cub->key.k_a && cub->key.k_w)
+				move(cub, cub->player.angle + 45.0f);
+			else if (cub->key.k_d && cub->key.k_w)
+				move(cub, cub->player.angle + 315.0f);
+			else if (cub->key.k_d && cub->key.k_s)
+				move(cub, cub->player.angle + 225.0f);
+			else if (cub->key.k_a && cub->key.k_s)
+				move(cub, cub->player.angle + 135.0f);
+			else if (cub->key.k_a)
+				move(cub, cub->player.angle + 90.0f);
+			else if (cub->key.k_d)
+				move(cub, cub->player.angle + 270.0f);
+			else if (cub->key.k_s)
+				move(cub, cub->player.angle + 180.0f);
+			else if (cub->key.k_w)
+				move(cub, cub->player.angle);
+			change_angle_merge(cub);
+		}
+	}
+}
+
+static void	change_angle_merge(t_cub *cub)
+{
+	double	old_angle;
+	double	new_angle;
+
+	if (cub->key.k_le && cub->key.k_ri)
+		merge_screens(cub);
+	else
+	{
+		old_angle = cub->player.angle;
 		if (cub->key.k_le)
-			cub->player.angle = change_angle(cub->player.angle + 4);
-		if (cub->key.k_ri)
-			cub->player.angle = change_angle(cub->player.angle - 4);
+			new_angle = old_angle + 4;
+		else if (cub->key.k_ri)
+			new_angle = old_angle - 4;
+		else
+			new_angle = old_angle;
+		if (new_angle > 360)
+			new_angle = 0;
+		else if (new_angle < 0)
+			new_angle = 360;
+		cub->player.angle = new_angle;
 		merge_screens(cub);
 	}
 }
@@ -101,12 +135,30 @@ static t_bool	safe_move(t_cub *cub, float new_x, float new_y)
 	return (TRUE);
 }
 
-static int	change_angle(int new_angle)
-{
-	if (new_angle > 360)
-		return (0);
-	else if (new_angle < 0)
-		return (360);
-	else
-		return (new_angle);
-}
+// void move_player(t_cub *cub)
+// {
+//     if (!cub->game_on)
+//         return;
+
+//     int dx = 0;
+//     int dy = 0;
+
+//     if (cub->key.k_w) dy -= 1;
+//     if (cub->key.k_s) dy += 1;
+//     if (cub->key.k_a) dx -= 1;
+//     if (cub->key.k_d) dx += 1;
+
+//     if (dx != 0 || dy != 0)
+//     {
+//         float angle = atan2(-dy, dx) * 180.0f / M_PI; 
+//         float final_angle = cub->player.angle + angle;
+//         move(cub, final_angle);
+//     }
+
+//     if (cub->key.k_le)
+//         cub->player.angle = change_angle(cub->player.angle + 4);
+//     if (cub->key.k_ri)
+//         cub->player.angle = change_angle(cub->player.angle - 4);
+
+//     merge_screens(cub);
+// }
