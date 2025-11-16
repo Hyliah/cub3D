@@ -41,5 +41,5 @@ int game_loop(t_cub *cub)
 	if (cub->game_on)
 		limit_fps(cub);
 	move_player(cub);
-	return 0;
+	return (0);
 }
