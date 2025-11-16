@@ -116,9 +116,9 @@ typedef struct s_setting
 
 typedef struct s_mouse
 {
-    t_bool    pressed;
-    int        last_x;
-}    t_mouse;
+	t_bool	pressed;
+	int		last_x;
+}	t_mouse;
 
 typedef struct s_img
 {

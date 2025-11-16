@@ -44,7 +44,7 @@ int	mouse_move(int x, int y, t_cub *cub)
 		return (0);
 	dx = x - cub->mouse.last_x;
 	cub->mouse.last_x = x;
-	angle = dx * MOUSE_SENSITIVITY;
+	angle = dx * 0.03;
 	rotate_player(cub, angle);
 	return (0);
 }
@@ -55,6 +55,6 @@ static void	rotate_player(t_cub *cub, double angle)
 	double	new_angle;
 
 	old_angle = cub->player.angle;
-	new_angle = old_angle + (angle * 4);
+	new_angle = old_angle + (angle * 3);
 	cub->player.angle = new_angle;
 }

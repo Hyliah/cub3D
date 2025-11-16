@@ -150,12 +150,9 @@ void	safe_destroy_image(void *mlx_ptr, void **img_ptr);
 void	init_struct(t_cub *cub);
 void	init_t_imgs(t_cub *cub);
 
-
-
-
-
-int	mouse_press(int button, int x, int y, t_cub *cub);
-int	mouse_release(int button, int x, int y, t_cub *cub);
-int	mouse_move(int x, int y, t_cub *cub);
+/* MOUSE */
+int		mouse_press(int button, int x, int y, t_cub *cub);
+int		mouse_release(int button, int x, int y, t_cub *cub);
+int		mouse_move(int x, int y, t_cub *cub);
 
 #endif

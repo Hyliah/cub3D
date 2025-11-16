@@ -28,7 +28,6 @@
 
 # define DOOR "./src/images/wall_textures/door.xpm"
 # define COMMA "Bitch better handle that comma correctly mhm\n"
-# define MOUSE_SENSITIVITY 0.03;
 
 # ifdef __APPLE__
 // pour les armes
