@@ -51,9 +51,14 @@ void	init_struct(t_cub *cub)
 	cub->weapons.s_nb = 1;
 	cub->weapons.up = TRUE;
 	cub->game_on = FALSE;
+	cub->map.is_door_open = FALSE;
+	cub->player.is_door = FALSE;
+	cub->mouse.last_x = 0;
+	cub->mouse.pressed = FALSE;
 	init_setting_map_fps(cub);
 	init_player_oscreen(cub);
 	init_t_imgs(cub);
+	init_parsing(cub);
 	frame_time(cub);
 }
 

@@ -13,7 +13,7 @@
 #include "cub.h"
 
 static void	free_after_game(t_cub *cub);
-static void	safe_destroy_display(void **mlx_ptr);
+//static void	safe_destroy_display(void **mlx_ptr);
 static void	safe_destroy_window(void *mlx_ptr, void **win_ptr);
 
 int	clean_exit(t_cub *cub)
@@ -36,7 +36,7 @@ int	clean_exit(t_cub *cub)
 	free_tab(&cub->map.map_tab);
 	free_textures(cub);
 	safe_destroy_window(cub->graphic.mlx_ptr, (void **)&cub->graphic.win_ptr);
-	safe_destroy_display((void **)&cub->graphic.mlx_ptr);
+	//safe_destroy_display((void **)&cub->graphic.mlx_ptr);
 	free_ptr(&cub->graphic.mlx_ptr);
 	exit (EXIT_SUCCESS);
 }
@@ -58,15 +58,15 @@ static void	safe_destroy_window(void *mlx_ptr, void **win_ptr)
 	}
 }
 
-static void	safe_destroy_display(void **mlx_ptr)
-{
-	if (*mlx_ptr)
-	{
-		mlx_destroy_display(*mlx_ptr);
-		free(*mlx_ptr);
-		*mlx_ptr = NULL;
-	}
-}
+// static void	safe_destroy_display(void **mlx_ptr)
+// {
+// 	if (*mlx_ptr)
+// 	{
+// 		mlx_destroy_display(*mlx_ptr);
+// 		free(*mlx_ptr);
+// 		*mlx_ptr = NULL;
+// 	}
+// }
 
 static void	free_after_game(t_cub *cub)
 {
