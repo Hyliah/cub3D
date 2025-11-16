@@ -40,6 +40,7 @@ void	parse_color_line(t_cub *cub, char *line);
 void	parse_color_floor(t_cub *cub, t_rgb color);
 void	parse_color_ceiling(t_cub *cub, t_rgb color);
 int		rgb_to_hex(t_rgb color);
+t_bool	check_comma(char *str);
 
 void	parse_text_no(t_cub *cub, char *path, char **split);
 void	parse_text_so(t_cub *cub, char *path, char **split);

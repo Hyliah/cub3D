@@ -58,6 +58,12 @@ void	check_rgb_format(t_cub *cub, char *str)
 		check_no_space_between_digits(cub, str, i);
 		i++;
 	}
+	if (check_comma(str) == FALSE)
+	{
+		ft_error(ERR_COLOR);
+		ft_putstr_fd("Invalid RGB format (comma)\n", 2);
+		clean_exit_parsing(cub);
+	}
 }
 
 void	check_no_space_between_digits(t_cub *cub, char *str, int i)
