@@ -12,10 +12,8 @@
 
 #include "cub.h"
 
-static char		**cpy_map(t_cub *cub);
 static void		fill_blank(t_cub *cub, char **map);
 static t_bool	flood_fill(t_cub *cub, char **map, int x, int y);
-
 
 // liberation de copy tab pour eviter leaks etc ... 
 void	check_wall(t_cub *cub)
@@ -87,39 +85,50 @@ static void	fill_blank(t_cub *cub, char **map)
 	}
 }
 
-// Nouvelle version car invalid read avec Valgrind. Lecture sans depasser avec src_len
-static char	**cpy_map(t_cub *cub)
+void	check_size(t_cub *cub)
 {
-	int		i;
-	int		j;
-	size_t	src_len;
-	char	**cpy_map;
-
-	i = 0;
-	cpy_map = malloc(sizeof(char *) * (cub->map.height + 1));
-	if (!cpy_map)
-		return (NULL);
-	while (i < cub->map.height)
+	if (cub->map.height > 100 || cub->map.width > 200)
 	{
-		cpy_map[i] = malloc(cub->map.width + 1);
-		if (cpy_map[i] == NULL)
-			return (free_mid_tab(cub, &cpy_map, i), NULL);
-		src_len = ft_strlen(cub->map.map_tab[i]);
-		j = 0;
-		while (j < (int)cub->map.width)
-		{
-			if ((size_t)j < src_len)
-				cpy_map[i][j] = cub->map.map_tab[i][j];
-			else
-				cpy_map[i][j] = ' ';
-			j++;
-		}
-		cpy_map[i][j] = '\0';
-		i++;
+		ft_error(ERR_MAP_INVALID);
+		ft_putendl_fd("Map too big", 2);
+		clean_exit_parsing(cub);
 	}
-	cpy_map[i] = 0;
-	return (cpy_map);
 }
+// Nouvelle version car invalid read avec Valgrind. 
+// Lecture sans depasser avec src_len ( refacto dans alloc_map)
+
+// static char	**cpy_map(t_cub *cub)
+// {
+// 	int		i;
+// 	int		j;
+// 	size_t	src_len;
+// 	char	**cpy_map;
+
+// 	i = 0;
+// 	cpy_map = malloc(sizeof(char *) * (cub->map.height + 1));
+// 	if (!cpy_map)
+// 		return (NULL);
+// 	while (i < cub->map.height)
+// 	{
+// 		cpy_map[i] = malloc(cub->map.width + 1);
+// 		if (cpy_map[i] == NULL)
+// 			return (free_mid_tab(cub, &cpy_map, i), NULL);
+// 		src_len = ft_strlen(cub->map.map_tab[i]);
+// 		j = 0;
+// 		while (j < (int)cub->map.width)
+// 		{
+// 			if ((size_t)j < src_len)
+// 				cpy_map[i][j] = cub->map.map_tab[i][j];
+// 			else
+// 				cpy_map[i][j] = ' ';
+// 			j++;
+// 		}
+// 		cpy_map[i][j] = '\0';
+// 		i++;
+// 	}
+// 	cpy_map[i] = 0;
+// 	return (cpy_map);
+// }
 
 // originale hygie
 // static char	**cpy_map(t_cub *cub)
@@ -141,16 +150,6 @@ static char	**cpy_map(t_cub *cub)
 // 	cpy_map[i] = 0;
 // 	return (cpy_map);
 // }
-
-void	check_size(t_cub *cub)
-{
-	if (cub->map.height > 100 || cub->map.width > 200)
-	{
-		ft_error(ERR_MAP_INVALID);
-		ft_putendl_fd("Map too big", 2);
-		clean_exit_parsing(cub);
-	}
-}
 
 // static void	print_tab(char **tab)
 // {
