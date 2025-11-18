@@ -65,6 +65,7 @@ static int	init_ol_pepito(t_cub *cub)
 	return (0);
 }
 
+// le problem est probablement ici avec une value non init 
 static int	init_overlays(t_cub *cub, t_img *img, char *xpm)
 {
 	int	x;
