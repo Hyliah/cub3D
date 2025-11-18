@@ -16,6 +16,8 @@ static char		**cpy_map(t_cub *cub);
 static void		fill_blank(t_cub *cub, char **map);
 static t_bool	flood_fill(t_cub *cub, char **map, int x, int y);
 
+
+// liberation de copy tab pour eviter leaks etc ... 
 void	check_wall(t_cub *cub)
 {
 	char	**cpy_tab;
@@ -25,13 +27,20 @@ void	check_wall(t_cub *cub)
 	x = (int)cub->player.pos_x;
 	y = (int)cub->player.pos_y;
 	cpy_tab = cpy_map(cub);
+	if (!cpy_tab)
+	{
+		ft_error(ERR_MAP_INVALID);
+		clean_exit_parsing(cub);
+	}
 	fill_blank(cub, cpy_tab);
 	if (flood_fill(cub, cpy_tab, x, y) == FALSE)
 	{
-		print_tab(cpy_tab);
+		free_tab(&cpy_tab);
+		//print_tab(cpy_tab);
 		ft_error(ERR_MAP_WALLS);
 		clean_exit_parsing(cub);
 	}
+	free_tab(&cpy_tab);
 }
 
 static t_bool	flood_fill(t_cub *cub, char **map, int x, int y)
@@ -78,9 +87,12 @@ static void	fill_blank(t_cub *cub, char **map)
 	}
 }
 
+// Nouvelle version car invalid read avec Valgrind. Lecture sans depasser avec src_len
 static char	**cpy_map(t_cub *cub)
 {
 	int		i;
+	int		j;
+	size_t	src_len;
 	char	**cpy_map;
 
 	i = 0;
@@ -89,14 +101,46 @@ static char	**cpy_map(t_cub *cub)
 		return (NULL);
 	while (i < cub->map.height)
 	{
-		cpy_map[i] = ft_strdup(cub->map.map_tab[i]);
+		cpy_map[i] = malloc(cub->map.width + 1);
 		if (cpy_map[i] == NULL)
 			return (free_mid_tab(cub, &cpy_map, i), NULL);
+		src_len = ft_strlen(cub->map.map_tab[i]);
+		j = 0;
+		while (j < (int)cub->map.width)
+		{
+			if ((size_t)j < src_len)
+				cpy_map[i][j] = cub->map.map_tab[i][j];
+			else
+				cpy_map[i][j] = ' ';
+			j++;
+		}
+		cpy_map[i][j] = '\0';
 		i++;
 	}
 	cpy_map[i] = 0;
 	return (cpy_map);
 }
+
+// originale hygie
+// static char	**cpy_map(t_cub *cub)
+// {
+// 	int		i;
+// 	char	**cpy_map;
+
+// 	i = 0;
+// 	cpy_map = malloc(sizeof(char *) * (cub->map.height + 1));
+// 	if (!cpy_map)
+// 		return (NULL);
+// 	while (i < cub->map.height)
+// 	{
+// 		cpy_map[i] = ft_strdup(cub->map.map_tab[i]);
+// 		if (cpy_map[i] == NULL)
+// 			return (free_mid_tab(cub, &cpy_map, i), NULL);
+// 		i++;
+// 	}
+// 	cpy_map[i] = 0;
+// 	return (cpy_map);
+// }
 
 void	check_size(t_cub *cub)
 {
