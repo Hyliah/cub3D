@@ -18,10 +18,7 @@
 /* PARSING */
 char	**alloc_map_line(t_cub *cub, char **map, int *count, char *line);
 void	dup_map(t_cub *cub, char **new, int i, char *line);
-
-int		is_invalid_position(char **map, int y, int x);
-void	check_line_walls(t_cub *cub, int y);
-void	check_wall(t_cub *cub);
+char	**cpy_map(t_cub *cub);
 
 void	check_arg(t_cub *cub, int ac, char **av);
 void	check_cub(t_cub *cub, char *pathname);
@@ -29,7 +26,6 @@ void	check_file_access(t_cub *cub, char *pathname);
 
 void	check_invalid_char(t_cub *cub);
 void	check_line_empty_in_map(t_cub *cub);
-void	check_wall(t_cub *cub);
 int		is_map_bottom_line(char *line);
 
 void	check_texture(t_cub *cub);
@@ -91,6 +87,9 @@ void	check_rgb_component_length(t_cub *cub, char *comp, char **rgb);
 
 void	free_textures(t_cub *cub);
 void	free_map(t_cub *cub);
+void	check_size(t_cub *cub);
+
+void	check_wall(t_cub *cub);
 void	check_size(t_cub *cub);
 
 /* CUSTOM MLX*/
