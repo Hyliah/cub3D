@@ -69,7 +69,6 @@ static int	init_overlays(t_cub *cub, t_img *img, char *xpm)
 {
 	int	x;
 	int	y;
-	int	buf_size;
 
 	x = cub->graphic.s_width;
 	y = cub->graphic.s_height;
@@ -80,7 +79,5 @@ static int	init_overlays(t_cub *cub, t_img *img, char *xpm)
 			&img->endian);
 	img->width = x;
 	img->height = y;
-	buf_size = (img->bpp / 8) * img->width * img->height;
-	ft_memset(img->addr_ptr, 0, buf_size);
 	return (0);
 }

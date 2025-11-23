@@ -12,13 +12,18 @@
 
 #include "cub.h"
 
-// index = (y * size_line) + ( x * (bpp / 8))
-// deplacement de bpp / 8
-
-// 0xFFFFFF = rbg 255 255 255
-
 t_hex_c	get_pixel(t_img *img, int x, int y)
 {
-	return (*(t_hex_c *)(img->addr_ptr + y * img->size_line
-		+ x * (img->bpp / 8)));
+	char	*pixel;
+
+	if (!img || !img->addr_ptr)
+		return (0);
+	if (x < 0 || x >= img->width)
+		return (0);
+	if (y < 0 || y >= img->height)
+		return (0);
+	pixel = img->addr_ptr
+		+ y * img->size_line
+		+ x * (img->bpp / 8);
+	return (*(t_hex_c *)pixel);
 }
