@@ -52,6 +52,8 @@ static t_bool	flood_fill(t_cub *cub, char **map, int x, int y)
 		return (TRUE);
 	if (map[y][x] == '*')
 		return (TRUE);
+	if (map[y][x] == 'V')
+		return (FALSE);
 	map[y][x] = '*';
 	if (!flood_fill(cub, map, x + 1, y))
 		return (FALSE);
@@ -76,7 +78,7 @@ static void	fill_blank(t_cub *cub, char **map)
 		while (x < cub->map.width)
 		{
 			if (map[y][x] == ' ')
-				map[y][x] = '0';
+				map[y][x] = 'V';
 			x++;
 		}
 		y++;
