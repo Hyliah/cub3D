@@ -1,14 +1,14 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean_exit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:58:57 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 02:01:52 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
@@ -16,6 +16,16 @@ static void	free_after_game(t_cub *cub);
 static void	safe_destroy_display(void **mlx_ptr);
 static void	safe_destroy_window(void *mlx_ptr, void **win_ptr);
 
+/**
+ * @brief Cleans all allocated resources and exits the program safely.
+ *
+ * Frees textures, images, the minimap, the display, and the MLX window.
+ * If the game is running, also frees weapon and overlay resources.
+ * Finally exits the program with EXIT_SUCCESS.
+ *
+ * @param cub Main game structure. If NULL, nothing is freed.
+ * @return int Always returns 1 if cub is NULL, otherwise does not return.
+ */
 int	clean_exit(t_cub *cub)
 {
 	if (!cub)
@@ -41,6 +51,13 @@ int	clean_exit(t_cub *cub)
 	exit (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Frees all texture path strings stored in settings.
+ *
+ * Frees NO, SO, WE, EA texture file paths.
+ *
+ * @param cub Main game structure.
+ */
 void	free_textures(t_cub *cub)
 {
 	free_ptr((void **)&cub->setting.tex_no);
@@ -49,6 +66,12 @@ void	free_textures(t_cub *cub)
 	free_ptr((void **)&cub->setting.tex_ea);
 }
 
+/**
+ * @brief Safely destroys an MLX window and sets the pointer to NULL.
+ *
+ * @param mlx_ptr MLX instance pointer.
+ * @param win_ptr Address of the window pointer.
+ */
 static void	safe_destroy_window(void *mlx_ptr, void **win_ptr)
 {
 	if (mlx_ptr && *win_ptr)
@@ -58,6 +81,13 @@ static void	safe_destroy_window(void *mlx_ptr, void **win_ptr)
 	}
 }
 
+/**
+ * @brief Safely destroys the MLX display and frees the MLX instance.
+ *
+ * Sets the mlx_ptr to NULL after freeing.
+ *
+ * @param mlx_ptr Address of the MLX pointer.
+ */
 static void	safe_destroy_display(void **mlx_ptr)
 {
 	if (*mlx_ptr)
@@ -68,6 +98,15 @@ static void	safe_destroy_display(void **mlx_ptr)
 	}
 }
 
+/**
+ * @brief Frees resources that are allocated only after the game starts.
+ *
+ * This includes:
+ *  - weapon animation frames
+ *  - weapon overlay (olay)
+ *
+ * @param cub Main game structure.
+ */
 static void	free_after_game(t_cub *cub)
 {
 	free_t_img(cub, &cub->weapons.img_w1);

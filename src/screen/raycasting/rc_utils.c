@@ -1,19 +1,26 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rc_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:08:43 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 01:08:46 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
 static int	init_wall(t_cub *cub, t_img *img, char *xpm);
 
+/**
+ * @brief Computes drawing boundaries for wall rendering.
+ *
+ * @param cub      Main game structure.
+ * @param is_start TRUE to compute the top pixel, FALSE for the bottom pixel.
+ * @return Screen coordinate for the start or end of the wall slice.
+ */
 int	cal_range(t_cub *cub, t_bool is_start)
 {
 	int	result;
@@ -34,6 +41,12 @@ int	cal_range(t_cub *cub, t_bool is_start)
 	}
 }
 
+/**
+ * @brief Loads all wall and door textures.
+ *
+ * @param cub Main game structure.
+ * @return 0 on success, 1 on failure.
+ */
 int	init_walls(t_cub *cub)
 {
 	if (init_wall(cub, &cub->graphic.img_e, cub->setting.tex_ea))
@@ -49,6 +62,15 @@ int	init_walls(t_cub *cub)
 	return (0);
 }
 
+/**
+ * @brief Loads a wall or door textures.
+ *
+ * walls size sized at 1024x1024.
+ * load an xpm and set their addr_ptr, width and height.
+ * 
+ * @param cub Main game structure.
+ * @return 0 on success, 1 on failure.
+ */
 static int	init_wall(t_cub *cub, t_img *img, char *xpm)
 {
 	int	x;

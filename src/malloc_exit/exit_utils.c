@@ -1,17 +1,32 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 02:02:44 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 02:13:28 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
+/**
+ * @brief Cleans parsing-related resources and exits the program with failure.
+ *
+ * This function is used when an error occurs during map or settings parsing.
+ * It safely frees:
+ *  - the currently read line
+ *  - texture paths
+ *  - the map structure
+ *  - the parsing file descriptor
+ *
+ * After cleanup, the function terminates the program with EXIT_FAILURE.
+ *
+ * @param cub Pointer to the main game structure. If NULL, exits immediately.
+ * @return int Never returns; the program terminates.
+ */
 int	clean_exit_parsing(t_cub *cub)
 {
 	if (cub->map.current_line)
@@ -32,6 +47,14 @@ int	clean_exit_parsing(t_cub *cub)
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * @brief Frees a t_img structure and destroys its MLX image if it exists.
+ *
+ * Calls safe_destroy_image() and then nullifies the internal data pointer.
+ *
+ * @param cub Pointer to the main game structure.
+ * @param img Pointer to the image struct to free/reset.
+ */
 void	free_t_img(t_cub *cub, t_img *img)
 {
 	if (!cub || !img)
@@ -40,6 +63,15 @@ void	free_t_img(t_cub *cub, t_img *img)
 	img->addr_ptr = NULL;
 }
 
+/**
+ * @brief Safely destroys an MLX image and sets its pointer to NULL.
+ *
+ * Ensures that both mlx_ptr and img_ptr are valid 
+ * before calling mlx_destroy_image().
+ *
+ * @param mlx_ptr MLX instance pointer.
+ * @param img_ptr Address of the MLX image pointer.
+ */
 void	safe_destroy_image(void *mlx_ptr, void **img_ptr)
 {
 	if (mlx_ptr && *img_ptr)

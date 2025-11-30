@@ -1,17 +1,23 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   opening_screen.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:28:23 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 01:31:05 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
+/**
+ * @brief Initializes all opening screen images and displays the main one.
+ *
+ * @param cub Main game structure.
+ * @return int 0 on success, 1 on failure.
+ */
 int	init_opening_screen(t_cub *cub)
 {
 	int	x;
@@ -36,6 +42,17 @@ int	init_opening_screen(t_cub *cub)
 	return (0);
 }
 
+/**
+ * @brief Handles keyboard input for navigating the opening screen.
+ *
+ * - ENTER starts the game and loads overlays.
+ * - UP chooses Sirius. (default one)
+ * - DOWN chooses Pepito.
+ *
+ * @param cub Main game structure.
+ * @param keycode Pressed key.
+ * @return int 0 on success, 1 on failure.
+ */
 int	opening_screen_handle(t_cub *cub, int keycode)
 {
 	if (keycode == KEY_RETURN)

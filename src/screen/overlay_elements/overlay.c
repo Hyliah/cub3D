@@ -1,14 +1,14 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   overlay.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:26:25 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 02:12:10 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
@@ -16,6 +16,12 @@ static int	init_ol_sirius(t_cub *cub);
 static int	init_ol_pepito(t_cub *cub);
 static int	init_overlays(t_cub *cub, t_img *img, char *xpm);
 
+/**
+ * @brief Initializes overlay and weapon frames depending on player choice.
+ *
+ * @param cub Main game structure.
+ * @return int 0 on success, 1 on failure.
+ */
 int	init_overlays_weapons(t_cub *cub)
 {
 	if (cub->oscreen.is_sirius == TRUE)
@@ -31,6 +37,12 @@ int	init_overlays_weapons(t_cub *cub)
 	return (0);
 }
 
+/**
+ * @brief Loads overlay and weapon assets for Sirius.
+ *
+ * @param cub Main game structure.
+ * @return int 0 on success, 1 on failure.
+ */
 static int	init_ol_sirius(t_cub *cub)
 {
 	if (init_overlays(cub, &cub->oscreen.img_olay, OVRLS))
@@ -48,6 +60,12 @@ static int	init_ol_sirius(t_cub *cub)
 	return (0);
 }
 
+/**
+ * @brief Loads overlay and weapon assets for Pepito.
+ *
+ * @param cub Main game structure.
+ * @return int 0 on success, 1 on failure.
+ */
 static int	init_ol_pepito(t_cub *cub)
 {
 	if (init_overlays(cub, &cub->oscreen.img_olay, OVRLP))
@@ -65,6 +83,14 @@ static int	init_ol_pepito(t_cub *cub)
 	return (0);
 }
 
+/**
+ * @brief Generic function to load an overlay image from an XPM file.
+ *
+ * @param cub Main game structure.
+ * @param img Pointer to the image struct to fill.
+ * @param xpm Path to the XPM asset.
+ * @return int 0 on success, 1 on failure.
+ */
 static int	init_overlays(t_cub *cub, t_img *img, char *xpm)
 {
 	int	x;

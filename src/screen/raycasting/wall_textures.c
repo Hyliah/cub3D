@@ -1,20 +1,30 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wall_textures.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:08:37 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 02:13:09 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
 static t_img	*choose_wall(t_cub *cub, int side);
 static void		fill_pixels(t_cub *cub, t_img *tex, int x);
 
+/**
+ * @brief Computes texture coordinates and draws one vertical wall slice.
+ *
+ * Determines the exact texture column to use, computes drawing limits,
+ * and triggers pixel rendering for the current column.
+ *
+ * @param cub Main game structure.
+ * @param x   Current screen column.
+ * @param side 0 = vertical wall, 1 = horizontal wall.
+ */
 void	texture_cal(t_cub *cub, int x, int side)
 {
 	t_img	*tex;
@@ -39,6 +49,21 @@ void	texture_cal(t_cub *cub, int x, int side)
 	fill_pixels(cub, tex, x);
 }
 
+/**
+ * @brief Fills the screen column with ceiling, wall texture, and floor colors.
+ *
+ * Draws three vertical segments:
+ *  - Ceiling: from y = 0 to draw_start
+ *  - Wall: sampled from the selected texture between draw_start and draw_end
+ *  - Floor: from draw_end to the bottom of the screen
+ *
+ * Texture sampling uses tex_pos and tex_y 
+ * to step vertically through the texture.
+ *
+ * @param cub Main game structure.
+ * @param tex Pointer to the texture image for the wall slice.
+ * @param x   Current screen column index.
+ */
 static void	fill_pixels(t_cub *cub, t_img *tex, int x)
 {
 	int		y;
@@ -65,6 +90,18 @@ static void	fill_pixels(t_cub *cub, t_img *tex, int x)
 	}
 }
 
+/**
+ * @brief Selects the correct wall texture based on the ray dir and hit side.
+ *
+ * Chooses texture depending on:
+ *  - Whether the hit object is a door.
+ *  - Side of impact: vertical (side = 0) or horizontal (side = 1).
+ *  - Ray direction (east/west or north/south).
+ *
+ * @param cub  Main game structure.
+ * @param side 0 for vertical wall hit, 1 for horizontal.
+ * @return Pointer to the corresponding texture image.
+ */
 static t_img	*choose_wall(t_cub *cub, int side)
 {
 	if (cub->player.is_door == FALSE)

@@ -1,20 +1,33 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_handle.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:42:32 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 01:45:09 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
 static void	handle_key_open(t_cub *cub);
 static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed);
 
+/**
+ * @brief Handles key press events and toggles relevant game state flags.
+ *
+ * Also manages:
+ * - minimap toggle (M)
+ * - door interaction (O)
+ * - exit (ESC)
+ * - opening screen navigation
+ *
+ * @param key Keycode pressed.
+ * @param cub Main game structure.
+ * @return int Always 0.
+ */
 int	key_press(int key, t_cub *cub)
 {
 	change_key_status(cub, key, TRUE);
@@ -33,12 +46,26 @@ int	key_press(int key, t_cub *cub)
 	return (0);
 }
 
+/**
+ * @brief Handles key release events and updates key status flags.
+ *
+ * @param keycode Released key.
+ * @param cub Main game structure.
+ * @return int Always 0.
+ */
 int	key_release(int keycode, t_cub *cub)
 {
 	change_key_status(cub, keycode, FALSE);
 	return (0);
 }
 
+/**
+ * @brief Updates internal key state flags based on pressed or released keys.
+ *
+ * @param cub Main game structure.
+ * @param keycode Key pressed or released.
+ * @param is_pressed TRUE if pressed, FALSE if released.
+ */
 static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed)
 {
 	if (keycode == KEY_A)
@@ -61,6 +88,13 @@ static void	change_key_status(t_cub *cub, int keycode, t_bool is_pressed)
 		cub->key.k_sh = is_pressed;
 }
 
+/**
+ * @brief Handles door opening and closing logic when pressing 'O'.
+ *
+ * Toggles door state depending on player's tile position.
+ *
+ * @param cub Pointer to the main game structure.
+ */
 static void	handle_key_open(t_cub *cub)
 {
 	int	x;

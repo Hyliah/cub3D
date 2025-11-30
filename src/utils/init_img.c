@@ -1,19 +1,24 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_img.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:54:42 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 01:56:41 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
 static void	init_t_img(t_img *img);
 
+/**
+ * @brief initalise all the t_img structures.
+ * 
+ * @param cub Main game structure.
+ */
 void	init_t_imgs(t_cub *cub)
 {
 	init_t_img(&cub->weapons.img_w1);
@@ -41,6 +46,11 @@ void	init_t_imgs(t_cub *cub)
 	cub->key.k_sh = FALSE;
 }
 
+/**
+ * @brief initilise a single structure t_img.
+ * 
+ * @param img structure t_img to be initialized.
+ */
 static void	init_t_img(t_img *img)
 {
 	img->addr_ptr = NULL;

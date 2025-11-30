@@ -1,19 +1,30 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   merge_screen.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 02:09:42 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 02:14:01 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
 static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y);
 
+/**
+ * @brief Composes the final screen by merging layers and drawing to the window
+ *
+ * This function handles:
+ *  - Raycasting rendering
+ *  - Minimap display (if enabled)
+ *  - Weapon animation overlay
+ *  - Screen overlay
+ *
+ * @param cub Pointer to the main game structure.
+ */
 void	merge_screens(t_cub *cub)
 {
 	int	mmap_x;
@@ -34,6 +45,16 @@ void	merge_screens(t_cub *cub)
 		cub->graphic.img_screen.img_ptr, 0, 0);
 }
 
+/**
+ * @brief Merges a source image onto the main screen with an offset.
+ *
+ * Non-black pixels (0x000000) are drawn on top of the screen image.
+ *
+ * @param cub Pointer to the main game structure.
+ * @param img Source image to merge.
+ * @param offset_x Horizontal offset on the screen.
+ * @param offset_y Vertical offset on the screen.
+ */
 static void	merge_screen(t_cub *cub, t_img *img, int offset_x, int offset_y)
 {
 	int		x;

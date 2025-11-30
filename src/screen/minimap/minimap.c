@@ -1,27 +1,36 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:54:21 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 01:54:36 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
 static void	mm_drawing(t_cub *cub);
 static void	mm_draw_mm_sqr(t_cub *cub, int color, int x, int y);
 
-//voir l utilite de cette fonction peut etre la mixer dans create window
+/**
+ * @brief handle the creation of the minimap and the player
+ * 
+ * @param cub Main game structure.
+ */
 void	mm_creation(t_cub *cub)
 {
 	mm_drawing(cub);
 	mm_player_draw(cub, 0x622416);
 }
 
+/**
+ * @brief Renders pixels to create a minimap with floors, walls and doors.
+ * 
+ * @param cub Main game structure.
+ */
 static void	mm_drawing(t_cub *cub)
 {
 	int	x;
@@ -50,6 +59,14 @@ static void	mm_drawing(t_cub *cub)
 	}
 }
 
+/**
+ * @brief Renders a square of the minimp with a matching color
+ * 
+ * @param cub Main game structure.
+ * @param color Color of the diamond
+ * @param x Map grid coordinate x
+ * @param y Map grid coordinate y
+ */
 static void	mm_draw_mm_sqr(t_cub *cub, int color, int x, int y)
 {
 	int	px;

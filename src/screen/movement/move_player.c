@@ -1,14 +1,14 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_player.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:33:49 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 01:37:19 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
@@ -17,6 +17,14 @@ static t_bool	safe_move(t_cub *cub, float new_x, float new_y);
 static void		move(t_cub *cub, float direction);
 static void		change_angle_merge(t_cub *cub);
 
+/**
+ * @brief Handles all player movement and rotation per frame.
+ *
+ * Processes WASD movement, diagonals, and rotation.
+ * Secures opposites movement AD or WS
+ * 
+ * @param cub Main game structure.
+ */
 void	move_player(t_cub *cub)
 {
 	if (cub->game_on == TRUE)
@@ -46,6 +54,11 @@ void	move_player(t_cub *cub)
 	}
 }
 
+/**
+ * @brief Updates player rotation based on arrow keys and merges screen updates.
+ *
+ * @param cub Main game structure.
+ */
 static void	change_angle_merge(t_cub *cub)
 {
 	double	old_angle;
@@ -71,6 +84,14 @@ static void	change_angle_merge(t_cub *cub)
 	}
 }
 
+/**
+ * @brief Moves the player in the given direction if no collision occurs.
+ *
+ * Computes the new position, checks collisions, and applies movement.
+ *
+ * @param cub Main game structure.
+ * @param direction Angle in degrees.
+ */
 static void	move(t_cub *cub, float direction)
 {
 	double	speed;
@@ -93,6 +114,15 @@ static void	move(t_cub *cub, float direction)
 	}
 }
 
+/**
+ * @brief Computes player movement speed based on frame time and key inputs.
+ *
+ * Sprinting increases speed by 2.5; moving backward reduces speed by 0.5.
+ * Checks for overkill movement speed.
+ *
+ * @param cub Pointer to the main game structure.
+ * @return double The computed movement speed.
+ */
 static double	cal_speed(t_cub *cub)
 {
 	double	speed;
@@ -112,6 +142,16 @@ static double	cal_speed(t_cub *cub)
 		return (0.15);
 }
 
+/**
+ * @brief Checks if a movement to the given coordinates is allowed.
+ *
+ * Prevents walking through walls ('1') or closed doors ('D').
+ *
+ * @param cub Main game structure.
+ * @param new_x Target X coordinate.
+ * @param new_y Target Y coordinate.
+ * @return t_bool TRUE if the move is safe, FALSE otherwise.
+ */
 static t_bool	safe_move(t_cub *cub, float new_x, float new_y)
 {
 	float	r;

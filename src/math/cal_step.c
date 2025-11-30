@@ -1,17 +1,25 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cal_step.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:17:00 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 01:17:02 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
+/**
+ * @brief Computes the step direction (step_x, step_y) for the DDA algorithm.
+ *
+ * Indicates whether the ray moves left/right or up/down depending
+ * on its direction.
+ *
+ * @param cub Main game structure.
+ */
 void	cal_step(t_cub *cub)
 {
 	if (cub->player.ray_dir_x < 0)

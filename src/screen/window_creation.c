@@ -1,14 +1,14 @@
-/*****************************************************************************/
-/*                                                                           */
-/*                                                                           */
-/*                       LES CODEUSES DU DIMANCHE                            */
-/*                               FONT UN                                     */
-/*                        __  _  _  ___  ___  ___                            */
-/*                       / _)( )( )(  ,)(__ )(   \                           */
-/*                      ( (_  )()(  ) ,\ (_ \ ) ) )                          */
-/*                       \__) \__/ (___/(___/(___/                           */
-/*                                                                           */
-/*****************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   window_creation.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlichten <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 01:18:55 by hlichten          #+#    #+#             */
+/*   Updated: 2025/11/30 02:15:07 by hlichten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub.h"
 
@@ -16,6 +16,16 @@ static void	game_on(t_cub *cub);
 static void	mm_size_calculator(t_cub *cub);
 static int	init_img(t_cub *cub, t_img *img, t_bool minimap);
 
+/**
+ * @brief Initializes the MLX window and all game-related images.
+ *
+ * Creates the MLX instance, opens the game window, computes minimap size,
+ * loads opening screen assets, wall textures and allocates all required images
+ * (screen buffer, minimap, player icon). Finally starts the main game loop.
+ *
+ * @param cub Main game structure.
+ * @return 0 on success, 1 on failure.
+ */
 int	create_window(t_cub *cub)
 {
 	cub->graphic.mlx_ptr = mlx_init();
@@ -40,6 +50,20 @@ int	create_window(t_cub *cub)
 	return (0);
 }
 
+/**
+ * @brief Initializes an MLX image buffer.
+ *
+ * Creates a new image with either:
+ *  - Screen resolution (if minimap == FALSE)
+ *  - Minimap resolution (if minimap == TRUE)
+ *
+ * Also retrieves the data address, bpp, line size, and endian.
+ *
+ * @param cub      Main game structure.
+ * @param img      Pointer to the image structure to initialize.
+ * @param minimap  TRUE to init a minimap-sized image, FALSE for full screen.
+ * @return 0 on success, 1 on failure.
+ */
 static int	init_img(t_cub *cub, t_img *img, t_bool minimap)
 {
 	int	x;
@@ -65,8 +89,16 @@ static int	init_img(t_cub *cub, t_img *img, t_bool minimap)
 	return (0);
 }
 
-//calcul pour connaitre le ration map/scren/minimap 
-//-> donne un square qui correspond a la taille d une unite sur la minimap
+/**
+ * @brief Computes the minimap dimensions and square size.
+ *
+ * Determines the minimap's width and height based on the map ratio
+ * (map width / map height) so that it fits within MAX_W/H limits.
+ *
+ * Also computes the pixel size of one map cell on the minimap (mm_sqr).
+ *
+ * @param cub Main game structure.
+ */
 static void	mm_size_calculator(t_cub *cub)
 {
 	int	mm_ratio;
@@ -85,6 +117,14 @@ static void	mm_size_calculator(t_cub *cub)
 	cub->mmap.mm_sqr = cub->mmap.mm_wid / cub->map.width;
 }
 
+/**
+ * @brief Starts the main game loop.
+ *
+ * Creates the minimap, then enters the raycasting loop as long
+ * as the game state is active. Also registers window close event.
+ *
+ * @param cub Main game structure.
+ */
 static void	game_on(t_cub *cub)
 {
 	mm_creation(cub);
